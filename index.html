@@ -116,14 +116,16 @@
     <header class="safe-top sticky top-0 z-40 border-b border-oly-border bg-white/90 backdrop-blur">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 py-4">
         <div class="flex items-center justify-between gap-3">
+          <!-- Left: logo always, title only on sm+ -->
           <div class="flex items-center gap-3 min-w-0">
             <div class="h-10 w-10 rounded-2xl bg-white border border-oly-border flex items-center justify-center overflow-hidden">
               <img id="brandLogo" src="./logo-olympikus.png" alt="Olympikus" class="h-full w-full object-contain" onerror="this.style.display='none'">
             </div>
-            <div class="leading-tight min-w-0">
+            <div class="leading-tight min-w-0 hidden sm:block">
               <div class="text-lg sm:text-xl font-extrabold tracking-tight truncate">Catálogo Olympikus</div>
               <div id="headerStatus" class="text-xs text-oly-muted">Carregando…</div>
             </div>
+            <div id="headerStatusMobile" class="text-xs text-oly-muted sm:hidden">Carregando…</div>
           </div>
 
           <div class="flex items-center gap-2">
@@ -421,9 +423,6 @@
                       <button id="btnPack6" class="focus-ring flex-1 inline-flex items-center justify-center rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm font-extrabold hover:bg-white/90">+6</button>
                       <button id="btnPack12" class="focus-ring flex-1 inline-flex items-center justify-center rounded-2xl bg-oly-blue px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">+12</button>
                     </div>
-                    <div class="mt-2 text-xs text-oly-muted">
-                      Dica: primeiro toque vira 6/12; depois soma (12 + 12 = 24).
-                    </div>
                   </div>
 
                   <div class="mt-4">
@@ -497,7 +496,6 @@
                   </div>
 
                   <div class="mt-4 grid grid-cols-1 gap-2">
-                    <!-- ✅ único WhatsApp do sistema (somente na sacola) -->
                     <button id="btnWhatsCheckout" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-green-500 px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
                       <i class="fa-brands fa-whatsapp text-lg"></i>
                       <span>Solicitar via WhatsApp</span>
@@ -528,14 +526,14 @@
       <div class="backdrop absolute inset-0" data-close-viewer="true"></div>
       <div class="absolute inset-0 flex items-center justify-center p-4 sm:p-8">
         <div class="w-full max-w-5xl h-full max-h-[92vh] bg-black/90 border border-white/10 rounded-3xl overflow-hidden relative flex items-center justify-center">
-          <button class="focus-ring absolute right-4 top-4 h-11 w-11 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 text-white" data-close-viewer="true" aria-label="Fechar imagem">
+          <button class="focus-ring absolute right-6 top-6 z-30 h-12 w-12 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 text-white" data-close-viewer="true" aria-label="Fechar imagem">
             <i class="fa-solid fa-xmark"></i>
           </button>
 
-          <button id="viewerPrev" class="focus-ring absolute left-4 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 text-white" aria-label="Cor anterior">
+          <button id="viewerPrev" class="focus-ring absolute left-6 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 text-white" aria-label="Cor anterior">
             <i class="fa-solid fa-chevron-left"></i>
           </button>
-          <button id="viewerNext" class="focus-ring absolute right-4 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 text-white" aria-label="Próxima cor">
+          <button id="viewerNext" class="focus-ring absolute right-6 top-1/2 -translate-y-1/2 z-30 h-12 w-12 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 text-white" aria-label="Próxima cor">
             <i class="fa-solid fa-chevron-right"></i>
           </button>
 
@@ -567,7 +565,7 @@
 
 <script>
 const DATA_CONFIG = { xlsxPath: "./Produtos.xlsx", imagesBasePath: "./Catalogo/", cacheBustOnRefresh: true };
-const STORAGE_KEYS = { cart: "olympikus_cart_v4", customer: "olympikus_customer_v1" };
+const STORAGE_KEYS = { cart: "olympikus_cart_v5", customer: "olympikus_customer_v1" };
 const CATEGORY_LABELS = { "FTW":"TÊNIS", "ACC":"ACESSÓRIOS", "CHI":"CHINELOS", "MEIA":"MEIAS", "V&A":"VESTUÁRIO" };
 
 const state = {
@@ -619,9 +617,15 @@ function toast(msg){
   m.textContent = msg;
   t.classList.remove("hidden");
   clearTimeout(toast._t);
-  toast._t = setTimeout(()=>t.classList.add("hidden"), 1600);
+  toast._t = setTimeout(()=>t.classList.add("hidden"), 1500);
 }
-function setHeaderStatus(msg){ $("headerStatus").textContent = msg; }
+
+function setHeaderStatus(msg){
+  const desktop = document.getElementById("headerStatus");
+  const mobile = document.getElementById("headerStatusMobile");
+  if(desktop) desktop.textContent = msg;
+  if(mobile) mobile.textContent = msg;
+}
 
 /** LocalStorage */
 function saveCartToStorage(){
@@ -663,19 +667,21 @@ function openSearch(){
   $("btnSearchClose").classList.remove("hidden");
   setTimeout(()=> $("searchInput").focus(), 50);
 }
-function closeSearch(){
+function closeSearch({ silent=false } = {}){
   $("searchWrap").classList.remove("open");
   $("searchInput").classList.add("hidden");
   $("btnSearchClose").classList.add("hidden");
-  $("searchInput").value = "";
-  state.filters.q = "";
-  refreshView(true);
+  if(!silent){
+    $("searchInput").value = "";
+    state.filters.q = "";
+    refreshView(true);
+  }
 }
 $("btnSearchToggle").addEventListener("click", ()=>{
   if($("searchWrap").classList.contains("open")) $("searchInput").focus();
   else openSearch();
 });
-$("btnSearchClose").addEventListener("click", closeSearch);
+$("btnSearchClose").addEventListener("click", ()=> closeSearch());
 $("searchInput").addEventListener("input", (e)=>{ state.filters.q = e.target.value.trim(); refreshView(true); });
 
 /** Load XLSX */
@@ -777,8 +783,9 @@ function clearAllFilters(){
   state.filters.q = "";
   state.groupColors = false;
 
-  // search UI
-  closeSearch();
+  // close search and reset query silently
+  $("searchInput").value = "";
+  closeSearch({ silent:true });
 
   $("filterCategory").value = "";
   $("filterSegment").value = "";
@@ -887,6 +894,16 @@ function getVariantsFor(item){
   return variants.length ? variants : [item];
 }
 
+/** Gender icon mapping */
+function genderIcon(gen){
+  const g = normalizeName(gen);
+  if(g.includes("masc")) return { icon:"fa-mars", label:"Masculino" };
+  if(g.includes("fem")) return { icon:"fa-venus", label:"Feminino" };
+  if(g.includes("uni")) return { icon:"fa-venus-mars", label:"Unissex" };
+  if(g.includes("inf") || g.includes("kids") || g.includes("cri")) return { icon:"fa-child", label:"Infantil" };
+  return { icon:"fa-user", label:"Gênero" };
+}
+
 /** Card qty state */
 function getCardQty(key){
   return state.cardQty.has(key) ? state.cardQty.get(key) : 1;
@@ -894,6 +911,11 @@ function getCardQty(key){
 function setCardQty(key, n){
   const v = Math.max(1, Math.min(999, Number(n) || 1));
   state.cardQty.set(key, v);
+}
+function applyPackCard(key, n){
+  const cur = getCardQty(key);
+  if(cur <= 1) setCardQty(key, n);
+  else setCardQty(key, cur + n);
 }
 
 /** Add to cart helper (accumulates) */
@@ -942,7 +964,7 @@ function renderCards(){
       const imgSrc = resolveImageSrc(first?.imagem);
 
       card.innerHTML = `
-        <div class="aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden">
+        <div class="imgHit aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden cursor-pointer">
           <img alt="${escapeHtml(v.produto)}" src="${imgSrc}" class="h-full w-full object-contain bg-white"
             onerror="this.style.display='none'; this.parentElement.querySelector('.imgFallback').style.display='flex';">
           <div class="imgFallback hidden h-full w-full flex flex-col items-center justify-center gap-2 text-oly-muted" style="display:none">
@@ -974,19 +996,26 @@ function renderCards(){
         </div>
       `;
       card.querySelector(".btnDetails").addEventListener("click", ()=> openProductModal({ item:first, group:v }));
+      card.querySelector(".imgHit").addEventListener("click", ()=> openProductModal({ item:first, group:v }));
       card.addEventListener("keydown", (ev)=>{ if(ev.key==="Enter") openProductModal({ item:first, group:v }); });
     } else {
       const imgSrc = resolveImageSrc(v.imagem);
       const key = cartKeyFor(v);
       const qty = getCardQty(key);
+      const g = genderIcon(v.genero);
 
       card.innerHTML = `
-        <div class="aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden">
+        <div class="imgHit aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden cursor-pointer relative">
           <img alt="${escapeHtml(v.produto)}" src="${imgSrc}" class="h-full w-full object-contain bg-white"
             onerror="this.style.display='none'; this.parentElement.querySelector('.imgFallback').style.display='flex';">
           <div class="imgFallback hidden h-full w-full flex flex-col items-center justify-center gap-2 text-oly-muted" style="display:none">
             <i class="fa-solid fa-image text-3xl text-oly-blue"></i>
             <div class="text-xs font-bold">sem imagem</div>
+          </div>
+
+          <!-- Gender icon -->
+          <div class="absolute left-3 top-3 h-9 w-9 rounded-full bg-white/95 border border-oly-border flex items-center justify-center" title="${escapeHtml(g.label)}">
+            <i class="fa-solid ${g.icon} text-oly-blue"></i>
           </div>
         </div>
 
@@ -1020,8 +1049,8 @@ function renderCards(){
                 <i class="fa-solid fa-plus text-oly-blue"></i>
               </button>
 
-              <button class="btnAdd6 focus-ring flex-1 rounded-2xl border border-oly-border bg-white px-3 py-2 text-xs font-extrabold hover:bg-white/90">+6</button>
-              <button class="btnAdd12 focus-ring flex-1 rounded-2xl bg-oly-blue px-3 py-2 text-xs font-extrabold text-white hover:opacity-95">+12</button>
+              <button class="btnPack6 focus-ring flex-1 rounded-2xl border border-oly-border bg-white px-3 py-2 text-xs font-extrabold hover:bg-white/90">+6</button>
+              <button class="btnPack12 focus-ring flex-1 rounded-2xl bg-oly-blue px-3 py-2 text-xs font-extrabold text-white hover:opacity-95">+12</button>
             </div>
 
             <button class="btnAdd focus-ring mt-2 w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
@@ -1033,14 +1062,16 @@ function renderCards(){
       `;
 
       const btnDetails = card.querySelector(".btnDetails");
+      const imgHit = card.querySelector(".imgHit");
       const qtyDisplay = card.querySelector(".qtyDisplay");
       const btnMinus = card.querySelector(".btnMinus");
       const btnPlus = card.querySelector(".btnPlus");
       const btnAdd = card.querySelector(".btnAdd");
-      const btnAdd6 = card.querySelector(".btnAdd6");
-      const btnAdd12 = card.querySelector(".btnAdd12");
+      const btnPack6 = card.querySelector(".btnPack6");
+      const btnPack12 = card.querySelector(".btnPack12");
 
       btnDetails.addEventListener("click", ()=> openProductModal({ item:v, group:null }));
+      imgHit.addEventListener("click", ()=> openProductModal({ item:v, group:null }));
 
       btnMinus.addEventListener("click", ()=>{
         const cur = getCardQty(key);
@@ -1055,17 +1086,17 @@ function renderCards(){
         qtyDisplay.textContent = String(next);
       });
 
-      // ✅ Sugestão item 6: +6/+12 vão DIRETO pra sacola e acumulam sempre
-      btnAdd6.addEventListener("click", ()=>{
-        addToCart(v, 6);
-        toast("+6 na sacola ✅");
+      // ✅ Agora igual ao modal: +6/+12 mexem na quantidade do card (não adiciona direto)
+      btnPack6.addEventListener("click", ()=>{
+        applyPackCard(key, 6);
+        qtyDisplay.textContent = String(getCardQty(key));
       });
-      btnAdd12.addEventListener("click", ()=>{
-        addToCart(v, 12);
-        toast("+12 na sacola ✅");
+      btnPack12.addEventListener("click", ()=>{
+        applyPackCard(key, 12);
+        qtyDisplay.textContent = String(getCardQty(key));
       });
 
-      // manual qty
+      // Só adiciona ao clicar em Adicionar
       btnAdd.addEventListener("click", ()=>{
         addToCart(v, getCardQty(key));
         toast("Adicionado ✅");
@@ -1081,7 +1112,6 @@ function setQty(n){
   state.productModal.qty = Math.max(1, Math.min(999, Number(n) || 1));
   $("qtyValue").textContent = String(state.productModal.qty);
 }
-// ✅ first click turns 6/12 (if qty is 1), later adds
 function applyPack(n){
   if(state.productModal.qty <= 1) setQty(n);
   else setQty(state.productModal.qty + n);
@@ -1309,7 +1339,7 @@ function renderCartUI(){
   }
 }
 
-/** WhatsApp (only in sacola) */
+/** WhatsApp */
 function buildWhatsMessage(){
   const name = $("ckName").value.trim();
   const city = $("ckCity").value.trim();
@@ -1361,8 +1391,8 @@ function exportOrderXlsx(){
 }
 $("btnExportXlsx").addEventListener("click", exportOrderXlsx);
 
-/** Export PDF (sacola-like, card grid, better typography) */
-function loadImgAsDataURL(src){
+/** Export PDF: grid compacto + imagem preservando proporção */
+async function loadImgForPdf(src){
   return new Promise((resolve)=>{
     const img = new Image();
     img.crossOrigin = "anonymous";
@@ -1373,12 +1403,21 @@ function loadImgAsDataURL(src){
         c.height = img.naturalHeight;
         const ctx = c.getContext("2d");
         ctx.drawImage(img,0,0);
-        resolve(c.toDataURL("image/png"));
+        resolve({ dataUrl: c.toDataURL("image/png"), w: img.naturalWidth, h: img.naturalHeight });
       }catch(e){ resolve(null); }
     };
     img.onerror = ()=> resolve(null);
     img.src = src;
   });
+}
+
+function fitRect(imgW, imgH, boxW, boxH){
+  const s = Math.min(boxW / imgW, boxH / imgH);
+  const w = imgW * s;
+  const h = imgH * s;
+  const x = (boxW - w) / 2;
+  const y = (boxH - h) / 2;
+  return { x, y, w, h };
 }
 
 async function exportOrderPdf(){
@@ -1396,7 +1435,7 @@ async function exportOrderPdf(){
   const city = $("ckCity").value.trim();
 
   const logoSrc = $("brandLogo")?.getAttribute("src") || "";
-  const logoData = logoSrc ? await loadImgAsDataURL(logoSrc) : null;
+  const logo = logoSrc ? await loadImgForPdf(logoSrc) : null;
 
   const items = Array.from(state.cart.values());
 
@@ -1404,101 +1443,82 @@ async function exportOrderPdf(){
   const pageH = doc.internal.pageSize.getHeight();
   const margin = 40;
 
-  const headerH = 110;
+  const headerH = 95;
   const gridTop = margin + headerH;
-  const cardGap = 14;
+  const gap = 12;
 
-  const cardW = (pageW - margin*2 - cardGap) / 2;   // 2 colunas
-  const cardH = 210;                                // altura fixa
+  // Mais itens por página: 2 colunas x 3 linhas = 6
   const cols = 2;
-  const rowsPerPage = Math.floor((pageH - gridTop - margin + cardGap) / (cardH + cardGap));
+  const cardW = (pageW - margin*2 - gap) / cols;
+  const cardH = 170; // menor
+  const rowsPerPage = 3;
   const perPage = cols * rowsPerPage;
 
-  function drawHeader(){
-    if(logoData) doc.addImage(logoData, "PNG", margin, margin-6, 82, 38);
-    doc.setFont("helvetica","bold");
-    doc.setFontSize(16);
-    doc.text("Pedido — Catálogo Olympikus", margin + 95, margin + 18);
-    doc.setFont("helvetica","normal");
-    doc.setFontSize(10);
+  function header(){
+    if(logo?.dataUrl) doc.addImage(logo.dataUrl, "PNG", margin, margin-8, 80, 38);
+    doc.setFont("helvetica","bold"); doc.setFontSize(15);
+    doc.text("Pedido — Catálogo Olympikus", margin + 95, margin + 16);
+    doc.setFont("helvetica","normal"); doc.setFontSize(10);
     doc.setTextColor(107,114,128);
-    doc.text(`Data: ${dateStr}`, margin + 95, margin + 36);
+    doc.text(`Data: ${dateStr}`, margin + 95, margin + 34);
     doc.setTextColor(17,24,39);
 
-    let y = margin + 62;
+    let y = margin + 58;
     doc.setFontSize(11);
     if(name) { doc.text(`Cliente: ${name}`, margin, y); y += 16; }
     if(city) { doc.text(`Cidade/UF: ${city}`, margin, y); }
   }
 
-  for(let i=0; i<items.length; i++){
+  for(let i=0;i<items.length;i++){
     const pageIndex = Math.floor(i / perPage);
-    const indexInPage = i % perPage;
-
-    if(indexInPage === 0){
-      if(pageIndex > 0) doc.addPage();
-      drawHeader();
+    const idx = i % perPage;
+    if(idx === 0){
+      if(pageIndex>0) doc.addPage();
+      header();
     }
 
-    const r = Math.floor(indexInPage / cols);
-    const c = indexInPage % cols;
+    const r = Math.floor(idx / cols);
+    const c = idx % cols;
+    const x = margin + c*(cardW + gap);
+    const y = gridTop + r*(cardH + gap);
 
-    const x = margin + c*(cardW + cardGap);
-    const y = gridTop + r*(cardH + cardGap);
-
-    // card bg
     doc.setDrawColor(229,231,235);
     doc.setFillColor(255,255,255);
-    doc.roundedRect(x, y, cardW, cardH, 16, 16, "FD");
+    doc.roundedRect(x, y, cardW, cardH, 14, 14, "FD");
 
     // image box
-    const imgBoxH = 110;
+    const imgBoxH = 78;
     doc.setFillColor(246,247,251);
-    doc.roundedRect(x+12, y+12, cardW-24, imgBoxH, 14, 14, "F");
+    doc.roundedRect(x+10, y+10, cardW-20, imgBoxH, 12, 12, "F");
 
     const it = items[i];
-    const imgData = it.imgSrc ? await loadImgAsDataURL(it.imgSrc) : null;
-    if(imgData){
-      doc.addImage(imgData, "PNG", x+22, y+18, cardW-44, imgBoxH-12, undefined, "FAST");
-    } else {
-      doc.setFont("helvetica","normal");
-      doc.setFontSize(10);
-      doc.setTextColor(107,114,128);
-      doc.text("Sem imagem", x + 30, y + 70);
-      doc.setTextColor(17,24,39);
+    const img = it.imgSrc ? await loadImgForPdf(it.imgSrc) : null;
+    if(img?.dataUrl){
+      const innerW = cardW - 28;
+      const innerH = imgBoxH - 10;
+      const fit = fitRect(img.w, img.h, innerW, innerH);
+      doc.addImage(img.dataUrl, "PNG", x+14+fit.x, y+14+fit.y, fit.w, fit.h, undefined, "FAST");
     }
 
     // text
-    let ty = y + 12 + imgBoxH + 24;
-    doc.setFont("helvetica","bold");
-    doc.setFontSize(12);
-    doc.text(String(it.produto || "Produto").slice(0, 26), x+14, ty);
+    let ty = y + 10 + imgBoxH + 22;
+    doc.setFont("helvetica","bold"); doc.setFontSize(11);
+    doc.text(String(it.produto || "Produto").slice(0, 26), x+12, ty);
 
-    ty += 16;
-    // Categoria (pill style) + Preço omitido no pedido (você não quer subtotal/preço no fluxo)
-    doc.setFont("helvetica","normal");
-    doc.setFontSize(10);
+    ty += 14;
+    doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
     doc.setTextColor(40,54,212);
-    doc.text(categoryLabel(it.categoria), x+14, ty);
-    doc.setTextColor(17,24,39);
-
-    ty += 16;
+    doc.text(categoryLabel(it.categoria), x+12, ty);
     doc.setTextColor(107,114,128);
-    doc.text("Código:", x+14, ty);
-    doc.setTextColor(17,24,39);
-    doc.text(String(it.codigo || "-"), x+54, ty);
 
-    ty += 14;
-    doc.setTextColor(107,114,128);
-    doc.text("Cor:", x+14, ty);
-    doc.setTextColor(17,24,39);
-    doc.text(`${it.cor || "-"}${it.corCodigo ? " ("+it.corCodigo+")" : ""}`.slice(0, 24), x+40, ty);
+    ty += 14; doc.text("Código:", x+12, ty); doc.setTextColor(17,24,39);
+    doc.text(String(it.codigo||"-"), x+54, ty);
 
-    ty += 14;
-    doc.setTextColor(107,114,128);
-    doc.text("Qtd:", x+14, ty);
-    doc.setTextColor(17,24,39);
-    doc.text(String(it.qty || 0), x+40, ty);
+    ty += 12; doc.setTextColor(107,114,128); doc.text("Cor:", x+12, ty); doc.setTextColor(17,24,39);
+    doc.text(`${it.cor||"-"}${it.corCodigo?" ("+it.corCodigo+")":""}`.slice(0, 22), x+40, ty);
+
+    ty += 12; doc.setTextColor(107,114,128); doc.text("Qtd:", x+12, ty); doc.setTextColor(17,24,39);
+    doc.text(String(it.qty||0), x+40, ty);
 
     doc.setTextColor(17,24,39);
   }
@@ -1559,8 +1579,8 @@ $("imageViewer").addEventListener("click", (e)=>{
   const closeEl = e.target?.closest?.('[data-close-viewer="true"]');
   if(closeEl) closeImageViewer();
 });
-$("viewerPrev").addEventListener("click", viewerPrev);
-$("viewerNext").addEventListener("click", viewerNext);
+$("viewerPrev").addEventListener("click", (e)=>{ e.stopPropagation(); viewerPrev(); });
+$("viewerNext").addEventListener("click", (e)=>{ e.stopPropagation(); viewerNext(); });
 
 /** Keyboard */
 document.addEventListener("keydown", (e)=>{
@@ -1609,6 +1629,97 @@ function handleTrapKeydown(e){
   const last = focusables[focusables.length-1];
   if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
   else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+}
+
+/** Cart init */
+function renderCartUI(){
+  const badge = $("cartCountBadge");
+  let items = 0;
+  for(const it of state.cart.values()) items += it.qty;
+
+  badge.textContent = String(items);
+  badge.classList.toggle("hidden", items === 0);
+
+  $("miniCartFab").classList.toggle("hidden", items === 0);
+  $("miniCartCount").textContent = String(items);
+
+  $("btnOpenCart").classList.toggle("pulse-soft", items > 0);
+
+  $("cartEmpty").classList.toggle("hidden", items !== 0);
+  $("cartContent").classList.toggle("hidden", items === 0);
+
+  const list = $("cartItems");
+  list.innerHTML = "";
+  if(items === 0) return;
+
+  for(const it of state.cart.values()){
+    const row = document.createElement("div");
+    row.className = "rounded-3xl border border-oly-border bg-white p-4";
+    row.innerHTML = `
+      <div class="flex gap-3">
+        <div class="h-20 w-20 rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
+          ${it.imgSrc ? `<img src="${it.imgSrc}" alt="${escapeHtml(it.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';">`
+            : `<i class="fa-solid fa-image text-oly-blue text-xl"></i>`}
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <div class="font-extrabold leading-snug line-clamp-2">${escapeHtml(it.produto || "Produto")}</div>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="inline-flex items-center gap-2 rounded-full bg-oly-blue/10 px-3 py-1 text-xs font-extrabold text-oly-blue">
+                  <i class="fa-solid fa-palette"></i>
+                  <span>${escapeHtml(it.cor || "—")}</span>
+                  <span class="text-oly-muted font-bold">${escapeHtml(it.corCodigo || "")}</span>
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
+                  <i class="fa-solid fa-hashtag text-oly-blue"></i>
+                  <span>${escapeHtml(it.codigo || "—")}</span>
+                </span>
+              </div>
+            </div>
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-remove="true" aria-label="Remover item">
+              <i class="fa-solid fa-trash text-oly-blue"></i>
+            </button>
+          </div>
+
+          <div class="mt-3 flex items-center gap-2">
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-minus="true" aria-label="Diminuir quantidade">
+              <i class="fa-solid fa-minus text-oly-blue"></i>
+            </button>
+            <div class="min-w-[52px] text-center font-extrabold">${it.qty}</div>
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-plus="true" aria-label="Aumentar quantidade">
+              <i class="fa-solid fa-plus text-oly-blue"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    row.addEventListener("click", (e)=>{
+      const rm = e.target?.closest?.("[data-remove='true']");
+      const mn = e.target?.closest?.("[data-minus='true']");
+      const pl = e.target?.closest?.("[data-plus='true']");
+
+      if(rm){
+        state.cart.delete(it.key);
+        saveCartToStorage();
+        renderCartUI();
+        toast("Removido ✅");
+      } else if(mn){
+        it.qty = Math.max(1, it.qty - 1);
+        state.cart.set(it.key, it);
+        saveCartToStorage();
+        renderCartUI();
+      } else if(pl){
+        it.qty = Math.min(9999, it.qty + 1);
+        state.cart.set(it.key, it);
+        saveCartToStorage();
+        renderCartUI();
+      }
+    });
+
+    list.appendChild(row);
+  }
 }
 
 /** Init */
