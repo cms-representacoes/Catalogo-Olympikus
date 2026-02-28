@@ -41,6 +41,9 @@
   <!-- SheetJS -->
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
+  <!-- jsPDF (PDF export) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <style>
     :root{
       --bg: #F6F7FB;
@@ -63,20 +66,16 @@
     .safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
     .safe-top { padding-top: max(0px, env(safe-area-inset-top)); }
 
+    /* Pulse for attention (cart + whatsapp) */
     @keyframes softPulse {
       0% { transform: translateY(0) scale(1); box-shadow: 0 10px 25px rgba(0,0,0,.10); }
-      50% { transform: translateY(-1px) scale(1.02); box-shadow: 0 14px 30px rgba(0,0,0,.13); }
+      50% { transform: translateY(-1px) scale(1.03); box-shadow: 0 14px 30px rgba(0,0,0,.13); }
       100% { transform: translateY(0) scale(1); box-shadow: 0 10px 25px rgba(0,0,0,.10); }
     }
     .pulse-soft { animation: softPulse 1.8s ease-in-out infinite; }
 
     .backdrop { background: rgba(17, 24, 39, .55); backdrop-filter: blur(6px); }
     .sheet { border-top-left-radius: 22px; border-top-right-radius: 22px; }
-
-    .toggle-track { background: #E8EAF9; }
-    .toggle-track[data-on="true"] { background: rgba(40,54,212,.15); }
-    .toggle-thumb { transition: transform .2s ease; }
-    .toggle-track[data-on="true"] .toggle-thumb { transform: translateX(18px); }
 
     @keyframes shimmer {
       0% { background-position: -200% 0; }
@@ -94,6 +93,10 @@
       -webkit-box-orient:vertical;
       overflow:hidden;
     }
+
+    /* Drawer animation */
+    .drawer { transform: translateX(-100%); transition: transform .2s ease; }
+    .drawer.open { transform: translateX(0); }
   </style>
 </head>
 
@@ -103,17 +106,23 @@
     <header class="safe-top sticky top-0 z-40 border-b border-oly-border bg-white/90 backdrop-blur">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 py-4">
         <div class="flex items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <div class="h-10 w-10 rounded-2xl bg-oly-blue/10 flex items-center justify-center">
-              <i class="fa-solid fa-infinity text-oly-blue"></i>
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="h-10 w-10 rounded-2xl bg-white border border-oly-border flex items-center justify-center overflow-hidden">
+              <!-- ✅ Suba no repo como: /logo-olympikus.png -->
+              <img id="brandLogo" src="./logo-olympikus.png" alt="Olympikus" class="h-full w-full object-contain" onerror="this.style.display='none'">
             </div>
-            <div class="leading-tight">
-              <div class="text-lg sm:text-xl font-extrabold tracking-tight">Catálogo Olympikus</div>
+            <div class="leading-tight min-w-0">
+              <div class="text-lg sm:text-xl font-extrabold tracking-tight truncate">Catálogo Olympikus</div>
               <div id="headerStatus" class="text-xs text-oly-muted">Carregando dados…</div>
             </div>
           </div>
 
           <div class="flex items-center gap-2">
+            <button id="btnOpenDrawerFilters" class="focus-ring inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg" title="Filtros">
+              <i class="fa-solid fa-sliders text-oly-blue"></i>
+              <span class="hidden sm:inline">Filtros</span>
+            </button>
+
             <button id="btnRefresh" class="focus-ring inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg" title="Recarregar dados do servidor">
               <i class="fa-solid fa-arrows-rotate text-oly-blue"></i>
               <span class="hidden sm:inline">Atualizar</span>
@@ -121,7 +130,7 @@
 
             <button id="btnOpenCart" class="focus-ring inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg">
               <i class="fa-solid fa-bag-shopping text-oly-blue"></i>
-              <span>Minha Sacola</span>
+              <span class="hidden sm:inline">Minha Sacola</span>
               <span id="cartCountBadge" class="hidden rounded-full bg-oly-blue px-2 py-0.5 text-xs font-bold text-white">0</span>
             </button>
           </div>
@@ -148,63 +157,8 @@
           </div>
         </div>
 
-        <!-- Filters -->
-        <div class="mt-4 -mx-4 sm:mx-0 overflow-x-auto no-scrollbar">
-          <div class="px-4 sm:px-0 min-w-max flex items-center gap-2 pb-2">
-            <!-- Mobile: single button -->
-            <button id="btnOpenFilters" class="sm:hidden focus-ring inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-4 py-3 text-sm font-extrabold hover:bg-oly-bg">
-              <i class="fa-solid fa-sliders text-oly-blue"></i>
-              <span>Filtros</span>
-              <span id="filtersPill" class="ml-1 text-xs font-bold text-oly-muted">(Todos)</span>
-            </button>
-
-            <!-- Desktop/tablet: inline filters -->
-            <div class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-4 py-2">
-              <i class="fa-solid fa-tags text-oly-blue"></i>
-              <select id="filterCategory" class="focus-ring bg-transparent text-sm font-semibold">
-                <option value="">Categoria: Todas</option>
-              </select>
-            </div>
-
-            <div class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-4 py-2">
-              <i class="fa-solid fa-layer-group text-oly-blue"></i>
-              <select id="filterSegment" class="focus-ring bg-transparent text-sm font-semibold">
-                <option value="">Segmento: Todos</option>
-              </select>
-            </div>
-
-            <div class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-4 py-2">
-              <i class="fa-solid fa-people-group text-oly-blue"></i>
-              <select id="filterGender" class="focus-ring bg-transparent text-sm font-semibold">
-                <option value="">Gênero: Todos</option>
-              </select>
-            </div>
-
-            <div class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-4 py-2">
-              <i class="fa-solid fa-arrow-up-wide-short text-oly-blue"></i>
-              <select id="sortBy" class="focus-ring bg-transparent text-sm font-semibold">
-                <option value="default">Ordenar: Padrão</option>
-                <option value="priceAsc">Menor preço</option>
-                <option value="priceDesc">Maior preço</option>
-                <option value="az">A–Z</option>
-                <option value="za">Z–A</option>
-              </select>
-            </div>
-
-            <button id="toggleGroup" class="hidden sm:inline-flex focus-ring items-center gap-3 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg">
-              <span class="inline-flex items-center gap-2">
-                <i class="fa-solid fa-palette text-oly-blue"></i>
-                <span>Agrupar cores</span>
-              </span>
-              <span id="toggleTrack" class="toggle-track relative h-6 w-11 rounded-full border border-oly-border" data-on="false">
-                <span class="toggle-thumb absolute left-1 top-1 h-4 w-4 rounded-full bg-oly-blue"></span>
-              </span>
-            </button>
-          </div>
-        </div>
-
         <!-- Tiny status bar -->
-        <div class="mt-2 flex flex-wrap gap-2 text-xs text-oly-muted">
+        <div class="mt-3 flex flex-wrap gap-2 text-xs text-oly-muted">
           <span class="inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-3 py-1">
             <i class="fa-solid fa-boxes-stacked text-oly-blue"></i>
             <span><b id="statProducts">0</b> produtos</span>
@@ -213,92 +167,102 @@
             <i class="fa-solid fa-image text-oly-blue"></i>
             <span>Imagens: <span class="font-semibold">./Catalogo/</span></span>
           </span>
-        </div>
-      </div>
-
-      <!-- Mobile Filters Modal -->
-      <div id="filtersModal" class="hidden fixed inset-0 z-50">
-        <div class="backdrop absolute inset-0" data-close-filters="true"></div>
-        <div class="absolute inset-x-0 bottom-0 sm:inset-0 sm:flex sm:items-center sm:justify-center p-0 sm:p-6">
-          <div class="sheet w-full sm:max-w-2xl bg-white shadow-lift sm:rounded-3xl overflow-hidden max-h-[92vh] sm:max-h-[86vh] flex flex-col">
-            <div class="p-4 sm:p-6 border-b border-oly-border flex items-center justify-between">
-              <div>
-                <div class="text-xs text-oly-muted">Filtro rápido</div>
-                <div class="text-lg sm:text-xl font-extrabold">Filtros</div>
-              </div>
-              <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-close-filters="true" aria-label="Fechar filtros">
-                <i class="fa-solid fa-xmark text-oly-blue"></i>
-              </button>
-            </div>
-
-            <div class="p-4 sm:p-6 overflow-y-auto no-scrollbar">
-              <div class="grid grid-cols-1 gap-3">
-                <label class="text-xs font-bold text-oly-muted">Categoria</label>
-                <div class="inline-flex items-center gap-2 rounded-2xl bg-white border border-oly-border px-4 py-3">
-                  <i class="fa-solid fa-tags text-oly-blue"></i>
-                  <select id="mFilterCategory" class="focus-ring bg-transparent text-sm font-semibold w-full"></select>
-                </div>
-
-                <label class="text-xs font-bold text-oly-muted mt-2">Segmento</label>
-                <div class="inline-flex items-center gap-2 rounded-2xl bg-white border border-oly-border px-4 py-3">
-                  <i class="fa-solid fa-layer-group text-oly-blue"></i>
-                  <select id="mFilterSegment" class="focus-ring bg-transparent text-sm font-semibold w-full"></select>
-                </div>
-
-                <label class="text-xs font-bold text-oly-muted mt-2">Gênero</label>
-                <div class="inline-flex items-center gap-2 rounded-2xl bg-white border border-oly-border px-4 py-3">
-                  <i class="fa-solid fa-people-group text-oly-blue"></i>
-                  <select id="mFilterGender" class="focus-ring bg-transparent text-sm font-semibold w-full"></select>
-                </div>
-
-                <label class="text-xs font-bold text-oly-muted mt-2">Ordenar</label>
-                <div class="inline-flex items-center gap-2 rounded-2xl bg-white border border-oly-border px-4 py-3">
-                  <i class="fa-solid fa-arrow-up-wide-short text-oly-blue"></i>
-                  <select id="mSortBy" class="focus-ring bg-transparent text-sm font-semibold w-full">
-                    <option value="default">Ordenar: Padrão</option>
-                    <option value="priceAsc">Menor preço</option>
-                    <option value="priceDesc">Maior preço</option>
-                    <option value="az">A–Z</option>
-                    <option value="za">Z–A</option>
-                  </select>
-                </div>
-
-                <div class="mt-2 flex items-center justify-between rounded-2xl border border-oly-border bg-oly-bg p-4">
-                  <div class="min-w-0">
-                    <div class="font-extrabold">Agrupar cores</div>
-                    <div class="text-xs text-oly-muted">Mostra opções de cor no card e no detalhe</div>
-                  </div>
-                  <button id="mToggleGroup" class="focus-ring inline-flex items-center gap-3 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-white/90">
-                    <span class="inline-flex items-center gap-2">
-                      <i class="fa-solid fa-palette text-oly-blue"></i>
-                      <span id="mToggleLabel">Off</span>
-                    </span>
-                    <span id="mToggleTrack" class="toggle-track relative h-6 w-11 rounded-full border border-oly-border" data-on="false">
-                      <span class="toggle-thumb absolute left-1 top-1 h-4 w-4 rounded-full bg-oly-blue"></span>
-                    </span>
-                  </button>
-                </div>
-
-                <div class="mt-2 grid grid-cols-2 gap-2">
-                  <button id="mBtnClearFilters" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm font-extrabold hover:bg-oly-bg">
-                    <i class="fa-solid fa-broom text-oly-blue"></i>
-                    <span>Limpar filtros</span>
-                  </button>
-                  <button id="mBtnApplyFilters" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
-                    <i class="fa-solid fa-check"></i>
-                    <span>Aplicar</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <span id="filtersPill" class="inline-flex items-center gap-2 rounded-full border border-oly-border bg-white px-3 py-1">
+            <i class="fa-solid fa-sliders text-oly-blue"></i>
+            <span>(Todos)</span>
+          </span>
         </div>
       </div>
     </header>
 
+    <!-- Filters Drawer (left) -->
+    <div id="filtersDrawerWrap" class="hidden fixed inset-0 z-50">
+      <div class="backdrop absolute inset-0" data-close-drawer="true"></div>
+      <aside id="filtersDrawer" class="drawer absolute left-0 top-0 bottom-0 w-[88%] max-w-[360px] bg-white border-r border-oly-border shadow-lift p-4 sm:p-5 overflow-y-auto no-scrollbar">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-xs text-oly-muted">Filtro rápido</div>
+            <div class="text-lg font-extrabold">Filtros</div>
+          </div>
+          <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-close-drawer="true" aria-label="Fechar filtros">
+            <i class="fa-solid fa-xmark text-oly-blue"></i>
+          </button>
+        </div>
+
+        <div class="mt-4 space-y-3">
+          <div>
+            <label class="text-xs font-bold text-oly-muted">Categoria</label>
+            <div class="mt-1 inline-flex w-full items-center gap-2 rounded-2xl bg-white border border-oly-border px-4 py-3">
+              <i class="fa-solid fa-tags text-oly-blue"></i>
+              <select id="filterCategory" class="focus-ring bg-transparent text-sm font-semibold w-full">
+                <option value="">Categoria: Todas</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-oly-muted">Segmento</label>
+            <div class="mt-1 inline-flex w-full items-center gap-2 rounded-2xl bg-white border border-oly-border px-4 py-3">
+              <i class="fa-solid fa-layer-group text-oly-blue"></i>
+              <select id="filterSegment" class="focus-ring bg-transparent text-sm font-semibold w-full">
+                <option value="">Segmento: Todos</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-oly-muted">Gênero</label>
+            <div class="mt-1 inline-flex w-full items-center gap-2 rounded-2xl bg-white border border-oly-border px-4 py-3">
+              <i class="fa-solid fa-people-group text-oly-blue"></i>
+              <select id="filterGender" class="focus-ring bg-transparent text-sm font-semibold w-full">
+                <option value="">Gênero: Todos</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-oly-muted">Ordenar</label>
+            <div class="mt-1 inline-flex w-full items-center gap-2 rounded-2xl bg-white border border-oly-border px-4 py-3">
+              <i class="fa-solid fa-arrow-up-wide-short text-oly-blue"></i>
+              <select id="sortBy" class="focus-ring bg-transparent text-sm font-semibold w-full">
+                <option value="default">Ordenar: Padrão</option>
+                <option value="priceAsc">Menor preço</option>
+                <option value="priceDesc">Maior preço</option>
+                <option value="az">A–Z</option>
+                <option value="za">Z–A</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="toggleGroup" class="focus-ring w-full inline-flex items-center justify-between gap-3 rounded-2xl border border-oly-border bg-oly-bg px-4 py-3 text-sm font-extrabold hover:bg-oly-bg/80">
+            <span class="inline-flex items-center gap-2">
+              <i class="fa-solid fa-palette text-oly-blue"></i>
+              <span>Agrupar cores</span>
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <span id="toggleLabel" class="text-xs text-oly-muted">Off</span>
+              <span id="toggleTrack" class="toggle-track relative h-6 w-11 rounded-full border border-oly-border" data-on="false">
+                <span class="toggle-thumb absolute left-1 top-1 h-4 w-4 rounded-full bg-oly-blue"></span>
+              </span>
+            </span>
+          </button>
+
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button id="btnClearFilters" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm font-extrabold hover:bg-oly-bg">
+              <i class="fa-solid fa-broom text-oly-blue"></i>
+              <span>Limpar</span>
+            </button>
+            <button id="btnApplyFilters" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
+              <i class="fa-solid fa-check"></i>
+              <span>Aplicar</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
     <!-- Content -->
     <main class="mx-auto max-w-7xl px-4 sm:px-6 py-6">
-      <!-- Loading / error state -->
       <section id="loadingState" class="rounded-3xl border border-oly-border bg-white p-6 sm:p-10 shadow-card">
         <div class="flex flex-col md:flex-row md:items-center gap-6">
           <div class="flex-1">
@@ -342,15 +306,12 @@
                   <div class="mt-2 h-3 w-2/3 rounded shimmer"></div>
                 </div>
               </div>
-              <div class="mt-4 text-xs text-oly-muted">
-                Assim que o XLSX for lido, a lista completa aparece.
-              </div>
+              <div class="mt-4 text-xs text-oly-muted">Assim que o XLSX for lido, a lista completa aparece.</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Results summary -->
       <section id="resultsHeader" class="hidden mt-6">
         <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
           <div>
@@ -365,7 +326,6 @@
         </div>
       </section>
 
-      <!-- Grid -->
       <section id="grid" class="hidden mt-4">
         <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
 
@@ -386,25 +346,11 @@
       </section>
     </main>
 
-    <!-- Bottom cart bar -->
-    <div id="cartBar" class="hidden fixed left-0 right-0 bottom-0 z-40 safe-bottom">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6">
-        <div class="mb-3 rounded-2xl border border-oly-border bg-white/95 backdrop-blur shadow-lift p-3 sm:p-4 flex items-center justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-xs text-oly-muted">Minha Sacola</div>
-            <div class="truncate font-extrabold">
-              <span id="cartBarItems">0</span> item(ns)
-            </div>
-          </div>
-          <div class="flex items-center gap-2">
-            <button id="btnCheckout" class="focus-ring inline-flex items-center gap-2 rounded-full bg-oly-blue px-5 py-3 text-sm font-extrabold text-white hover:opacity-95">
-              <i class="fa-solid fa-credit-card"></i>
-              <span>Checkout</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Mini Cart (small, corner) -->
+    <button id="miniCartFab" class="hidden pulse-soft focus-ring fixed z-50 left-4 bottom-4 safe-bottom inline-flex items-center gap-2 rounded-full bg-oly-blue px-4 py-3 text-white shadow-lift">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span class="text-sm font-extrabold"><span id="miniCartCount">0</span></span>
+    </button>
 
     <!-- WhatsApp floating -->
     <button id="btnWhats" class="pulse-soft focus-ring fixed z-50 right-4 bottom-4 safe-bottom inline-flex items-center justify-center h-14 w-14 rounded-full bg-green-500 text-white shadow-lift">
@@ -502,15 +448,13 @@
 
                   <div id="packQuickWrap" class="hidden mt-4 rounded-2xl border border-oly-border bg-oly-bg p-4">
                     <div class="text-sm font-extrabold">Atalho de pedido (pares)</div>
-                    <div class="mt-2 text-xs text-oly-muted">TÊNIS e CHINELOS costumam ser fechados por 6 ou 12 pares.</div>
+                    <div class="mt-2 text-xs text-oly-muted">TÊNIS, CHINELOS e MEIAS costumam ser fechados por 6 ou 12.</div>
                     <div class="mt-3 flex gap-2">
-                      <button id="btnAdd6" class="focus-ring flex-1 inline-flex items-center justify-center gap-2 rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm font-extrabold hover:bg-white/90">
-                        <i class="fa-solid fa-plus text-oly-blue"></i>
-                        <span>+6</span>
+                      <button id="btnSet6" class="focus-ring flex-1 inline-flex items-center justify-center gap-2 rounded-2xl border border-oly-border bg-white px-4 py-3 text-sm font-extrabold hover:bg-white/90">
+                        <span>6</span>
                       </button>
-                      <button id="btnAdd12" class="focus-ring flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
-                        <i class="fa-solid fa-plus"></i>
-                        <span>+12</span>
+                      <button id="btnSet12" class="focus-ring flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
+                        <span>12</span>
                       </button>
                     </div>
                   </div>
@@ -531,9 +475,7 @@
             </div>
           </div>
 
-          <div class="p-4 sm:p-6 border-t border-oly-border text-xs text-oly-muted">
-            <span class="font-semibold">Dica:</span> Clique na lupa para ver a imagem em tela cheia e alternar as cores.
-          </div>
+          <div class="p-2 sm:p-3 border-t border-oly-border"></div>
         </div>
       </div>
     </div>
@@ -588,24 +530,31 @@
                     </div>
                   </div>
 
+                  <!-- Smaller buttons + PDF -->
                   <div class="mt-4 grid grid-cols-1 gap-2">
-                    <button id="btnWhatsCheckout" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-green-500 px-5 py-4 text-sm font-extrabold text-white hover:opacity-95">
+                    <button id="btnWhatsCheckout" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-green-500 px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
                       <i class="fa-brands fa-whatsapp text-lg"></i>
                       <span>Solicitar via WhatsApp</span>
                     </button>
 
-                    <button id="btnExportXlsx" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-5 py-4 text-sm font-extrabold text-white hover:opacity-95">
-                      <i class="fa-solid fa-file-excel"></i>
-                      <span>Baixar pedido em Excel (.xlsx)</span>
-                    </button>
+                    <div class="grid grid-cols-2 gap-2">
+                      <button id="btnExportXlsx" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-3 py-3 text-xs sm:text-sm font-extrabold text-white hover:opacity-95">
+                        <i class="fa-solid fa-file-excel"></i>
+                        <span>Excel</span>
+                      </button>
+                      <button id="btnExportPdf" class="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-oly-border bg-white px-3 py-3 text-xs sm:text-sm font-extrabold hover:bg-oly-bg">
+                        <i class="fa-solid fa-file-pdf text-oly-blue"></i>
+                        <span>PDF</span>
+                      </button>
+                    </div>
 
                     <div class="text-xs text-oly-muted">
-                      Export inclui: Código, Produto, Cor, Quantidade. ✅
+                      Export inclui: Código, Produto, Cor, Quantidade (+ imagens no PDF). ✅
                     </div>
                   </div>
                 </div>
               </div>
-            </div> <!-- grid -->
+            </div>
           </div>
 
           <div class="p-4 sm:p-6 border-t border-oly-border text-xs text-oly-muted">
@@ -648,7 +597,7 @@
       </div>
     </div>
 
-    <!-- Toast -->
+    <!-- Toast (kept for add/remove feedback only) -->
     <div id="toast" class="pointer-events-none fixed top-4 left-1/2 -translate-x-1/2 z-[80] hidden">
       <div class="pointer-events-auto rounded-full bg-oly-text text-white px-4 py-2 text-sm font-bold shadow-lift flex items-center gap-2">
         <i class="fa-solid fa-circle-check"></i>
@@ -658,10 +607,18 @@
   </div>
 
 <script>
+/** ==========================
+ *  Config
+ *  ========================== */
 const DATA_CONFIG = {
   xlsxPath: "./Produtos.xlsx",
   imagesBasePath: "./Catalogo/",
   cacheBustOnRefresh: true
+};
+
+const STORAGE_KEYS = {
+  cart: "olympikus_cart_v2",
+  customer: "olympikus_customer_v1",
 };
 
 const CATEGORY_LABELS = {
@@ -679,7 +636,7 @@ const state = {
   filters: { category:"", segment:"", gender:"", q:"", sort:"default" },
   pagination: { pageSize: 24, shown: 0 },
   productModal: { open:false, item:null, group:null, qty:1 },
-  cart: new Map(),
+  cart: new Map(), // key -> item
 };
 
 const $ = (id) => document.getElementById(id);
@@ -723,10 +680,63 @@ function toast(msg){
   m.textContent = msg;
   t.classList.remove("hidden");
   clearTimeout(toast._t);
-  toast._t = setTimeout(()=>t.classList.add("hidden"), 2200);
+  toast._t = setTimeout(()=>t.classList.add("hidden"), 1600);
 }
 function setHeaderStatus(msg){ $("headerStatus").textContent = msg; }
 
+/** ==========================
+ *  LocalStorage (cart persistence)
+ *  ========================== */
+function saveCartToStorage(){
+  const arr = Array.from(state.cart.values()).map(it => ({
+    key: it.key,
+    codigo: it.codigo,
+    produto: it.produto,
+    cor: it.cor,
+    corCodigo: it.corCodigo,
+    genero: it.genero,
+    segmento: it.segmento,
+    categoria: it.categoria,
+    precoNum: it.precoNum,
+    precoFmt: it.precoFmt,
+    qty: it.qty,
+    obs: it.obs || "",
+    imgSrc: it.imgSrc || "",
+  }));
+  localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(arr));
+}
+function loadCartFromStorage(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEYS.cart);
+    if(!raw) return;
+    const arr = JSON.parse(raw);
+    if(!Array.isArray(arr)) return;
+    state.cart.clear();
+    for(const it of arr){
+      if(!it || !it.key) continue;
+      state.cart.set(it.key, it);
+    }
+  }catch(e){ /* ignore */ }
+}
+function saveCustomerToStorage(){
+  const payload = { name: $("ckName")?.value?.trim() || "", city: $("ckCity")?.value?.trim() || "" };
+  localStorage.setItem(STORAGE_KEYS.customer, JSON.stringify(payload));
+}
+function loadCustomerFromStorage(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEYS.customer);
+    if(!raw) return;
+    const obj = JSON.parse(raw);
+    if(obj && typeof obj === "object"){
+      if($("ckName")) $("ckName").value = obj.name || "";
+      if($("ckCity")) $("ckCity").value = obj.city || "";
+    }
+  }catch(e){ /* ignore */ }
+}
+
+/** ==========================
+ *  Load XLSX
+ *  ========================== */
 async function loadCatalog({ cacheBust=false } = {}){
   try{
     $("loadingState").classList.remove("hidden");
@@ -759,7 +769,7 @@ async function loadCatalog({ cacheBust=false } = {}){
 
     state.productsRaw = rows.filter(x => x.produto || x.codigo || x.categoria || x.imagem);
     $("statProducts").textContent = state.productsRaw.length.toLocaleString("pt-BR");
-    setHeaderStatus("Catálogo carregado ✅");
+    setHeaderStatus("Catálogo atualizado");
 
     buildFilterOptions();
     refreshView(true);
@@ -767,11 +777,9 @@ async function loadCatalog({ cacheBust=false } = {}){
     $("loadingState").classList.add("hidden");
     $("grid").classList.remove("hidden");
     $("resultsHeader").classList.remove("hidden");
-
-    toast("Catálogo carregado ✅");
   }catch(err){
     console.error(err);
-    setHeaderStatus("Erro ao carregar ❌");
+    setHeaderStatus("Erro ao carregar");
     const hint = $("loadHint");
     hint.innerHTML = `
       <div class="font-bold text-red-700">Falha ao carregar Produtos.xlsx</div>
@@ -790,6 +798,32 @@ async function loadCatalog({ cacheBust=false } = {}){
 
 $("btnRefresh").addEventListener("click", ()=> loadCatalog({ cacheBust: DATA_CONFIG.cacheBustOnRefresh }));
 
+/** ==========================
+ *  Drawer filters
+ *  ========================== */
+function openFiltersDrawer(){
+  $("filtersDrawerWrap").classList.remove("hidden");
+  requestAnimationFrame(()=> $("filtersDrawer").classList.add("open"));
+  document.body.style.overflow = "hidden";
+  trapFocus("filtersDrawer");
+}
+function closeFiltersDrawer(){
+  $("filtersDrawer").classList.remove("open");
+  setTimeout(()=>{
+    $("filtersDrawerWrap").classList.add("hidden");
+    document.body.style.overflow = "";
+    releaseFocusTrap();
+  }, 200);
+}
+$("btnOpenDrawerFilters").addEventListener("click", openFiltersDrawer);
+$("filtersDrawerWrap").addEventListener("click", (e)=>{
+  const closeEl = e.target?.closest?.('[data-close-drawer="true"]');
+  if(closeEl) closeFiltersDrawer();
+});
+
+/** ==========================
+ *  Filters logic
+ *  ========================== */
 function uniqSorted(arr){
   return Array.from(new Set(arr.filter(Boolean))).sort((a,b)=>String(a).localeCompare(String(b),"pt-BR",{sensitivity:"base"}));
 }
@@ -799,7 +833,12 @@ function updateFiltersPill(){
   if(state.filters.category) parts.push(categoryLabel(state.filters.category));
   if(state.filters.segment) parts.push(state.filters.segment);
   if(state.filters.gender) parts.push(state.filters.gender);
-  $("filtersPill").textContent = parts.length ? `(${parts.join(" · ")})` : "(Todos)";
+  $("filtersPill").querySelector("span").textContent = parts.length ? `(${parts.join(" · ")})` : "(Todos)";
+}
+
+function setToggleUI(){
+  $("toggleTrack").dataset.on = String(state.groupColors);
+  $("toggleLabel").textContent = state.groupColors ? "On" : "Off";
 }
 
 function buildFilterOptions(){
@@ -807,8 +846,7 @@ function buildFilterOptions(){
   const segs = uniqSorted(state.productsRaw.map(p=>p.segmento));
   const gens = uniqSorted(state.productsRaw.map(p=>p.genero));
 
-  const catSel = $("filterCategory");
-  catSel.innerHTML = `<option value="">Categoria: Todas</option>` + cats.map(c=>{
+  $("filterCategory").innerHTML = `<option value="">Categoria: Todas</option>` + cats.map(c=>{
     const label = CATEGORY_LABELS[c] || c;
     return `<option value="${escapeHtml(c)}">${escapeHtml(label)} (${escapeHtml(c)})</option>`;
   }).join("");
@@ -816,84 +854,49 @@ function buildFilterOptions(){
   $("filterSegment").innerHTML = `<option value="">Segmento: Todos</option>` + segs.map(s=>`<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join("");
   $("filterGender").innerHTML = `<option value="">Gênero: Todos</option>` + gens.map(g=>`<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join("");
 
-  $("mFilterCategory").innerHTML = catSel.innerHTML;
-  $("mFilterSegment").innerHTML = $("filterSegment").innerHTML;
-  $("mFilterGender").innerHTML = $("filterGender").innerHTML;
-
   updateFiltersPill();
+  setToggleUI();
 }
 
 $("searchInput").addEventListener("input", (e)=>{ state.filters.q = e.target.value.trim(); refreshView(true); });
 $("btnClear").addEventListener("click", ()=>{ $("searchInput").value=""; state.filters.q=""; refreshView(true); });
 
-$("filterCategory").addEventListener("change", (e)=>{ state.filters.category = e.target.value; refreshView(true); updateFiltersPill(); });
-$("filterSegment").addEventListener("change", (e)=>{ state.filters.segment = e.target.value; refreshView(true); updateFiltersPill(); });
-$("filterGender").addEventListener("change", (e)=>{ state.filters.gender = e.target.value; refreshView(true); updateFiltersPill(); });
-$("sortBy").addEventListener("change", (e)=>{ state.filters.sort = e.target.value; refreshView(true); });
+$("btnClearFilters").addEventListener("click", ()=>{
+  state.filters.category = "";
+  state.filters.segment = "";
+  state.filters.gender = "";
+  state.filters.sort = "default";
+  state.groupColors = false;
+
+  $("filterCategory").value = "";
+  $("filterSegment").value = "";
+  $("filterGender").value = "";
+  $("sortBy").value = "default";
+
+  updateFiltersPill();
+  setToggleUI();
+  refreshView(true);
+});
+
+$("btnApplyFilters").addEventListener("click", ()=>{
+  state.filters.category = $("filterCategory").value;
+  state.filters.segment = $("filterSegment").value;
+  state.filters.gender = $("filterGender").value;
+  state.filters.sort = $("sortBy").value;
+  updateFiltersPill();
+  refreshView(true);
+  closeFiltersDrawer();
+});
 
 $("toggleGroup").addEventListener("click", ()=>{
   state.groupColors = !state.groupColors;
-  $("toggleTrack").dataset.on = String(state.groupColors);
+  setToggleUI();
   refreshView(true);
 });
 
-function openFiltersModal(){
-  $("mFilterCategory").value = state.filters.category;
-  $("mFilterSegment").value = state.filters.segment;
-  $("mFilterGender").value = state.filters.gender;
-  $("mSortBy").value = state.filters.sort;
-
-  $("mToggleTrack").dataset.on = String(state.groupColors);
-  $("mToggleLabel").textContent = state.groupColors ? "On" : "Off";
-
-  $("filtersModal").classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-  trapFocus("filtersModal");
-}
-function closeFiltersModal(){
-  $("filtersModal").classList.add("hidden");
-  document.body.style.overflow = "";
-  releaseFocusTrap();
-}
-
-$("btnOpenFilters").addEventListener("click", openFiltersModal);
-$("filtersModal").addEventListener("click", (e)=>{
-  if(e.target?.dataset?.closeFilters === "true") closeFiltersModal();
-});
-
-$("mToggleGroup").addEventListener("click", ()=>{
-  state.groupColors = !state.groupColors;
-  $("mToggleTrack").dataset.on = String(state.groupColors);
-  $("mToggleLabel").textContent = state.groupColors ? "On" : "Off";
-});
-
-$("mBtnClearFilters").addEventListener("click", ()=>{
-  $("mFilterCategory").value = "";
-  $("mFilterSegment").value = "";
-  $("mFilterGender").value = "";
-  $("mSortBy").value = "default";
-  state.groupColors = false;
-  $("mToggleTrack").dataset.on = "false";
-  $("mToggleLabel").textContent = "Off";
-});
-
-$("mBtnApplyFilters").addEventListener("click", ()=>{
-  state.filters.category = $("mFilterCategory").value;
-  state.filters.segment = $("mFilterSegment").value;
-  state.filters.gender = $("mFilterGender").value;
-  state.filters.sort = $("mSortBy").value;
-
-  $("filterCategory").value = state.filters.category;
-  $("filterSegment").value = state.filters.segment;
-  $("filterGender").value = state.filters.gender;
-  $("sortBy").value = state.filters.sort;
-  $("toggleTrack").dataset.on = String(state.groupColors);
-
-  refreshView(true);
-  updateFiltersPill();
-  closeFiltersModal();
-});
-
+/** ==========================
+ *  View + paging
+ *  ========================== */
 $("btnLoadMore").addEventListener("click", ()=>{
   state.pagination.shown = Math.min(state.pagination.shown + state.pagination.pageSize, state.productsView.length);
   renderCards();
@@ -1096,6 +1099,9 @@ function renderCards(){
   }
 }
 
+/** ==========================
+ *  Product modal
+ *  ========================== */
 function openProductModal({ item, group }){
   state.productModal.open = true;
   state.productModal.item = item;
@@ -1126,8 +1132,9 @@ function openProductModal({ item, group }){
   $("pmCorBadge").textContent = cor;
   $("pmCorCodigoBadge").textContent = corCodigo;
 
+  // ✅ show 6/12 for FTW, CHI, MEIA
   const cat = String(categoria).trim().toUpperCase();
-  $("packQuickWrap").classList.toggle("hidden", !(cat === "FTW" || cat === "CHI"));
+  $("packQuickWrap").classList.toggle("hidden", !(cat === "FTW" || cat === "CHI" || cat === "MEIA"));
 
   const img = $("pmImage");
   const fallback = $("pmImageFallback");
@@ -1182,17 +1189,10 @@ function closeProductModal(){
   releaseFocusTrap();
 }
 
+// ✅ fix close clicking on icon inside button
 $("productModal").addEventListener("click", (e)=>{
-  if(e.target?.dataset?.close === "true") closeProductModal();
-});
-
-document.addEventListener("keydown", (e)=>{
-  if(e.key === "Escape"){
-    if(state.productModal.open) closeProductModal();
-    if(isCartOpen()) closeCartModal();
-    if(viewerState.open) closeImageViewer();
-    if(!$("filtersModal").classList.contains("hidden")) closeFiltersModal();
-  }
+  const closeEl = e.target?.closest?.('[data-close="true"]');
+  if(closeEl) closeProductModal();
 });
 
 $("qtyMinus").addEventListener("click", ()=>{
@@ -1203,13 +1203,15 @@ $("qtyPlus").addEventListener("click", ()=>{
   state.productModal.qty = Math.min(999, state.productModal.qty + 1);
   $("qtyValue").textContent = String(state.productModal.qty);
 });
-$("btnAdd6").addEventListener("click", ()=>{
-  state.productModal.qty = Math.min(999, state.productModal.qty + 6);
-  $("qtyValue").textContent = String(state.productModal.qty);
+
+// ✅ set exact quantity (not sum)
+$("btnSet6").addEventListener("click", ()=>{
+  state.productModal.qty = 6;
+  $("qtyValue").textContent = "6";
 });
-$("btnAdd12").addEventListener("click", ()=>{
-  state.productModal.qty = Math.min(999, state.productModal.qty + 12);
-  $("qtyValue").textContent = String(state.productModal.qty);
+$("btnSet12").addEventListener("click", ()=>{
+  state.productModal.qty = 12;
+  $("qtyValue").textContent = "12";
 });
 
 $("btnAddToCart").addEventListener("click", ()=>{
@@ -1239,11 +1241,15 @@ $("btnAddToCart").addEventListener("click", ()=>{
     state.cart.set(key, { key, codigo, produto, cor, corCodigo, genero, segmento, categoria, precoNum, precoFmt, qty, obs, imgSrc });
   }
 
+  saveCartToStorage();
   renderCartUI();
-  toast("Adicionado à sacola ✅");
+  toast("Adicionado ✅");
   closeProductModal();
 });
 
+/** ==========================
+ *  Cart
+ *  ========================== */
 function isCartOpen(){ return !$("cartModal").classList.contains("hidden"); }
 
 function openCartModal(){
@@ -1259,14 +1265,16 @@ function closeCartModal(){
 }
 
 $("btnOpenCart").addEventListener("click", openCartModal);
-$("btnCheckout").addEventListener("click", openCartModal);
+$("miniCartFab").addEventListener("click", openCartModal);
 
 $("cartModal").addEventListener("click", (e)=>{
-  if(e.target?.dataset?.closeCart === "true") closeCartModal();
+  const closeEl = e.target?.closest?.('[data-close-cart="true"]');
+  if(closeEl) closeCartModal();
 });
 
 $("btnClearCart").addEventListener("click", ()=>{
   state.cart.clear();
+  saveCartToStorage();
   renderCartUI();
   toast("Sacola limpa ✅");
 });
@@ -1280,19 +1288,24 @@ function cartTotals(){
 function renderCartUI(){
   const { items } = cartTotals();
 
+  // header badge
   const badge = $("cartCountBadge");
   badge.textContent = String(items);
   badge.classList.toggle("hidden", items === 0);
 
-  $("cartBar").classList.toggle("hidden", items === 0);
-  $("cartBarItems").textContent = String(items);
+  // mini cart fab
+  $("miniCartFab").classList.toggle("hidden", items === 0);
+  $("miniCartCount").textContent = String(items);
 
+  // make header cart pulse when has items
+  $("btnOpenCart").classList.toggle("pulse-soft", items > 0);
+
+  // lift whatsapp when mini cart is visible
   $("btnWhats").style.bottom = (items === 0) ? "1rem" : "5.5rem";
 
-  const empty = $("cartEmpty");
-  const content = $("cartContent");
-  empty.classList.toggle("hidden", items !== 0);
-  content.classList.toggle("hidden", items === 0);
+  // cart modal empty/content
+  $("cartEmpty").classList.toggle("hidden", items !== 0);
+  $("cartContent").classList.toggle("hidden", items === 0);
 
   const list = $("cartItems");
   list.innerHTML = "";
@@ -1304,8 +1317,7 @@ function renderCartUI(){
     row.innerHTML = `
       <div class="flex gap-3">
         <div class="h-20 w-20 rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
-          ${it.imgSrc ? `<img src="${it.imgSrc}" alt="${escapeHtml(it.produto)}" class="h-full w-full object-contain bg-white"
-            onerror="this.style.display='none';">`
+          ${it.imgSrc ? `<img src="${it.imgSrc}" alt="${escapeHtml(it.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';">`
             : `<i class="fa-solid fa-image text-oly-blue text-xl"></i>`}
         </div>
         <div class="min-w-0 flex-1">
@@ -1327,17 +1339,17 @@ function renderCartUI(){
                 </span>
               </div>
             </div>
-            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" aria-label="Remover item">
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-remove="true" aria-label="Remover item">
               <i class="fa-solid fa-trash text-oly-blue"></i>
             </button>
           </div>
 
           <div class="mt-3 flex items-center gap-2">
-            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" aria-label="Diminuir quantidade">
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-minus="true" aria-label="Diminuir quantidade">
               <i class="fa-solid fa-minus text-oly-blue"></i>
             </button>
             <div class="min-w-[52px] text-center font-extrabold">${it.qty}</div>
-            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" aria-label="Aumentar quantidade">
+            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-plus="true" aria-label="Aumentar quantidade">
               <i class="fa-solid fa-plus text-oly-blue"></i>
             </button>
           </div>
@@ -1350,27 +1362,36 @@ function renderCartUI(){
       </div>
     `;
 
-    const [btnRemove, btnMinus, btnPlus] = row.querySelectorAll("button");
-    btnRemove.addEventListener("click", ()=>{
-      state.cart.delete(it.key);
-      renderCartUI();
-      toast("Item removido ✅");
-    });
-    btnMinus.addEventListener("click", ()=>{
-      it.qty = Math.max(1, it.qty - 1);
-      state.cart.set(it.key, it);
-      renderCartUI();
-    });
-    btnPlus.addEventListener("click", ()=>{
-      it.qty = Math.min(9999, it.qty + 1);
-      state.cart.set(it.key, it);
-      renderCartUI();
+    row.addEventListener("click", (e)=>{
+      const rm = e.target?.closest?.("[data-remove='true']");
+      const mn = e.target?.closest?.("[data-minus='true']");
+      const pl = e.target?.closest?.("[data-plus='true']");
+
+      if(rm){
+        state.cart.delete(it.key);
+        saveCartToStorage();
+        renderCartUI();
+        toast("Removido ✅");
+      } else if(mn){
+        it.qty = Math.max(1, it.qty - 1);
+        state.cart.set(it.key, it);
+        saveCartToStorage();
+        renderCartUI();
+      } else if(pl){
+        it.qty = Math.min(9999, it.qty + 1);
+        state.cart.set(it.key, it);
+        saveCartToStorage();
+        renderCartUI();
+      }
     });
 
     list.appendChild(row);
   }
 }
 
+/** ==========================
+ *  WhatsApp (somente info solicitada)
+ *  ========================== */
 function buildWhatsMessage(){
   const name = $("ckName").value.trim();
   const city = $("ckCity").value.trim();
@@ -1396,17 +1417,20 @@ function buildWhatsMessage(){
 
 function openWhatsApp(){
   if(state.cart.size === 0){
-    toast("Adicione itens antes ✅");
+    toast("Adicione itens ✅");
     return;
   }
+  saveCustomerToStorage();
   const msg = buildWhatsMessage();
   const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
   window.open(url, "_blank", "noopener,noreferrer");
 }
-
 $("btnWhats").addEventListener("click", openWhatsApp);
 $("btnWhatsCheckout").addEventListener("click", openWhatsApp);
 
+/** ==========================
+ *  Export XLSX
+ *  ========================== */
 function exportOrderXlsx(){
   if(state.cart.size === 0){
     toast("Sacola vazia ✅");
@@ -1433,10 +1457,116 @@ function exportOrderXlsx(){
   const name = `pedido_olympikus_${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}.xlsx`;
 
   XLSX.writeFile(wb, name);
-  toast("Pedido exportado ✅");
+  toast("Excel gerado ✅");
 }
 $("btnExportXlsx").addEventListener("click", exportOrderXlsx);
 
+/** ==========================
+ *  Export PDF (logo + data + imagem + qtd)
+ *  ========================== */
+function loadImgAsDataURL(src){
+  return new Promise((resolve)=>{
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = ()=>{
+      try{
+        const c = document.createElement("canvas");
+        c.width = img.naturalWidth;
+        c.height = img.naturalHeight;
+        const ctx = c.getContext("2d");
+        ctx.drawImage(img,0,0);
+        resolve(c.toDataURL("image/png"));
+      }catch(e){
+        resolve(null);
+      }
+    };
+    img.onerror = ()=> resolve(null);
+    img.src = src;
+  });
+}
+
+async function exportOrderPdf(){
+  if(state.cart.size === 0){
+    toast("Sacola vazia ✅");
+    return;
+  }
+
+  saveCustomerToStorage();
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: "pt", format: "a4" });
+  const pad = (n)=>String(n).padStart(2,"0");
+  const now = new Date();
+  const dateStr = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+  const name = $("ckName").value.trim();
+  const city = $("ckCity").value.trim();
+
+  // logo
+  const logoSrc = $("brandLogo")?.getAttribute("src") || "";
+  const logoData = logoSrc ? await loadImgAsDataURL(logoSrc) : null;
+
+  let y = 48;
+
+  // Header
+  if(logoData){
+    doc.addImage(logoData, "PNG", 40, 30, 70, 35);
+  }
+  doc.setFont("helvetica","bold");
+  doc.setFontSize(16);
+  doc.text("Pedido — Catálogo Olympikus", 120, 55);
+
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(10);
+  doc.text(`Data: ${dateStr}`, 120, 72);
+  if(name) doc.text(`Cliente: ${name}`, 40, 95);
+  if(city) doc.text(`Cidade/UF: ${city}`, 40, 110);
+
+  y = 140;
+
+  const items = Array.from(state.cart.values());
+
+  for(let i=0; i<items.length; i++){
+    const it = items[i];
+
+    if(i > 0){
+      doc.addPage();
+      y = 48;
+      if(logoData) doc.addImage(logoData, "PNG", 40, 30, 70, 35);
+      doc.setFont("helvetica","bold"); doc.setFontSize(16);
+      doc.text("Pedido — Catálogo Olympikus", 120, 55);
+      doc.setFont("helvetica","normal"); doc.setFontSize(10);
+      doc.text(`Data: ${dateStr}`, 120, 72);
+      y = 120;
+    }
+
+    doc.setFont("helvetica","bold"); doc.setFontSize(12);
+    doc.text(`${i+1}. ${it.produto}`, 40, y);
+
+    doc.setFont("helvetica","normal"); doc.setFontSize(11);
+    doc.text(`Código: ${it.codigo}`, 40, y+18);
+    doc.text(`Cor: ${it.cor}${it.corCodigo ? " ("+it.corCodigo+")" : ""}`, 40, y+36);
+    doc.text(`Quantidade: ${it.qty}`, 40, y+54);
+
+    // image
+    const imgData = it.imgSrc ? await loadImgAsDataURL(it.imgSrc) : null;
+    if(imgData){
+      doc.addImage(imgData, "PNG", 330, y-10, 220, 165, undefined, "FAST");
+    } else {
+      doc.setFontSize(10);
+      doc.text("Imagem não disponível", 330, y+20);
+    }
+  }
+
+  const file = `pedido_olympikus_${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}.pdf`;
+  doc.save(file);
+  toast("PDF gerado ✅");
+}
+$("btnExportPdf").addEventListener("click", exportOrderPdf);
+
+/** ==========================
+ *  Image viewer (fullscreen)
+ *  ========================== */
 const viewerState = { open:false, variants:[], index:0 };
 
 function openImageViewer(variants, currentIndex){
@@ -1448,14 +1578,12 @@ function openImageViewer(variants, currentIndex){
   document.body.style.overflow = "hidden";
   trapFocus("imageViewer");
 }
-
 function closeImageViewer(){
   viewerState.open = false;
   $("imageViewer").classList.add("hidden");
   document.body.style.overflow = "";
   releaseFocusTrap();
 }
-
 function renderImageViewer(){
   const it = viewerState.variants[viewerState.index];
   if(!it) return;
@@ -1466,9 +1594,9 @@ function renderImageViewer(){
   $("viewerPrev").style.display = viewerState.variants.length > 1 ? "inline-flex" : "none";
   $("viewerNext").style.display = viewerState.variants.length > 1 ? "inline-flex" : "none";
 }
-
 $("imageViewer").addEventListener("click", (e)=>{
-  if(e.target?.dataset?.closeViewer === "true") closeImageViewer();
+  const closeEl = e.target?.closest?.('[data-close-viewer="true"]');
+  if(closeEl) closeImageViewer();
 });
 $("viewerPrev").addEventListener("click", ()=>{
   if(!viewerState.variants.length) return;
@@ -1481,6 +1609,20 @@ $("viewerNext").addEventListener("click", ()=>{
   renderImageViewer();
 });
 
+/** ==========================
+ *  ESC closes modals/drawer
+ *  ========================== */
+document.addEventListener("keydown", (e)=>{
+  if(e.key !== "Escape") return;
+  if(state.productModal.open) closeProductModal();
+  if(isCartOpen()) closeCartModal();
+  if(viewerState.open) closeImageViewer();
+  if(!$("filtersDrawerWrap").classList.contains("hidden")) closeFiltersDrawer();
+});
+
+/** ==========================
+ *  Focus trap
+ *  ========================== */
 let trap = { root:null, prevActive:null };
 function trapFocus(rootId){
   const root = $(rootId);
@@ -1519,9 +1661,19 @@ function handleTrapKeydown(e){
   }
 }
 
+/** ==========================
+ *  Init
+ *  ========================== */
+loadCartFromStorage();
 renderCartUI();
+loadCustomerFromStorage();
 setHeaderStatus("Carregando dados…");
 loadCatalog({ cacheBust: false });
+
+// keep storage updated for customer fields
+document.addEventListener("input", (e)=>{
+  if(e.target && (e.target.id === "ckName" || e.target.id === "ckCity")) saveCustomerToStorage();
+});
 </script>
 </body>
 </html>
