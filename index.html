@@ -910,9 +910,22 @@ $("toggleGroup").addEventListener("click", ()=>{
 
 /** ✅ Header favoritos (toggle) */
 $("btnFavs").addEventListener("click", ()=>{
-  state.viewMode = (state.viewMode === "favs") ? "all" : "favs";
+
+  const goingToFavs = state.viewMode !== "favs";
+  if(goingToFavs){
+    // Save current scroll before swapping list
+    state.lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    state.viewMode = "favs";
+  } else {
+    state.viewMode = "all";
+  }
   updateFavHeaderUI();
   refreshView(true);
+  // Restore scroll when returning to list
+  if(!goingToFavs){
+    requestAnimationFrame(()=> window.scrollTo(0, Number(state.lastScrollY||0)));
+  }
+
 });
 
 /** View + paging */
@@ -928,6 +941,11 @@ function refreshView(resetPaging){
 
   const q = normalizeName(state.filters.q);
   let list = state.productsRaw.slice();
+  // Favoritos: filtra por variante (cor/código/gênero)
+  if(state.viewMode === "favs"){
+    list = list.filter(p => state.favorites && state.favorites.has(cartKeyFor(p)));
+  }
+
 
   if(state.filters.category) list = list.filter(p => p.categoria === state.filters.category);
   if(state.filters.segment) list = list.filter(p => p.segmento === state.filters.segment);
@@ -1119,20 +1137,35 @@ function addToCart(item, qty, { obs="" } = {}){
 }
 
 /** ✅ Card add button UI state (only cart) */
+
 function updateAddButtonUI(btnAdd, key){
-  if(!btnAdd) return;
-  const qty = getCardQty(key);
-  const isReady = qty > 1; // selecionou quantidade
-  const isAdded = state.cardAdded.has(key); // já adicionou na sacola
-  // reset classes
-  btnAdd.classList.remove("btn-ready","btn-added");
-  btnAdd.classList.add("bg-oly-blue","text-white");
-  if(isAdded){
-    btnAdd.classList.add("btn-added");
-  } else if(isReady){
-    btnAdd.classList.add("btn-ready");
+  if(!btnAdd || !key) return;
+
+  // remove any tailwind bg utilities that might override our CSS
+  Array.from(btnAdd.classList).forEach(c=>{
+    if(c.startsWith("bg-")) btnAdd.classList.remove(c);
+  });
+
+  btnAdd.classList.add("btn-add-status");
+  btnAdd.classList.remove("is-idle","is-pending","is-added","pulse-soft");
+
+  const status = getCardAddStatus(key);
+  let label = "Adicionar";
+  if(status === "pending"){
+    btnAdd.classList.add("is-pending","pulse-soft");
+    label = "Finalizar";
+  } else if(status === "added"){
+    btnAdd.classList.add("is-added");
+    label = "Adicionado";
+  } else {
+    btnAdd.classList.add("is-idle");
+    label = "Adicionar";
   }
+
+  const span = btnAdd.querySelector("span");
+  if(span) span.textContent = label;
 }
+
 
 /** Cards */
 function renderCards(){
@@ -1281,6 +1314,8 @@ function renderCards(){
         setCardQty(key, next);
         qtyDisplay.textContent = String(next);
         setCardPending(key);
+        updateAddButtonUI(btnAdd, key);
+        setCardPending(key);
         updateCardAddButton(btnAdd, getCardAddStatus(key));
         updateAddButtonUI(btnAdd, key);
       });
@@ -1290,6 +1325,8 @@ function renderCards(){
         setCardQty(key, next);
         qtyDisplay.textContent = String(next);
         setCardPending(key);
+        updateAddButtonUI(btnAdd, key);
+        setCardPending(key);
         updateCardAddButton(btnAdd, getCardAddStatus(key));
         updateAddButtonUI(btnAdd, key);
       });
@@ -1298,12 +1335,16 @@ function renderCards(){
         applyPackCard(key, 6);
         qtyDisplay.textContent = String(getCardQty(key));
         setCardPending(key);
+        updateAddButtonUI(btnAdd, key);
+        setCardPending(key);
         updateCardAddButton(btnAdd, getCardAddStatus(key));
         updateAddButtonUI(btnAdd, key);
       });
       btnPack12.addEventListener("click", ()=>{
         applyPackCard(key, 12);
         qtyDisplay.textContent = String(getCardQty(key));
+        setCardPending(key);
+        updateAddButtonUI(btnAdd, key);
         setCardPending(key);
         updateCardAddButton(btnAdd, getCardAddStatus(key));
         updateAddButtonUI(btnAdd, key);
@@ -1312,7 +1353,7 @@ function renderCards(){
       // ✅ adiciona ao clicar em Adicionar (e fica verde); depois zera qtd
       btnAdd.addEventListener("click", ()=>{
         addToCart(v, getCardQty(key));
-        state.cardAdded.add(key);
+        setCardAddStatus(key, "added");
         updateAddButtonUI(btnAdd, key);
         resetCardQty(key);
         qtyDisplay.textContent = "1";
@@ -1477,7 +1518,10 @@ $("cartModal").addEventListener("click", (e)=>{
 $("btnClearCart").addEventListener("click", ()=>{
   state.cart.clear();
   saveCartToStorage();
+  // reset card statuses
+  for(const k of state.cardAddStatus.keys()) state.cardAddStatus.set(k,"idle");
   renderCartUI();
+  refreshView(false);
   toast("Sacola limpa ✅");
 });
 
@@ -1487,6 +1531,7 @@ function cartTotals(){
   return { items };
 }
 function renderCartUI(){
+  syncCardAddStatusFromCart();
   syncCardAddStatusFromCart();
   syncCardAddStatusFromCart();
   const { items } = cartTotals();
