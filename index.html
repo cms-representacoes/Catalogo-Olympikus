@@ -114,6 +114,12 @@
     .btn-ready { background: var(--ready) !important; color: var(--primary) !important; }
     .btn-ready i { color: var(--primary) !important; }
     .btn-added { background: var(--success) !important; }
+  
+    /* Card Add button status (robusto: não depende do Tailwind gerar classes dinâmicas) */
+    .btn-add-status.is-idle { background: var(--primary); }
+    .btn-add-status.is-pending { background: #f97316; } /* laranja */
+    .btn-add-status.is-added { background: #22c55e; }   /* verde */
+
   </style>
 </head>
 
@@ -601,6 +607,7 @@ const state = {
   viewMode: "all", // all | favs
   filters: { category:"", segment:"", gender:"", q:"", sort:"default" },
   pagination: { pageSize: 24, shown: 0 },
+  ui: { lastScrollY: 0, view: 'main' },
   productModal: { open:false, item:null, group:null, qty:1 },
   cart: new Map(),
   cardQty: new Map(), // key -> qty manual for card
@@ -642,6 +649,14 @@ function toNumberBR(value){
   return Number.isFinite(n2) ? n2 : 0;
 }
 
+
+function rememberScrollPosition(){
+  state.ui.lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+}
+function restoreScrollPosition(){
+  const y = Number(state.ui.lastScrollY || 0);
+  requestAnimationFrame(()=> window.scrollTo({ top: y, left: 0, behavior: "instant" in window ? "instant" : "auto" }));
+}
 function toast(msg){
   const t = $("toast"), m = $("toastMsg");
   m.textContent = msg;
@@ -1011,25 +1026,29 @@ function applyPackCard(key, n){
   else setCardQty(key, cur + n);
 }
 
+
 function updateCardAddButton(btn, status){
   if(!btn) return;
-  // reset
-  btn.classList.remove("bg-oly-blue","bg-green-500","bg-orange-500","pulse-soft");
-  btn.classList.add("text-white");
+
+  btn.classList.add("btn-add-status");
+  btn.classList.remove("is-idle","is-pending","is-added","pulse-soft");
+
   let label = "Adicionar";
   if(status === "pending"){
-    btn.classList.add("bg-orange-500","pulse-soft");
-    label = "Pendente";
+    btn.classList.add("is-pending","pulse-soft");
+    label = "Finalizar";
   } else if(status === "added"){
-    btn.classList.add("bg-green-500");
+    btn.classList.add("is-added");
     label = "Adicionado";
   } else {
-    btn.classList.add("bg-oly-blue");
+    btn.classList.add("is-idle");
     label = "Adicionar";
   }
+
   const span = btn.querySelector("span");
   if(span) span.textContent = label;
 }
+
 
 
 function refreshVisibleCardAddButtons(){
@@ -1041,6 +1060,7 @@ function refreshVisibleCardAddButtons(){
   });
 }
 function syncCardAddStatusFromCart(){
+
   // Reconcile card status with current cart contents:
   // if variant is in cart => 'added'; otherwise => back to 'idle' (normal).
   for(const [k, st] of state.cardAddStatus.entries()){
@@ -1048,10 +1068,10 @@ function syncCardAddStatusFromCart(){
     if(inCart){
       if(st !== "added") state.cardAddStatus.set(k, "added");
     } else {
-      // reset to normal when removed from cart
-      if(st === "added") state.cardAddStatus.set(k, "idle");
+      if(st !== "idle") state.cardAddStatus.set(k, "idle");
     }
   }
+
 }
 /** Card add button status */
 function getCardAddStatus(key){
@@ -1223,7 +1243,7 @@ function renderCards(){
               <button class="btnPack12 focus-ring flex-1 rounded-2xl bg-oly-blue px-3 py-2 text-xs font-extrabold text-white hover:opacity-95">+12</button>
             </div>
 
-            <button class="btnAdd focus-ring mt-2 w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-oly-blue px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
+            <button class="btnAdd btn-add-status is-idle focus-ring mt-2 w-full inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-extrabold text-white hover:opacity-95">
               <i class="fa-solid fa-bag-shopping"></i>
               <span>Adicionar</span>
             </button>
@@ -1468,6 +1488,7 @@ function cartTotals(){
 }
 function renderCartUI(){
   syncCardAddStatusFromCart();
+  syncCardAddStatusFromCart();
   const { items } = cartTotals();
 
   const badge = $("cartCountBadge");
@@ -1584,6 +1605,7 @@ function buildWhatsMessage(){
     lines.push(`   Código: ${it.codigo}`);
     lines.push(`   Cor: ${it.cor}${it.corCodigo ? " ("+it.corCodigo+")" : ""}`);
     lines.push(`   Qtd: ${it.qty}`);
+    if(it.obs) lines.push(`   Obs: ${it.obs}`);
     lines.push("");
     i++;
   }
@@ -1745,6 +1767,16 @@ async function exportOrderPdf(){
 
     ty += 12; doc.setTextColor(107,114,128); doc.text("Qtd:", x+12, ty); doc.setTextColor(17,24,39);
     doc.text(String(it.qty||0), x+40, ty);
+
+    // Observações (se houver)
+    if(it.obs){
+      ty += 12;
+      doc.setTextColor(107,114,128);
+      doc.text("Obs:", x+12, ty);
+      doc.setTextColor(17,24,39);
+      const obsTxt = String(it.obs).replace(/\s+/g," ").trim();
+      doc.text(obsTxt.slice(0, 38), x+40, ty);
+    }
 
     doc.setTextColor(17,24,39);
   }
