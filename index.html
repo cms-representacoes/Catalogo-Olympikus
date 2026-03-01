@@ -141,6 +141,13 @@
               </button>
             </div>
 
+            <!-- ✅ FAVORITOS (NOVO) -->
+            <button id="btnToggleFavorites" class="focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg" title="Favoritos (mostrar/ocultar)">
+              <i class="fa-solid fa-heart text-oly-blue"></i>
+              <span class="hidden sm:inline">Favoritos</span>
+              <span id="favCountBadge" class="hidden rounded-full bg-oly-blue px-2 py-0.5 text-xs font-bold text-white">0</span>
+            </button>
+
             <button id="btnOpenDrawerFilters" class="focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-oly-border bg-white px-4 py-2 text-sm font-semibold hover:bg-oly-bg" title="Filtros">
               <i class="fa-solid fa-sliders text-oly-blue"></i>
               <span class="hidden sm:inline">Filtros</span>
@@ -565,7 +572,12 @@
 
 <script>
 const DATA_CONFIG = { xlsxPath: "./Produtos.xlsx", imagesBasePath: "./Catalogo/", cacheBustOnRefresh: true };
-const STORAGE_KEYS = { cart: "olympikus_cart_v5", customer: "olympikus_customer_v1" };
+const STORAGE_KEYS = {
+  cart: "olympikus_cart_v5",
+  customer: "olympikus_customer_v1",
+  // ✅ FAVORITOS (NOVO)
+  favs: "olympikus_favs_v1"
+};
 const CATEGORY_LABELS = { "FTW":"TÊNIS", "ACC":"ACESSÓRIOS", "CHI":"CHINELOS", "MEIA":"MEIAS", "V&A":"VESTUÁRIO" };
 
 const state = {
@@ -577,6 +589,13 @@ const state = {
   productModal: { open:false, item:null, group:null, qty:1 },
   cart: new Map(),
   cardQty: new Map(), // key -> qty manual for card
+
+  // ✅ Favoritos
+  favs: new Set(),            // baseKey => true
+  showFavoritesOnly: false,   // toggle do header
+
+  // ✅ Estado do botão "Adicionar" (por card)
+  cardAddState: new Map(),    // keyVariant => "idle" | "ready" | "added"
 };
 
 const $ = (id)=>document.getElementById(id);
@@ -658,6 +677,62 @@ function loadCustomerFromStorage(){
       if($("ckCity")) $("ckCity").value = obj.city || "";
     }
   }catch(e){}
+}
+
+/** ✅ Favoritos (LocalStorage) */
+function saveFavsToStorage(){
+  try{
+    localStorage.setItem(STORAGE_KEYS.favs, JSON.stringify(Array.from(state.favs)));
+  }catch(e){}
+}
+function loadFavsFromStorage(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEYS.favs);
+    if(!raw) return;
+    const arr = JSON.parse(raw);
+    if(Array.isArray(arr)){
+      state.favs = new Set(arr.map(x=>String(x)));
+    }
+  }catch(e){}
+}
+function updateFavoritesBadge(){
+  const n = state.favs.size;
+  const b = $("favCountBadge");
+  b.textContent = String(n);
+  b.classList.toggle("hidden", n === 0);
+
+  // estilo do botão quando "modo favoritos" está ativo
+  const btn = $("btnToggleFavorites");
+  if(!btn) return;
+  btn.setAttribute("aria-pressed", String(state.showFavoritesOnly));
+  btn.classList.toggle("bg-oly-blue", state.showFavoritesOnly);
+  btn.classList.toggle("text-white", state.showFavoritesOnly);
+  btn.classList.toggle("border-oly-blue", state.showFavoritesOnly);
+
+  const ico = btn.querySelector("i");
+  if(ico){
+    ico.classList.toggle("text-white", state.showFavoritesOnly);
+    ico.classList.toggle("text-oly-blue", !state.showFavoritesOnly);
+  }
+}
+function favBaseKeyFor(item){
+  // favorito por “produto base” (independente de cor): produto + codigo + genero
+  const produto = item?.produto || item?.produtoBase || "";
+  const codigo = item?.codigo || "";
+  const genero = item?.genero || "";
+  return normalizeName(`${produto}||${codigo}||${genero}`);
+}
+function isFavBaseKey(baseKey){
+  return state.favs.has(String(baseKey));
+}
+function toggleFavByBaseKey(baseKey){
+  const k = String(baseKey);
+  const nowFav = !state.favs.has(k);
+  if(nowFav) state.favs.add(k);
+  else state.favs.delete(k);
+  saveFavsToStorage();
+  updateFavoritesBadge();
+  return nowFav;
 }
 
 /** Search expand/collapse */
@@ -774,6 +849,7 @@ function buildFilterOptions(){
   $("filterGender").innerHTML = `<option value="">Gênero: Todos</option>` + gens.map(g=>`<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join("");
 
   setToggleUI();
+  updateFavoritesBadge();
 }
 function clearAllFilters(){
   state.filters.category = "";
@@ -783,7 +859,7 @@ function clearAllFilters(){
   state.filters.q = "";
   state.groupColors = false;
 
-  // close search and reset query silently
+  // ✅ não mexe no modo favoritos ao limpar (fica como você escolheu no coração)
   $("searchInput").value = "";
   closeSearch({ silent:true });
 
@@ -815,6 +891,14 @@ $("toggleGroup").addEventListener("click", ()=>{
   refreshView(true);
 });
 
+/** ✅ Favoritos (header toggle) */
+$("btnToggleFavorites").addEventListener("click", ()=>{
+  state.showFavoritesOnly = !state.showFavoritesOnly;
+  updateFavoritesBadge();
+  refreshView(true);
+  toast(state.showFavoritesOnly ? "Mostrando só favoritos ❤️" : "Mostrando todos ✅");
+});
+
 /** View + paging */
 $("btnLoadMore").addEventListener("click", ()=>{
   state.pagination.shown = Math.min(state.pagination.shown + state.pagination.pageSize, state.productsView.length);
@@ -840,6 +924,11 @@ function refreshView(resetPaging){
     });
   }
 
+  // ✅ filtro “só favoritos”
+  if(state.showFavoritesOnly){
+    list = list.filter(p => state.favs.has(favBaseKeyFor(p)));
+  }
+
   if(state.groupColors){
     const groups = new Map();
     for(const p of list){
@@ -855,6 +944,11 @@ function refreshView(resetPaging){
       const colors = uniqSorted(g.items.map(x=>x.cor));
       return { _type:"group", ...g, minPriceNum:min, minPriceFmt: moneyBR(min), colors, colorCount: colors.length };
     });
+
+    // ✅ se estiver em modo favoritos, garante que só grupos favoritados aparecem
+    if(state.showFavoritesOnly){
+      state.productsView = state.productsView.filter(g => state.favs.has(String(g.key)));
+    }
   } else {
     state.productsView = list.map(p=>({ _type:"item", ...p, priceNum: toNumberBR(p.precoRaw), priceFmt: moneyBR(toNumberBR(p.precoRaw)) }));
   }
@@ -918,6 +1012,38 @@ function applyPackCard(key, n){
   else setCardQty(key, cur + n);
 }
 
+/** ✅ Card add-button state helpers */
+function getCardAddState(keyVariant){
+  // se já está na sacola, considera "added" por padrão
+  if(state.cart.has(keyVariant)) return "added";
+  return state.cardAddState.get(keyVariant) || "idle";
+}
+function setCardAddState(keyVariant, st){
+  state.cardAddState.set(keyVariant, st);
+}
+function applyCardAddButtonUI(btn, st){
+  // limpa classes anteriores
+  btn.classList.remove("bg-oly-blue","bg-amber-500","bg-emerald-500","hover:opacity-95");
+  btn.classList.add("hover:opacity-95");
+
+  const icon = btn.querySelector("i");
+  const label = btn.querySelector("span");
+
+  if(st === "ready"){
+    btn.classList.add("bg-amber-500");
+    if(icon) icon.className = "fa-solid fa-bag-shopping";
+    if(label) label.textContent = "Pronto para adicionar";
+  } else if(st === "added"){
+    btn.classList.add("bg-emerald-500");
+    if(icon) icon.className = "fa-solid fa-check";
+    if(label) label.textContent = "Adicionado";
+  } else {
+    btn.classList.add("bg-oly-blue");
+    if(icon) icon.className = "fa-solid fa-bag-shopping";
+    if(label) label.textContent = "Adicionar";
+  }
+}
+
 /** Add to cart helper (accumulates) */
 function addToCart(item, qty, { obs="" } = {}){
   const key = cartKeyFor(item);
@@ -962,6 +1088,8 @@ function renderCards(){
     if(v._type === "group"){
       const first = v.items[0];
       const imgSrc = resolveImageSrc(first?.imagem);
+      const baseKey = String(v.key || favBaseKeyFor(first));
+      const favOn = isFavBaseKey(baseKey);
 
       card.innerHTML = `
         <div class="imgHit aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden cursor-pointer">
@@ -985,8 +1113,9 @@ function renderCards(){
               </div>
             </div>
 
-            <button class="btnDetails focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" title="Detalhes">
-              <i class="fa-solid fa-eye text-oly-blue"></i>
+            <!-- ✅ trocou olho por coração -->
+            <button class="btnFav focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" title="${favOn ? "Remover dos favoritos" : "Adicionar aos favoritos"}" aria-pressed="${favOn}">
+              <i class="fa-solid fa-heart ${favOn ? "text-red-500" : "text-oly-blue"}"></i>
             </button>
           </div>
 
@@ -995,14 +1124,38 @@ function renderCards(){
           </div>
         </div>
       `;
-      card.querySelector(".btnDetails").addEventListener("click", ()=> openProductModal({ item:first, group:v }));
+
+      // detalhes pela imagem (mantém)
       card.querySelector(".imgHit").addEventListener("click", ()=> openProductModal({ item:first, group:v }));
       card.addEventListener("keydown", (ev)=>{ if(ev.key==="Enter") openProductModal({ item:first, group:v }); });
+
+      // favoritos
+      const btnFav = card.querySelector(".btnFav");
+      btnFav.addEventListener("click", (e)=>{
+        e.stopPropagation();
+        const nowOn = toggleFavByBaseKey(baseKey);
+        const ico = btnFav.querySelector("i");
+        btnFav.setAttribute("aria-pressed", String(nowOn));
+        btnFav.setAttribute("title", nowOn ? "Remover dos favoritos" : "Adicionar aos favoritos");
+        if(ico){
+          ico.classList.toggle("text-red-500", nowOn);
+          ico.classList.toggle("text-oly-blue", !nowOn);
+        }
+        toast(nowOn ? "Adicionado aos favoritos ❤️" : "Removido dos favoritos ✅");
+        if(state.showFavoritesOnly){
+          // se está mostrando só favoritos, atualiza lista ao desfavoritar
+          refreshView(true);
+        }
+      });
+
     } else {
       const imgSrc = resolveImageSrc(v.imagem);
-      const key = cartKeyFor(v);
-      const qty = getCardQty(key);
+      const keyVariant = cartKeyFor(v);
+      const qty = getCardQty(keyVariant);
       const g = genderIcon(v.genero);
+
+      const baseKey = favBaseKeyFor(v);
+      const favOn = isFavBaseKey(baseKey);
 
       card.innerHTML = `
         <div class="imgHit aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden cursor-pointer relative">
@@ -1033,8 +1186,9 @@ function renderCards(){
               </div>
             </div>
 
-            <button class="btnDetails focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" title="Detalhes">
-              <i class="fa-solid fa-eye text-oly-blue"></i>
+            <!-- ✅ trocou olho por coração (favoritos) -->
+            <button class="btnFav focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" title="${favOn ? "Remover dos favoritos" : "Adicionar aos favoritos"}" aria-pressed="${favOn}">
+              <i class="fa-solid fa-heart ${favOn ? "text-red-500" : "text-oly-blue"}"></i>
             </button>
           </div>
 
@@ -1061,7 +1215,7 @@ function renderCards(){
         </div>
       `;
 
-      const btnDetails = card.querySelector(".btnDetails");
+      const btnFav = card.querySelector(".btnFav");
       const imgHit = card.querySelector(".imgHit");
       const qtyDisplay = card.querySelector(".qtyDisplay");
       const btnMinus = card.querySelector(".btnMinus");
@@ -1070,36 +1224,74 @@ function renderCards(){
       const btnPack6 = card.querySelector(".btnPack6");
       const btnPack12 = card.querySelector(".btnPack12");
 
-      btnDetails.addEventListener("click", ()=> openProductModal({ item:v, group:null }));
+      // detalhes pela imagem
       imgHit.addEventListener("click", ()=> openProductModal({ item:v, group:null }));
 
-      btnMinus.addEventListener("click", ()=>{
-        const cur = getCardQty(key);
-        const next = Math.max(1, cur - 1);
-        setCardQty(key, next);
-        qtyDisplay.textContent = String(next);
-      });
-      btnPlus.addEventListener("click", ()=>{
-        const cur = getCardQty(key);
-        const next = Math.min(999, cur + 1);
-        setCardQty(key, next);
-        qtyDisplay.textContent = String(next);
+      // favoritos
+      btnFav.addEventListener("click", (e)=>{
+        e.stopPropagation();
+        const nowOn = toggleFavByBaseKey(baseKey);
+        const ico = btnFav.querySelector("i");
+        btnFav.setAttribute("aria-pressed", String(nowOn));
+        btnFav.setAttribute("title", nowOn ? "Remover dos favoritos" : "Adicionar aos favoritos");
+        if(ico){
+          ico.classList.toggle("text-red-500", nowOn);
+          ico.classList.toggle("text-oly-blue", !nowOn);
+        }
+        toast(nowOn ? "Adicionado aos favoritos ❤️" : "Removido dos favoritos ✅");
+        if(state.showFavoritesOnly){
+          refreshView(true);
+        }
       });
 
-      // ✅ Agora igual ao modal: +6/+12 mexem na quantidade do card (não adiciona direto)
+      // ✅ Estado do botão "Adicionar"
+      applyCardAddButtonUI(btnAdd, getCardAddState(keyVariant));
+
+      function markReady(){
+        // se já estava "added" mas usuário mexeu na qty, vira "ready"
+        setCardAddState(keyVariant, "ready");
+        applyCardAddButtonUI(btnAdd, "ready");
+      }
+
+      btnMinus.addEventListener("click", ()=>{
+        const cur = getCardQty(keyVariant);
+        const next = Math.max(1, cur - 1);
+        setCardQty(keyVariant, next);
+        qtyDisplay.textContent = String(next);
+        markReady();
+      });
+      btnPlus.addEventListener("click", ()=>{
+        const cur = getCardQty(keyVariant);
+        const next = Math.min(999, cur + 1);
+        setCardQty(keyVariant, next);
+        qtyDisplay.textContent = String(next);
+        markReady();
+      });
+
+      // +6/+12 mexem na quantidade do card (não adiciona direto)
       btnPack6.addEventListener("click", ()=>{
-        applyPackCard(key, 6);
-        qtyDisplay.textContent = String(getCardQty(key));
+        applyPackCard(keyVariant, 6);
+        qtyDisplay.textContent = String(getCardQty(keyVariant));
+        markReady();
       });
       btnPack12.addEventListener("click", ()=>{
-        applyPackCard(key, 12);
-        qtyDisplay.textContent = String(getCardQty(key));
+        applyPackCard(keyVariant, 12);
+        qtyDisplay.textContent = String(getCardQty(keyVariant));
+        markReady();
       });
 
       // Só adiciona ao clicar em Adicionar
       btnAdd.addEventListener("click", ()=>{
-        addToCart(v, getCardQty(key));
+        addToCart(v, getCardQty(keyVariant));
         toast("Adicionado ✅");
+
+        // ✅ zera qty no card após adicionar
+        setCardQty(keyVariant, 1);
+        qtyDisplay.textContent = "1";
+
+        // ✅ marca como adicionado (fica visível pro cliente)
+        setCardAddState(keyVariant, "added");
+        applyCardAddButtonUI(btnAdd, "added");
       });
     }
 
@@ -1238,6 +1430,8 @@ $("btnClearCart").addEventListener("click", ()=>{
   saveCartToStorage();
   renderCartUI();
   toast("Sacola limpa ✅");
+  // ✅ quando limpa, cards voltam ao estado normal ao re-renderizar
+  refreshView(false);
 });
 
 function cartTotals(){
@@ -1245,6 +1439,7 @@ function cartTotals(){
   for(const it of state.cart.values()) items += it.qty;
   return { items };
 }
+
 function renderCartUI(){
   const { items } = cartTotals();
 
@@ -1322,6 +1517,8 @@ function renderCartUI(){
         saveCartToStorage();
         renderCartUI();
         toast("Removido ✅");
+        // ✅ atualiza cards (ex.: botão "Adicionado" pode voltar)
+        refreshView(false);
       } else if(mn){
         it.qty = Math.max(1, it.qty - 1);
         state.cart.set(it.key, it);
@@ -1447,10 +1644,9 @@ async function exportOrderPdf(){
   const gridTop = margin + headerH;
   const gap = 12;
 
-  // Mais itens por página: 2 colunas x 3 linhas = 6
   const cols = 2;
   const cardW = (pageW - margin*2 - gap) / cols;
-  const cardH = 170; // menor
+  const cardH = 170;
   const rowsPerPage = 3;
   const perPage = cols * rowsPerPage;
 
@@ -1486,7 +1682,6 @@ async function exportOrderPdf(){
     doc.setFillColor(255,255,255);
     doc.roundedRect(x, y, cardW, cardH, 14, 14, "FD");
 
-    // image box
     const imgBoxH = 78;
     doc.setFillColor(246,247,251);
     doc.roundedRect(x+10, y+10, cardW-20, imgBoxH, 12, 12, "F");
@@ -1500,7 +1695,6 @@ async function exportOrderPdf(){
       doc.addImage(img.dataUrl, "PNG", x+14+fit.x, y+14+fit.y, fit.w, fit.h, undefined, "FAST");
     }
 
-    // text
     let ty = y + 10 + imgBoxH + 22;
     doc.setFont("helvetica","bold"); doc.setFontSize(11);
     doc.text(String(it.produto || "Produto").slice(0, 26), x+12, ty);
@@ -1631,98 +1825,10 @@ function handleTrapKeydown(e){
   else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
 }
 
-/** Cart init */
-function renderCartUI(){
-  const badge = $("cartCountBadge");
-  let items = 0;
-  for(const it of state.cart.values()) items += it.qty;
-
-  badge.textContent = String(items);
-  badge.classList.toggle("hidden", items === 0);
-
-  $("miniCartFab").classList.toggle("hidden", items === 0);
-  $("miniCartCount").textContent = String(items);
-
-  $("btnOpenCart").classList.toggle("pulse-soft", items > 0);
-
-  $("cartEmpty").classList.toggle("hidden", items !== 0);
-  $("cartContent").classList.toggle("hidden", items === 0);
-
-  const list = $("cartItems");
-  list.innerHTML = "";
-  if(items === 0) return;
-
-  for(const it of state.cart.values()){
-    const row = document.createElement("div");
-    row.className = "rounded-3xl border border-oly-border bg-white p-4";
-    row.innerHTML = `
-      <div class="flex gap-3">
-        <div class="h-20 w-20 rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
-          ${it.imgSrc ? `<img src="${it.imgSrc}" alt="${escapeHtml(it.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';">`
-            : `<i class="fa-solid fa-image text-oly-blue text-xl"></i>`}
-        </div>
-        <div class="min-w-0 flex-1">
-          <div class="flex items-start justify-between gap-3">
-            <div class="min-w-0">
-              <div class="font-extrabold leading-snug line-clamp-2">${escapeHtml(it.produto || "Produto")}</div>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="inline-flex items-center gap-2 rounded-full bg-oly-blue/10 px-3 py-1 text-xs font-extrabold text-oly-blue">
-                  <i class="fa-solid fa-palette"></i>
-                  <span>${escapeHtml(it.cor || "—")}</span>
-                  <span class="text-oly-muted font-bold">${escapeHtml(it.corCodigo || "")}</span>
-                </span>
-                <span class="inline-flex items-center gap-2 rounded-full bg-white border border-oly-border px-3 py-1 text-xs font-bold">
-                  <i class="fa-solid fa-hashtag text-oly-blue"></i>
-                  <span>${escapeHtml(it.codigo || "—")}</span>
-                </span>
-              </div>
-            </div>
-            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-remove="true" aria-label="Remover item">
-              <i class="fa-solid fa-trash text-oly-blue"></i>
-            </button>
-          </div>
-
-          <div class="mt-3 flex items-center gap-2">
-            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-minus="true" aria-label="Diminuir quantidade">
-              <i class="fa-solid fa-minus text-oly-blue"></i>
-            </button>
-            <div class="min-w-[52px] text-center font-extrabold">${it.qty}</div>
-            <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-plus="true" aria-label="Aumentar quantidade">
-              <i class="fa-solid fa-plus text-oly-blue"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-
-    row.addEventListener("click", (e)=>{
-      const rm = e.target?.closest?.("[data-remove='true']");
-      const mn = e.target?.closest?.("[data-minus='true']");
-      const pl = e.target?.closest?.("[data-plus='true']");
-
-      if(rm){
-        state.cart.delete(it.key);
-        saveCartToStorage();
-        renderCartUI();
-        toast("Removido ✅");
-      } else if(mn){
-        it.qty = Math.max(1, it.qty - 1);
-        state.cart.set(it.key, it);
-        saveCartToStorage();
-        renderCartUI();
-      } else if(pl){
-        it.qty = Math.min(9999, it.qty + 1);
-        state.cart.set(it.key, it);
-        saveCartToStorage();
-        renderCartUI();
-      }
-    });
-
-    list.appendChild(row);
-  }
-}
-
 /** Init */
+loadFavsFromStorage();
+updateFavoritesBadge();
+
 loadCartFromStorage();
 renderCartUI();
 loadCustomerFromStorage();
