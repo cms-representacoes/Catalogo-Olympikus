@@ -120,6 +120,14 @@
     .btn-add-status.is-pending { background: #f97316; } /* laranja */
     .btn-add-status.is-added { background: #22c55e; }   /* verde */
 
+  /* Product modal thumbnails (cores) */
+.pm-thumbs { display:flex; gap:10px; overflow-x:auto; padding:10px 2px; }
+.pm-thumbs::-webkit-scrollbar{ display:none; }
+.pm-thumbs{ -ms-overflow-style:none; scrollbar-width:none; }
+.pm-thumb{ width:64px; height:64px; border-radius:14px; border:1px solid var(--border); background:#fff; overflow:hidden; flex:0 0 auto; display:flex; align-items:center; justify-content:center; }
+.pm-thumb.active{ border-color: var(--primary); box-shadow: 0 0 0 3px rgba(40,54,212,.12); }
+.pm-thumb img{ width:100%; height:100%; object-fit:contain; background:#fff; }
+.pm-thumb .pm-thumb-fallback{ font-size:11px; font-weight:800; color: var(--muted); padding:6px; text-align:center; }
   </style>
 </head>
 
@@ -364,7 +372,7 @@
               <button id="pmFavBtn" class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" title="Favoritar">
                 <i id="pmFavIcon" class="fa-regular fa-heart text-oly-blue"></i>
               </button>
-              <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" data-close="true" aria-label="Fechar modal">
+              <button class="focus-ring h-10 w-10 rounded-full border border-oly-border hover:bg-oly-bg" id="btnCloseProductModal" data-close="true" aria-label="Fechar modal">
                 <i class="fa-solid fa-xmark text-oly-blue"></i>
               </button>
             </div>
@@ -425,7 +433,7 @@
                   </div>
 
                   <div id="pmColorPickerWrap" class="hidden mt-4">
-                    <div class="text-xs text-oly-muted font-semibold">Outras cores disponíveis</div>
+                    <div class="text-xs text-oly-muted font-semibold">Outras cores disponíveis (toque para trocar)</div>
                     <div id="pmColorChips" class="mt-2 flex flex-wrap gap-2"></div>
                   </div>
                 </div>
@@ -1508,31 +1516,53 @@ function openProductModal({ item, group, fromCart=false, editing=false, editKey=
     fallback.classList.remove("hidden");
   }
 
-  // Colors picker (group mode)
-  const wrap = $("pmColorPickerWrap");
-  const chips = $("pmColorChips");
-  chips.innerHTML = "";
-  const showPicker = state.groupColors && group && group.items && group.items.length > 1;
-  wrap.classList.toggle("hidden", !showPicker);
+  // Colors picker (sempre que houver variantes)
+const wrap = $("pmColorPickerWrap");
+const chips = $("pmColorChips");
+chips.innerHTML = "";
 
-  if(showPicker){
-    const items = group.items.slice().sort((a,b)=>String(a.cor).localeCompare(String(b.cor),"pt-BR",{sensitivity:"base"}));
-    for(const it of items){
-      const active = normalizeName(it.cor) === normalizeName(item.cor) && normalizeName(it.corCodigo) === normalizeName(item.corCodigo);
-      const fav = isFavoriteKey(cartKeyFor(it));
-      const btn = document.createElement("button");
-      btn.className = "focus-ring inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-extrabold " + (active
-        ? "border-oly-blue bg-oly-blue/10 text-oly-blue"
-        : "border-oly-border bg-white hover:bg-oly-bg");
-      btn.innerHTML = `
-        <span>${escapeHtml(it.cor || "Cor")}</span>
-        <span class="text-oly-muted font-bold">${escapeHtml(it.corCodigo || "")}</span>
-        <span class="ml-1 ${fav ? "text-oly-blue" : "text-oly-muted"}">${fav ? "♥" : "♡"}</span>
-      `;
-      btn.addEventListener("click", ()=> openProductModal({ item: it, group }));
-      chips.appendChild(btn);
-    }
+const variantsAll = getVariantsFor(item);
+const showPicker = variantsAll.length > 1;
+
+wrap.classList.toggle("hidden", !showPicker);
+
+if(showPicker){
+  // Ordena por nome de cor (mantém previsível)
+  const items = variantsAll.slice().sort((a,b)=>String(a.cor).localeCompare(String(b.cor),"pt-BR",{sensitivity:"base"}));
+
+  for(const it of items){
+    const active = cartKeyFor(it) === cartKeyFor(item);
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "pm-thumb focus-ring " + (active ? "active" : "");
+    const srcImg = resolveImageSrc(it.imagem);
+
+    btn.innerHTML = srcImg
+      ? `<img src="${srcImg}" alt="${escapeHtml(it.cor||"Cor")}" onerror="this.style.display='none'; this.parentElement.querySelector('.pm-thumb-fallback').style.display='block';">`
+        + `<div class="pm-thumb-fallback" style="display:none">${escapeHtml(it.cor||"Cor")}<br><span style="font-weight:700">${escapeHtml(it.corCodigo||"")}</span></div>`
+      : `<div class="pm-thumb-fallback" style="display:block">${escapeHtml(it.cor||"Cor")}<br><span style="font-weight:700">${escapeHtml(it.corCodigo||"")}</span></div>`;
+
+    btn.title = `${it.cor || "Cor"}${it.corCodigo ? " ("+it.corCodigo+")" : ""}`;
+    btn.addEventListener("click", ()=>{
+      // mantém o modo (se veio da sacola/edição) ao trocar de cor
+      openProductModal({
+        item: it,
+        group,
+        fromCart: state.productModal.fromCart,
+        editing: state.productModal.editing,
+        editKey: state.productModal.editKey || cartKeyFor(it)
+      });
+    });
+
+    chips.appendChild(btn);
   }
+
+  // aplica layout tipo strip
+  chips.className = "pm-thumbs";
+} else {
+  chips.className = "";
+}
 
   // ✅ Favoritar no modal (variante atual)
   updateModalFavUI();
@@ -1567,10 +1597,9 @@ function closeProductModal(){
   }
 }
 
-$("productModal").addEventListener("click", (e)=>{
-  const closeEl = e.target?.closest?.('[data-close="true"]');
-  if(closeEl) closeProductModal();
-});
+// Modal fecha apenas no X ou ESC (sem fechar no backdrop)
+
+$("btnCloseProductModal").addEventListener("click", closeProductModal);
 $("qtyMinus").addEventListener("click", ()=> setQty(state.productModal.qty - 1));
 $("qtyPlus").addEventListener("click", ()=> setQty(state.productModal.qty + 1));
 $("btnPack6").addEventListener("click", ()=> applyPack(6));
@@ -1599,14 +1628,17 @@ $("btnAddToCart").addEventListener("click", ()=>{
       addToCart(item, qty, { obs });
       toast("Adicionado ✅");
     }
-    closeProductModal();
+    closeProductModal(); // volta para a sacola automaticamente
     return;
   }
 
-  // Fluxo padrão: adiciona (acumula)
+  // Fluxo padrão: adiciona (acumula) e mantém o modal aberto para o cliente escolher outra cor
   addToCart(item, qty, { obs });
   toast("Adicionado ✅");
-  closeProductModal();
+
+  // reset leve para próxima adição
+  setQty(1);
+  $("pmObs").value = "";
 });
 
 
