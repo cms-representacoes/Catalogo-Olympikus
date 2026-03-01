@@ -608,7 +608,7 @@ const state = {
   filters: { category:"", segment:"", gender:"", q:"", sort:"default" },
   pagination: { pageSize: 24, shown: 0 },
   ui: { lastScrollY: 0, view: 'main' },
-  productModal: { open:false, item:null, group:null, qty:1 },
+  productModal: { open:false, item:null, group:null, qty:1, fromCart:false, editKey:null, editing:false },
   cart: new Map(),
   cardQty: new Map(), // key -> qty manual for card
   cardAddStatus: new Map(), // key -> 'idle' | 'pending' | 'added'
@@ -1413,6 +1413,20 @@ btnAdd.addEventListener("click", ()=>{
   }
 }
 
+
+function setProductModalActionMode(){
+  const btn = $("btnAddToCart");
+  if(!btn) return;
+  const span = btn.querySelector("span");
+  const icon = btn.querySelector("i");
+  if(state.productModal.editing){
+    if(span) span.textContent = "Salvar";
+    if(icon) icon.className = "fa-solid fa-floppy-disk";
+  } else {
+    if(span) span.textContent = "Adicionar à Sacola";
+    if(icon) icon.className = "fa-solid fa-bag-shopping";
+  }
+}
 /** Product modal qty helpers */
 function setQty(n){
   state.productModal.qty = Math.max(1, Math.min(999, Number(n) || 1));
@@ -1435,12 +1449,30 @@ function updateModalFavUI(){
 }
 
 /** Product modal open/close */
-function openProductModal({ item, group }){
+function openProductModal({ item, group, fromCart=false, editing=false, editKey=null }){
   state.productModal.open = true;
   state.productModal.item = item;
   state.productModal.group = group;
-  setQty(1);
-  $("pmObs").value = "";
+  state.productModal.fromCart = !!fromCart;
+  state.productModal.editing = !!editing;
+  state.productModal.editKey = editKey || null;
+
+  // Se abriu a partir da sacola, pré-preenche qtd/obs com o item existente (se houver)
+  let presetQty = 1;
+  let presetObs = "";
+  if(state.productModal.fromCart){
+    const k = state.productModal.editKey || cartKeyFor(item);
+    const inCart = state.cart.get(k);
+    if(inCart){
+      presetQty = Math.max(1, Math.min(999, Number(inCart.qty)||1));
+      presetObs = inCart.obs || "";
+      state.productModal.editKey = inCart.key; // garante chave correta
+    }
+  }
+
+  setQty(presetQty);
+  $("pmObs").value = presetObs;
+  setProductModalActionMode();
 
   const categoria = item.categoria || "";
   const cor = item.cor || "—";
@@ -1517,10 +1549,22 @@ function openProductModal({ item, group }){
 }
 
 function closeProductModal(){
+  const shouldReturnCart = !!state.productModal.fromCart;
+
   state.productModal.open = false;
+  state.productModal.fromCart = false;
+  state.productModal.editing = false;
+  state.productModal.editKey = null;
+
   $("productModal").classList.add("hidden");
-  document.body.style.overflow = "";
-  releaseFocusTrap();
+
+  // Se veio da sacola, reabre a sacola ao fechar
+  if(shouldReturnCart){
+    openCartModal();
+  } else {
+    document.body.style.overflow = "";
+    releaseFocusTrap();
+  }
 }
 
 $("productModal").addEventListener("click", (e)=>{
@@ -1535,7 +1579,32 @@ $("btnPack12").addEventListener("click", ()=> applyPack(12));
 $("btnAddToCart").addEventListener("click", ()=>{
   const item = state.productModal.item;
   if(!item) return;
-  addToCart(item, state.productModal.qty, { obs: $("pmObs").value.trim() });
+
+  const qty = state.productModal.qty;
+  const obs = $("pmObs").value.trim();
+
+  if(state.productModal.editing){
+    // Salvar alterações (sobrescreve qty/obs do item na sacola)
+    const k = state.productModal.editKey || cartKeyFor(item);
+    const existing = state.cart.get(k);
+    if(existing){
+      existing.qty = Math.max(1, Math.min(9999, Number(qty)||1));
+      existing.obs = obs || "";
+      state.cart.set(k, existing);
+      saveCartToStorage();
+      renderCartUI();
+      toast("Salvo ✅");
+    } else {
+      // fallback: se não existir, adiciona como novo
+      addToCart(item, qty, { obs });
+      toast("Adicionado ✅");
+    }
+    closeProductModal();
+    return;
+  }
+
+  // Fluxo padrão: adiciona (acumula)
+  addToCart(item, qty, { obs });
   toast("Adicionado ✅");
   closeProductModal();
 });
@@ -1611,7 +1680,7 @@ function renderCartUI(){
     row.className = "rounded-3xl border border-oly-border bg-white p-4";
     row.innerHTML = `
       <div class="flex gap-3">
-        <div class="h-20 w-20 rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
+        <div class="h-20 w-20 cursor-pointer rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
           ${it.imgSrc ? `<img src="${it.imgSrc}" alt="${escapeHtml(it.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';">`
             : `<i class="fa-solid fa-image text-oly-blue text-xl"></i>`}
         </div>
@@ -1661,32 +1730,37 @@ function renderCartUI(){
       const rm = e.target?.closest?.("[data-remove='true']");
       const mn = e.target?.closest?.("[data-minus='true']");
       const pl = e.target?.closest?.("[data-plus='true']");
-      const op = e.target?.closest?.("[data-open='true']");
       const ed = e.target?.closest?.("[data-edit='true']");
 
-      if(op || ed){
-        const variant = findProductVariantFromCartItem(it);
-        if(variant){
-          closeCartModal();
-          openProductModal({ item: variant, group: null });
-          if($('pmObs')) $('pmObs').value = it.obs || '';
-          if(ed && !it.obs){ $('pmObs')?.focus?.(); }
-        }
-      } else if(rm){
+      if(rm){
         state.cart.delete(it.key);
         saveCartToStorage();
         renderCartUI();
         toast("Removido ✅");
-      } else if(mn){
+        return;
+      }
+      if(mn){
         it.qty = Math.max(1, it.qty - 1);
         state.cart.set(it.key, it);
         saveCartToStorage();
         renderCartUI();
-      } else if(pl){
+        return;
+      }
+      if(pl){
         it.qty = Math.min(9999, it.qty + 1);
         state.cart.set(it.key, it);
         saveCartToStorage();
         renderCartUI();
+        return;
+      }
+
+      // Qualquer outro clique no item (incluindo imagem) abre detalhes.
+      const variant = findProductVariantFromCartItem(it);
+      if(variant){
+        closeCartModal();
+        openProductModal({ item: variant, group: null, fromCart:true, editing: !!ed, editKey: it.key });
+        // Observação já vem preenchida via preset; se clicou em editar e não tinha obs, foca
+        if(ed && !it.obs){ $("pmObs")?.focus?.(); }
       }
     });
 
