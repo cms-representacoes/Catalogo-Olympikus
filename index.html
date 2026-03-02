@@ -128,6 +128,37 @@
 .pm-thumb.active{ border-color: var(--primary); box-shadow: 0 0 0 3px rgba(40,54,212,.12); }
 .pm-thumb img{ width:100%; height:100%; object-fit:contain; background:#fff; }
 .pm-thumb .pm-thumb-fallback{ font-size:11px; font-weight:800; color: var(--muted); padding:6px; text-align:center; }
+  
+    @keyframes swipeHint {
+      0% { transform: translateX(0); opacity: 0; }
+      15% { opacity: 1; }
+      55% { transform: translateX(-42px); opacity: 1; }
+      100% { transform: translateX(-42px); opacity: 0; }
+    }
+    .swipe-hint {
+      position:absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.92);
+      font-weight: 800;
+      font-size: 12px;
+      z-index: 40;
+      pointer-events:none;
+      backdrop-filter: blur(6px);
+    }
+    .swipe-hint i {
+      animation: swipeHint 1.4s ease-in-out 1;
+      font-size: 18px;
+    }
+
   </style>
 </head>
 
@@ -378,7 +409,7 @@
             </div>
           </div>
 
-          <div class="p-4 sm:p-6 overflow-y-auto no-scrollbar">
+          <div id="pmScroll" class="p-4 sm:p-6 overflow-y-auto no-scrollbar">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <div class="relative aspect-[4/3] rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
@@ -576,6 +607,8 @@
             </div>
           </div>
 
+          <div id="swipeHint" class="swipe-hint hidden"><i class="fa-solid fa-hand-pointer"></i><span>Arraste para trocar a cor</span></div>
+
           <img id="viewerImg" alt="Imagem do produto em tela cheia" class="max-h-full max-w-full object-contain" />
         </div>
       </div>
@@ -621,6 +654,23 @@ const state = {
 };
 
 const $ = (id)=>document.getElementById(id);
+
+/** One-time DOM relocation: thumbnails below main photo */
+(function moveColorThumbsBelowPhoto(){
+  try{
+    const wrap = $("pmColorPickerWrap");
+    if(!wrap) return;
+    const leftCol = document.querySelector("#productModal .p-4.sm\\:p-6 .grid.grid-cols-1.sm\\:grid-cols-2 > div");
+    if(!leftCol) return;
+    const imgBox = leftCol.querySelector(".relative.aspect-\\[4\\/3\\]");
+    if(imgBox && imgBox.parentElement){
+      imgBox.parentElement.insertAdjacentElement("afterend", wrap);
+    } else {
+      leftCol.appendChild(wrap);
+    }
+  }catch(e){}
+})();
+
 
 function normalizeName(s){
   if(!s) return "";
@@ -675,6 +725,32 @@ function setHeaderStatus(msg){
   if(desktop) desktop.textContent = msg;
   if(mobile) mobile.textContent = msg;
 }
+
+
+/** Favorites button UI (Voltar when in favorites) */
+function setFavoritesBtnMode(isFavView){
+  const b = $("btnFavorites");
+  if(!b) return;
+  if(isFavView){
+    b.classList.add("pulse-soft");
+    b.classList.remove("bg-white","border-oly-border");
+    b.classList.add("bg-amber-500","border-amber-500","text-white");
+    b.innerHTML = `
+      <i class="fa-solid fa-house"></i>
+      <span class="hidden sm:inline">Voltar</span>
+    `;
+    b.title = "Voltar";
+  } else {
+    b.classList.remove("pulse-soft","bg-amber-500","border-amber-500","text-white");
+    b.classList.add("bg-white","border-oly-border");
+    b.innerHTML = `
+      <i class="fa-regular fa-heart text-oly-blue"></i>
+      <span class="hidden sm:inline">Favoritos</span>
+    `;
+    b.title = "Favoritos";
+  }
+}
+
 
 /** LocalStorage */
 function saveCartToStorage(){
@@ -1012,15 +1088,40 @@ function resolveImageSrc(imagemValue){
 function cartKeyFor(item){
   return normalizeName([item.codigo || "", item.corCodigo || item.cor || "", item.genero || ""].join("||"));
 }
-function getVariantsFor(item){
-  const key = normalizeName(`${item.produto}||${item.codigo}||${item.genero}`);
-  const variants = state.productsRaw
-    .filter(p => normalizeName(`${p.produto}||${p.codigo}||${p.genero}`) === key)
+function getVariantsFor(item, opts={}){
+  const ignoreGender = !!opts.ignoreGender;
+  const dedupeColors = opts.dedupeColors !== false; // default true
+  const baseKey = ignoreGender
+    ? normalizeName(`${item.produto}||${item.codigo}`)
+    : normalizeName(`${item.produto}||${item.codigo}||${item.genero}`);
+
+  let variants = state.productsRaw
+    .filter(p => {
+      const k = ignoreGender
+        ? normalizeName(`${p.produto}||${p.codigo}`)
+        : normalizeName(`${p.produto}||${p.codigo}||${p.genero}`);
+      return k === baseKey;
+    })
     .slice()
     .sort((a,b)=>String(a.cor).localeCompare(String(b.cor),"pt-BR",{sensitivity:"base"}));
-  return variants.length ? variants : [item];
-}
 
+  if(!variants.length) variants = [item];
+  if(!dedupeColors) return variants;
+
+  const seen = new Map(); // colorKey -> representative
+  for(const v of variants){
+    const colorKey = normalizeName(`${v.cor||""}||${v.corCodigo||""}`);
+    if(!seen.has(colorKey)){
+      seen.set(colorKey, v);
+    } else {
+      const cur = seen.get(colorKey);
+      if(normalizeName(v.genero) === normalizeName(item.genero) && normalizeName(cur.genero) !== normalizeName(item.genero)){
+        seen.set(colorKey, v);
+      }
+    }
+  }
+  return Array.from(seen.values());
+}
 /** Gender icon mapping */
 function genderIcon(gen){
   const g = normalizeName(gen);
@@ -1250,12 +1351,20 @@ function renderCards(){
       if(btnCardZoom){
         btnCardZoom.addEventListener("click", (e)=>{
           e.stopPropagation();
-          const variants = getVariantsFor(first);
+          const variants = getVariantsFor(first, { ignoreGender:true });
           openImageViewer(variants, 0, { returnToProductModal:false });
         });
       }
       card.querySelector(".btnDetails").addEventListener("click", ()=> openProductModal({ item:first, group:v }));
       
+      const btnCardZoom = card.querySelector(".btnCardZoom");
+      if(btnCardZoom){
+        btnCardZoom.addEventListener("click", (e)=>{
+          e.stopPropagation();
+          const variants = getVariantsFor(first, { ignoreGender:true });
+          openImageViewer(variants, 0, { returnToProductModal:false });
+        });
+      }
 card.querySelector(".imgHit").addEventListener("click", ()=> openProductModal({ item:first, group:v }));
       card.addEventListener("keydown", (ev)=>{ if(ev.key==="Enter") openProductModal({ item:first, group:v }); });
     } else {
@@ -1346,7 +1455,7 @@ card.querySelector(".imgHit").addEventListener("click", ()=> openProductModal({ 
       if(btnCardZoom){
         btnCardZoom.addEventListener("click", (e)=>{
           e.stopPropagation();
-          const variants = getVariantsFor(v);
+          const variants = getVariantsFor(v, { ignoreGender:true });
           const currentIndex = Math.max(0, variants.findIndex(x => cartKeyFor(x) === cartKeyFor(v)));
           openImageViewer(variants, currentIndex, { returnToProductModal:false });
         });
@@ -1483,6 +1592,9 @@ function updateModalFavUI(){
 /** Product modal open/close */
 function openProductModal({ item, group, fromCart=false, editing=false, editKey=null }){
   state.productModal.open = true;
+  state.editing.active = !!editKey;
+  state.editing.oldKey = editKey;
+  state.editing.keepCartOpen = !!keepCartOpen;
   state.productModal.item = item;
   state.productModal.group = group;
   state.productModal.fromCart = !!fromCart;
@@ -1545,7 +1657,7 @@ const wrap = $("pmColorPickerWrap");
 const chips = $("pmColorChips");
 chips.innerHTML = "";
 
-const variantsAll = getVariantsFor(item);
+const variantsAll = getVariantsFor(item, { ignoreGender:true });
 const showPicker = variantsAll.length > 1;
 
 wrap.classList.toggle("hidden", !showPicker);
@@ -1593,16 +1705,20 @@ if(showPicker){
   $("pmFavBtn").onclick = ()=>{ toggleFavoriteByItem(state.productModal.item); updateModalFavUI(); };
 
   // Zoom viewer
-  const variants = getVariantsFor(item);
+  const variants = getVariantsFor(item, { ignoreGender:true });
   const currentIndex = Math.max(0, variants.findIndex(v => normalizeName(v.cor) === normalizeName(item.cor) && normalizeName(v.corCodigo) === normalizeName(item.corCodigo)));
   $("btnZoomImage").onclick = () => openImageViewer(variants, currentIndex, { returnToProductModal:true });
 
-  $("productModal").classList.remove("hidden");
+    // Always open at top (image)
+  try{ const sc = $("pmScroll"); if(sc) sc.scrollTop = 0; }catch(e){}
+
+$("productModal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
   trapFocus("productModal");
 }
 
 function closeProductModal(){
+  state.editing.active = false; state.editing.oldKey = null; state.editing.keepCartOpen = false;
   const shouldReturnCart = !!state.productModal.fromCart;
 
   state.productModal.open = false;
@@ -1636,20 +1752,59 @@ $("btnAddToCart").addEventListener("click", ()=>{
   const qty = state.productModal.qty;
   const obs = $("pmObs").value.trim();
 
-  if(state.productModal.editing){
-    // Salvar alterações (sobrescreve qty/obs do item na sacola)
-    const k = state.productModal.editKey || cartKeyFor(item);
-    const existing = state.cart.get(k);
-    if(existing){
-      existing.qty = Math.max(1, Math.min(9999, Number(qty)||1));
-      existing.obs = obs || "";
-      state.cart.set(k, existing);
-      saveCartToStorage();
-      renderCartUI();
-      toast("Salvo ✅");
+  if(state.editing.active && state.editing.oldKey){
+    const oldKey = state.editing.oldKey;
+    const newKey = cartKeyFor(item);
+
+    const precoNum = toNumberBR(item.precoRaw ?? 0);
+    const precoFmt = moneyBR(precoNum);
+    const updated = {
+      key: newKey,
+      codigo: item.codigo || "",
+      produto: item.produto || "",
+      cor: item.cor || "",
+      corCodigo: item.corCodigo || "",
+      genero: item.genero || "",
+      segmento: item.segmento || "",
+      categoria: item.categoria || "",
+      precoNum,
+      precoFmt,
+      qty: qty,
+      obs: obs || "",
+      imgSrc: resolveImageSrc(item.imagem),
+    };
+
+    if(newKey !== oldKey){
+      const existing = state.cart.get(newKey);
+      if(existing){
+        existing.qty = Math.min(9999, existing.qty + qty);
+        if(obs) existing.obs = obs;
+        existing.imgSrc = updated.imgSrc || existing.imgSrc;
+        state.cart.set(newKey, existing);
+      } else {
+        state.cart.set(newKey, updated);
+      }
+      state.cart.delete(oldKey);
     } else {
-      // fallback: se não existir, adiciona como novo
-      addToCart(item, qty, { obs });
+      state.cart.set(oldKey, updated);
+    }
+
+    saveCartToStorage();
+    renderCartUI();
+    toast("Salvo ✅");
+
+    closeProductModal();
+    if(state.editing.keepCartOpen) openCartModal();
+    return;
+  }
+
+  // Normal add: keep modal open to allow adding other colors
+  addToCart(item, qty, { obs });
+  toast("Adicionado ✅");
+
+  try{ setQty(1); $("pmObs").value = ""; }catch(e){}
+});
+
       toast("Adicionado ✅");
     }
     closeProductModal(); // volta para a sacola automaticamente
@@ -1663,6 +1818,9 @@ $("btnAddToCart").addEventListener("click", ()=>{
   // reset leve para próxima adição
   setQty(1);
   $("pmObs").value = "";
+  // Button label: Add vs Save (editing)
+  try{ const b=$("btnAddToCart"); const s=b?b.querySelector("span"):null; if(s) s.textContent = state.editing.active ? "Salvar" : "Adicionar à Sacola"; }catch(e){}
+
 });
 
 
@@ -1672,6 +1830,19 @@ function findProductVariantFromCartItem(cartItem){
   const found = state.productsRaw.find(p => cartKeyFor(p) === key);
   return found || null;
 }
+
+function openProductFromCart(cartItem, { edit=false } = {}){
+  try{
+    const match = state.productsRaw.find(p => cartKeyFor(p) === normalizeName([cartItem.codigo||"", cartItem.corCodigo||cartItem.cor||"", cartItem.genero||""].join("||")))
+      || state.productsRaw.find(p => normalizeName(p.codigo)===normalizeName(cartItem.codigo) && normalizeName(p.corCodigo||p.cor)===normalizeName(cartItem.corCodigo||cartItem.cor))
+      || state.productsRaw.find(p => normalizeName(p.codigo)===normalizeName(cartItem.codigo))
+      || null;
+    if(!match) return;
+    closeCartModal();
+    openProductModal({ item: match, group: null, editKey: edit ? cartItem.key : null, keepCartOpen: true });
+  }catch(e){}
+}
+
 /** Cart */
 function isCartOpen(){ return !$("cartModal").classList.contains("hidden"); }
 function openCartModal(){
@@ -1743,7 +1914,7 @@ function renderCartUI(){
         <div class="min-w-0 flex-1">
           <div class="flex items-start justify-between gap-3">
             <div class="min-w-0" data-open="true" role="button" tabindex="0" title="Ver/editar item">
-              <div class="font-extrabold leading-snug line-clamp-2">${escapeHtml(it.produto || "Produto")}</div>
+              <div class="font-extrabold leading-snug line-clamp-2 cursor-pointer" data-open-details="true">${escapeHtml(it.produto || "Produto")}</div>
               <div class="mt-2 flex flex-wrap gap-2">
                 <span class="inline-flex items-center gap-2 rounded-full bg-oly-blue/10 px-3 py-1 text-xs font-extrabold text-oly-blue">
                   <i class="fa-solid fa-palette"></i>
@@ -1783,10 +1954,21 @@ function renderCartUI(){
     `;
 
     row.addEventListener("click", (e)=>{
+      const openDet = e.target?.closest?.("[data-open-details='true']");
+      const editBtn = e.target?.closest?.("[data-edit='true']");
       const rm = e.target?.closest?.("[data-remove='true']");
       const mn = e.target?.closest?.("[data-minus='true']");
       const pl = e.target?.closest?.("[data-plus='true']");
       const ed = e.target?.closest?.("[data-edit='true']");
+
+      if(editBtn){
+        openProductFromCart(it, { edit:true });
+        return;
+      }
+      if(openDet){
+        openProductFromCart(it, { edit:false });
+        return;
+      }
 
       if(rm){
         state.cart.delete(it.key);
@@ -2036,6 +2218,21 @@ function openImageViewer(variants, currentIndex, opts={}){
 
   renderImageViewer();
   $("imageViewer").classList.remove("hidden");
+  // One-time swipe hint (mobile)
+  try{
+    const key = "olympikus_swipe_hint_v1";
+    const shown = localStorage.getItem(key);
+    const hint = $("swipeHint");
+    if(hint){
+      hint.classList.add("hidden");
+      if(!shown){
+        hint.classList.remove("hidden");
+        setTimeout(()=> hint.classList.add("hidden"), 1700);
+        localStorage.setItem(key, "1");
+      }
+    }
+  }catch(e){}
+
   document.body.style.overflow = "hidden";
   trapFocus("imageViewer");
 }
@@ -2079,6 +2276,30 @@ $("imageViewer").addEventListener("click", (e)=>{
 });
 $("viewerPrev").addEventListener("click", (e)=>{ e.stopPropagation(); viewerPrev(); });
 $("viewerNext").addEventListener("click", (e)=>{ e.stopPropagation(); viewerNext(); });
+
+/** Swipe to change color in viewer (mobile) */
+let viewerTouch = { x0:0, y0:0 };
+const viewerRoot = document.querySelector("#imageViewer .w-full.max-w-5xl");
+if(viewerRoot){
+  viewerRoot.addEventListener("touchstart", (e)=>{
+    if(!viewerState.open) return;
+    const t = e.touches && e.touches[0];
+    if(!t) return;
+    viewerTouch = { x0:t.clientX, y0:t.clientY };
+  }, { passive:true });
+
+  viewerRoot.addEventListener("touchend", (e)=>{
+    if(!viewerState.open) return;
+    const t = e.changedTouches && e.changedTouches[0];
+    if(!t) return;
+    const dx = t.clientX - viewerTouch.x0;
+    const dy = t.clientY - viewerTouch.y0;
+    if(Math.abs(dx) < 42 || Math.abs(dx) < Math.abs(dy)*1.2) return;
+    if(dx < 0) viewerNext();
+    else viewerPrev();
+  }, { passive:true });
+}
+
 
 /** Keyboard */
 document.addEventListener("keydown", (e)=>{
