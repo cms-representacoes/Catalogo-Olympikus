@@ -456,11 +456,6 @@
                       <span class="hidden"><span id="pmCorCodigoBadge">—</span></span>
                     </div>
                   </div>
-
-                  <!-- Miniaturas (cores) abaixo da imagem principal -->
-                  <div id="pmThumbsWrap" class="hidden mt-4">
-                    <div id="pmThumbs" class="flex gap-2 overflow-x-auto no-scrollbar"></div>
-                  </div>
                 </div>
                 </div>
 
@@ -520,7 +515,7 @@
             </button>
           </div>
 
-          <div class="p-4 sm:p-6 overflow-y-auto no-scrollbar" id="pmScroll">
+          <div class="p-4 sm:p-6 overflow-y-auto no-scrollbar" id="cartScroll">
             <div id="cartEmpty" class="hidden rounded-3xl border border-oly-border bg-oly-bg p-8 text-center">
               <div class="mx-auto h-12 w-12 rounded-2xl bg-oly-blue/10 flex items-center justify-center">
                 <i class="fa-solid fa-bag-shopping text-oly-blue"></i>
@@ -543,6 +538,27 @@
 
               <div class="lg:col-span-1">
                 <div class="rounded-3xl border border-oly-border bg-oly-bg p-4">
+                   <div class="font-extrabold">Resumo</div>
+                   <div class="mt-3 rounded-2xl border border-oly-border bg-white p-4">
+                     <div class="grid grid-cols-2 gap-3 text-sm">
+                       <div>
+                         <div class="text-xs font-bold text-oly-muted">Total de pares</div>
+                         <div id="cartTotalQty" class="mt-1 text-lg font-extrabold">0</div>
+                       </div>
+                       <div>
+                         <div class="text-xs font-bold text-oly-muted">Linhas</div>
+                         <div id="cartTotalLines" class="mt-1 text-lg font-extrabold">0</div>
+                       </div>
+                     </div>
+                     <div class="mt-3">
+                       <div class="text-xs font-bold text-oly-muted">Valor estimado</div>
+                       <div id="cartTotalValue" class="mt-1 text-xl font-extrabold">R$ 0,00</div>
+                       <div class="mt-1 text-xs text-oly-muted">*Estimativa baseada no preço do XLSX.</div>
+                     </div>
+                   </div>
+                 </div>
+
+                 <div class="mt-4 rounded-3xl border border-oly-border bg-oly-bg p-4">
                   <div class="font-extrabold">Dados (opcional)</div>
                   <div class="mt-3 space-y-3">
                     <div>
@@ -636,7 +652,8 @@ const DATA_CONFIG = { xlsxPath: "./Produtos.xlsx", imagesBasePath: "./Catalogo/"
 const STORAGE_KEYS = {
   cart: "olympikus_cart_v5",
   customer: "olympikus_customer_v1",
-  favorites: "olympikus_favs_v1"
+  favorites: "olympikus_favs_v1",
+  productsCache: "olympikus_products_cache_v1"
 };
 const CATEGORY_LABELS = { "FTW":"TÊNIS", "ACC":"ACESSÓRIOS", "CHI":"CHINELOS", "MEIA":"MEIAS", "V&A":"VESTUÁRIO" };
 
@@ -745,6 +762,33 @@ function loadCustomerFromStorage(){
   }catch(e){}
 }
 
+/** ✅ Cache do catálogo (JSON) - acelera carregamento e dá fallback se o XLSX falhar */
+const PRODUCTS_CACHE_CONFIG = { enabled: true, maxAgeHours: 24 };
+
+function saveProductsCache(rows){
+  if(!PRODUCTS_CACHE_CONFIG.enabled) return;
+  try{
+    const payload = { ts: Date.now(), rows };
+    localStorage.setItem(STORAGE_KEYS.productsCache, JSON.stringify(payload));
+  }catch(e){}
+}
+function loadProductsCache(){
+  if(!PRODUCTS_CACHE_CONFIG.enabled) return null;
+  try{
+    const raw = localStorage.getItem(STORAGE_KEYS.productsCache);
+    if(!raw) return null;
+    const obj = JSON.parse(raw);
+    if(!obj || !Array.isArray(obj.rows) || !obj.ts) return null;
+    const ageMs = Date.now() - Number(obj.ts);
+    const maxMs = PRODUCTS_CACHE_CONFIG.maxAgeHours * 3600 * 1000;
+    if(ageMs > maxMs) return null;
+    return obj.rows;
+  }catch(e){
+    return null;
+  }
+}
+
+
 /** ✅ Favoritos */
 function saveFavsToStorage(){
   localStorage.setItem(STORAGE_KEYS.favorites, JSON.stringify(Array.from(state.favorites)));
@@ -834,6 +878,20 @@ async function loadCatalog({ cacheBust=false } = {}){
     $("grid").classList.add("hidden");
     setHeaderStatus("Carregando…");
 
+     // ✅ Tenta usar cache JSON (se não for refresh forçado)
+     if(!cacheBust){
+       const cachedRows = loadProductsCache();
+       if(Array.isArray(cachedRows) && cachedRows.length){
+         state.productsRaw = cachedRows;
+         setHeaderStatus("Catálogo pronto (cache)");
+         buildFilterOptions();
+         refreshView(true);
+         $("loadingState").classList.add("hidden");
+         $("grid").classList.remove("hidden");
+         return;
+       }
+     }
+
     const url = cacheBust ? `${DATA_CONFIG.xlsxPath}?v=${Date.now()}` : DATA_CONFIG.xlsxPath;
     const res = await fetch(url, { cache: "no-store" });
     if(!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -857,6 +915,7 @@ async function loadCatalog({ cacheBust=false } = {}){
     }));
 
     state.productsRaw = rows.filter(x => x.produto || x.codigo || x.categoria || x.imagem);
+     saveProductsCache(state.productsRaw);
     setHeaderStatus("Catálogo pronto");
 
     buildFilterOptions();
@@ -867,6 +926,17 @@ async function loadCatalog({ cacheBust=false } = {}){
   }catch(err){
     console.error(err);
     setHeaderStatus("Erro ao carregar");
+     // ✅ Fallback: tenta cache mesmo com erro de XLSX
+     const cachedRows = loadProductsCache();
+     if(Array.isArray(cachedRows) && cachedRows.length){
+       state.productsRaw = cachedRows;
+       setHeaderStatus("Catálogo pronto (cache)");
+       buildFilterOptions();
+       refreshView(true);
+       $("loadingState").classList.add("hidden");
+       $("grid").classList.remove("hidden");
+       return;
+     }
     $("loadHint").innerHTML = `
       <div class="font-bold text-red-700">Falha ao carregar Produtos.xlsx</div>
       <div class="mt-2 text-sm text-oly-muted">Verifique nome do arquivo e a pasta <b>Catalogo</b>.</div>
@@ -1290,7 +1360,7 @@ function renderCards(){
     <i class="fa-solid fa-magnifying-glass-plus text-oly-blue"></i>
   </button>
 
-  <img alt="${escapeHtml(v.produto)}" src="${imgSrc}" class="h-full w-full object-contain bg-white"
+  <img loading="lazy" decoding="async" alt="${escapeHtml(v.produto)}" src="${imgSrc}" class="h-full w-full object-contain bg-white"
             onerror="this.style.display='none'; this.parentElement.querySelector('.imgFallback').style.display='flex';">
           <div class="imgFallback hidden h-full w-full flex flex-col items-center justify-center gap-2 text-oly-muted" style="display:none">
             <i class="fa-solid fa-image text-3xl text-oly-blue"></i>
@@ -1344,7 +1414,7 @@ card.querySelector(".imgHit").addEventListener("click", ()=> openProductModal({ 
 
       card.innerHTML = `
         <div class="imgHit aspect-[4/3] bg-oly-bg border-b border-oly-border flex items-center justify-center overflow-hidden cursor-pointer relative">
-          <img alt="${escapeHtml(v.produto)}" src="${imgSrc}" class="h-full w-full object-contain bg-white"
+          <img loading="lazy" decoding="async" alt="${escapeHtml(v.produto)}" src="${imgSrc}" class="h-full w-full object-contain bg-white"
             onerror="this.style.display='none'; this.parentElement.querySelector('.imgFallback').style.display='flex';">
           <div class="imgFallback hidden h-full w-full flex flex-col items-center justify-center gap-2 text-oly-muted" style="display:none">
             <i class="fa-solid fa-image text-3xl text-oly-blue"></i>
@@ -1821,14 +1891,27 @@ $("btnClearCart").addEventListener("click", ()=>{
 
 function cartTotals(){
   let items = 0;
-  for(const it of state.cart.values()) items += it.qty;
-  return { items };
+  let value = 0;
+  let lines = 0;
+  for(const it of state.cart.values()){
+    items += (Number(it.qty)||0);
+    lines += 1;
+    const p = Number(it.precoNum)||0;
+    value += p * (Number(it.qty)||0);
+  }
+  return { items, value, lines };
 }
 function renderCartUI(){
   syncCardAddStatusFromCart();
   syncCardAddStatusFromCart();
   syncCardAddStatusFromCart();
-  const { items } = cartTotals();
+  const { items, value, lines } = cartTotals();
+
+  // ✅ Atualiza resumo (se existir)
+  if($("cartTotalQty")) $("cartTotalQty").textContent = String(items);
+  if($("cartTotalLines")) $("cartTotalLines").textContent = String(lines);
+  if($("cartTotalValue")) $("cartTotalValue").textContent = moneyBR(value);
+
 
   const badge = $("cartCountBadge");
   badge.textContent = String(items);
@@ -1855,7 +1938,7 @@ function renderCartUI(){
     row.innerHTML = `
       <div class="flex gap-3">
         <div class="h-20 w-20 cursor-pointer rounded-2xl border border-oly-border bg-oly-bg overflow-hidden flex items-center justify-center">
-          ${it.imgSrc ? `<img src="${it.imgSrc}" alt="${escapeHtml(it.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';">`
+          ${it.imgSrc ? `<img loading="lazy" decoding="async" src="${it.imgSrc}" alt="${escapeHtml(it.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';">`
             : `<i class="fa-solid fa-image text-oly-blue text-xl"></i>`}
         </div>
         <div class="min-w-0 flex-1">
