@@ -44,10 +44,21 @@
     .filters-collapsed #filtersPanel{display:none}
     .filters-collapsed #catalogShell{grid-template-columns:minmax(0,1fr)}
     #catalogShell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px}
-    .list-grade-strip{display:flex;flex-wrap:wrap;gap:6px}
-    .list-item{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:12px}
+    .list-grade-strip{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+    .list-item{display:grid;grid-template-columns:136px minmax(220px,1fr) auto auto;gap:16px;align-items:center}
+    .list-thumb{height:120px;width:120px;border-radius:28px;border:1px solid var(--line);background:#f8fafc;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .list-title{font-size:15px;line-height:1.15;font-weight:800}
+    .list-subtitle{margin-top:8px;font-size:15px;line-height:1.1;color:#64748b}
+    .list-date{margin-top:10px;font-size:14px;line-height:1.1;color:#64748b;font-weight:700}
     .desktop-only{display:block}
     .mobile-only{display:none}
+    .ruler-pulse{color:#f97316;animation:rulerPulse 1.25s ease-in-out infinite}
+    .btn-grade-mobile{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;padding:10px 14px;font-size:13px;font-weight:800;color:var(--brand);box-shadow:var(--shadow-soft)}
+    .btn-quick-list{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--brand);padding:12px 18px;font-size:15px;font-weight:800;color:#fff;white-space:nowrap}
+    @keyframes rulerPulse{
+      0%,100%{transform:scale(1);opacity:1}
+      50%{transform:scale(1.14);opacity:.72}
+    }
     @media (max-width: 1023px){
       #catalogShell{grid-template-columns:minmax(0,1fr)}
       #filtersPanel{display:none}
@@ -58,7 +69,11 @@
     @media (max-width: 767px){
       .desktop-only{display:none}
       .mobile-only{display:block}
-      .list-item{grid-template-columns:74px minmax(0,1fr);gap:10px}
+      .list-item{grid-template-columns:82px minmax(0,1fr);gap:12px;align-items:start}
+      .list-thumb{height:74px;width:74px;border-radius:20px}
+      .list-title{font-size:13px}
+      .list-subtitle{margin-top:6px;font-size:13px}
+      .list-date{margin-top:8px;font-size:12px}
       .top-actions{gap:8px;flex-wrap:wrap}
       .top-actions > *{flex:0 0 auto}
     }
@@ -688,34 +703,29 @@ function renderCatalog(){
     const row = document.createElement('article');
     row.className = 'rounded-[28px] border border-slate-200 bg-white p-4 shadow-soft';
     row.innerHTML = `
-      <div class="list-item items-center">
-        <div class="h-[96px] w-[96px] md:h-[96px] md:w-[96px] rounded-[22px] border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
+      <div class="list-item">
+        <div class="list-thumb">
           ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
         </div>
-        <div class="min-w-0">
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div class="min-w-0 max-w-full">
-              <div class="truncate text-lg font-extrabold">${safeHtml(item.produto)}</div>
-              <div class="mt-1 text-sm text-slate-500">${safeHtml(item.codigo)} · ${safeHtml(item.cor)}</div>
-            </div>
-            <div class="chip chip-blue whitespace-nowrap">${item.mode === 'boxed' ? `${remainingPacks(item)} cx` : `${remainingUnits(item)} disp.`}</div>
-          </div>
-          <div class="mt-2 text-xs font-semibold text-slate-500">Prev. Faturamento ${safeHtml(formatDate(item.prevFaturamento))}</div>
 
-          <div class="desktop-only mt-3">
-            ${item.grade.length ? `<div class="list-grade-strip">${gradeHtml(item.grade)}</div>` : ''}
-          </div>
+        <div class="min-w-0 self-center">
+          <div class="list-title">${safeHtml(item.produto)}</div>
+          <div class="list-subtitle">${safeHtml(item.codigo)} · ${safeHtml(item.cor)}</div>
+          <div class="list-date">Prev. Faturamento ${safeHtml(formatDate(item.prevFaturamento))}</div>
 
-          <div class="mobile-only mt-3 flex items-center gap-2">
-            ${item.grade.length ? `<button class="btnShowGrade focus-ring inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-extrabold text-[var(--brand)]"><i class="fa-solid fa-ruler"></i> Ver grade</button>` : ''}
+          <div class="mobile-only mt-4 flex items-center gap-3">
+            ${item.grade.length ? `<button class="btnShowGrade focus-ring btn-grade-mobile"><i class="fa-solid fa-ruler ruler-pulse"></i> Ver grade</button>` : ''}
+            <button class="btnQuickAdd focus-ring btn-quick-list ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}><i class="fa-solid fa-cart-plus"></i> ${item.mode === 'boxed' ? '1 caixa' : 'Adicionar'}</button>
           </div>
         </div>
-        <div class="desktop-only flex items-center gap-2 self-center">
-          <button class="btnQuickAdd focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}><i class="fa-solid fa-cart-plus"></i> ${item.mode === 'boxed' ? '1 caixa' : 'Adicionar'}</button>
+
+        <div class="desktop-only self-center">
+          ${item.grade.length ? `<div class="list-grade-strip">${gradeHtml(item.grade)}</div>` : ''}
         </div>
-      </div>
-      <div class="mobile-only mt-3 flex justify-end">
-        <button class="btnQuickAdd focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}><i class="fa-solid fa-cart-plus"></i> ${item.mode === 'boxed' ? '1 caixa' : 'Adicionar'}</button>
+
+        <div class="desktop-only flex items-center justify-end self-center">
+          <button class="btnQuickAdd focus-ring btn-quick-list ${freeAmount <= 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${freeAmount <= 0 ? 'disabled' : ''}><i class="fa-solid fa-cart-plus"></i> ${item.mode === 'boxed' ? '1 caixa' : 'Adicionar'}</button>
+        </div>
       </div>
     `;
     row.querySelectorAll('.btnQuickAdd').forEach(btn=>btn.addEventListener('click', ()=> quickAdd(item)));
