@@ -59,8 +59,8 @@
   {
     "id": "PED-20260331173520-939",
     "createdAt": "2026-03-31T20:35:20.281Z",
-    "updatedAt": "2026-03-31T20:35:20.579Z",
-    "status": "Pendente",
+    "updatedAt": "2026-03-31T20:35:47.368Z",
+    "status": "Aprovado",
     "archived": false,
     "preposto": {
       "codigo": "114611",
@@ -109,7 +109,7 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46103
+        "prevFaturamento": "46103"
       }
     ]
   }
