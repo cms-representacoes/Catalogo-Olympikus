@@ -7,7 +7,7 @@
     "archived": false,
     "preposto": {
       "codigo": "25745",
-      "nome": "LÃO"
+      "nome": "LÃÂO"
     },
     "clienteCodigo": "18529",
     "prazo": "Z09 - 63 D",
@@ -59,8 +59,8 @@
   {
     "id": "PED-20260331120932-903",
     "createdAt": "2026-03-31T15:09:32.507Z",
-    "updatedAt": "2026-03-31T15:09:32.507Z",
-    "status": "Pendente",
+    "updatedAt": "2026-03-31T15:09:46.106Z",
+    "status": "Aprovado",
     "archived": false,
     "preposto": {
       "codigo": "3616654",
