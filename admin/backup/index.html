@@ -460,52 +460,6 @@ function sanitizeDisplayText(value){
   return decodeMojibake(normalizeText(value));
 }
 
-const PREPOSTO_NAME_BY_CODE = {
-  '114611':'JORGE',
-  '109839':'MARIANA',
-  '1333497':'RAFAEL',
-  '25471':'WILLAME',
-  '25745':'LÉO',
-  '3616654':'MARCOS',
-  '25846':'CMS'
-};
-
-function splitPrepostoParts(value){
-  const raw = sanitizeDisplayText(value);
-  if(!raw) return { codigo:'', nome:'' };
-
-  const match = raw.match(/^(\d{4,})\s*[-–—]?\s*(.*)$/);
-  if(match){
-    return {
-      codigo: normalizeText(match[1]),
-      nome: sanitizeDisplayText(match[2])
-    };
-  }
-
-  return { codigo:'', nome: raw };
-}
-
-function getCanonicalPrepostoName(codigo, nome){
-  const cleanCodigo = normalizeText(codigo);
-  const cleanNome = sanitizeDisplayText(nome);
-  const mapped = PREPOSTO_NAME_BY_CODE[cleanCodigo];
-
-  if(mapped) return mapped;
-  return cleanNome;
-}
-
-function buildPrepostoDisplay(preposto, vendedor){
-  const vendedorParts = splitPrepostoParts(vendedor);
-  const baseCodigo = normalizeText(preposto?.codigo) || vendedorParts.codigo;
-  const baseNome = sanitizeDisplayText(preposto?.nome) || vendedorParts.nome;
-  const nome = getCanonicalPrepostoName(baseCodigo, baseNome);
-
-  return {
-    codigo: baseCodigo,
-    nome
-  };
-}
-
 function showToast(message, type='info'){
   const wrap = $('toastWrap');
   if(!wrap) return;
@@ -647,11 +601,7 @@ function normalizeOrder(rawOrder){
   order.observacoes = sanitizeDisplayText(order.observacoes);
 
   if(typeof order.preposto === 'string'){
-    const parsedPreposto = splitPrepostoParts(order.preposto);
-    order.preposto = {
-      codigo: parsedPreposto.codigo,
-      nome: parsedPreposto.nome
-    };
+    order.preposto = { codigo:'', nome:sanitizeDisplayText(order.preposto) };
   }else{
     order.preposto = {
       ...(order.preposto || {}),
@@ -660,9 +610,9 @@ function normalizeOrder(rawOrder){
     };
   }
 
-  const prepostoDisplay = buildPrepostoDisplay(order.preposto, order.vendedor);
-  order.preposto.codigo = prepostoDisplay.codigo;
-  order.preposto.nome = prepostoDisplay.nome;
+  if (!order.preposto.nome && order.vendedor) {
+    order.preposto.nome = sanitizeDisplayText(order.vendedor);
+  }
 
   order.items = Array.isArray(order.items)
     ? order.items
