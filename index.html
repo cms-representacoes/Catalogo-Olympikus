@@ -356,7 +356,7 @@ const GITHUB_CONFIG = {
   owner: 'marcosrepcms-max',
   repo: 'Catalogo-Olympikus',
   branch: 'main',
-  token: 'COLE_AQUI_SEU_TOKEN',
+  token: 'COLE_AQUII_SEU_TOKEN',
   ordersPath: 'data/pedidos.json'
 };
 const STORAGE_KEYS = {
@@ -466,7 +466,7 @@ function setLastPreposto(value){ localStorage.setItem(STORAGE_KEYS.lastPreposto,
 function getOrdersScope(){ return localStorage.getItem(STORAGE_KEYS.ordersScope) || 'active'; }
 function setOrdersScope(value){ localStorage.setItem(STORAGE_KEYS.ordersScope, value || 'active'); }
 function hasGithubConfig(){
-  return Boolean(GITHUB_CONFIG.owner && GITHUB_CONFIG.repo && GITHUB_CONFIG.branch && GITHUB_CONFIG.ordersPath && GITHUB_CONFIG.token && GITHUB_CONFIG.token !== 'COLE_AQUI_SEU_TOKEN');
+  return Boolean(GITHUB_CONFIG.owner && GITHUB_CONFIG.repo && GITHUB_CONFIG.branch && GITHUB_CONFIG.ordersPath && GITHUB_CONFIG.token && GITHUB_CONFIG.token !== 'COLE_AQUII_SEU_TOKEN');
 }
 function decodeBase64Utf8(value){
   const binary = atob(String(value || '').replace(/\n/g, ''));
