@@ -1351,7 +1351,36 @@ $('btnAdminLogin').addEventListener('click', async ()=>{
 
   localStorage.setItem(STORAGE_KEYS.adminAuth, 'ok');
   $('adminPassword').value = '';
-  await applyAuthUI();
+  await 
+['input','keyup','change','paste'].forEach(evt => {
+  $('cancelReasonInput').addEventListener(evt, ()=>{
+    $('cancelReasonError').classList.add('hidden');
+    syncCancelReasonButton();
+  });
+});
+$('btnCloseCancelReason').addEventListener('click', (e)=>{ e.preventDefault(); closeCancelReasonModal(); });
+$('btnAbortCancelReason').addEventListener('click', (e)=>{ e.preventDefault(); closeCancelReasonModal(); });
+$('cancelReasonModal').addEventListener('click', (e)=>{
+  if(e.target === $('cancelReasonModal')) closeCancelReasonModal();
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape' && !$('cancelReasonModal').classList.contains('hidden')){
+    closeCancelReasonModal();
+  }
+});
+$('btnConfirmCancelReason').addEventListener('click', async (e)=>{
+  e.preventDefault();
+  const reason = getCancelReasonValue();
+  if(!reason){
+    $('cancelReasonError').classList.remove('hidden');
+    syncCancelReasonButton();
+    return;
+  }
+  if(!STATE.cancelReasonContext?.orderId) return;
+  await updateStatus(STATE.cancelReasonContext.orderId, 'Cancelado', { cancelReason: reason });
+});
+
+applyAuthUI();
 });
 
 $('btnLogout').addEventListener('click', ()=>{
