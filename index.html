@@ -2180,6 +2180,38 @@ function bindEvents(){
   $('loginNome').addEventListener('keydown', (e)=>{ if(e.key === 'Enter') $('loginSenha').focus(); });
   $('btnVendedorLogout').addEventListener('click', handleLogout);
 
+  // ── ESC global — fecha qualquer modal/drawer aberto ──────────────────────
+  document.addEventListener('keydown', (e)=>{
+    if(e.key !== 'Escape') return;
+
+    // Ordem: do mais profundo para o mais externo
+    if($('gradeSheetWrap') && !$('gradeSheetWrap').classList.contains('hidden')){
+      closeGradeSheet(); return;
+    }
+    if($('catalogShareModalWrap') && !$('catalogShareModalWrap').classList.contains('hidden')){
+      closeCatalogShareModal(); return;
+    }
+    if($('catalogPdfModalWrap') && !$('catalogPdfModalWrap').classList.contains('hidden')){
+      closeCatalogPdfModal(); return;
+    }
+    if($('conflictModalWrap') && !$('conflictModalWrap').classList.contains('hidden')){
+      closeConflictModal(); return;
+    }
+    if($('checkoutDrawerWrap') && !$('checkoutDrawerWrap').classList.contains('hidden')){
+      closeCheckout(); return;
+    }
+    if($('cartDrawerWrap') && !$('cartDrawerWrap').classList.contains('hidden')){
+      closeCart(); return;
+    }
+    if($('ordersDrawerWrap') && !$('ordersDrawerWrap').classList.contains('hidden')){
+      closeOrders(); return;
+    }
+    if(document.body.classList.contains('filters-open')){
+      document.body.classList.remove('filters-open'); return;
+    }
+  });
+  // ─────────────────────────────────────────────────────────────────────────
+
   $('btnOpenCart').addEventListener('click', openCart);
   $('btnOrders').addEventListener('click', openOrders);
   $('btnRefreshStock').addEventListener('click', ()=>refreshStockFromSource({ silent:false, reason:'manual', force:true }));
