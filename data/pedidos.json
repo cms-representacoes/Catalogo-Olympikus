@@ -301,55 +301,5 @@
     "lastAction": "status_changed",
     "lastActionLabel": "Pedido aprovado",
     "lastActionAt": "2026-04-14T01:37:43.153Z"
-  },
-  {
-    "id": "PED-20260414081711-832",
-    "createdAt": "2026-04-14T11:17:11.969Z",
-    "updatedAt": "2026-04-14T11:17:11.359Z",
-    "status": "Pendente",
-    "archived": false,
-    "preposto": {
-      "codigo": "3616654",
-      "nome": "MARCOS"
-    },
-    "clienteCodigo": "3834566",
-    "clienteNome": "DEGRAUS",
-    "prazo": "Z30 - 28/56/84 D",
-    "campanha": "CO689 +56DD OLY",
-    "observacoes": "",
-    "totals": {
-      "packs": 2,
-      "units": 12
-    },
-    "items": [
-      {
-        "codigo": "43758365",
-        "produto": "CORRE MAX",
-        "cor": "PTO/PT",
-        "amount": 2,
-        "mode": "boxed",
-        "packSize": 6,
-        "totalUnits": 12,
-        "grade": [
-          {
-            "size": "38",
-            "qty": 1
-          },
-          {
-            "size": "39",
-            "qty": 2
-          },
-          {
-            "size": "40",
-            "qty": 2
-          },
-          {
-            "size": "41",
-            "qty": 1
-          }
-        ],
-        "prevFaturamento": 46142
-      }
-    ]
   }
 ]
