@@ -532,8 +532,8 @@
   {
     "id": "PED-20260414164922-182",
     "createdAt": "2026-04-14T19:49:22.351Z",
-    "updatedAt": "2026-04-14T19:49:22.824Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-14T19:50:03.519Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -582,8 +582,49 @@
             "qty": 2
           }
         ],
-        "prevFaturamento": 46132
+        "prevFaturamento": "46132"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776196202872_0heimv",
+        "at": "2026-04-14T19:50:02.872Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "14833",
+        "prepostoCodigo": "25471",
+        "prepostoNome": "WILLAME",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      },
+      {
+        "eventId": "evt_1776196181890_gb2t53",
+        "at": "2026-04-14T19:49:41.890Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "14833",
+        "prepostoCodigo": "25471",
+        "prepostoNome": "WILLAME",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-14T19:50:02.872Z"
   }
 ]
