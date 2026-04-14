@@ -418,8 +418,8 @@
   {
     "id": "PED-20260414164615-973",
     "createdAt": "2026-04-14T19:46:15.547Z",
-    "updatedAt": "2026-04-14T19:46:16.011Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-14T19:50:15.564Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -468,9 +468,50 @@
             "qty": 2
           }
         ],
-        "prevFaturamento": 46132
+        "prevFaturamento": "46132"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776196215036_386zyi",
+        "at": "2026-04-14T19:50:15.036Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "10546",
+        "prepostoCodigo": "114611",
+        "prepostoNome": "JORGE",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 24
+        }
+      },
+      {
+        "eventId": "evt_1776196210889_d9wfeo",
+        "at": "2026-04-14T19:50:10.889Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "10546",
+        "prepostoCodigo": "114611",
+        "prepostoNome": "JORGE",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 24
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-14T19:50:15.036Z"
   },
   {
     "id": "PED-20260414164734-824",
