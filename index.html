@@ -2183,6 +2183,7 @@ function bindEvents(){
   // ── ESC global — fecha qualquer modal/drawer aberto ──────────────────────
   document.addEventListener('keydown', (e)=>{
     if(e.key !== 'Escape') return;
+    e.preventDefault();
 
     // Ordem: do mais profundo para o mais externo
     if($('gradeSheetWrap') && !$('gradeSheetWrap').classList.contains('hidden')){
@@ -2209,7 +2210,7 @@ function bindEvents(){
     if(document.body.classList.contains('filters-open')){
       document.body.classList.remove('filters-open'); return;
     }
-  });
+  }, true); // capture:true — intercepta antes do elemento com foco
   // ─────────────────────────────────────────────────────────────────────────
 
   $('btnOpenCart').addEventListener('click', openCart);
