@@ -254,7 +254,14 @@
       font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em;
       text-align:left; padding:11px 14px;
       border-bottom:1px solid var(--line);
+      white-space:nowrap;
     }
+    .relatorio-table thead th.relatorio-sortable{
+      cursor:pointer; user-select:none;
+      transition:color .12s, background .12s;
+    }
+    .relatorio-table thead th.relatorio-sortable:hover{ color:var(--brand); background:#eef0ff; }
+    .relatorio-table thead th.rel-sorted{ color:var(--brand); background:#eef0ff; }
     .relatorio-table tbody td{
       padding:11px 14px; font-size:13px;
       border-bottom:1px solid #edf2f7; vertical-align:middle;
@@ -265,6 +272,15 @@
       padding:11px 14px; font-size:13px; font-weight:800;
       background:#f8fafc; border-top:2px solid var(--line);
     }
+
+    .grade-pill-inline{
+      display:inline-flex; align-items:baseline; gap:1px;
+      background:#f1f5f9; border:0.5px solid var(--line);
+      border-radius:4px; padding:1px 5px; font-size:10px;
+      white-space:nowrap; margin:1px;
+    }
+    .grade-pill-inline .gpi-s{ color:#64748b; }
+    .grade-pill-inline .gpi-q{ color:var(--brand); font-weight:800; }
 
     .ranking-bar{ background:#f1f5f9; border-radius:999px; height:6px; overflow:hidden; margin-top:5px; }
     .ranking-fill{ height:100%; border-radius:999px; background:var(--brand); transition:width .4s ease; }
@@ -398,6 +414,7 @@
                 <select id="relatorioVendedorSelect"
                   class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold min-w-[200px]">
                   <option value="">Selecione um vendedor</option>
+                  <option value="__todos__">— Todos os vendedores —</option>
                 </select>
                 <button id="btnGerarRelatorio"
                   class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white">
@@ -414,19 +431,19 @@
             </div>
 
             <div id="relatorioTableWrap" class="hidden overflow-auto rounded-[20px] border border-slate-200">
-              <table class="relatorio-table">
+              <table class="relatorio-table" id="relatorioTable">
                 <thead>
-                  <tr>
-                    <th>Data</th>
-                    <th>GCI</th>
-                    <th>Cliente</th>
-                    <th>Campanha</th>
-                    <th>Prazo</th>
-                    <th>Descrição</th>
-                    <th>Cor</th>
-                    <th class="text-right">Qtde</th>
-                    <th>Prev Fat</th>
-                    <th>Status</th>
+                  <tr id="relatorioThead">
+                    <th class="relatorio-sortable" data-col="data">Data <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="gci">GCI <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="cliente">Cliente <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="prazo">Prazo <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="campanha">Campanha <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="produto">Descrição <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="cor">Cor <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable text-right" data-col="qtde">Qtde <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="prevFaturamento">Prev Fat <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
+                    <th class="relatorio-sortable" data-col="status">Status <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th>Grade</th>
                   </tr>
                 </thead>
@@ -1462,7 +1479,7 @@ function populateRelatorioSelect(){
 
   const sel = $('relatorioVendedorSelect');
   const prev = sel.value;
-  sel.innerHTML = '<option value="">Selecione um vendedor</option>';
+  sel.innerHTML = '<option value="">Selecione um vendedor</option><option value="__todos__">— Todos os vendedores —</option>';
   [...vendedores.entries()].sort((a,b)=>a[1].localeCompare(b[1],'pt-BR')).forEach(([key,nome])=>{
     const opt = document.createElement('option');
     opt.value = key;
@@ -1473,6 +1490,7 @@ function populateRelatorioSelect(){
 }
 
 function getRelatorioOrders(codigoKey){
+  if(codigoKey === '__todos__') return [...STATE.orders].sort((a,b)=>(parseDate(b.createdAt)?.getTime()||0)-(parseDate(a.createdAt)?.getTime()||0));
   return STATE.orders.filter(o => {
     const codigo = sanitizeDisplayText(o.preposto?.codigo || '');
     const nome = sanitizeDisplayText(o.preposto?.nome || codigo);
@@ -1480,116 +1498,139 @@ function getRelatorioOrders(codigoKey){
   }).sort((a,b)=>(parseDate(b.createdAt)?.getTime()||0)-(parseDate(a.createdAt)?.getTime()||0));
 }
 
-function renderRelatorio(){
-  const key = $('relatorioVendedorSelect').value;
-  if(!key){
-    showToast('Selecione um vendedor primeiro.', 'info');
-    return;
-  }
+function stripOly(campanha){
+  return sanitizeDisplayText(campanha).replace(/\s*\bOLY\b\s*/gi,'').replace(/\s*\bUA\b\s*/gi,'').trim() || '—';
+}
 
-  const orders = getRelatorioOrders(key);
-  const nomeVendedor = $('relatorioVendedorSelect').options[$('relatorioVendedorSelect').selectedIndex]?.text || key;
+function gradeInline(grade){
+  if(!Array.isArray(grade) || !grade.length) return '—';
+  return `<div style="display:flex;flex-wrap:nowrap;gap:2px;overflow:hidden">${
+    grade.map(g=>`<span class="grade-pill-inline"><span class="gpi-s">${safeHtml(g.size)}</span><span class="gpi-q">${safeHtml(g.qty)}</span></span>`).join('')
+  }</div>`;
+}
 
-  // KPIs
-  const grupos = { Pendente:0, Aprovado:0, Cancelado:0 };
-  let totalItens = 0, totalUnidades = 0;
+const RELATORIO_SORT = { col: null, dir: 1 };
+
+function buildRelatorioLinhas(orders){
+  const linhas = [];
   for(const o of orders){
-    const s = canonicalStatus(o.status);
-    if(grupos[s] !== undefined) grupos[s]++;
-    totalItens += (o.items||[]).length;
-    totalUnidades += getOrderUnits(o);
+    const data = formatDate(o.createdAt || o.updatedAt);
+    const clienteHtml = o.clienteNome
+      ? `<div class="font-extrabold">${safeHtml(o.clienteCodigo)}</div><div class="text-[11px] text-slate-500 font-semibold">${safeHtml(o.clienteNome)}</div>`
+      : `<div class="font-extrabold">${safeHtml(o.clienteCodigo)}</div>`;
+    const statusHtml = renderStatusChip(o.status);
+    const campanhaDisplay = safeHtml(stripOly(o.campanha || ''));
+    const prazoDisplay = safeHtml(o.prazo || '—');
+    const items = o.items || [];
+    if(!items.length){
+      linhas.push(`<tr>
+        <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(data)}</td>
+        <td class="text-slate-400">—</td>
+        <td>${clienteHtml}</td>
+        <td class="text-slate-500 font-semibold whitespace-nowrap">${prazoDisplay}</td>
+        <td class="text-slate-500 font-semibold">${campanhaDisplay}</td>
+        <td class="text-slate-400">—</td><td class="text-slate-400">—</td>
+        <td class="text-right font-extrabold">—</td><td class="text-slate-400">—</td>
+        <td>${statusHtml}</td><td class="text-slate-400">—</td>
+      </tr>`);
+    } else {
+      items.forEach((item, idx) => {
+        const units = getItemUnits(item);
+        const prevFat = safeHtml(formatDate(item.prevFaturamento) || '—');
+        linhas.push(`<tr>
+          ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${items.length}">${safeHtml(data)}</td>` : ''}
+          <td class="font-extrabold text-[var(--brand)] text-[11px]">${safeHtml(item.gci || item.ebm || '—')}</td>
+          ${idx === 0 ? `<td rowspan="${items.length}">${clienteHtml}</td>` : ''}
+          ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${items.length}">${prazoDisplay}</td>` : ''}
+          ${idx === 0 ? `<td class="text-slate-500 font-semibold" rowspan="${items.length}">${campanhaDisplay}</td>` : ''}
+          <td class="font-extrabold text-slate-800">${safeHtml(item.produto || '—')}</td>
+          <td class="text-slate-500 font-semibold">${safeHtml(item.cor || '—')}</td>
+          <td class="text-right font-extrabold">${formatInt(units)}</td>
+          <td class="text-slate-500 font-semibold whitespace-nowrap">${prevFat}</td>
+          ${idx === 0 ? `<td rowspan="${items.length}">${statusHtml}</td>` : ''}
+          <td>${gradeInline(item.grade)}</td>
+        </tr>`);
+      });
+    }
   }
+  return linhas;
+}
 
-  $('relKpiTotal').textContent = formatInt(orders.length);
-  $('relKpiPendente').textContent = formatInt(grupos.Pendente);
-  $('relKpiAprovado').textContent = formatInt(grupos.Aprovado);
-  $('relKpiCancelado').textContent = formatInt(grupos.Cancelado);
+function sortRelatorioOrders(orders, col, dir){
+  if(!col) return orders;
+  return [...orders].sort((a,b)=>{
+    let va, vb;
+    switch(col){
+      case 'data': return dir*((parseDate(a.createdAt||a.updatedAt)?.getTime()||0)-(parseDate(b.createdAt||b.updatedAt)?.getTime()||0));
+      case 'cliente': va=a.clienteCodigo||''; vb=b.clienteCodigo||''; break;
+      case 'prazo': va=a.prazo||''; vb=b.prazo||''; break;
+      case 'campanha': va=stripOly(a.campanha||''); vb=stripOly(b.campanha||''); break;
+      case 'status': va=canonicalStatus(a.status); vb=canonicalStatus(b.status); break;
+      case 'qtde': return dir*(getOrderUnits(a)-getOrderUnits(b));
+      default: va=''; vb='';
+    }
+    return dir*String(va).localeCompare(String(vb),'pt-BR');
+  });
+}
 
+function updateRelatorioSortHeaders(col, dir){
+  document.querySelectorAll('.relatorio-sortable').forEach(th=>{
+    th.classList.remove('rel-sorted');
+    const icon=th.querySelector('i');
+    if(icon) icon.className='fa-solid fa-sort text-[9px] opacity-30';
+  });
+  if(!col) return;
+  const th=document.querySelector(`.relatorio-sortable[data-col="${col}"]`);
+  if(th){
+    th.classList.add('rel-sorted');
+    const icon=th.querySelector('i');
+    if(icon) icon.className=`fa-solid fa-sort-${dir===1?'up':'down'} text-[9px] opacity-100`;
+  }
+}
+
+function renderRelatorio(){
+  const key=$('relatorioVendedorSelect').value;
+  if(!key){ showToast('Selecione um vendedor primeiro.','info'); return; }
+  RELATORIO_SORT.col=null; RELATORIO_SORT.dir=1;
+  updateRelatorioSortHeaders(null,1);
+  const orders=getRelatorioOrders(key);
+  const nomeVendedor=$('relatorioVendedorSelect').options[$('relatorioVendedorSelect').selectedIndex]?.text||key;
+  const grupos={Pendente:0,Aprovado:0,Cancelado:0};
+  let totalItens=0,totalUnidades=0;
+  for(const o of orders){
+    const s=canonicalStatus(o.status);
+    if(grupos[s]!==undefined) grupos[s]++;
+    totalItens+=(o.items||[]).length;
+    totalUnidades+=getOrderUnits(o);
+  }
+  $('relKpiTotal').textContent=formatInt(orders.length);
+  $('relKpiPendente').textContent=formatInt(grupos.Pendente);
+  $('relKpiAprovado').textContent=formatInt(grupos.Aprovado);
+  $('relKpiCancelado').textContent=formatInt(grupos.Cancelado);
   $('relatorioKpis').classList.remove('hidden');
   $('relatorioKpis').classList.add('grid');
-
-  // Tabela
   if(!orders.length){
     $('relatorioTableWrap').classList.add('hidden');
     $('relatorioEmpty').classList.remove('hidden');
     $('relatorioAcoes').classList.add('hidden');
     return;
   }
-
   $('relatorioEmpty').classList.add('hidden');
   $('relatorioTableWrap').classList.remove('hidden');
   $('relatorioAcoes').classList.remove('hidden');
-
-  // Expande por item — uma linha por produto de cada pedido
-  const linhas = [];
-  for(const o of orders){
-    const data = formatDate(o.createdAt || o.updatedAt);
-    const cliente = o.clienteNome
-      ? `<div class="font-extrabold">${safeHtml(o.clienteCodigo)}</div><div class="text-[11px] text-slate-500 font-semibold">${safeHtml(o.clienteNome)}</div>`
-      : `<div class="font-extrabold">${safeHtml(o.clienteCodigo)}</div>`;
-    const status = renderStatusChip(o.status);
-    const campanha = safeHtml(o.campanha || '—');
-    const prazo = safeHtml(o.prazo || '—');
-
-    const items = o.items || [];
-    if(!items.length){
-      linhas.push(`
-        <tr>
-          <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(data)}</td>
-          <td class="text-slate-400">—</td>
-          <td>${cliente}</td>
-          <td class="text-slate-500 font-semibold">${campanha}</td>
-          <td class="text-slate-500 font-semibold whitespace-nowrap">${prazo}</td>
-          <td class="text-slate-400">—</td>
-          <td class="text-slate-400">—</td>
-          <td class="text-right font-extrabold">—</td>
-          <td class="text-slate-400">—</td>
-          <td>${status}</td>
-          <td class="text-slate-400">—</td>
-        </tr>
-      `);
-    } else {
-      items.forEach((item, idx) => {
-        const units = getItemUnits(item);
-        const prevFat = safeHtml(formatDate(item.prevFaturamento) || '—');
-        const gradeDisplay = Array.isArray(item.grade) && item.grade.length
-          ? item.grade.map(g => `<span class="grade-pill" style="display:inline-block;margin:1px"><span class="grade-size">${safeHtml(g.size)}</span><span class="grade-qty">${safeHtml(g.qty)}</span></span>`).join('')
-          : '—';
-
-        linhas.push(`
-          <tr class="${idx > 0 ? 'border-t-0' : ''}">
-            ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${items.length}">${safeHtml(data)}</td>` : ''}
-            <td class="font-extrabold text-[var(--brand)] text-[11px]">${safeHtml(item.gci || item.ebm || '—')}</td>
-            ${idx === 0 ? `<td rowspan="${items.length}">${cliente}</td>` : ''}
-            ${idx === 0 ? `<td class="text-slate-500 font-semibold" rowspan="${items.length}">${campanha}</td>` : ''}
-            ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${items.length}">${prazo}</td>` : ''}
-            <td class="font-extrabold text-slate-800">${safeHtml(item.produto || '—')}</td>
-            <td class="text-slate-500 font-semibold">${safeHtml(item.cor || '—')}</td>
-            <td class="text-right font-extrabold">${formatInt(units)}</td>
-            <td class="text-slate-500 font-semibold whitespace-nowrap">${prevFat}</td>
-            ${idx === 0 ? `<td rowspan="${items.length}">${status}</td>` : ''}
-            <td><div class="flex flex-wrap gap-1">${gradeDisplay}</div></td>
-          </tr>
-        `);
-      });
-    }
-  }
-
-  $('relatorioTableBody').innerHTML = linhas.join('');
-
-  $('relatorioTableFoot').innerHTML = `
-    <tr>
-      <td colspan="7" class="font-extrabold">Total</td>
-      <td class="text-right font-extrabold">${formatInt(totalUnidades)}</td>
-      <td colspan="3"></td>
-    </tr>
-  `;
-
-  const now = new Date();
-  $('relatorioRodape').textContent = `Gerado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})} · ${orders.length} pedidos · ${formatInt(totalUnidades)} unidades`;
-
-  // Armazena para PDF/WhatsApp
-  STATE._relatorioAtual = { nomeVendedor, orders, totalItens, totalUnidades };
+  $('relatorioTableBody').innerHTML=buildRelatorioLinhas(orders).join('');
+  $('relatorioTableFoot').innerHTML=`<tr><td colspan="7" class="font-extrabold">Total</td><td class="text-right font-extrabold">${formatInt(totalUnidades)}</td><td colspan="3"></td></tr>`;
+  const now=new Date();
+  $('relatorioRodape').textContent=`Gerado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})} · ${orders.length} pedidos · ${formatInt(totalUnidades)} unidades`;
+  STATE._relatorioAtual={nomeVendedor,orders,totalItens,totalUnidades};
+  document.querySelectorAll('.relatorio-sortable').forEach(th=>{
+    th.onclick=()=>{
+      const col=th.dataset.col;
+      if(RELATORIO_SORT.col===col){ RELATORIO_SORT.dir*=-1; } else { RELATORIO_SORT.col=col; RELATORIO_SORT.dir=1; }
+      updateRelatorioSortHeaders(RELATORIO_SORT.col,RELATORIO_SORT.dir);
+      $('relatorioTableBody').innerHTML=buildRelatorioLinhas(sortRelatorioOrders(STATE._relatorioAtual.orders,RELATORIO_SORT.col,RELATORIO_SORT.dir)).join('');
+    };
+  });
 }
 
 function relatorioWhatsapp(){
