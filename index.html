@@ -2023,16 +2023,19 @@ async function ordersExportPdf(){
 }
 
 async function openOrders(){
-  try{
-    await refreshOrdersFromRemote();
-  }catch(err){
-    console.error(err);
-    toast('Não foi possível atualizar os pedidos sincronizados');
-  }
+  // Abre imediatamente com dados locais — sem delay
   renderOrders();
   $('ordersDrawerWrap').classList.remove('hidden');
   requestAnimationFrame(()=> $('ordersDrawer').classList.add('open'));
   document.body.style.overflow = 'hidden';
+
+  // Atualiza em background silenciosamente
+  try{
+    await refreshOrdersFromRemote();
+    renderOrders(); // re-renderiza com dados frescos se mudou algo
+  }catch(err){
+    console.error(err);
+  }
 }
 function closeOrders(){
   $('ordersDrawer').classList.remove('open');
