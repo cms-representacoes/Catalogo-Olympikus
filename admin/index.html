@@ -295,6 +295,7 @@
     details > summary{ list-style:none; cursor:pointer; }
     details > summary::-webkit-details-marker{ display:none; }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
   <div id="toastWrap" class="toast-wrap"></div>
@@ -441,6 +442,7 @@
               <table class="relatorio-table relatorio-grade-hidden" id="relatorioTable">
                 <thead>
                   <tr id="relatorioThead">
+                    <th class="text-right">Nº</th>
                     <th class="relatorio-sortable" data-col="data">Data <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable" data-col="ebm">EBM <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
                     <th class="relatorio-sortable" data-col="gci">GCI <i class="fa-solid fa-sort text-[9px] opacity-30"></i></th>
@@ -476,6 +478,10 @@
                 <button id="btnRelatorioPdf"
                   class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white flex items-center gap-2">
                   <i class="fa-solid fa-file-pdf"></i> Exportar PDF
+                </button>
+                <button id="btnRelatorioXlsx"
+                  class="focus-ring rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-extrabold text-emerald-700 flex items-center gap-2">
+                  <i class="fa-solid fa-file-excel"></i> Exportar XLSX
                 </button>
               </div>
             </div>
@@ -1578,6 +1584,7 @@ const RELATORIO_SORT = { col: null, dir: 1 };
 
 function buildRelatorioLinhas(orders){
   const linhas = [];
+  let lineNum = 0;
   for(const o of orders){
     const data = formatDate(o.createdAt || o.updatedAt);
     const clienteHtml = o.clienteNome
@@ -1588,7 +1595,9 @@ function buildRelatorioLinhas(orders){
     const prazoDisplay = safeHtml(stripPrazo(o.prazo || '—'));
     const items = o.items || [];
     if(!items.length){
+      lineNum++;
       linhas.push(`<tr>
+        <td class="text-right text-slate-400 font-semibold text-[11px]">${lineNum}</td>
         <td class="text-slate-500 font-semibold whitespace-nowrap">${safeHtml(data)}</td>
         <td class="text-slate-400">—</td>
         <td class="text-slate-400">—</td>
@@ -1602,9 +1611,11 @@ function buildRelatorioLinhas(orders){
       </tr>`);
     } else {
       items.forEach((item, idx) => {
+        lineNum++;
         const units = getItemUnits(item);
         const prevFat = safeHtml(formatDate(item.prevFaturamento) || '—');
         linhas.push(`<tr>
+          <td class="text-right text-slate-400 font-semibold text-[11px]">${lineNum}</td>
           ${idx === 0 ? `<td class="text-slate-500 font-semibold whitespace-nowrap" rowspan="${items.length}">${safeHtml(data)}</td>` : ''}
           <td class="text-slate-500 font-semibold text-[11px]">${safeHtml(item.ebm || '—')}</td>
           <td class="font-extrabold text-[var(--brand)] text-[11px]">${safeHtml(item.gci || '—')}</td>
@@ -1687,7 +1698,7 @@ function renderRelatorio(){
   $('relatorioTableWrap').classList.remove('hidden');
   $('relatorioAcoes').classList.remove('hidden');
   $('relatorioTableBody').innerHTML=buildRelatorioLinhas(orders).join('');
-  $('relatorioTableFoot').innerHTML=`<tr><td colspan="8" class="font-extrabold">Total</td><td class="text-right font-extrabold">${formatInt(totalUnidades)}</td><td colspan="3"></td></tr>`;
+  $('relatorioTableFoot').innerHTML=`<tr><td colspan="9" class="font-extrabold">Total</td><td class="text-right font-extrabold">${formatInt(totalUnidades)}</td><td colspan="3"></td></tr>`;
   const now=new Date();
   $('relatorioRodape').textContent=`Gerado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})} · ${orders.length} pedidos · ${formatInt(totalUnidades)} unidades`;
   STATE._relatorioAtual={nomeVendedor,orders,totalItens,totalUnidades};
@@ -1974,9 +1985,69 @@ document.querySelectorAll('.kpi-op[data-status-filter]').forEach(card => {
   });
 });
 
+function relatorioExportXlsx(){
+  const rel = STATE._relatorioAtual;
+  if(!rel){ showToast('Gere o relatório primeiro.','info'); return; }
+  const { nomeVendedor, orders } = rel;
+  const btn = $('btnRelatorioXlsx');
+  const prev = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gerando...';
+
+  try{
+    const rows = [['Nº','Data','EBM','GCI','Cliente','Prazo','Campanha','Descrição','Cor','Qtde','Prev Fat','Status','Grade']];
+    let lineNum = 0;
+    for(const o of orders){
+      const data = formatDate(o.createdAt || o.updatedAt);
+      const cliente = o.clienteNome ? `${o.clienteCodigo} — ${o.clienteNome}` : o.clienteCodigo;
+      const prazo = stripPrazo(o.prazo || '—');
+      const campanha = stripOly(o.campanha || '—');
+      const status = canonicalStatus(o.status);
+      const items = o.items || [];
+      if(!items.length){
+        lineNum++;
+        rows.push([lineNum, data, '—','—', cliente, prazo, campanha,'—','—','—','—', status,'—']);
+      } else {
+        for(const item of items){
+          lineNum++;
+          const units = getItemUnits(item);
+          const prevFat = formatDate(item.prevFaturamento) || '—';
+          const grade = Array.isArray(item.grade) && item.grade.length
+            ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ')
+            : '—';
+          rows.push([
+            lineNum, data,
+            item.ebm || '—', item.gci || '—',
+            cliente, prazo, campanha,
+            item.produto || '—', item.cor || '—',
+            units, prevFat, status, grade
+          ]);
+        }
+      }
+    }
+
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    // Larguras das colunas
+    ws['!cols'] = [4,12,12,10,24,14,14,22,10,6,12,10,26].map(w=>({wch:w}));
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Relatório');
+    const now = new Date();
+    const filename = `relatorio_${nomeVendedor.replace(/\s+/g,'_').toLowerCase()}_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.xlsx`;
+    XLSX.writeFile(wb, filename);
+    showToast('XLSX gerado com sucesso!', 'success');
+  }catch(err){
+    console.error(err);
+    showToast('Não foi possível gerar o XLSX.','error');
+  }finally{
+    btn.disabled = false;
+    btn.innerHTML = prev;
+  }
+}
+
 $('btnGerarRelatorio').addEventListener('click', renderRelatorio);
 $('btnRelatorioWhatsapp').addEventListener('click', relatorioWhatsapp);
 $('btnRelatorioPdf').addEventListener('click', relatorioExportPdf);
+$('btnRelatorioXlsx').addEventListener('click', relatorioExportXlsx);
 // ─────────────────────────────────────────────────────────────────────────────
 
 $('btnScopeActive').addEventListener('click', ()=>{ setAdminScope('active'); applyFilters(); });
