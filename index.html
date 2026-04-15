@@ -428,6 +428,10 @@
               class="focus-ring orders-scope-btn rounded-full px-3 py-2 text-sm font-bold text-slate-700">
               <span class="inline-block w-2 h-2 rounded-full bg-rose-500 mr-1"></span>Cancelado
             </button>
+            <button id="btnOrdersScopeTodos" data-scope="Todos"
+              class="focus-ring orders-scope-btn rounded-full px-3 py-2 text-sm font-bold text-slate-700">
+              Todos
+            </button>
           </div>
           <div class="flex gap-2">
             <button id="btnOrdersExportXlsx"
@@ -904,6 +908,7 @@ function getOrdersScope(){ return localStorage.getItem(STORAGE_KEYS.ordersScope)
 function setOrdersScope(value){ localStorage.setItem(STORAGE_KEYS.ordersScope, value || 'Pendente'); }
 
 function orderMatchesScope(order, scope){
+  if(scope === 'Todos') return true;
   return (order.status || 'Pendente') === scope;
 }
 
@@ -2679,6 +2684,7 @@ function bindEvents(){
   $('btnOrdersScopePendente').addEventListener('click', ()=>{ setOrdersScope('Pendente'); renderOrders(); });
   $('btnOrdersScopeAprovado').addEventListener('click', ()=>{ setOrdersScope('Aprovado'); renderOrders(); });
   $('btnOrdersScopeCancelado').addEventListener('click', ()=>{ setOrdersScope('Cancelado'); renderOrders(); });
+  $('btnOrdersScopeTodos').addEventListener('click', ()=>{ setOrdersScope('Todos'); renderOrders(); });
   $('btnOrdersExportXlsx').addEventListener('click', ordersExportXlsx);
   $('btnOrdersExportPdf').addEventListener('click', ordersExportPdf);
 
