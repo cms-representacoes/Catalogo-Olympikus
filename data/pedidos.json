@@ -8,7 +8,7 @@
     "isDuplicate": false,
     "preposto": {
       "codigo": "25745",
-      "nome": "LÃO"
+      "nome": "LÃÂO"
     },
     "clienteCodigo": "80931",
     "clienteNome": "Ban Ban",
@@ -71,7 +71,7 @@
         "archivedTo": false,
         "clientCode": "80931",
         "prepostoCodigo": "25745",
-        "prepostoNome": "LÃO",
+        "prepostoNome": "LÃÂO",
         "notes": "",
         "meta": {
           "itemsCount": 1,
@@ -89,7 +89,7 @@
         "archivedTo": false,
         "clientCode": "80931",
         "prepostoCodigo": "25745",
-        "prepostoNome": "LÃO",
+        "prepostoNome": "LÃÂO",
         "notes": "",
         "meta": {
           "itemsCount": 1,
@@ -104,8 +104,8 @@
   {
     "id": "PED-20260416161717-727",
     "createdAt": "2026-04-16T19:17:17.737Z",
-    "updatedAt": "2026-04-16T19:17:18.117Z",
-    "status": "Pendente",
+    "updatedAt": "2026-04-16T19:18:26.457Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -166,8 +166,49 @@
             "qty": 1
           }
         ],
-        "prevFaturamento": 46202
+        "prevFaturamento": "46202"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1776367106011_7stfju",
+        "at": "2026-04-16T19:18:26.011Z",
+        "action": "status_changed",
+        "label": "Pedido aprovado",
+        "statusFrom": "Pendente",
+        "statusTo": "Aprovado",
+        "archivedFrom": false,
+        "archivedTo": false,
+        "clientCode": "18529",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 24
+        }
+      },
+      {
+        "eventId": "evt_1776367046910_3slc5u",
+        "at": "2026-04-16T19:17:26.910Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "18529",
+        "prepostoCodigo": "3616654",
+        "prepostoNome": "MARCOS",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 24
+        }
+      }
+    ],
+    "lastAction": "status_changed",
+    "lastActionLabel": "Pedido aprovado",
+    "lastActionAt": "2026-04-16T19:18:26.011Z"
   }
 ]
