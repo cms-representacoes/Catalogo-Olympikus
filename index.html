@@ -2870,14 +2870,18 @@ initMobileHeaderAutoHide();
 updateOrdersScopeButtons();
 renderOrders();
 startStockAutoRefresh();
-refreshOrdersFromRemote().then(()=>{
-  renderOrders();
-  renderCart();
-  applyFilters();
-}).catch(()=>{});
-loadCatalog().then(()=>{
-  refreshStockFromSource({ silent:true, reason:'load', force:true });
-  applyVendedorSession(); // re-aplica sessão após buildFilters popular o select de preposto
+
+// Carrega catálogo primeiro (inclui filtro de ocultos), depois sincroniza pedidos
+loadCatalog().then(async ()=>{
+  applyVendedorSession();
+  await refreshStockFromSource({ silent:true, reason:'load', force:true });
+  // Só após catálogo carregado, sincroniza pedidos e re-aplica filtros
+  try{
+    await refreshOrdersFromRemote();
+    renderOrders();
+    renderCart();
+    applyFilters();
+  }catch(_){}
 }).catch(()=>{});
 </script>
 </body>

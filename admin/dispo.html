@@ -1471,12 +1471,20 @@ function isOculto(row){ return STATE.ocultos.has(ocultarKey(row)); }
 
 async function salvarOcultos(){
   try{
-    await fetch(WORKER_URL, {
+    const res = await fetch(WORKER_URL, {
       method:'PATCH',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'saveOcultos', data: [...STATE.ocultos] })
     });
-  }catch(e){ console.error('Erro ao salvar ocultos:', e); }
+    if(!res.ok){
+      const txt = await res.text();
+      console.error('Erro ao salvar ocultos:', res.status, txt);
+      showToast('Erro ao salvar ocultos. Tente novamente.', 'error');
+    }
+  }catch(e){
+    console.error('Erro ao salvar ocultos:', e);
+    showToast('Erro de conexão ao salvar ocultos.', 'error');
+  }
 }
 
 async function carregarOcultos(){
@@ -1489,17 +1497,22 @@ async function carregarOcultos(){
     if(res.ok){
       const data = await res.json();
       STATE.ocultos = new Set(Array.isArray(data) ? data : []);
+      console.log('[ocultos] carregados:', STATE.ocultos.size, [...STATE.ocultos]);
+    } else {
+      console.error('[ocultos] erro ao carregar:', res.status);
     }
-  }catch(e){ console.error('Erro ao carregar ocultos:', e); }
+  }catch(e){ console.error('[ocultos] erro:', e); }
 }
 
 async function toggleOculto(gci){
   const allRows = computeAllRows();
   const row = allRows.find(r => sanitizeDisplayText(String(r.gci||'')) === sanitizeDisplayText(String(gci||'')));
-  if(!row) return;
+  if(!row){ console.error('[toggleOculto] row não encontrado para gci:', gci); return; }
   const key = ocultarKey(row);
+  console.log('[toggleOculto] key:', key, 'oculto atual:', STATE.ocultos.has(key));
   if(STATE.ocultos.has(key)) STATE.ocultos.delete(key);
   else STATE.ocultos.add(key);
+  console.log('[toggleOculto] ocultos após toggle:', [...STATE.ocultos]);
   await salvarOcultos();
   atualizarBadgeOcultos();
   renderDispo();
