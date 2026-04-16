@@ -1,1 +1,63 @@
-[]
+[
+  {
+    "id": "PED-20260416120059-124",
+    "createdAt": "2026-04-16T15:00:59.655Z",
+    "updatedAt": "2026-04-16T15:00:59.888Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "25745",
+      "nome": "LÉO"
+    },
+    "clienteCodigo": "80931",
+    "clienteNome": "Ban Ban",
+    "prazo": "Z30 - 28/56/84 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "Aporte",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43406455",
+        "produto": "EROS 2 INFANTIL",
+        "cor": "PTO/PT",
+        "gci": "5269322",
+        "ebm": "13249326",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "31",
+            "qty": 1
+          },
+          {
+            "size": "32",
+            "qty": 1
+          },
+          {
+            "size": "33",
+            "qty": 2
+          },
+          {
+            "size": "34",
+            "qty": 2
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 2
+          }
+        ],
+        "prevFaturamento": 46114
+      }
+    ]
+  }
+]
