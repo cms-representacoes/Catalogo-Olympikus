@@ -345,13 +345,6 @@
               Atualizar
             </button>
 
-            <button id="btnExportarTodosPendentes"
-              class="focus-ring rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-bold text-emerald-700 flex items-center gap-2 hidden">
-              <i class="fa-solid fa-file-excel"></i>
-              Exportar pendentes
-              <span id="badgePendentesExport" class="inline-flex items-center justify-center rounded-full bg-emerald-600 text-white text-[10px] font-extrabold min-w-[18px] h-[18px] px-1">0</span>
-            </button>
-
             <button id="btnToggleResumo"
               class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 flex items-center gap-2"
               title="Exibir/ocultar painel de resumo">
@@ -431,30 +424,12 @@
                   <option value="">Selecione um vendedor</option>
                   <option value="__todos__">— Todos os vendedores —</option>
                 </select>
-                <!-- Filtro exportação -->
-                <div class="inline-flex rounded-full border border-slate-200 bg-slate-50 p-1 gap-1">
-                  <button id="filtroNaoExportado" data-filtro="nao"
-                    class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">
-                    Não exportados
-                  </button>
-                  <button id="filtroExportado" data-filtro="exp"
-                    class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">
-                    Exportados
-                  </button>
-                  <button id="filtroTodos" data-filtro="all"
-                    class="filtro-export-btn focus-ring rounded-full px-3 py-1.5 text-xs font-bold text-slate-600">
-                    Todos
-                  </button>
-                </div>
                 <button id="btnGerarRelatorio"
                   class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-white">
                   Gerar
                 </button>
               </div>
             </div>
-
-            <!-- Banner de status de exportação -->
-            <div id="relatorioBanner" class="hidden rounded-2xl px-4 py-3 text-sm font-semibold mb-4 flex items-center gap-2"></div>
 
             <div id="relatorioKpis" class="hidden grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
               <div class="kpi-card"><div class="text-xs font-bold text-slate-500">Total</div><div id="relKpiTotal" class="mt-1 text-2xl font-extrabold">0</div></div>
@@ -1518,7 +1493,6 @@ function renderKpisOperacionais(){
 
   renderRanking();
   populateRelatorioSelect();
-  atualizarBadgeGlobal();
 }
 
 function renderRanking(){
@@ -1731,19 +1705,11 @@ function renderRelatorio(){
   $('relatorioEmpty').classList.add('hidden');
   $('relatorioTableWrap').classList.remove('hidden');
   $('relatorioAcoes').classList.remove('hidden');
-  // Aplica filtro de exportação
-  const ordersFiltered = FILTRO_EXPORT.value === 'nao'
-    ? orders.filter(o => canonicalStatus(o.status) !== 'Aprovado' || !o.exportedAt)
-    : FILTRO_EXPORT.value === 'exp'
-      ? orders.filter(o => canonicalStatus(o.status) === 'Aprovado' && o.exportedAt)
-      : orders;
-  $('relatorioTableBody').innerHTML=buildRelatorioLinhas(ordersFiltered).join('');
+  $('relatorioTableBody').innerHTML=buildRelatorioLinhas(orders).join('');
   $('relatorioTableFoot').innerHTML=`<tr><td colspan="6" class="font-extrabold">Total</td><td class="text-right font-extrabold">${formatInt(totalUnidades)}</td><td colspan="7"></td></tr>`;
   const now=new Date();
   $('relatorioRodape').textContent=`Gerado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})} · ${orders.length} pedidos · ${formatInt(totalUnidades)} unidades`;
   STATE._relatorioAtual={nomeVendedor,orders,totalItens,totalUnidades};
-  atualizarBanner();
-  atualizarBadgeGlobal();
   document.querySelectorAll('.relatorio-sortable').forEach(th=>{
     th.onclick=()=>{
       const col=th.dataset.col;
@@ -2031,128 +1997,6 @@ document.querySelectorAll('.kpi-op[data-status-filter]').forEach(card => {
   });
 });
 
-// ── CONTROLE DE EXPORTAÇÃO ────────────────────────────────────────────────────
-const FILTRO_EXPORT = { value: 'all' };
-
-function setFiltroExport(valor){
-  FILTRO_EXPORT.value = valor;
-  document.querySelectorAll('.filtro-export-btn').forEach(btn => {
-    const active = btn.dataset.filtro === valor;
-    btn.classList.toggle('bg-white', active);
-    btn.classList.toggle('text-[var(--brand)]', active);
-    btn.classList.toggle('shadow-sm', active);
-    btn.classList.toggle('text-slate-600', !active);
-  });
-  if(STATE._relatorioAtual) atualizarBanner();
-}
-
-function getOrdersAprovadosNaoExportados(){
-  return STATE.orders.filter(o => canonicalStatus(o.status) === 'Aprovado' && !o.exportedAt);
-}
-
-function atualizarBadgeGlobal(){
-  const pendentes = getOrdersAprovadosNaoExportados();
-  const btn = $('btnExportarTodosPendentes');
-  const badge = $('badgePendentesExport');
-  if(!btn || !badge) return;
-  if(pendentes.length > 0){
-    btn.classList.remove('hidden');
-    badge.textContent = pendentes.length;
-  } else {
-    btn.classList.add('hidden');
-  }
-}
-
-function atualizarBanner(){
-  const banner = $('relatorioBanner');
-  if(!banner || !STATE._relatorioAtual) return;
-  const allOrders = STATE._relatorioAtual.orders.filter(o => canonicalStatus(o.status) === 'Aprovado');
-  const naoExp = allOrders.filter(o => !o.exportedAt).length;
-  const exp = allOrders.filter(o => o.exportedAt).length;
-  if(FILTRO_EXPORT.value === 'nao'){
-    banner.className = 'rounded-2xl px-4 py-3 text-sm font-semibold mb-4 flex items-center gap-2 ' +
-      (naoExp > 0 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-50 text-slate-500 border border-slate-200');
-    banner.innerHTML = naoExp > 0
-      ? `<i class="fa-solid fa-circle-check"></i> ${naoExp} pedido${naoExp>1?'s':''} aprovado${naoExp>1?'s':''} aguardando exportação`
-      : `<i class="fa-solid fa-check-double"></i> Todos os aprovados já foram exportados`;
-    banner.classList.remove('hidden');
-  } else if(FILTRO_EXPORT.value === 'exp'){
-    banner.className = 'rounded-2xl px-4 py-3 text-sm font-semibold mb-4 flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-200';
-    banner.innerHTML = `<i class="fa-solid fa-file-export"></i> ${exp} pedido${exp!==1?'s':''} já exportado${exp!==1?'s':''}`;
-    banner.classList.remove('hidden');
-  } else {
-    banner.className = 'rounded-2xl px-4 py-3 text-sm font-semibold mb-4 flex items-center gap-2 bg-slate-50 text-slate-500 border border-slate-200';
-    banner.innerHTML = `<i class="fa-solid fa-layer-group"></i> ${allOrders.length} pedidos aprovados · ${naoExp} não exportados · ${exp} exportados`;
-    banner.classList.remove('hidden');
-  }
-}
-
-async function workerUpdateOrder(order){
-  await fetch('https://repasse-worker-cms.marcosrep-cms.workers.dev', {
-    method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(order)
-  });
-}
-
-async function marcarComoExportado(orders){
-  const aprovados = orders.filter(o => canonicalStatus(o.status) === 'Aprovado' && !o.exportedAt);
-  if(!aprovados.length) return;
-  const now = new Date().toISOString();
-  for(const order of aprovados){
-    const idx = STATE.orders.findIndex(o => o.id === order.id);
-    if(idx !== -1){
-      STATE.orders[idx].exportedAt = now;
-      try{ await workerUpdateOrder(STATE.orders[idx]); }catch(e){ console.error(e); }
-    }
-  }
-  atualizarBadgeGlobal();
-}
-
-function buildRelatorioXlsxRows(orders){
-  const rows = [['Nº','Vendedor','Cod. Cliente','Nome','Prazo','Campanha','Qtde','EBM','GCI','Descrição','Cor','Prev Fat','Status','Grade']];
-  let n = 0;
-  for(const o of orders){
-    const vendedor = o.preposto?.nome || o.preposto?.codigo || '—';
-    const prazo = o.prazo || '—';
-    const campanha = stripOly(o.campanha || '—');
-    const status = canonicalStatus(o.status);
-    for(const item of (o.items||[])){
-      n++;
-      const units = getItemUnits(item);
-      const prevFat = formatDate(item.prevFaturamento) || '—';
-      const grade = Array.isArray(item.grade)&&item.grade.length ? item.grade.map(g=>`${g.size}(${g.qty})`).join(' ') : '—';
-      rows.push([n,vendedor,o.clienteCodigo||'—',o.clienteNome||'—',prazo,campanha,units,item.ebm||'—',item.gci||'—',item.produto||'—',item.cor||'—',prevFat,status,grade]);
-    }
-  }
-  return rows;
-}
-
-async function exportarTodosPendentes(){
-  const pendentes = getOrdersAprovadosNaoExportados();
-  if(!pendentes.length){ showToast('Nenhum aprovado pendente de exportação.','info'); return; }
-  const btn = $('btnExportarTodosPendentes');
-  const prev = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Exportando...';
-  try{
-    const rows = buildRelatorioXlsxRows(pendentes);
-    const ws = XLSX.utils.aoa_to_sheet(rows);
-    ws['!cols'] = [4,18,12,20,20,16,6,12,10,24,10,20,10,28].map(w=>({wch:w}));
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Aprovados');
-    const now = new Date();
-    XLSX.writeFile(wb, `aprovados_pendentes_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.xlsx`);
-    await marcarComoExportado(pendentes);
-    showToast(`${pendentes.length} pedido${pendentes.length>1?'s':''} exportado${pendentes.length>1?'s':''}!`, 'success');
-    if(STATE._relatorioAtual) atualizarBanner();
-  }catch(err){
-    console.error(err);
-    showToast('Erro ao exportar.','error');
-  }finally{
-    btn.disabled = false;
-    btn.innerHTML = prev;
-  }
-}
-
 function relatorioExportXlsx(){
   const rel = STATE._relatorioAtual;
   if(!rel){ showToast('Gere o relatório primeiro.','info'); return; }
@@ -2202,9 +2046,6 @@ function relatorioExportXlsx(){
     const filename = `relatorio_${nomeVendedor.replace(/\s+/g,'_').toLowerCase()}_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.xlsx`;
     XLSX.writeFile(wb, filename);
     showToast('XLSX gerado com sucesso!', 'success');
-    // Marca aprovados como exportados
-    await marcarComoExportado(orders);
-    atualizarBanner();
   }catch(err){
     console.error(err);
     showToast('Não foi possível gerar o XLSX.','error');
@@ -2218,24 +2059,6 @@ $('btnGerarRelatorio').addEventListener('click', renderRelatorio);
 $('btnRelatorioWhatsapp').addEventListener('click', relatorioWhatsapp);
 $('btnRelatorioPdf').addEventListener('click', relatorioExportPdf);
 $('btnRelatorioXlsx').addEventListener('click', relatorioExportXlsx);
-$('btnExportarTodosPendentes').addEventListener('click', exportarTodosPendentes);
-
-// Filtros de exportação
-document.querySelectorAll('.filtro-export-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=> setFiltroExport(btn.dataset.filtro));
-});
-// Estado inicial do filtro
-setFiltroExport('all');
-
-// Aviso ao trocar vendedor se houver não exportados visíveis
-$('relatorioVendedorSelect').addEventListener('change', ()=>{
-  if(!STATE._relatorioAtual) return;
-  const naoExp = STATE._relatorioAtual.orders.filter(o => canonicalStatus(o.status)==='Aprovado' && !o.exportedAt);
-  if(naoExp.length > 0 && FILTRO_EXPORT.value !== 'exp'){
-    if(!window.confirm(`Há ${naoExp.length} pedido${naoExp.length>1?'s':''} aprovado${naoExp.length>1?'s':''} não exportado${naoExp.length>1?'s':''}. Deseja exportar antes de continuar?`)) return;
-    relatorioExportXlsx();
-  }
-});
 // ─────────────────────────────────────────────────────────────────────────────
 
 $('btnScopeActive').addEventListener('click', ()=>{ setAdminScope('active'); applyFilters(); });
