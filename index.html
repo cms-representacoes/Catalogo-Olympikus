@@ -701,6 +701,7 @@ const STATE = {
   filters: { categoria:'', segmento:'', genero:'', sort:'produto' },
   cart: new Map(),
   orders: [],
+  ocultos: new Set(),
   viewMode: localStorage.getItem(STORAGE_KEYS.view) || 'cards',
   pendingConflictCheck: null,
   latestCatalogPdfBlob: null,
@@ -2299,6 +2300,23 @@ async function loadCatalog(){
     const dispoRows = XLSX.utils.sheet_to_json(dispoWb.Sheets[dispoSheetName], { defval:'' });
 
     STATE.raw = mergeData(prodRows, dispoRows).map(item=>({ ...item, key: productKey(item) }));
+
+    // Carrega ocultos e filtra da vitrine
+    try{
+      const oRes = await fetch(WORKER_CONFIG.endpoint, {
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'getOcultos' })
+      });
+      if(oRes.ok){
+        const oData = await oRes.json();
+        STATE.ocultos = new Set(Array.isArray(oData) ? oData : []);
+        STATE.raw = STATE.raw.filter(item => {
+          const key = `${sanitizeDisplayText(item.codigo)}|${sanitizeDisplayText(item.cor)}|${sanitizeDisplayText(String(item.gci||''))}`;
+          return !STATE.ocultos.has(key);
+        });
+      }
+    }catch(_){ /* ignora erro de ocultos — exibe tudo */ }
+
     buildFilters();
     renderCart();
     applyFilters();

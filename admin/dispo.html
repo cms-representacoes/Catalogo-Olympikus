@@ -330,6 +330,14 @@
     .btn-antecipa-ok:hover{ background:#AFA9EC; }
     .btn-antecipa-warn{ border:1px solid #EF9F27; color:#633806; background:#FAEEDA; }
     .btn-antecipa-warn:hover{ background:#FAC775; }
+    .icon-btn{ width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; border:0.5px solid var(--color-border-secondary,#e2e8f0); background:none; color:#64748b; transition:all .12s; flex-shrink:0; }
+    .icon-btn:hover{ background:#f1f5f9; }
+    .icon-btn.ocultar:hover{ border-color:#AFA9EC; color:#3C3489; background:#EEEDFE; }
+    .icon-btn.reexibir{ border-color:#AFA9EC; color:#3C3489; background:#EEEDFE; }
+    .icon-btn.reexibir:hover{ background:#AFA9EC; }
+    .icon-btn.desm{ border-color:#c7d2fe; color:#4338ca; background:#eef2ff; }
+    .icon-btn.desm:hover{ background:#c7d2fe; }
+    .btn-group{ display:flex; gap:4px; align-items:center; flex-wrap:wrap; }
   </style>
 </head>
 <body>
@@ -433,6 +441,9 @@
             </button>
             <button class="filter-pill" data-filter="critico">
               <i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1 badge-ruptura"></i>Críticos
+            </button>
+            <button class="filter-pill" data-filter="ocultos" id="pillOcultos" style="border-color:#AFA9EC;color:#3C3489;background:#EEEDFE">
+              <i class="fa-solid fa-eye-slash mr-1"></i>Ocultos <span id="ocultosBadge" class="ml-1 hidden bg-[#3C3489] text-white text-[10px] font-extrabold rounded-full px-1.5 py-0.5">0</span>
             </button>
           </div>
           <div class="text-xs font-bold text-slate-400" id="tableCount">— itens</div>
@@ -570,7 +581,8 @@ const STATE = {
   orders: [],
   dispoRows: [],
   dispoLoadedAt: null,
-  desmembramentos: {}, // chave: "codigo|cor|prevFat" → array de {orderId, itemKey, status}
+  desmembramentos: {},
+  ocultos: new Set(), // chaves "codigo|cor|gci" das linhas ocultas
   sortCol: 'saldoReal',
   sortDir: 'asc',
   activeFilter: 'all',
@@ -737,6 +749,8 @@ async function loadOrders(){
       if(dRes.ok) STATE.desmembramentos = await dRes.json();
     }catch(_){ /* ignora erro de desmembramentos */ }
 
+    await carregarOcultos();
+    atualizarBadgeOcultos();
     populateConsultaDesm();
 
   }catch(err){
@@ -799,13 +813,16 @@ function computeRows(){
     const situacao = getSituacao(saldoReal, Number(row.saldo || 0));
     return { ...row, pendente, aprovado, saldoReal, situacao };
   }).filter(row => {
+    const f = STATE.activeFilter;
+    // filtro ocultos: mostra só ocultos
+    if(f === 'ocultos') return isOculto(row);
+    // demais filtros: excluir ocultos
+    if(isOculto(row)) return false;
     // search
     if(q){
       const hay = `${row.codigo} ${row.produto} ${row.cor}`.toLowerCase();
       if(!hay.includes(q)) return false;
     }
-    // filter pill
-    const f = STATE.activeFilter;
     if(f === 'com-pedido') return (row.pendente + row.aprovado) > 0;
     if(f === 'pendente') return row.pendente > 0;
     if(f === 'aprovado') return row.aprovado > 0;
@@ -982,14 +999,15 @@ function renderDispo(){
           </span>
         </td>
         <td>
-          <button class="btn-desmembrar" data-idx="${idx}">
-            <i class="fa-solid fa-table-list"></i> Desmembrar
-          </button>
-          ${row._antecipavel ? `
-          <button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-idx="${idx}">
-            <i class="fa-solid fa-angles-up text-[10px]"></i>
-            ${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}
-          </button>` : ''}
+        <td>
+          <div class="btn-group">
+            ${STATE.activeFilter === 'ocultos'
+              ? `<button class="icon-btn reexibir btn-reexibir" data-idx="${idx}" title="Reexibir"><i class="fa-solid fa-eye" style="font-size:12px"></i></button>`
+              : `<button class="icon-btn desm btn-desmembrar" data-idx="${idx}" title="Desmembrar"><i class="fa-solid fa-table-list" style="font-size:12px"></i></button>
+                 <button class="icon-btn ocultar btn-ocultar" data-idx="${idx}" title="Ocultar"><i class="fa-solid fa-eye-slash" style="font-size:12px"></i></button>
+                 ${row._antecipavel ? `<button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-idx="${idx}"><i class="fa-solid fa-angles-up text-[10px]"></i>${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}</button>` : ''}`
+            }
+          </div>
         </td>
       </tr>
     `;
@@ -1387,6 +1405,56 @@ async function confirmarAntecipacao(){
   renderDispo();
 }
 
+// ── OCULTAR / REEXIBIR ───────────────────────────────────────────────────────
+
+function ocultarKey(row){ return `${row.codigo}|${row.cor}|${row.gci}`; }
+
+function isOculto(row){ return STATE.ocultos.has(ocultarKey(row)); }
+
+async function salvarOcultos(){
+  try{
+    await fetch(WORKER_URL, {
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'saveOcultos', data: [...STATE.ocultos] })
+    });
+  }catch(e){ console.error('Erro ao salvar ocultos:', e); }
+}
+
+async function carregarOcultos(){
+  try{
+    const res = await fetch(WORKER_URL, {
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'getOcultos' })
+    });
+    if(res.ok){
+      const data = await res.json();
+      STATE.ocultos = new Set(Array.isArray(data) ? data : []);
+    }
+  }catch(e){ console.error('Erro ao carregar ocultos:', e); }
+}
+
+async function toggleOculto(rowIdx){
+  const sorted = sortRows(computeRows());
+  const row = sorted[rowIdx];
+  if(!row) return;
+  const key = ocultarKey(row);
+  if(STATE.ocultos.has(key)) STATE.ocultos.delete(key);
+  else STATE.ocultos.add(key);
+  await salvarOcultos();
+  atualizarBadgeOcultos();
+  renderDispo();
+}
+
+function atualizarBadgeOcultos(){
+  const badge = $('ocultosBadge');
+  if(!badge) return;
+  const n = STATE.ocultos.size;
+  badge.textContent = n;
+  badge.classList.toggle('hidden', n === 0);
+}
+
 // ── EVENT LISTENERS ───────────────────────────────────────────────────────────
 
 $('btnRefreshDispo').addEventListener('click', async () => {
@@ -1435,7 +1503,7 @@ document.querySelector('thead').addEventListener('click', (e) => {
 // Click em qualquer linha da tabela DISPO
 
 
-// Botão Desmembrar e Antecipar por linha
+// Botão Desmembrar, Ocultar e Antecipar por linha
 $('dispoTableBody').addEventListener('click', (e)=>{
   const btnDesm = e.target.closest('.btn-desmembrar');
   if(btnDesm){
@@ -1443,6 +1511,12 @@ $('dispoTableBody').addEventListener('click', (e)=>{
     const sorted = sortRows(computeRows());
     const row = sorted[idx];
     if(row) openDesmModal(row);
+    return;
+  }
+  const btnOcult = e.target.closest('.btn-ocultar, .btn-reexibir');
+  if(btnOcult){
+    const idx = parseInt(btnOcult.dataset.idx, 10);
+    toggleOculto(idx);
     return;
   }
   const btnAnt = e.target.closest('.btn-antecipa-row');
