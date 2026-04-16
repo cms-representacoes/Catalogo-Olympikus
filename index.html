@@ -698,7 +698,7 @@ const STATE = {
   raw: [],
   view: [],
   search: '',
-  filters: { categoria:'', segmento:'', genero:'', sort:'produto' },
+  filters: { categoria:'', segmento:'', genero:'', sort:'entregaAsc' },
   cart: new Map(),
   orders: [],
   ocultos: new Set(),
@@ -1425,14 +1425,40 @@ function sortView(items){
   switch(STATE.filters.sort){
     case 'saldoDesc': arr.sort((a,b)=>remainingUnits(b)-remainingUnits(a)); break;
     case 'saldoAsc': arr.sort((a,b)=>remainingUnits(a)-remainingUnits(b)); break;
-    case 'entregaAsc': arr.sort((a,b)=>new Date(formatDate(a.prevFaturamento).split('/').reverse().join('-') || '2999-12-31') - new Date(formatDate(b.prevFaturamento).split('/').reverse().join('-') || '2999-12-31')); break;
+    case 'entregaAsc': arr.sort((a,b)=>{
+      const da = parseDate(a.prevFaturamento);
+      const db = parseDate(b.prevFaturamento);
+      return (da?.getTime()||9e15) - (db?.getTime()||9e15);
+    }); break;
     default: arr.sort((a,b)=>String(a.produto).localeCompare(String(b.produto), 'pt-BR', { sensitivity:'base' })); break;
   }
   return arr;
 }
 function applyFilters(){
   const q = normalizeText(STATE.search);
+  const now = Date.now();
+  const h24 = 24 * 60 * 60 * 1000;
+
+  // Determina quando um item ficou com saldo zero (pelo updatedAt do pedido aprovado mais recente vinculado)
+  function esgotadoHaMais24h(item){
+    const units = remainingUnits(item);
+    if(units > 0) return false; // tem saldo, não é esgotado
+    // Busca o pedido aprovado mais recente que usa este GCI
+    const gci = sanitizeDisplayText(String(item.gci||''));
+    const pedidosVinculados = STATE.orders.filter(o => {
+      if(!['Pendente','Aprovado'].includes((o.status||'').trim())) return false;
+      return (o.items||[]).some(i => sanitizeDisplayText(String(i.gci||'')) === gci);
+    });
+    if(!pedidosVinculados.length) return false; // esgotado sem pedidos → continua visível
+    const maisRecente = pedidosVinculados.reduce((a,b) =>
+      new Date(b.updatedAt||b.createdAt||0) > new Date(a.updatedAt||a.createdAt||0) ? b : a
+    );
+    const ts = new Date(maisRecente.updatedAt || maisRecente.createdAt || 0).getTime();
+    return (now - ts) > h24;
+  }
+
   STATE.view = sortView(STATE.raw.filter(item=>{
+    if(esgotadoHaMais24h(item)) return false;
     const categoryLabel = CATEGORY_LABELS[item.categoria] || item.categoria;
     const hay = normalizeText([item.codigo, item.produto, item.cor, item.segmento, item.genero, categoryLabel].join(' '));
     const hitQ = !q || hay.includes(q);
@@ -1590,6 +1616,7 @@ function renderCatalog(){
           <div class="min-w-0">
             <div class="text-xl font-extrabold leading-tight">${safeHtml(item.produto)}</div>
             <div class="mt-1 text-sm text-slate-500">${safeHtml(item.codigo)}</div>
+            ${displayItem.prevFaturamento ? `<div class="mt-1 text-xs font-bold text-[var(--brand)]"><i class="fa-regular fa-calendar mr-1"></i>Prev. Fat. ${safeHtml(formatDate(displayItem.prevFaturamento))}</div>` : ''}
           </div>
           <div class="text-right">${isMulti ? availabilityChipsMulti(siblings) : availabilityChips(displayItem)}</div>
         </div>
@@ -2311,8 +2338,9 @@ async function loadCatalog(){
         const oData = await oRes.json();
         STATE.ocultos = new Set(Array.isArray(oData) ? oData : []);
         STATE.raw = STATE.raw.filter(item => {
-          const key = `${sanitizeDisplayText(item.codigo)}|${sanitizeDisplayText(item.cor)}|${sanitizeDisplayText(String(item.gci||''))}`;
-          return !STATE.ocultos.has(key);
+          const key = `${item.codigo}|${item.cor}|${item.gci}`;
+          const keyNorm = `${sanitizeDisplayText(item.codigo)}|${sanitizeDisplayText(item.cor)}|${sanitizeDisplayText(String(item.gci||''))}`;
+          return !STATE.ocultos.has(key) && !STATE.ocultos.has(keyNorm);
         });
       }
     }catch(_){ /* ignora erro de ocultos — exibe tudo */ }
