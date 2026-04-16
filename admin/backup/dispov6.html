@@ -325,11 +325,6 @@
       white-space:nowrap; transition:background .12s;
     }
     .btn-desmembrar:hover{ background:#d8dbff; }
-    .btn-antecipa-row{ display:flex; align-items:center; gap:4px; border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; cursor:pointer; white-space:nowrap; width:fit-content; margin-top:4px; transition:background .12s; }
-    .btn-antecipa-ok{ border:1px solid #AFA9EC; color:#3C3489; background:#EEEDFE; }
-    .btn-antecipa-ok:hover{ background:#AFA9EC; }
-    .btn-antecipa-warn{ border:1px solid #EF9F27; color:#633806; background:#FAEEDA; }
-    .btn-antecipa-warn:hover{ background:#FAC775; }
   </style>
 </head>
 <body>
@@ -502,50 +497,6 @@
       </div>
 
     </div>
-  <!-- MODAL ANTECIPAÇÃO -->
-  <div id="antecipacaoModal" class="hidden fixed inset-0 z-[140] bg-slate-950/45 p-4 overflow-y-auto">
-    <div class="flex min-h-full items-center justify-center py-6">
-      <div class="w-full max-w-lg rounded-[28px] border border-slate-200 bg-white shadow-[0_30px_80px_rgba(15,23,42,.24)] overflow-hidden">
-        <div class="px-5 py-4 border-b border-slate-200 flex items-start justify-between gap-3">
-          <div>
-            <div class="text-xl font-extrabold" id="antecipacaoTitle">Antecipar pedidos</div>
-            <div class="text-sm font-semibold text-slate-500 mt-0.5">Selecione os pedidos a migrar para a nova disponibilidade</div>
-          </div>
-          <button onclick="closeAntecipacaoModal()" class="focus-ring h-9 w-9 rounded-full border border-slate-200 bg-white flex-shrink-0"><i class="fa-solid fa-xmark text-sm"></i></button>
-        </div>
-        <div id="antecipacaoDePara" class="flex items-center gap-3 px-5 py-3 bg-slate-50 border-b border-slate-200 flex-wrap text-sm font-semibold"></div>
-        <div id="antecipacaoGradeWarn" class="hidden px-5 py-3 bg-amber-50 border-b border-amber-200 text-amber-800 text-sm font-semibold flex items-start gap-2">
-          <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
-          <span>As grades são diferentes — confirme se deseja antecipar mesmo assim</span>
-        </div>
-        <div id="antecipacaoGradeCompare" class="hidden px-5 py-3 border-b border-slate-200">
-          <div class="grid grid-cols-[1fr_auto_1fr] gap-3 items-start text-xs">
-            <div>
-              <div class="font-bold text-slate-500 uppercase tracking-wide mb-2">Grade atual</div>
-              <div id="gradeAtualPills" class="flex flex-wrap gap-1"></div>
-            </div>
-            <div class="text-slate-400 text-base self-center">→</div>
-            <div>
-              <div class="font-bold text-emerald-600 uppercase tracking-wide mb-2">Grade nova</div>
-              <div id="gradeNovaPills" class="flex flex-wrap gap-1"></div>
-            </div>
-          </div>
-        </div>
-        <div id="antecipacaoPedidosList" class="px-5 py-4 space-y-2 max-h-72 overflow-y-auto"></div>
-        <div class="px-5 py-4 border-t border-slate-200 flex items-center justify-between gap-3">
-          <span class="text-xs font-semibold text-slate-400" id="antecipacaoCounter">Selecione ao menos um pedido</span>
-          <div class="flex gap-2">
-            <button onclick="closeAntecipacaoModal()" class="focus-ring rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700">Cancelar</button>
-            <button id="btnConfirmarAntecipacao" disabled onclick="confirmarAntecipacao()"
-              class="focus-ring rounded-2xl bg-[var(--brand)] px-4 py-2.5 text-sm font-extrabold text-white disabled:opacity-40 disabled:cursor-not-allowed">
-              Antecipar selecionados
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   </main>
 
 
@@ -886,54 +837,13 @@ function renderKpis(rows){
 
 function computeAllRows(){
   const { pendMap, aprovMap } = buildImpactMap();
-  const allRows = STATE.dispoRows.map(row => {
+  return STATE.dispoRows.map(row => {
     const pendente = pendMap.get(row.codigo) || 0;
     const aprovado = aprovMap.get(row.codigo) || 0;
     const saldoReal = Number(row.saldo || 0) - pendente - aprovado;
     const situacao = getSituacao(saldoReal, Number(row.saldo || 0));
     return { ...row, pendente, aprovado, saldoReal, situacao };
   });
-
-  allRows.forEach(row => {
-    row._antecipavel = null;
-    if(!row.dataEntrega) return;
-    const siblings = allRows.filter(r =>
-      r !== row &&
-      sanitizeDisplayText(r.codigo) === sanitizeDisplayText(row.codigo) &&
-      sanitizeDisplayText(r.cor).toUpperCase() === sanitizeDisplayText(row.cor).toUpperCase() &&
-      r.gci !== row.gci &&
-      r.dataEntrega && r.dataEntrega < row.dataEntrega
-    );
-    if(!siblings.length) return;
-    const novaLinha = siblings.reduce((a,b) => a.dataEntrega < b.dataEntrega ? a : b);
-    const pedidosVinculados = STATE.orders.filter(order => {
-      if(!['Pendente','Aprovado'].includes(canonicalStatus(order.status))) return false;
-      if(order.archived) return false;
-      return (order.items||[]).some(item =>
-        sanitizeDisplayText(String(item.gci||'')) === sanitizeDisplayText(String(row.gci||''))
-      );
-    });
-    if(!pedidosVinculados.length) return;
-    const gradeAtual = gradeFromRow(row);
-    const gradeNova = gradeFromRow(novaLinha);
-    const gradeDiferente = !gradesIguais(gradeAtual, gradeNova);
-    row._antecipavel = { novaLinha, pedidosVinculados, gradeAtual, gradeNova, gradeDiferente };
-  });
-
-  return allRows;
-}
-
-function gradeFromRow(row){
-  if(!row) return [];
-  const cols = Object.keys(row).filter(k => !isNaN(Number(k)) && Number(row[k]) > 0);
-  return cols.map(k => ({ size: k, qty: Number(row[k]) }));
-}
-
-function gradesIguais(a, b){
-  if(a.length !== b.length) return false;
-  const sortFn = arr => [...arr].sort((x,y) => Number(x.size)-Number(y.size));
-  const sa = sortFn(a); const sb = sortFn(b);
-  return sa.every((g,i) => g.size === sb[i].size && g.qty === sb[i].qty);
 }
 
 function renderDispo(){
@@ -985,11 +895,6 @@ function renderDispo(){
           <button class="btn-desmembrar" data-idx="${idx}">
             <i class="fa-solid fa-table-list"></i> Desmembrar
           </button>
-          ${row._antecipavel ? `
-          <button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-idx="${idx}">
-            <i class="fa-solid fa-angles-up text-[10px]"></i>
-            ${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}
-          </button>` : ''}
         </td>
       </tr>
     `;
@@ -1277,116 +1182,6 @@ function renderConsultaDesm(){
     </div>`;
 }
 
-// ── ANTECIPAÇÃO ───────────────────────────────────────────────────────────────
-
-let _antecipacaoState = null;
-
-function gradePillsHtml(grade, diffGrade){
-  const diffMap = new Map((diffGrade||[]).map(g=>[g.size, g.qty]));
-  return grade.map(g => {
-    const isDiff = !diffMap.has(g.size) || diffMap.get(g.size) !== g.qty;
-    return `<span style="display:inline-flex;flex-direction:column;align-items:center;border:0.5px solid ${isDiff?'#EF9F27':'var(--color-border-secondary)'};border-radius:6px;padding:2px 5px;min-width:24px;background:${isDiff?'#FAEEDA':'var(--color-background-secondary)'}">
-      <span style="font-size:9px;color:${isDiff?'#633806':'var(--color-text-secondary)'}">${g.size}</span>
-      <span style="font-size:10px;font-weight:700;color:${isDiff?'#412402':'var(--color-text-primary)'}">${g.qty}</span>
-    </span>`;
-  }).join('');
-}
-
-function openAntecipacaoModal(rowIdx){
-  const allRows = computeAllRows();
-  const row = allRows[rowIdx];
-  if(!row?._antecipavel) return;
-  const { novaLinha, pedidosVinculados, gradeAtual, gradeNova, gradeDiferente } = row._antecipavel;
-  _antecipacaoState = { row, novaLinha, pedidosVinculados, gradeDiferente };
-
-  $('antecipacaoTitle').textContent = `Antecipar — ${row.produto} / ${row.cor}`;
-  $('antecipacaoDePara').innerHTML = `
-    <span style="font-size:12px;color:#b45309;font-weight:700">GCI ${safeHtml(String(row.gci||'—'))} · ${safeHtml(formatDate(row.dataEntrega))}</span>
-    <span style="color:#94a3b8;font-size:16px">→</span>
-    <span style="font-size:12px;color:#15803d;font-weight:700">GCI ${safeHtml(String(novaLinha.gci||'—'))} · ${safeHtml(formatDate(novaLinha.dataEntrega))}</span>
-  `;
-
-  if(gradeDiferente){
-    $('antecipacaoGradeWarn').classList.remove('hidden');
-    $('antecipacaoGradeCompare').classList.remove('hidden');
-    $('gradeAtualPills').innerHTML = gradePillsHtml(gradeAtual, gradeNova);
-    $('gradeNovaPills').innerHTML = gradePillsHtml(gradeNova, gradeAtual);
-  } else {
-    $('antecipacaoGradeWarn').classList.add('hidden');
-    $('antecipacaoGradeCompare').classList.add('hidden');
-  }
-
-  $('antecipacaoPedidosList').innerHTML = `
-    <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">${pedidosVinculados.length} pedido${pedidosVinculados.length>1?'s':''} vinculados ao GCI de ${formatDate(row.dataEntrega)}</div>
-    ${pedidosVinculados.map(order => {
-      const units = (order.items||[]).filter(i=>sanitizeDisplayText(String(i.gci||''))===sanitizeDisplayText(String(row.gci||''))).reduce((s,i)=>s+getItemUnits(i),0);
-      return `<label style="display:flex;align-items:center;gap:10px;border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:10px 12px;cursor:pointer;margin-bottom:6px" class="antecipa-item">
-        <input type="checkbox" data-order-id="${safeHtml(order.id)}" onchange="updateAntecipacaoCounter()" style="accent-color:#2836d4;flex-shrink:0">
-        <div style="flex:1">
-          <div style="font-size:13px;font-weight:700">${safeHtml(order.clienteNome?order.clienteCodigo+' — '+order.clienteNome:order.clienteCodigo||'—')}</div>
-          <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px">${safeHtml(order.preposto?.nome||'')} · Prev Fat ${safeHtml(formatDate(row.dataEntrega))}</div>
-        </div>
-        <span style="font-size:11px;font-weight:700;color:#3C3489;background:#EEEDFE;border-radius:999px;padding:2px 8px;white-space:nowrap">${formatInt(units)} pares</span>
-      </label>`;
-    }).join('')}
-  `;
-
-  updateAntecipacaoCounter();
-  $('antecipacaoModal').classList.remove('hidden');
-}
-
-function updateAntecipacaoCounter(){
-  const n = document.querySelectorAll('.antecipa-item input:checked').length;
-  $('antecipacaoCounter').textContent = n===0 ? 'Selecione ao menos um pedido' : `${n} pedido${n>1?'s':''} selecionado${n>1?'s':''}`;
-  $('btnConfirmarAntecipacao').disabled = n===0;
-}
-
-function closeAntecipacaoModal(){
-  $('antecipacaoModal').classList.add('hidden');
-  _antecipacaoState = null;
-}
-
-async function confirmarAntecipacao(){
-  if(!_antecipacaoState) return;
-  const { row, novaLinha } = _antecipacaoState;
-  const selecionados = [...document.querySelectorAll('.antecipa-item input:checked')].map(cb=>cb.dataset.orderId);
-  if(!selecionados.length) return;
-
-  const btn = $('btnConfirmarAntecipacao');
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Antecipando...';
-
-  let ok=0; let fail=0;
-  const now = new Date().toISOString();
-
-  for(const orderId of selecionados){
-    const order = STATE.orders.find(o=>o.id===orderId);
-    if(!order){ fail++; continue; }
-    const updatedItems = (order.items||[]).map(item => {
-      if(sanitizeDisplayText(String(item.gci||''))!==sanitizeDisplayText(String(row.gci||''))) return item;
-      return { ...item, gci: novaLinha.gci, ebm: novaLinha.ebm||item.ebm, prevFaturamento: novaLinha.dataEntrega };
-    });
-    const histEntry = {
-      at: now,
-      label: 'Antecipado',
-      detail: `GCI ${row.gci} (${formatDate(row.dataEntrega)}) → GCI ${novaLinha.gci} (${formatDate(novaLinha.dataEntrega)})`,
-      by: 'Admin'
-    };
-    const updatedOrder = { ...order, items: updatedItems, history:[...(order.history||[]),histEntry], updatedAt: now };
-    try{
-      await fetch(WORKER_URL, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(updatedOrder) });
-      const idx = STATE.orders.findIndex(o=>o.id===orderId);
-      if(idx!==-1) STATE.orders[idx] = updatedOrder;
-      ok++;
-    }catch(e){ console.error(e); fail++; }
-  }
-
-  closeAntecipacaoModal();
-  if(ok>0) showToast(`${ok} pedido${ok>1?'s':''} antecipado${ok>1?'s':''}!`, 'success');
-  if(fail>0) showToast(`${fail} pedido${fail>1?'s':''} não puderam ser atualizados.`, 'error');
-  renderDispo();
-}
-
 // ── EVENT LISTENERS ───────────────────────────────────────────────────────────
 
 $('btnRefreshDispo').addEventListener('click', async () => {
@@ -1435,27 +1230,15 @@ document.querySelector('thead').addEventListener('click', (e) => {
 // Click em qualquer linha da tabela DISPO
 
 
-// Botão Desmembrar e Antecipar por linha
+// Botão Desmembrar por linha
 $('dispoTableBody').addEventListener('click', (e)=>{
-  const btnDesm = e.target.closest('.btn-desmembrar');
-  if(btnDesm){
-    const idx = parseInt(btnDesm.dataset.idx, 10);
-    const sorted = sortRows(computeRows());
-    const row = sorted[idx];
-    if(row) openDesmModal(row);
-    return;
-  }
-  const btnAnt = e.target.closest('.btn-antecipa-row');
-  if(btnAnt){
-    const idx = parseInt(btnAnt.dataset.idx, 10);
-    openAntecipacaoModal(idx);
-  }
+  const btn = e.target.closest('.btn-desmembrar');
+  if(!btn) return;
+  const idx = parseInt(btn.dataset.idx, 10);
+  const sorted = sortRows(computeRows());
+  const row = sorted[idx];
+  if(row) openDesmModal(row);
 });
-
-$('antecipacaoModal').addEventListener('click', e=>{
-  if(e.target===$('antecipacaoModal')) closeAntecipacaoModal();
-});
-
 // Auto-load on page open
 loadDispo();
 </script>
