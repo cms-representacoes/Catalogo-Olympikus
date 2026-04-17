@@ -1689,70 +1689,121 @@ function mostrarAlertaDivergencia(divs){
         <button onclick="document.getElementById('modalDivergencia').remove()" style="margin-left:auto;background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px">✕</button>
       </div>
 
-      ${[...porNum.values()].map(d => `
+      ${[...porNum.values()].map(d => {
+        // Se não achou o GCI atual no dispoAtual, tenta pelo codigo+cor
+        let gciAtual = d.dispoAtual.gci;
+        let ebmAtual = d.dispoAtual.ebm;
+        if(!gciAtual){
+          const codItem = sanitizeDisplayText(String(d.item.codigo||'').trim());
+          const corItem = sanitizeDisplayText(String(d.item.cor||'').trim()).toUpperCase();
+          const match = STATE.dispoRows.find(r => {
+            const rCod = sanitizeDisplayText(String(r['Código']||r['CODIGO']||'').trim());
+            const rCor = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
+            return rCod === codItem && rCor === corItem;
+          });
+          if(match){ gciAtual = String(match['GCI']||'').trim(); ebmAtual = String(match['EBM']||'').trim(); }
+        }
+        return `
         <div style="border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px">
           <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px">
-            Nº ${d.num} — ${safeHtml(d.dispoAtual.produto)} / ${safeHtml(d.dispoAtual.cor)}
+            ${d.num ? `Nº ${d.num} — ` : ''}${safeHtml(d.dispoAtual.produto||d.item.produto||'—')} / ${safeHtml(d.dispoAtual.cor||d.item.cor||'—')}
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;margin-bottom:10px">
             <div style="background:#fff7ed;border-radius:8px;padding:8px">
-              <div style="font-weight:700;color:#c2410c;margin-bottom:4px">No pedido</div>
-              ${d.gciDiv ? `<div>GCI: <strong>${safeHtml(d.item.gci||'—')}</strong></div>` : ''}
-              ${d.ebmDiv ? `<div>EBM: <strong>${safeHtml(d.item.ebm||'—')}</strong></div>` : ''}
+              <div style="font-weight:700;color:#c2410c;margin-bottom:4px">No pedido (antigo)</div>
+              <div>GCI: <strong>${safeHtml(d.item.gci||'—')}</strong></div>
+              ${d.item.ebm ? `<div>EBM: <strong>${safeHtml(d.item.ebm)}</strong></div>` : ''}
             </div>
             <div style="background:#f0fdf4;border-radius:8px;padding:8px">
               <div style="font-weight:700;color:#15803d;margin-bottom:4px">Na DISPO atual</div>
-              ${d.gciDiv ? `<div>GCI: <strong>${safeHtml(d.dispoAtual.gci)}</strong></div>` : ''}
-              ${d.ebmDiv ? `<div>EBM: <strong>${safeHtml(d.dispoAtual.ebm)}</strong></div>` : ''}
+              <div>GCI: <strong>${safeHtml(gciAtual||'Não encontrado')}</strong></div>
+              ${ebmAtual ? `<div>EBM: <strong>${safeHtml(ebmAtual)}</strong></div>` : ''}
             </div>
           </div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
             Pedidos afetados: ${d.orders.map(o=>`<strong>${o.preposto?.nome||o.preposto?.codigo||'—'}</strong> (${o.clienteNome||o.clienteCodigo||'—'})`).join(', ')}
           </div>
-          <button onclick="atualizarGciEbm('${d.num}')"
+          ${gciAtual ? `<button onclick="atualizarGciEbm('${safeHtml(d.num||'')}','${safeHtml(d.item.gci||'')}','${safeHtml(gciAtual)}','${safeHtml(ebmAtual||'')}')"
             style="border:none;background:#2836d4;color:white;border-radius:999px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer">
             <i class="fa-solid fa-rotate" style="margin-right:4px"></i>Atualizar pedidos com dados da DISPO
-          </button>
-        </div>
-      `).join('')}
+          </button>` : `<div style="font-size:11px;color:#b91c1c;font-weight:600">⚠ GCI atual não encontrado na DISPO — verifique manualmente</div>`}
+        </div>`;
+      }).join('')}
     </div>
   `;
   document.body.appendChild(modal);
   modal.addEventListener('click', e => { if(e.target === modal) modal.remove(); });
 }
 
-async function atualizarGciEbm(num){
-  const dispoRow = STATE.dispoRows.find(r => String(r['Nº']??r['N']??'').trim() === num);
-  if(!dispoRow){ showToast('Linha não encontrada na DISPO.','error'); return; }
-  const novoGci = String(dispoRow['GCI']||'').trim();
-  const novoEbm = String(dispoRow['EBM']||'').trim();
-
-  const ordensAfetadas = STATE.orders.filter(o =>
-    !o.archived && canonicalStatus(o.status) !== 'Cancelado' &&
-    (o.items||[]).some(i => String(i.num||'').trim() === num)
+async function atualizarGciEbm(num, gciAntigo, novoGciForce, novoEbmForce){
+  // Confirmar antes de atualizar
+  const confirmado = confirm(
+    `Confirmar atualização?\n\nGCI antigo: ${gciAntigo||num||'—'}\nGCI novo: ${novoGciForce||'(da DISPO)'}\n\nEssa ação atualizará todos os pedidos afetados.`
   );
+  if(!confirmado) return;
+
+  // Busca linha DISPO pelo Nº ou pelo GCI antigo
+  let dispoRow = null;
+  if(num && num !== '—' && num !== '') dispoRow = STATE.dispoRows.find(r => String(r['Nº']??r['N']??'').trim() === num);
+  if(!dispoRow && novoGciForce) dispoRow = STATE.dispoRows.find(r => String(r['GCI']||'').trim() === novoGciForce);
+  if(!dispoRow){
+    showToast('Linha não encontrada na DISPO.','error');
+    return;
+  }
+
+  const novoGci = novoGciForce || String(dispoRow['GCI']||'').trim();
+  const novoEbm = novoEbmForce || String(dispoRow['EBM']||'').trim();
+
+  // Acha pedidos pelo Nº OU pelo GCI antigo
+  const ordensAfetadas = STATE.orders.filter(o => {
+    if(o.archived) return false;
+    if(canonicalStatus(o.status) === 'Cancelado') return false;
+    return (o.items||[]).some(i => {
+      const iNum = String(i.num||'').trim();
+      const iGci = String(i.gci||'').trim();
+      if(num && num !== '—' && iNum === num) return true;
+      if(gciAntigo && iGci === gciAntigo) return true;
+      return false;
+    });
+  });
+
+  if(!ordensAfetadas.length){
+    showToast('Nenhum pedido encontrado para atualizar.','info');
+    return;
+  }
+
+  const btn = document.querySelector(`[onclick*="atualizarGciEbm"]`);
+  if(btn){ btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Atualizando...'; }
 
   let ok = 0;
   for(const order of ordensAfetadas){
     const updated = {
       ...order,
       items: (order.items||[]).map(item => {
-        if(String(item.num||'').trim() !== num) return item;
+        const iNum = String(item.num||'').trim();
+        const iGci = String(item.gci||'').trim();
+        const deveAtualizar = (num && iNum === num) || (gciAntigo && iGci === gciAntigo);
+        if(!deveAtualizar) return item;
         return { ...item, gci: novoGci || item.gci, ebm: novoEbm || item.ebm };
       }),
       history: [...(order.history||[]), {
         action:'updated', label:'GCI/EBM atualizado',
-        detail:`Nº ${num}: GCI/EBM atualizado conforme DISPO`,
+        detail:`GCI ${gciAntigo||num} → ${novoGci} (conforme DISPO atualizada)`,
         at: new Date().toISOString()
       }]
     };
     try{
-      await fetch(WORKER_URL, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(updated) });
-      ok++;
+      const res = await fetch(WORKER_URL, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(updated) });
+      if(res.ok) ok++;
     }catch(_){}
   }
-  showToast(`${ok} pedido${ok>1?'s':''} atualizado${ok>1?'s':''}!`, 'success');
+
   document.getElementById('modalDivergencia')?.remove();
+  if(ok > 0){
+    showToast(`✓ ${ok} pedido${ok>1?'s':''} atualizado${ok>1?'s':''}!`, 'success');
+  } else {
+    showToast('Erro ao atualizar. Tente novamente.', 'error');
+  }
   await loadOrders();
   renderDispo();
 }
