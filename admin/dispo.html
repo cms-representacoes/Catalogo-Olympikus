@@ -833,7 +833,6 @@ async function loadOrders(){
     }catch(_){ /* ignora erro de desmembramentos */ }
 
     await carregarOcultos();
-    atualizarBadgeOcultos();
     populateConsultaDesm();
 
   }catch(err){
@@ -875,6 +874,7 @@ async function loadDispo(){
     STATE.dispoLoadedAt = new Date();
     _bannerShownThisLoad = false;
     $('dispoNotLoaded').classList.add('hidden');
+    atualizarBadgeOcultos(); // chamado aqui — após STATE.dispoRows populado
     renderDispo();
     showToast('DISPO carregada com sucesso.', 'success');
   }catch(err){
@@ -1662,13 +1662,14 @@ async function toggleOculto(gci){
 function atualizarBadgeOcultos(){
   const badge = $('ocultosBadge');
   if(!badge) return;
-  // Só conta ocultos que existem na DISPO atual — remove os órfãos
-  const keysAtivas = new Set(STATE.dispoRows.map(r => ocultarKey(r)));
-  const ocultosAtivos = [...STATE.ocultos].filter(k => keysAtivas.has(k));
-  // Limpa órfãos do STATE e salva se mudou
-  if(ocultosAtivos.length !== STATE.ocultos.size){
-    STATE.ocultos = new Set(ocultosAtivos);
-    salvarOcultos(); // persiste limpeza silenciosamente
+  // Só filtra órfãos se a DISPO já foi carregada
+  if(STATE.dispoRows?.length){
+    const keysAtivas = new Set(STATE.dispoRows.map(r => ocultarKey(r)));
+    const ocultosAtivos = [...STATE.ocultos].filter(k => keysAtivas.has(k));
+    if(ocultosAtivos.length !== STATE.ocultos.size){
+      STATE.ocultos = new Set(ocultosAtivos);
+      salvarOcultos();
+    }
   }
   const n = STATE.ocultos.size;
   badge.textContent = n;
