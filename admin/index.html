@@ -372,14 +372,7 @@
               Painel DISPO
             </a>
 
-            <button id="btnLimparTodos"
-              class="focus-ring rounded-full border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-bold text-rose-700 flex items-center gap-2"
-              title="Excluir todos os pedidos — use apenas para testes">
-              <i class="fa-solid fa-trash-can text-xs"></i>
-              <span class="hidden sm:inline">Limpar tudo</span>
-            </button>
-
-            <button id="btnLogout" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
+<button id="btnLogout" class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700">
               Sair
             </button>
           </div>
@@ -2078,39 +2071,6 @@ $('adminPassword').addEventListener('keydown', async (e)=>{
 $('btnLogout').addEventListener('click', ()=>{
   localStorage.removeItem(STORAGE_KEYS.adminAuth);
   applyAuthUI();
-});
-
-$('btnLimparTodos').addEventListener('click', async () => {
-  if(!STATE.orders?.length){
-    showToast('Nenhum pedido para limpar.', 'info');
-    return;
-  }
-  const total = STATE.orders.length;
-  const confirmMsg = `⚠️ ATENÇÃO — AÇÃO IRREVERSÍVEL\n\nIsso vai excluir TODOS os ${total} pedido(s) permanentemente do GitHub.\n\nUse apenas para limpar dados de teste.\n\nDigite "CONFIRMAR" para prosseguir:`;
-  const input = prompt(confirmMsg);
-  if(input !== 'CONFIRMAR'){
-    showToast('Operação cancelada.', 'info');
-    return;
-  }
-  const btn = $('btnLimparTodos');
-  const prev = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
-  let ok = 0, fail = 0;
-  for(const order of [...STATE.orders]){
-    try{
-      await workerRequest('DELETE', { id: order.id });
-      ok++;
-    }catch(_){ fail++; }
-  }
-  btn.disabled = false;
-  btn.innerHTML = prev;
-  if(fail === 0){
-    showToast(`✓ ${ok} pedido(s) excluído(s) com sucesso.`, 'success');
-  } else {
-    showToast(`${ok} excluído(s), ${fail} com erro.`, 'error');
-  }
-  await loadAdmin();
 });
 
 $('btnRefresh').addEventListener('click', async ()=>{ await loadAdmin(); });
