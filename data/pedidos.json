@@ -2,7 +2,7 @@
   {
     "id": "PED-20260417172955-818",
     "createdAt": "2026-04-17T20:29:55.044Z",
-    "updatedAt": "2026-04-17T20:30:09.177Z",
+    "updatedAt": "2026-04-17T20:48:48.963Z",
     "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
@@ -24,8 +24,8 @@
         "codigo": "43395156",
         "produto": "MARTE",
         "cor": "MILITR",
-        "gci": "5274745",
-        "ebm": "13263498",
+        "gci": "—",
+        "ebm": "—",
         "amount": 2,
         "mode": "boxed",
         "packSize": 12,
@@ -95,6 +95,12 @@
           "itemsCount": 1,
           "units": 24
         }
+      },
+      {
+        "action": "updated",
+        "label": "GCI/EBM atualizado",
+        "detail": "Nº : GCI 5274745 → —",
+        "at": "2026-04-17T20:48:48.607Z"
       }
     ],
     "lastAction": "status_changed",
