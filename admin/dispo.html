@@ -547,7 +547,7 @@
           <table>
             <thead>
               <tr>
-                <th class="sortable" data-col="codigo">Código<i class="fa-solid fa-sort sort-icon"></i></th>
+                <th class="sortable" data-col="gci">GCI<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable" data-col="produto">Produto<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th>Cor</th>
                 <th class="sortable" data-col="dataEntrega">Data entrega<i class="fa-solid fa-sort sort-icon"></i></th>
@@ -555,6 +555,7 @@
                 <th class="sortable text-right col-pendente" data-col="pendente">Pendente<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable text-right col-aprovado" data-col="aprovado">Aprovado<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable text-right" data-col="saldoReal">Saldo real<i class="fa-solid fa-sort sort-icon"></i></th>
+                <th class="text-right" data-col="desmembrado">Desmembrado</th>
                 <th class="sortable col-pedidoMae" data-col="pedidoMae">Pedido Mãe<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable" data-col="situacao">Situação<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th></th>
@@ -1062,16 +1063,18 @@ function renderDispo(){
       ? `<span class="${sit.className}">−${formatInt(Math.abs(row.saldoReal))}</span>`
       : `<span class="${sit.className}">${formatInt(row.saldoReal)}</span>`;
 
-    // Desmembrado parcialmente: tem desmembramento salvo mas saldo real > 0
-    const desmKey = `${row.codigo}|${row.cor}|${formatDate(row.dataEntrega)}`;
-    const temDesm = STATE.desmembramentos && STATE.desmembramentos[desmKey] && Object.keys(STATE.desmembramentos[desmKey]).length > 0;
-    const isParcial = temDesm && row.saldoReal > 0;
+    // Desmembrado: soma todas as qtdes salvas no desmembramento desta linha
+    const key = desmKey(row);
+    const savedDesm = STATE.desmembramentos && STATE.desmembramentos[key] ? STATE.desmembramentos[key] : {};
+    const totalDesm = Object.values(savedDesm).reduce((s, v) => s + Number(v || 0), 0);
+    const isParcial = totalDesm > 0 && row.saldoReal > 0;
 
     return `
       <tr class="${rowClass}">
-        <td class="font-extrabold text-slate-800 tabular-nums">${safeHtml(row.codigo)}</td>
+        <td class="font-extrabold tabular-nums text-[var(--brand)] text-xs">${safeHtml(row.gci||row.codigo||'—')}</td>
         <td>
           <div class="font-extrabold text-slate-800">${safeHtml(row.produto)}${isParcial ? '<span class="badge-parcial ml-1">Parcial</span>' : ''}</div>
+          <div class="text-xs text-slate-400 mt-0.5">${safeHtml(row.codigo||'')}</div>
         </td>
         <td class="text-slate-500 font-semibold">${safeHtml(row.cor)}</td>
         <td class="tabular-nums font-semibold ${row._antecipavel ? 'text-[#3C3489]' : 'text-slate-600'}">
@@ -1082,6 +1085,7 @@ function renderDispo(){
         <td class="col-pendente text-right tabular-nums ${row.pendente > 0 ? 'text-amber-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.pendente)}</td>
         <td class="col-aprovado text-right tabular-nums ${row.aprovado > 0 ? 'text-emerald-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.aprovado)}</td>
         <td class="text-right tabular-nums">${saldoRealDisplay}</td>
+        <td class="text-right tabular-nums ${totalDesm > 0 ? 'text-[var(--brand)] font-extrabold' : 'text-slate-300'}">${totalDesm > 0 ? formatInt(totalDesm) : '—'}</td>
         <td class="col-pedidoMae text-center font-semibold text-[11px] ${row.pedidoMae === 'SIM' ? 'text-emerald-600' : 'text-slate-400'}">${safeHtml(row.pedidoMae || '—')}</td>
         <td>
           <span class="chip ${sit.chipClass} ${sit.sortVal <= 1 ? 'badge-ruptura' : ''}">
@@ -1275,29 +1279,27 @@ function closeDesmModal(){
 
 function populateConsultaDesm(){
   const desm = STATE.desmembramentos;
-  const keys = Object.keys(desm || {});
+  const keys = Object.keys(desm || {}).filter(k => {
+    // Só mostra se tem pelo menos uma loja com qtde > 0
+    const lojas = desm[k] || {};
+    return Object.values(lojas).some(v => Number(v) > 0);
+  });
   const sel = $('consultaDesmSel');
   const prev = sel.value;
 
   while(sel.options.length > 1) sel.remove(1);
 
-  // Filtra apenas chaves cujo código existe na DISPO atual
-  const keysValidas = keys.filter(key => {
-    const [codigo, cor] = key.split('|');
-    return STATE.dispoRows.some(r =>
-      sanitizeDisplayText(r.codigo) === sanitizeDisplayText(codigo) &&
-      sanitizeDisplayText(r.cor).toUpperCase() === sanitizeDisplayText(cor).toUpperCase()
-    );
-  });
-
-  if(!keysValidas.length){
+  if(!keys.length){
     $('consultaDesmWrap').classList.add('hidden');
     return;
   }
 
-  keysValidas.forEach(key => {
+  keys.forEach(key => {
     const [codigo, cor, prevFat] = key.split('|');
-    const dispoRow = STATE.dispoRows.find(r => sanitizeDisplayText(r.codigo) === sanitizeDisplayText(codigo) && sanitizeDisplayText(r.cor).toUpperCase() === sanitizeDisplayText(cor).toUpperCase());
+    const dispoRow = STATE.dispoRows.find(r =>
+      sanitizeDisplayText(r.codigo) === sanitizeDisplayText(codigo) &&
+      sanitizeDisplayText(r.cor).toUpperCase() === sanitizeDisplayText(cor).toUpperCase()
+    );
     const produto = dispoRow ? dispoRow.produto : codigo;
     const opt = document.createElement('option');
     opt.value = key;
@@ -1305,7 +1307,7 @@ function populateConsultaDesm(){
     sel.appendChild(opt);
   });
 
-  if(prev && keysValidas.includes(prev)) sel.value = prev;
+  if(prev && keys.includes(prev)) sel.value = prev;
   $('consultaDesmWrap').classList.remove('hidden');
 }
 
@@ -1575,35 +1577,57 @@ function toggleCol(col, visible){
 function detectarGciEbmAlterado(){
   if(!STATE.orders?.length || !STATE.dispoRows?.length) return;
 
-  // Mapa: num → { gci, ebm } da DISPO atual
-  const dispoNumMap = new Map();
+  // Mapa: num → { gci, ebm, produto, cor } da DISPO atual
+  // Também mapa: ebm → { gci, num, produto, cor }
+  const dispoNumMap  = new Map();
+  const dispoEbmMap  = new Map();
   for(const r of STATE.dispoRows){
     const num = String(r['Nº'] ?? r['N'] ?? '').trim();
-    if(!num) continue;
-    dispoNumMap.set(num, {
-      gci: String(r['GCI']||'').trim(),
-      ebm: String(r['EBM']||'').trim(),
+    const gci = String(r['GCI']||'').trim();
+    const ebm = String(r['EBM']||'').trim();
+    const info = {
+      gci, ebm, num,
       produto: String(r['Produto']||r['PRODUTO']||'').trim(),
       cor: String(r['COR']||r['Cor']||'').trim(),
-    });
+    };
+    if(num) dispoNumMap.set(num, info);
+    if(ebm) dispoEbmMap.set(ebm, info);
+    if(gci) dispoEbmMap.set(gci, info); // indexa por GCI tbm para lookup reverso
   }
 
   const divergentes = [];
+  const seen = new Set();
+
   for(const order of STATE.orders){
-    if(order.archived) return;
+    if(order.archived) continue;
     const st = canonicalStatus(order.status);
     if(st === 'Cancelado') continue;
     for(const item of (order.items||[])){
-      const num = String(item.num||'').trim();
-      if(!num || num === '—') continue;
-      const dispoAtual = dispoNumMap.get(num);
-      if(!dispoAtual) continue;
+      const num    = String(item.num||'').trim();
       const gciItem = String(item.gci||'').trim();
       const ebmItem = String(item.ebm||'').trim();
+
+      // Tenta encontrar a linha DISPO correspondente pelo Nº, EBM ou GCI
+      let dispoAtual = null;
+      if(num && num !== '—') dispoAtual = dispoNumMap.get(num);
+      if(!dispoAtual && ebmItem) dispoAtual = dispoEbmMap.get(ebmItem);
+
+      if(!dispoAtual) continue;
+
       const gciDiv = gciItem && dispoAtual.gci && gciItem !== dispoAtual.gci;
       const ebmDiv = ebmItem && dispoAtual.ebm && ebmItem !== dispoAtual.ebm;
+
       if(gciDiv || ebmDiv){
-        divergentes.push({ order, item, num, dispoAtual, gciDiv, ebmDiv });
+        const uid = `${dispoAtual.num||dispoAtual.ebm}`;
+        if(!seen.has(uid)){
+          seen.add(uid);
+          divergentes.push({ order, item, num: dispoAtual.num||num, dispoAtual, gciDiv, ebmDiv });
+        } else {
+          // Adiciona o order à entrada existente
+          const ex = divergentes.find(d => (d.dispoAtual.num||d.num) === (dispoAtual.num||num));
+          if(ex && !ex.orders) ex.orders = [ex.order];
+          if(ex) ex.orders = [...(ex.orders||[ex.order]), order];
+        }
       }
     }
   }
@@ -1613,11 +1637,14 @@ function detectarGciEbmAlterado(){
 }
 
 function mostrarAlertaDivergencia(divs){
-  // Agrupa por num para evitar duplicatas
   const porNum = new Map();
   for(const d of divs){
-    if(!porNum.has(d.num)) porNum.set(d.num, { ...d, orders:[] });
-    porNum.get(d.num).orders.push(d.order);
+    const uid = d.dispoAtual.num || d.num || d.item.gci;
+    if(!porNum.has(uid)) porNum.set(uid, { ...d, orders:[d.order] });
+    else {
+      const ex = porNum.get(uid);
+      if(!ex.orders.find(o=>o.id===d.order.id)) ex.orders.push(d.order);
+    }
   }
 
   const modal = document.createElement('div');
