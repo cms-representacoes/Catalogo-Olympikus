@@ -35,6 +35,36 @@
       --partial:#c2410c;
       --partial-soft:#ffedd5;
     }
+    .dark{
+      --bg:#0f172a;
+      --card:#1e293b;
+      --text:#e2e8f0;
+      --line:#334155;
+      --brand:#818cf8;
+      --brand-soft:rgba(129,140,248,.15);
+      --shadow:0 18px 42px rgba(0,0,0,.4);
+      --success:#4ade80;
+      --success-soft:#14532d;
+      --warning:#fbbf24;
+      --warning-soft:#451a03;
+      --info:#60a5fa;
+      --info-soft:#1e3a5f;
+      --danger:#f87171;
+      --danger-soft:#450a0a;
+      --muted:#94a3b8;
+      --muted-soft:#1e293b;
+      --partial:#fb923c;
+      --partial-soft:#431407;
+    }
+    .dark body,.dark .kpi-card,.dark .table-wrap,.dark .filter-pill,.dark header,.dark .rounded-\[28px\],.dark .bg-white,.dark select,.dark input{ background:var(--card)!important; color:var(--text)!important; border-color:var(--line)!important; }
+    .dark .table-wrap thead th{ background:#263248!important; color:#94a3b8!important; }
+    .dark .table-wrap tbody tr:hover td{ background:#263248!important; }
+    .dark .table-wrap tbody td{ border-color:#334155!important; }
+    .dark .bg-slate-50,.dark .bg-slate-100{ background:#1e293b!important; }
+    .dark .text-slate-400,.dark .text-slate-500,.dark .text-slate-600{ color:#94a3b8!important; }
+    .dark .text-slate-800,.dark .text-slate-700{ color:#e2e8f0!important; }
+    .dark .border-slate-200{ border-color:#334155!important; }
+    .dark .shadow-card{ box-shadow:0 4px 24px rgba(0,0,0,.4)!important; }
 
     *{ box-sizing:border-box; }
 
@@ -165,6 +195,7 @@
       white-space:nowrap;
       user-select:none;
     }
+    .table-wrap{ max-height:60vh; }
 
     .table-wrap thead th.sortable{
       cursor:pointer;
@@ -334,6 +365,11 @@
     .row-antecipa td:first-child { border-left:3px solid #534AB7; }
     .row-nova-dispo td { background:#f0fdf4 !important; }
     .badge-nova { font-size:10px; background:#EAF3DE; color:#27500A; border-radius:999px; padding:1px 7px; margin-left:5px; font-weight:700; }
+    .badge-parcial { font-size:10px; background:#ffedd5; color:#c2410c; border-radius:999px; padding:1px 7px; margin-left:5px; font-weight:700; border:0.5px solid #fdba74; }
+    .col-hide-pendente .col-pendente { display:none!important; }
+    .col-hide-aprovado .col-aprovado { display:none!important; }
+    .col-hide-pedidoMae .col-pedidoMae { display:none!important; }
+    @keyframes pulse-badge{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
     .icon-btn{ width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; border:0.5px solid var(--color-border-secondary,#e2e8f0); background:none; color:#64748b; transition:all .12s; flex-shrink:0; }
     .icon-btn:hover{ background:#f1f5f9; }
     .icon-btn.ocultar:hover{ border-color:#AFA9EC; color:#3C3489; background:#EEEDFE; }
@@ -380,6 +416,33 @@
               Atualizar DISPO
             </button>
 
+            <!-- Ocultar KPIs -->
+            <button id="btnToggleKpis" onclick="toggleKpis()" title="Ocultar/exibir KPIs"
+              class="focus-ring rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2">
+              <i class="fa-regular fa-eye text-slate-400" id="kpiEyeIcon"></i>
+              <span class="hidden sm:inline text-xs">KPIs</span>
+            </button>
+
+            <!-- Ocultar colunas -->
+            <div class="relative" id="colToggleWrap">
+              <button onclick="toggleColMenu()" title="Colunas"
+                class="focus-ring rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-table-columns text-slate-400 text-xs"></i>
+                <span class="hidden sm:inline text-xs">Colunas</span>
+              </button>
+              <div id="colMenu" class="hidden absolute right-0 top-12 bg-white border border-slate-200 rounded-2xl shadow-lg p-3 z-50 flex flex-col gap-2 min-w-[160px]">
+                <label class="flex items-center gap-2 text-sm font-semibold cursor-pointer"><input type="checkbox" id="colPendente" checked onchange="toggleCol('pendente',this.checked)"> Pendente</label>
+                <label class="flex items-center gap-2 text-sm font-semibold cursor-pointer"><input type="checkbox" id="colAprovado" checked onchange="toggleCol('aprovado',this.checked)"> Aprovado</label>
+                <label class="flex items-center gap-2 text-sm font-semibold cursor-pointer"><input type="checkbox" id="colPedidoMae" checked onchange="toggleCol('pedidoMae',this.checked)"> Pedido Mãe</label>
+              </div>
+            </div>
+
+            <!-- Dark mode -->
+            <button id="btnDarkMode" onclick="toggleDark()" title="Modo escuro"
+              class="focus-ring rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2">
+              <i class="fa-solid fa-moon text-slate-400 text-xs" id="darkIcon"></i>
+            </button>
+
             <button id="btnLogout"
               class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
               Sair
@@ -389,7 +452,7 @@
       </header>
 
       <!-- KPI CARDS -->
-      <div class="grid grid-cols-2 xl:grid-cols-6 gap-3 mb-4">
+      <div id="kpiBlock" class="grid grid-cols-2 xl:grid-cols-6 gap-3 mb-4">
         <div class="kpi-card">
           <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Linhas na DISPO</div>
           <div id="kpiLinhas" class="mt-2 text-3xl font-extrabold">—</div>
@@ -489,10 +552,10 @@
                 <th>Cor</th>
                 <th class="sortable" data-col="dataEntrega">Data entrega<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable text-right" data-col="saldo">Saldo DISPO<i class="fa-solid fa-sort sort-icon"></i></th>
-                <th class="sortable text-right" data-col="pendente">Pendente<i class="fa-solid fa-sort sort-icon"></i></th>
-                <th class="sortable text-right" data-col="aprovado">Aprovado<i class="fa-solid fa-sort sort-icon"></i></th>
+                <th class="sortable text-right col-pendente" data-col="pendente">Pendente<i class="fa-solid fa-sort sort-icon"></i></th>
+                <th class="sortable text-right col-aprovado" data-col="aprovado">Aprovado<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable text-right" data-col="saldoReal">Saldo real<i class="fa-solid fa-sort sort-icon"></i></th>
-                <th class="sortable" data-col="pedidoMae">Pedido Mãe<i class="fa-solid fa-sort sort-icon"></i></th>
+                <th class="sortable col-pedidoMae" data-col="pedidoMae">Pedido Mãe<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th class="sortable" data-col="situacao">Situação<i class="fa-solid fa-sort sort-icon"></i></th>
                 <th></th>
               </tr>
@@ -811,6 +874,7 @@ async function loadDispo(){
     _bannerShownThisLoad = false;
     $('dispoNotLoaded').classList.add('hidden');
     renderDispo();
+    detectarGciEbmAlterado();
     showToast('DISPO carregada com sucesso.', 'success');
   }catch(err){
     console.error(err);
@@ -998,11 +1062,16 @@ function renderDispo(){
       ? `<span class="${sit.className}">−${formatInt(Math.abs(row.saldoReal))}</span>`
       : `<span class="${sit.className}">${formatInt(row.saldoReal)}</span>`;
 
+    // Desmembrado parcialmente: tem desmembramento salvo mas saldo real > 0
+    const desmKey = `${row.codigo}|${row.cor}|${formatDate(row.dataEntrega)}`;
+    const temDesm = STATE.desmembramentos && STATE.desmembramentos[desmKey] && Object.keys(STATE.desmembramentos[desmKey]).length > 0;
+    const isParcial = temDesm && row.saldoReal > 0;
+
     return `
       <tr class="${rowClass}">
         <td class="font-extrabold text-slate-800 tabular-nums">${safeHtml(row.codigo)}</td>
         <td>
-          <div class="font-extrabold text-slate-800">${safeHtml(row.produto)}</div>
+          <div class="font-extrabold text-slate-800">${safeHtml(row.produto)}${isParcial ? '<span class="badge-parcial ml-1">Parcial</span>' : ''}</div>
         </td>
         <td class="text-slate-500 font-semibold">${safeHtml(row.cor)}</td>
         <td class="tabular-nums font-semibold ${row._antecipavel ? 'text-[#3C3489]' : 'text-slate-600'}">
@@ -1010,10 +1079,10 @@ function renderDispo(){
           ${isNovaDestinoAntecipacao ? '<span class="badge-nova">Nova</span>' : ''}
         </td>
         <td class="text-right font-extrabold tabular-nums">${formatInt(row.saldo)}</td>
-        <td class="text-right tabular-nums ${row.pendente > 0 ? 'text-amber-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.pendente)}</td>
-        <td class="text-right tabular-nums ${row.aprovado > 0 ? 'text-emerald-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.aprovado)}</td>
+        <td class="col-pendente text-right tabular-nums ${row.pendente > 0 ? 'text-amber-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.pendente)}</td>
+        <td class="col-aprovado text-right tabular-nums ${row.aprovado > 0 ? 'text-emerald-600 font-extrabold' : 'text-slate-400 font-semibold'}">${formatInt(row.aprovado)}</td>
         <td class="text-right tabular-nums">${saldoRealDisplay}</td>
-        <td class="text-center font-semibold text-[11px] ${row.pedidoMae === 'SIM' ? 'text-emerald-600' : 'text-slate-400'}">${safeHtml(row.pedidoMae || '—')}</td>
+        <td class="col-pedidoMae text-center font-semibold text-[11px] ${row.pedidoMae === 'SIM' ? 'text-emerald-600' : 'text-slate-400'}">${safeHtml(row.pedidoMae || '—')}</td>
         <td>
           <span class="chip ${sit.chipClass} ${sit.sortVal <= 1 ? 'badge-ruptura' : ''}">
             ${sit.sortVal <= 1 ? '<i class="fa-solid fa-triangle-exclamation"></i>' : ''}
@@ -1210,18 +1279,24 @@ function populateConsultaDesm(){
   const sel = $('consultaDesmSel');
   const prev = sel.value;
 
-  // Remove opções antigas (mantém a primeira)
   while(sel.options.length > 1) sel.remove(1);
 
-  if(!keys.length){
+  // Filtra apenas chaves cujo código existe na DISPO atual
+  const keysValidas = keys.filter(key => {
+    const [codigo, cor] = key.split('|');
+    return STATE.dispoRows.some(r =>
+      sanitizeDisplayText(r.codigo) === sanitizeDisplayText(codigo) &&
+      sanitizeDisplayText(r.cor).toUpperCase() === sanitizeDisplayText(cor).toUpperCase()
+    );
+  });
+
+  if(!keysValidas.length){
     $('consultaDesmWrap').classList.add('hidden');
     return;
   }
 
-  // Monta label para cada chave "codigo|cor|prevFat"
-  keys.forEach(key => {
+  keysValidas.forEach(key => {
     const [codigo, cor, prevFat] = key.split('|');
-    // Tenta achar o produto pelo codigo na DISPO
     const dispoRow = STATE.dispoRows.find(r => sanitizeDisplayText(r.codigo) === sanitizeDisplayText(codigo) && sanitizeDisplayText(r.cor).toUpperCase() === sanitizeDisplayText(cor).toUpperCase());
     const produto = dispoRow ? dispoRow.produto : codigo;
     const opt = document.createElement('option');
@@ -1230,7 +1305,7 @@ function populateConsultaDesm(){
     sel.appendChild(opt);
   });
 
-  if(prev) sel.value = prev;
+  if(prev && keysValidas.includes(prev)) sel.value = prev;
   $('consultaDesmWrap').classList.remove('hidden');
 }
 
@@ -1456,6 +1531,177 @@ function renderBannerAntecipacao(allRows){
     _bannerShownThisLoad = true;
     showToast(`${antecipаveis.length} produto${antecipаveis.length>1?'s':''} com antecipação disponível`, 'info');
   }
+}
+
+// ── DARK MODE ─────────────────────────────────────────────────────────────────
+function toggleDark(){
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('dispo_dark', isDark ? '1' : '0');
+  $('darkIcon').className = isDark ? 'fa-solid fa-sun text-amber-400 text-xs' : 'fa-solid fa-moon text-slate-400 text-xs';
+}
+if(localStorage.getItem('dispo_dark') === '1'){
+  document.documentElement.classList.add('dark');
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const icon = $('darkIcon');
+    if(icon) icon.className = 'fa-solid fa-sun text-amber-400 text-xs';
+  });
+}
+
+// ── TOGGLE KPIs ───────────────────────────────────────────────────────────────
+function toggleKpis(){
+  const block = $('kpiBlock');
+  const icon  = $('kpiEyeIcon');
+  const hidden = block.classList.toggle('hidden');
+  icon.className = hidden ? 'fa-regular fa-eye-slash text-slate-400' : 'fa-regular fa-eye text-slate-400';
+}
+
+// ── TOGGLE COLUNAS ────────────────────────────────────────────────────────────
+const _colState = { pendente:true, aprovado:true, pedidoMae:true };
+function toggleColMenu(){
+  $('colMenu').classList.toggle('hidden');
+}
+document.addEventListener('click', e => {
+  if(!$('colToggleWrap').contains(e.target)) $('colMenu').classList.add('hidden');
+});
+function toggleCol(col, visible){
+  _colState[col] = visible;
+  const table = document.querySelector('.table-wrap table');
+  if(!table) return;
+  if(visible) table.classList.remove(`col-hide-${col}`);
+  else        table.classList.add(`col-hide-${col}`);
+}
+
+// ── ALERTA GCI/EBM ALTERADO ───────────────────────────────────────────────────
+function detectarGciEbmAlterado(){
+  if(!STATE.orders?.length || !STATE.dispoRows?.length) return;
+
+  // Mapa: num → { gci, ebm } da DISPO atual
+  const dispoNumMap = new Map();
+  for(const r of STATE.dispoRows){
+    const num = String(r['Nº'] ?? r['N'] ?? '').trim();
+    if(!num) continue;
+    dispoNumMap.set(num, {
+      gci: String(r['GCI']||'').trim(),
+      ebm: String(r['EBM']||'').trim(),
+      produto: String(r['Produto']||r['PRODUTO']||'').trim(),
+      cor: String(r['COR']||r['Cor']||'').trim(),
+    });
+  }
+
+  const divergentes = [];
+  for(const order of STATE.orders){
+    if(order.archived) return;
+    const st = canonicalStatus(order.status);
+    if(st === 'Cancelado') continue;
+    for(const item of (order.items||[])){
+      const num = String(item.num||'').trim();
+      if(!num || num === '—') continue;
+      const dispoAtual = dispoNumMap.get(num);
+      if(!dispoAtual) continue;
+      const gciItem = String(item.gci||'').trim();
+      const ebmItem = String(item.ebm||'').trim();
+      const gciDiv = gciItem && dispoAtual.gci && gciItem !== dispoAtual.gci;
+      const ebmDiv = ebmItem && dispoAtual.ebm && ebmItem !== dispoAtual.ebm;
+      if(gciDiv || ebmDiv){
+        divergentes.push({ order, item, num, dispoAtual, gciDiv, ebmDiv });
+      }
+    }
+  }
+
+  if(!divergentes.length) return;
+  mostrarAlertaDivergencia(divergentes);
+}
+
+function mostrarAlertaDivergencia(divs){
+  // Agrupa por num para evitar duplicatas
+  const porNum = new Map();
+  for(const d of divs){
+    if(!porNum.has(d.num)) porNum.set(d.num, { ...d, orders:[] });
+    porNum.get(d.num).orders.push(d.order);
+  }
+
+  const modal = document.createElement('div');
+  modal.id = 'modalDivergencia';
+  modal.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.7);display:flex;align-items:center;justify-content:center;padding:16px';
+  modal.innerHTML = `
+    <div style="background:var(--card);border-radius:24px;padding:24px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.4)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <div style="width:36px;height:36px;border-radius:10px;background:#fee2e2;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <i class="fa-solid fa-triangle-exclamation" style="color:#b91c1c;font-size:14px"></i>
+        </div>
+        <div>
+          <div style="font-size:15px;font-weight:700;color:var(--text)">GCI/EBM alterado na DISPO</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">${porNum.size} linha${porNum.size>1?'s':''} com divergência detectada</div>
+        </div>
+        <button onclick="document.getElementById('modalDivergencia').remove()" style="margin-left:auto;background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px">✕</button>
+      </div>
+
+      ${[...porNum.values()].map(d => `
+        <div style="border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px">
+          <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px">
+            Nº ${d.num} — ${safeHtml(d.dispoAtual.produto)} / ${safeHtml(d.dispoAtual.cor)}
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;margin-bottom:10px">
+            <div style="background:#fff7ed;border-radius:8px;padding:8px">
+              <div style="font-weight:700;color:#c2410c;margin-bottom:4px">No pedido</div>
+              ${d.gciDiv ? `<div>GCI: <strong>${safeHtml(d.item.gci||'—')}</strong></div>` : ''}
+              ${d.ebmDiv ? `<div>EBM: <strong>${safeHtml(d.item.ebm||'—')}</strong></div>` : ''}
+            </div>
+            <div style="background:#f0fdf4;border-radius:8px;padding:8px">
+              <div style="font-weight:700;color:#15803d;margin-bottom:4px">Na DISPO atual</div>
+              ${d.gciDiv ? `<div>GCI: <strong>${safeHtml(d.dispoAtual.gci)}</strong></div>` : ''}
+              ${d.ebmDiv ? `<div>EBM: <strong>${safeHtml(d.dispoAtual.ebm)}</strong></div>` : ''}
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+            Pedidos afetados: ${d.orders.map(o=>`<strong>${o.preposto?.nome||o.preposto?.codigo||'—'}</strong> (${o.clienteNome||o.clienteCodigo||'—'})`).join(', ')}
+          </div>
+          <button onclick="atualizarGciEbm('${d.num}')"
+            style="border:none;background:#2836d4;color:white;border-radius:999px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer">
+            <i class="fa-solid fa-rotate" style="margin-right:4px"></i>Atualizar pedidos com dados da DISPO
+          </button>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.addEventListener('click', e => { if(e.target === modal) modal.remove(); });
+}
+
+async function atualizarGciEbm(num){
+  const dispoRow = STATE.dispoRows.find(r => String(r['Nº']??r['N']??'').trim() === num);
+  if(!dispoRow){ showToast('Linha não encontrada na DISPO.','error'); return; }
+  const novoGci = String(dispoRow['GCI']||'').trim();
+  const novoEbm = String(dispoRow['EBM']||'').trim();
+
+  const ordensAfetadas = STATE.orders.filter(o =>
+    !o.archived && canonicalStatus(o.status) !== 'Cancelado' &&
+    (o.items||[]).some(i => String(i.num||'').trim() === num)
+  );
+
+  let ok = 0;
+  for(const order of ordensAfetadas){
+    const updated = {
+      ...order,
+      items: (order.items||[]).map(item => {
+        if(String(item.num||'').trim() !== num) return item;
+        return { ...item, gci: novoGci || item.gci, ebm: novoEbm || item.ebm };
+      }),
+      history: [...(order.history||[]), {
+        action:'updated', label:'GCI/EBM atualizado',
+        detail:`Nº ${num}: GCI/EBM atualizado conforme DISPO`,
+        at: new Date().toISOString()
+      }]
+    };
+    try{
+      await fetch(WORKER_URL, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(updated) });
+      ok++;
+    }catch(_){}
+  }
+  showToast(`${ok} pedido${ok>1?'s':''} atualizado${ok>1?'s':''}!`, 'success');
+  document.getElementById('modalDivergencia')?.remove();
+  await loadOrders();
+  renderDispo();
 }
 
 // ── OCULTAR / REEXIBIR ───────────────────────────────────────────────────────
