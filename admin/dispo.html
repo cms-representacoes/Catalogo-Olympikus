@@ -820,6 +820,7 @@ async function loadOrders(){
     if(!res.ok) throw new Error(`Worker GET falhou (${res.status})`);
     const data = await res.json();
     STATE.orders = Array.isArray(data) ? data : (data.orders || []);
+    console.log(`[loadOrders] ${STATE.orders.length} pedido(s) carregado(s) do Worker`);
 
     // Carrega desmembramentos via PATCH
     try{
@@ -1604,23 +1605,21 @@ restoreLayout();
 async function enrichNumInOrders(){
   if(!STATE.orders?.length || !STATE.dispoRows?.length) return;
 
-  // Mapa primário: GCI → Nº (funciona quando GCI não mudou)
-  const gciToNum = new Map();
-  // Mapa secundário: "codigo_normalizado|cor_normalizada" → [{ num, gci }]
-  // Para quando GCI já mudou mas codigo+cor permanecem iguais
-  const coCorToRows = new Map();
-
+  // Mapa principal: "produto_norm|cor_norm|data" → { num, gci, ebm }
+  // Essa chave é única e permanente mesmo quando GCI/EBM mudam
+  const pcpToInfo = new Map();
   for(const r of STATE.dispoRows){
-    const gci = String(r['GCI']||'').trim();
-    const num = String(r['Nº'] ?? r['N'] ?? '').trim();
-    const ebm = String(r['EBM']||'').trim();
-    const cod = sanitizeDisplayText(String(r['Código']||r['CODIGO']||'').trim());
-    const cor = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
-    if(gci && num) gciToNum.set(gci, num);
-    if(ebm && num) gciToNum.set(`EBM:${ebm}`, num); // indexa por EBM também
-    const coCor = `${cod}|${cor}`;
-    if(!coCorToRows.has(coCor)) coCorToRows.set(coCor, []);
-    coCorToRows.get(coCor).push({ num, gci, ebm });
+    const num  = String(r['Nº'] ?? r['N'] ?? '').trim();
+    if(!num) continue;
+    const prod = sanitizeDisplayText(String(r['Produto']||r['PRODUTO']||'').trim());
+    const cor  = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
+    const data = formatDate(r['DATA ENTREGA']||r['DATA_ENTREGA']||'');
+    const key  = `${prod}|${cor}|${data}`;
+    pcpToInfo.set(key, {
+      num,
+      gci: String(r['GCI']||'').trim(),
+      ebm: String(r['EBM']||'').trim(),
+    });
   }
 
   const ordensParaAtualizar = [];
@@ -1630,22 +1629,12 @@ async function enrichNumInOrders(){
     let mudou = false;
     const novosItems = (order.items||[]).map(item => {
       if(item.num && item.num !== '—') return item; // já tem num
-
-      const gci = String(item.gci||'').trim();
-      const ebm = String(item.ebm||'').trim();
-      const cod = sanitizeDisplayText(String(item.codigo||'').trim());
-      const cor = sanitizeDisplayText(String(item.cor||'').trim()).toUpperCase();
-
-      // 1. Tenta pelo GCI atual
-      let num = gciToNum.get(gci);
-      // 2. Tenta pelo EBM
-      if(!num && ebm) num = gciToNum.get(`EBM:${ebm}`);
-      // 3. Fallback por codigo+cor (se apenas 1 linha na DISPO)
-      if(!num){
-        const matches = coCorToRows.get(`${cod}|${cor}`) || [];
-        if(matches.length === 1) num = matches[0].num;
-      }
-      if(num){ mudou = true; return { ...item, num }; }
+      const prod = sanitizeDisplayText(String(item.produto||'').trim());
+      const cor  = sanitizeDisplayText(String(item.cor||'').trim()).toUpperCase();
+      const data = formatDate(item.prevFaturamento||'');
+      const key  = `${prod}|${cor}|${data}`;
+      const info = pcpToInfo.get(key);
+      if(info){ mudou = true; return { ...item, num: info.num }; }
       return item;
     });
     if(mudou) ordensParaAtualizar.push({ ...order, items: novosItems });
@@ -1678,20 +1667,19 @@ async function enrichNumInOrders(){
 // ── ALERTA GCI/EBM ALTERADO ───────────────────────────────────────────────────
 function detectarGciEbmAlterado(){
   if(!STATE.orders?.length || !STATE.dispoRows?.length) return;
+  // Só roda se houver pedidos ativos
+  const ativos = STATE.orders.filter(o => !o.archived && canonicalStatus(o.status) !== 'Cancelado');
+  if(!ativos.length) return;
 
   // Mapa Nº → info (chave confiável)
   const dispoNumMap = new Map();
   // Mapa GCI → info (para verificar se GCI ainda existe)
   const dispoGciSet = new Set();
-  // Mapa "cod|cor" → [info] (fallback para itens sem num)
-  const dispoCoCorMap = new Map();
 
   for(const r of STATE.dispoRows){
     const num = String(r['Nº'] ?? r['N'] ?? '').trim();
     const gci = String(r['GCI']||'').trim();
     const ebm = String(r['EBM']||'').trim();
-    const cod = sanitizeDisplayText(String(r['Código']||r['CODIGO']||'').trim());
-    const cor = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
     const info = {
       gci, ebm, num,
       produto: String(r['Produto']||r['PRODUTO']||'').trim(),
@@ -1699,9 +1687,6 @@ function detectarGciEbmAlterado(){
     };
     if(num) dispoNumMap.set(num, info);
     if(gci) dispoGciSet.add(gci);
-    const coCor = `${cod}|${cor}`;
-    if(!dispoCoCorMap.has(coCor)) dispoCoCorMap.set(coCor, []);
-    dispoCoCorMap.get(coCor).push(info);
   }
 
   const divergentes = [];
@@ -1725,8 +1710,6 @@ function detectarGciEbmAlterado(){
       const num     = String(item.num||'').trim();
       const gciItem = String(item.gci||'').trim();
       const ebmItem = String(item.ebm||'').trim();
-      const codItem = sanitizeDisplayText(String(item.codigo||'').trim());
-      const corItem = sanitizeDisplayText(String(item.cor||'').trim()).toUpperCase();
 
       // FASE 1: tem Nº — usa como chave confiável
       if(num && num !== '—'){
@@ -1738,51 +1721,30 @@ function detectarGciEbmAlterado(){
         continue;
       }
 
-      // FASE 2: sem Nº — usa GCI para verificar se sumiu da DISPO
+      // FASE 2: sem Nº — GCI sumiu da DISPO
+      // Usa produto+cor+prevFat para achar a linha atual (mesma chave do enrichNum)
       if(gciItem && !dispoGciSet.has(gciItem)){
-        // GCI sumiu — tenta achar a nova linha pelo codigo+cor, depois produto+cor
+        const prodItem = sanitizeDisplayText(String(item.produto||'').trim());
+        const corItem2 = sanitizeDisplayText(String(item.cor||'').trim()).toUpperCase();
+        const dataItem = formatDate(item.prevFaturamento||'');
+        const key = `${prodItem}|${corItem2}|${dataItem}`;
+
+        // Busca na DISPO pela chave produto+cor+prevFat
         let dispoAtual = null;
-
-        // Tentativa 1: codigo+cor
-        const matchesCoCor = dispoCoCorMap.get(`${codItem}|${corItem}`) || [];
-        if(matchesCoCor.length === 1) dispoAtual = matchesCoCor[0];
-
-        // Tentativa 2: produto+cor (mais tolerante)
-        if(!dispoAtual){
-          const prodItem = sanitizeDisplayText(String(item.produto||'').trim());
-          for(const r of STATE.dispoRows){
-            const rProd = sanitizeDisplayText(String(r['Produto']||r['PRODUTO']||'').trim());
-            const rCor  = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
-            const rGci  = String(r['GCI']||'').trim();
-            if(rProd === prodItem && rCor === corItem && rGci !== gciItem){
-              dispoAtual = {
-                gci: rGci,
-                ebm: String(r['EBM']||'').trim(),
-                num: String(r['Nº']??r['N']??'').trim(),
-                produto: String(r['Produto']||r['PRODUTO']||'').trim(),
-                cor: String(r['COR']||r['Cor']||'').trim(),
-              };
-              break;
-            }
-          }
-        }
-
-        // Tentativa 3: só pelo produto (se cor também mudou)
-        if(!dispoAtual){
-          const prodItem = sanitizeDisplayText(String(item.produto||'').trim());
-          for(const r of STATE.dispoRows){
-            const rProd = sanitizeDisplayText(String(r['Produto']||r['PRODUTO']||'').trim());
-            const rGci  = String(r['GCI']||'').trim();
-            if(rProd === prodItem && rGci !== gciItem){
-              dispoAtual = {
-                gci: rGci,
-                ebm: String(r['EBM']||'').trim(),
-                num: String(r['Nº']??r['N']??'').trim(),
-                produto: String(r['Produto']||r['PRODUTO']||'').trim(),
-                cor: String(r['COR']||r['Cor']||'').trim(),
-              };
-              break;
-            }
+        for(const r of STATE.dispoRows){
+          const rProd = sanitizeDisplayText(String(r['Produto']||r['PRODUTO']||'').trim());
+          const rCor  = sanitizeDisplayText(String(r['COR']||r['Cor']||'').trim()).toUpperCase();
+          const rData = formatDate(r['DATA ENTREGA']||r['DATA_ENTREGA']||'');
+          const rGci  = String(r['GCI']||'').trim();
+          if(rProd === prodItem && rCor === corItem2 && rData === dataItem && rGci !== gciItem){
+            dispoAtual = {
+              gci: rGci,
+              ebm: String(r['EBM']||'').trim(),
+              num: String(r['Nº']??r['N']??'').trim(),
+              produto: String(r['Produto']||r['PRODUTO']||'').trim(),
+              cor: String(r['COR']||r['Cor']||'').trim(),
+            };
+            break;
           }
         }
 
@@ -1798,7 +1760,7 @@ function detectarGciEbmAlterado(){
             semNum: !dispoAtual?.num
           });
         } else {
-          const ex = divergentes.find(d => d.num === uid || (d.semNum && d.item.gci === gciItem));
+          const ex = divergentes.find(d => d.item?.gci === uid);
           if(ex && !ex.orders.find(o => o.id === order.id)) ex.orders.push(order);
         }
       }
