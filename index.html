@@ -813,16 +813,11 @@ function productImage(item){
   return `${DEFAULTS.imagesBasePath}${encodeURIComponent(name)}`;
 }
 function excelSerialToDate(serial){
-  const utcDays = Math.floor(Number(serial) - 25569);
-  const utcValue = utcDays * 86400;
-  const dateInfo = new Date(utcValue * 1000);
-  const fractionalDay = Number(serial) - Math.floor(Number(serial)) + 0.0000001;
-  let totalSeconds = Math.floor(86400 * fractionalDay);
-  const seconds = totalSeconds % 60;
-  totalSeconds -= seconds;
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor(totalSeconds / 60) % 60;
-  return new Date(dateInfo.getFullYear(), dateInfo.getMonth(), dateInfo.getDate(), hours, minutes, seconds);
+  // Converte serial do Excel para Date usando UTC para evitar shift de fuso horário
+  const n = Number(serial);
+  const d = new Date(Date.UTC(1899, 11, 30));
+  d.setUTCDate(d.getUTCDate() + Math.floor(n));
+  return new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
 }
 function formatDate(value){
   if(value === null || value === undefined || value === '') return '—';
