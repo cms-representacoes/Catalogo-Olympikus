@@ -271,6 +271,21 @@
     .dark .hover\:bg-slate-50:hover{ background:#1e293b!important; }
     .dark .filter-status-btn:hover{ background:#1e293b!important; color:var(--muted)!important; }
     .dark .filter-status-btn.fs-active-todos{ background:#334155!important; color:#f1f5f9!important; border-color:#475569!important; }
+    .dark .order-card-compact{ border-color:#475569!important; box-shadow:0 2px 8px rgba(0,0,0,.3)!important; }
+    .dark .order-card-compact:hover{ border-color:var(--brand)!important; box-shadow:0 4px 16px rgba(0,0,0,.4)!important; }
+    .dark #secaoPedidos > div{ background:#1e293b!important; border-color:#334155!important; }
+    /* Fundo da lista de pedidos */
+    .secao-pedidos-bg{ background:#e2e7f0; border:1px solid #c8d0dc; }
+    .dark .secao-pedidos-bg{ background:#0f172a!important; border-color:#1e293b!important; }
+    /* Chips de status no dark — suavizar cores fortes */
+    .dark .chip-status-pendente{ background:#451a03!important; color:#fbbf24!important; border-color:#78350f!important; }
+    .dark .chip-status-aprovado{ background:#14532d!important; color:#4ade80!important; border-color:#166534!important; }
+    .dark .chip-status-cancelado{ background:#450a0a!important; color:#f87171!important; border-color:#7f1d1d!important; }
+    /* Pills de filtro de status no dark */
+    .dark .filter-status-btn.fs-active-pend{ background:#451a03!important; color:#fbbf24!important; border-color:#78350f!important; }
+    .dark .filter-status-btn.fs-active-aprov{ background:#14532d!important; color:#4ade80!important; border-color:#166534!important; }
+    .dark .filter-status-btn.fs-active-export{ background:#1e3a5f!important; color:#60a5fa!important; border-color:#1e40af!important; }
+    .dark .filter-status-btn.fs-active-canc{ background:#450a0a!important; color:#f87171!important; border-color:#7f1d1d!important; }
     .dark .btn-expand-compact:hover{ background:#334155!important; }
     .dark .expand-action-btn:hover{ background:#334155!important; }
     .dark .ia-aprov:hover{ background:#14532d!important; }
@@ -283,8 +298,8 @@
     .dark .relatorio-table thead th.th-grade-toggle:hover{ background:#1e293b!important; color:var(--brand)!important; }
     .dark .kpi-op:hover{ box-shadow:0 8px 24px rgba(0,0,0,.3)!important; border-color:#475569!important; }
     /* Card expand */
-    .order-card-compact{ background:var(--card); border:0.5px solid var(--line); border-radius:24px; overflow:hidden; transition:border-color .12s; }
-    .order-card-compact:hover{ border-color:var(--brand); }
+    .order-card-compact{ background:var(--card); border:1px solid #c8d0dc; border-radius:24px; overflow:hidden; transition:border-color .12s, box-shadow .12s; box-shadow:0 2px 8px rgba(15,23,42,.10); }
+    .order-card-compact:hover{ border-color:var(--brand); box-shadow:0 4px 16px rgba(15,23,42,.13); }
     .order-card-compact.expanded{ border-color:var(--brand); }
     .card-compact-top{ display:flex; align-items:center; gap:10px; padding:11px 16px; cursor:pointer; }
     .card-compact-detail{ display:none; border-top:0.5px solid var(--line); padding:12px 16px; background:var(--bg); }
@@ -450,6 +465,10 @@
               <i class="fa-solid fa-file-excel"></i>
               Exportar pendentes
               <span id="badgePendentesExport" class="inline-flex items-center justify-center rounded-full bg-emerald-600 text-white text-[10px] font-extrabold min-w-[18px] h-[18px] px-1">0</span>
+            </button>
+
+            <button id="btnFullscreen" onclick="toggleFullscreen()" class="focus-ring w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:bg-slate-50" title="Tela cheia">
+              <i id="iconFullscreen" class="fa-solid fa-expand text-xs"></i>
             </button>
 
             <button id="btnIrResumo" title="Resumo operacional"
@@ -628,7 +647,7 @@
       </section>
 
       <section class="mt-4" id="secaoPedidos">
-        <div class="rounded-[28px] border border-slate-200 bg-white p-4 shadow-card">
+        <div class="rounded-[28px] p-4 shadow-card secao-pedidos-bg">
           <div class="flex items-center justify-between gap-3 mb-4">
             <div class="text-lg font-extrabold">Lista de pedidos</div>
             <div class="text-xs font-bold text-slate-400" id="ordersCountBadge">0 pedidos</div>
@@ -711,6 +730,10 @@
   </div>
 
 <script>
+// ── DARK MODE IMEDIATO — evita flash ao recarregar ────────────────────────────
+if(localStorage.getItem('admin_dark') === '1') document.documentElement.classList.add('dark');
+// ─────────────────────────────────────────────────────────────────────────────
+
 const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
 const STORAGE_KEYS = {
   adminAuth:'repasse_admin_auth_v1',
@@ -2640,30 +2663,46 @@ document.addEventListener('keydown', (e)=>{
 });
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ── DARK MODE ─────────────────────────────────────────────────────────────────
+// ── DARK MODE — aplicado imediatamente para evitar flash ─────────────────────
+(()=>{
+  if(localStorage.getItem('admin_dark') === '1'){
+    document.documentElement.classList.add('dark');
+  }
+})();
+
 function toggleDarkAdmin(){
   const isDark = document.documentElement.classList.toggle('dark');
   localStorage.setItem('admin_dark', isDark ? '1' : '0');
   const icon = $('darkIconAdmin');
   if(icon) icon.className = isDark ? 'fa-solid fa-sun text-amber-400 text-xs' : 'fa-solid fa-moon text-slate-400 text-xs';
 }
-if(localStorage.getItem('admin_dark') === '1'){
-  document.documentElement.classList.add('dark');
-  document.addEventListener('DOMContentLoaded', ()=>{
-    const icon = $('darkIconAdmin');
-    if(icon) icon.className = 'fa-solid fa-sun text-amber-400 text-xs';
-  });
+document.addEventListener('DOMContentLoaded', ()=>{
+  const icon = $('darkIconAdmin');
+  if(icon && localStorage.getItem('admin_dark') === '1') icon.className = 'fa-solid fa-sun text-amber-400 text-xs';
+});
+
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else {
+    document.exitFullscreen();
+  }
 }
+document.addEventListener('fullscreenchange', ()=>{
+  const icon = $('iconFullscreen');
+  if(!icon) return;
+  icon.className = document.fullscreenElement ? 'fa-solid fa-compress text-xs' : 'fa-solid fa-expand text-xs';
+});
 
 applyAuthUI();
-
-// ── Auto-copy ao selecionar texto ────────────────────────────────────────────
-document.addEventListener('mouseup', ()=>{
+document.addEventListener('mouseup', (e)=>{
+  // Ignora cliques em botões e inputs
+  if(e.target.closest('button,input,textarea,select,a')) return;
   const sel = window.getSelection();
   const text = sel ? sel.toString().trim() : '';
-  if(!text) return;
+  if(text.length < 2) return; // ignora cliques simples sem seleção real
   navigator.clipboard.writeText(text).then(()=>{
-    showToast('Copiado!', 'success');
+    showToast(`"${text.length > 30 ? text.slice(0,30)+'…' : text}" copiado!`, 'success');
   }).catch(()=>{});
 });
 // ─────────────────────────────────────────────────────────────────────────────
