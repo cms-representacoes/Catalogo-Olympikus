@@ -428,7 +428,7 @@
 
         <div class="mt-5">
           <label class="text-xs font-bold text-slate-500">Senha</label>
-          <input id="adminPassword" type="password" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold" placeholder="Digite a senha" />
+          <input id="adminPassword" type="password" class="focus-ring mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold" placeholder="Digite a senha" style="background:var(--card);color:var(--text);border-color:var(--line)" />
         </div>
 
         <button id="btnAdminLogin" class="focus-ring mt-5 w-full rounded-2xl bg-[var(--brand)] px-4 py-3 text-sm font-extrabold text-white">Entrar</button>
@@ -2615,9 +2615,9 @@ document.querySelectorAll('.filtro-export-btn').forEach(btn=>{
 setFiltroExport('all');
 // ─────────────────────────────────────────────────────────────────────────────
 
-$('btnScopeActive').addEventListener('click', ()=>{ setAdminScope('active'); applyFilters(); });
-$('btnScopeHistory').addEventListener('click', ()=>{ setAdminScope('history'); applyFilters(); });
-$('btnScopeAll').addEventListener('click', ()=>{ setAdminScope('all'); applyFilters(); });
+if($('btnScopeActive'))  $('btnScopeActive').addEventListener('click', ()=>{ setAdminScope('active'); applyFilters(); });
+if($('btnScopeHistory')) $('btnScopeHistory').addEventListener('click', ()=>{ setAdminScope('history'); applyFilters(); });
+if($('btnScopeAll'))     $('btnScopeAll').addEventListener('click', ()=>{ setAdminScope('all'); applyFilters(); });
 
 $('adminSearch').addEventListener('input', applyFilters);
 $('adminSearch').addEventListener('input', applyFilters);
