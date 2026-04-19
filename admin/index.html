@@ -1371,7 +1371,7 @@ function renderList(){
 
     return `
       <div class="order-card-compact" data-order-id="${safeHtml(order.id)}">
-        <div class="card-compact-top" onclick="toggleCardExpand('${safeHtml(order.id)}')">
+        <div class="card-compact-top" onclick="if(!event.target.closest('[data-action],.card-chk,.btn-expand-compact'))toggleCardExpand('${safeHtml(order.id)}')">
           <input type="checkbox" class="card-chk chk-pedido" data-id="${safeHtml(order.id)}"
             onclick="event.stopPropagation()" onchange="onCheckPedido(this)"
             title="Selecionar pedido">
@@ -1389,7 +1389,7 @@ function renderList(){
               ${(order.history||[]).some(h=>h.label==='Antecipado') ? `<span style="font-size:11px;font-weight:700;background:#EEEDFE;color:#3C3489;border-radius:999px;padding:2px 9px">↑ Antecipado</span>` : ''}
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:5px;flex-shrink:0" onclick="event.stopPropagation()">
+          <div style="display:flex;align-items:center;gap:5px;flex-shrink:0">
             ${chipHtml}
             <div class="icon-actions">${inlineIcons}</div>
             <button class="btn-expand-compact" id="expand-btn-${safeHtml(order.id)}" onclick="event.stopPropagation();toggleCardExpand('${safeHtml(order.id)}')">
@@ -1426,10 +1426,10 @@ function toggleCardExpand(id){
 }
 
 // Delegação de eventos das ações nos cards
+// Nota: o div de ações NÃO usa mais stopPropagation para não bloquear este listener
 document.addEventListener('click', e => {
   const btn = e.target.closest('[data-action]');
   if(!btn) return;
-  e.stopPropagation();
   const action = btn.dataset.action;
   const id     = btn.dataset.id;
   if(!action || !id) return;
