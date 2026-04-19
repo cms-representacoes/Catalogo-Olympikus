@@ -297,7 +297,10 @@
     .dark .relatorio-table thead th.relatorio-sortable:hover{ background:#1e293b!important; color:var(--brand)!important; }
     .dark .relatorio-table thead th.th-grade-toggle:hover{ background:#1e293b!important; color:var(--brand)!important; }
     .dark .kpi-op:hover{ box-shadow:0 8px 24px rgba(0,0,0,.3)!important; border-color:#475569!important; }
-    /* Card expand */
+    /* Checkbox nos cards */
+    .card-chk{ width:16px; height:16px; cursor:pointer; accent-color:var(--brand); flex-shrink:0; }
+    .chk-select-all-wrap{ display:flex; align-items:center; gap:8px; padding:8px 4px 6px; }
+    .chk-select-all-lbl{ font-size:12px; font-weight:700; color:var(--muted); cursor:pointer; user-select:none; }
     .order-card-compact{ background:var(--card); border:1px solid #c8d0dc; border-radius:24px; overflow:hidden; transition:border-color .12s, box-shadow .12s; box-shadow:0 2px 8px rgba(15,23,42,.10); }
     .order-card-compact:hover{ border-color:var(--brand); box-shadow:0 4px 16px rgba(15,23,42,.13); }
     .order-card-compact.expanded{ border-color:var(--brand); }
@@ -648,9 +651,21 @@
 
       <section class="mt-4" id="secaoPedidos">
         <div class="rounded-[28px] p-4 shadow-card secao-pedidos-bg">
-          <div class="flex items-center justify-between gap-3 mb-4">
+          <div class="flex items-center justify-between gap-3 mb-3">
             <div class="text-lg font-extrabold">Lista de pedidos</div>
             <div class="text-xs font-bold text-slate-400" id="ordersCountBadge">0 pedidos</div>
+          </div>
+
+          <!-- Controles de seleção -->
+          <div id="selecaoControles" class="hidden chk-select-all-wrap mb-2">
+            <input type="checkbox" id="chkSelecionarTodos" class="card-chk" title="Selecionar todos">
+            <label for="chkSelecionarTodos" class="chk-select-all-lbl">Selecionar todos</label>
+            <span id="selecaoCount" class="text-xs font-bold text-slate-400 ml-2"></span>
+            <button id="btnExportarSelecionados" onclick="exportarSelecionados()"
+              class="hidden focus-ring ml-auto rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 flex items-center gap-1.5 hover:bg-emerald-100 transition-colors">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Exportar selecionados <span id="badgeSelecionados" class="bg-emerald-600 text-white text-[10px] font-extrabold rounded-full px-1.5 py-0.5">0</span>
+            </button>
           </div>
 
           <div id="ordersEmpty" class="hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center text-slate-500">
@@ -1272,6 +1287,14 @@ function applyFilters(){
 function renderList(){
   $('ordersEmpty').classList.toggle('hidden', STATE.filtered.length !== 0);
 
+  // Mostrar/ocultar controles de seleção
+  const controles = $('selecaoControles');
+  if(controles) controles.classList.toggle('hidden', STATE.filtered.length === 0);
+
+  // Reset seleção ao re-renderizar
+  _pedidosSelecionados.clear();
+  atualizarSelecaoUI();
+
   const svgCheck = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
   const svgX     = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>`;
   const svgArch  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg>`;
@@ -1291,7 +1314,10 @@ function renderList(){
     const cardStatus = getStatusVisual(order.status);
 
     const chipHtml = isExportado
-      ? `<span class="chip" style="background:var(--info-soft);color:var(--info);font-size:11px;border:0.5px solid var(--info)">Exportado</span>`
+      ? `<span class="chip ${cardStatus.chipClass} flex-shrink-0" style="font-size:11px"><span class="status-dot ${cardStatus.dotClass}"></span>${safeHtml(cardStatus.label)}</span>
+         <span class="chip flex-shrink-0" style="background:#dbeafe;color:#1e40af;font-size:10px;border:0.5px solid #93c5fd;padding:3px 8px">
+           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline"><path d="M20 6L9 17l-5-5"/></svg> Exportado
+         </span>`
       : `<span class="chip ${cardStatus.chipClass} flex-shrink-0" style="font-size:11px"><span class="status-dot ${cardStatus.dotClass}"></span>${safeHtml(cardStatus.label)}</span>`;
 
     const inlineIcons = (() => {
@@ -1346,6 +1372,9 @@ function renderList(){
     return `
       <div class="order-card-compact" data-order-id="${safeHtml(order.id)}">
         <div class="card-compact-top" onclick="toggleCardExpand('${safeHtml(order.id)}')">
+          <input type="checkbox" class="card-chk chk-pedido" data-id="${safeHtml(order.id)}"
+            onclick="event.stopPropagation()" onchange="onCheckPedido(this)"
+            title="Selecionar pedido">
           <div style="flex:1;min-width:0">
             <div style="font-size:13px;font-weight:700;color:var(--text)">
               ${safeHtml(order.preposto?.nome || order.preposto?.codigo || '—')}
@@ -1421,6 +1450,9 @@ document.addEventListener('click', e => {
   }
   if(action === 'xlsx'){
     STATE.selectedId = id;
+    if(order.exportedAt){
+      if(!confirm(`Este pedido já foi exportado em ${formatDateTime(order.exportedAt)}.\nDeseja exportar novamente?`)) return;
+    }
     exportarRelatorioXlsx([order]);
   }
   if(action === 'pdf'){
@@ -2691,6 +2723,67 @@ document.addEventListener('fullscreenchange', ()=>{
   if(!icon) return;
   icon.className = document.fullscreenElement ? 'fa-solid fa-compress text-xs' : 'fa-solid fa-expand text-xs';
 });
+
+// ── SELEÇÃO DE PEDIDOS ────────────────────────────────────────────────────────
+const _pedidosSelecionados = new Set();
+
+function atualizarSelecaoUI(){
+  const n = _pedidosSelecionados.size;
+  const total = document.querySelectorAll('.chk-pedido').length;
+  const contEl = $('selecaoCount');
+  const btnExp = $('btnExportarSelecionados');
+  const badge  = $('badgeSelecionados');
+  const chkAll = $('chkSelecionarTodos');
+  if(contEl) contEl.textContent = n > 0 ? `${n} selecionado${n>1?'s':''}` : '';
+  if(badge)  badge.textContent = n;
+  if(btnExp) btnExp.classList.toggle('hidden', n === 0);
+  if(chkAll){ chkAll.checked=total>0&&n===total; chkAll.indeterminate=n>0&&n<total; }
+}
+
+function onCheckPedido(chk){
+  const id = chk.dataset.id;
+  if(chk.checked){ _pedidosSelecionados.add(id); } else { _pedidosSelecionados.delete(id); }
+  atualizarSelecaoUI();
+}
+
+document.addEventListener('change', e => {
+  if(e.target.id !== 'chkSelecionarTodos') return;
+  const checked = e.target.checked;
+  document.querySelectorAll('.chk-pedido').forEach(chk => {
+    chk.checked = checked;
+    if(checked){ _pedidosSelecionados.add(chk.dataset.id); } else { _pedidosSelecionados.delete(chk.dataset.id); }
+  });
+  atualizarSelecaoUI();
+});
+
+async function exportarSelecionados(){
+  if(!_pedidosSelecionados.size){ showToast('Nenhum pedido selecionado.','info'); return; }
+  const orders = STATE.orders.filter(o => _pedidosSelecionados.has(o.id));
+  const jaExportados = orders.filter(o => o.exportedAt);
+  if(jaExportados.length > 0){
+    const nomes = jaExportados.map(o=>o.preposto?.nome||o.id).join(', ');
+    if(!confirm(`${jaExportados.length} pedido(s) já exportados (${nomes}).\nDeseja exportar mesmo assim?`)) return;
+  }
+  const btn = $('btnExportarSelecionados');
+  const prev = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Exportando...';
+  try{
+    const gciMap = await getDispoGciMap();
+    const rows = buildRelatorioXlsxRows(orders, gciMap);
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    ws['!cols'] = [8,18,12,20,14,16,12,10,24,10,6,12,10,28].map(w=>({wch:w}));
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Pedidos');
+    const now = new Date();
+    XLSX.writeFile(wb, `pedidos_selecionados_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.xlsx`);
+    await marcarComoExportado(orders);
+    showToast(`${orders.length} pedido(s) exportado(s)!`, 'success');
+    renderList();
+  }catch(err){ console.error(err); showToast('Erro ao exportar.','error');
+  }finally{ btn.disabled=false; btn.innerHTML=prev; }
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 applyAuthUI();
 document.addEventListener('mouseup', (e)=>{
