@@ -11,7 +11,7 @@
       "nome": "WILLAME"
     },
     "clienteCodigo": "1309193",
-    "clienteNome": "UNIÃÂÃÂO CALÃÂÃÂADOS",
+    "clienteNome": "UNIÃÂÃÂÃÂÃÂO CALÃÂÃÂÃÂÃÂADOS",
     "prazo": "Z31 - 35/63/91 D",
     "campanha": "CO681 +28DD OLY",
     "observacoes": "",
@@ -72,7 +72,7 @@
       "nome": "WILLAME"
     },
     "clienteCodigo": "23424",
-    "clienteNome": "PÃÂ QUENTE CALÃÂADOS",
+    "clienteNome": "PÃÂÃÂ QUENTE CALÃÂÃÂADOS",
     "prazo": "Z35 - 63/91/119 D",
     "campanha": "",
     "observacoes": "",
@@ -232,7 +232,7 @@
       "nome": "WILLAME"
     },
     "clienteCodigo": "76049",
-    "clienteNome": "mais calçados",
+    "clienteNome": "mais calÃ§ados",
     "prazo": "Z31 - 35/63/91 D",
     "campanha": "CO681 +28DD OLY",
     "observacoes": "",
@@ -278,6 +278,105 @@
           }
         ],
         "prevFaturamento": 46178
+      }
+    ]
+  },
+  {
+    "id": "PED-20260422112408-779",
+    "createdAt": "2026-04-22T14:24:08.930Z",
+    "updatedAt": "2026-04-22T14:24:09.243Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "25745",
+      "nome": "LÉO"
+    },
+    "clienteCodigo": "127616",
+    "clienteNome": "Noroeste",
+    "prazo": "Z31 - 35/63/91 D",
+    "campanha": "CO681 +28DD OLY",
+    "observacoes": "Aporte",
+    "totals": {
+      "packs": 17,
+      "units": 204
+    },
+    "items": [
+      {
+        "codigo": "43342471",
+        "produto": "NUVEM",
+        "cor": "RYLMHO",
+        "gci": "5245130",
+        "ebm": "13185973",
+        "amount": 5,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 60,
+        "grade": [
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 3
+          },
+          {
+            "size": "43",
+            "qty": 2
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46132
+      },
+      {
+        "codigo": "43342471",
+        "produto": "NUVEM",
+        "cor": "LUNCHB",
+        "gci": "5240742",
+        "ebm": "13175375",
+        "amount": 12,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 144,
+        "grade": [
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 3
+          },
+          {
+            "size": "43",
+            "qty": 2
+          },
+          {
+            "size": "44",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": 46113
       }
     ]
   }
