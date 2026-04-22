@@ -805,8 +805,8 @@ function toNumber(v){
   return Number(String(v||'').replace(/\./g,'').replace(',', '.').replace(/[^\d.-]/g,'')) || 0;
 }
 function productKey(item){ return normalizeText([item.codigo, item.cor, item.gci, item.ebm, item._row].join('||')); }
-function productImage(item){
-  // Monta nome do arquivo direto de codigo + cor (ex: 43342471_LUNCHB.png)
+function productImage(item, ext){
+  // Monta nome do arquivo direto de codigo + cor (ex: 43342471_LUNCHB.jpg)
   // sem depender da coluna "Imagem" do Produtos.xlsx
   const cod = String(item.codigo || '').trim();
   const cor = String(item.cor || '').trim()
@@ -816,8 +816,13 @@ function productImage(item){
     .replace(/_+/g, '_')
     .replace(/^_+|_+$/g, '');
   if(!cod) return '';
-  const name = cor ? `${cod}_${cor}.png` : `${cod}.png`;
-  return `${DEFAULTS.imagesBasePath}${encodeURIComponent(name)}`;
+  const base = cor ? `${cod}_${cor}` : cod;
+  const e = ext || 'jpg';
+  return `${DEFAULTS.imagesBasePath}${encodeURIComponent(base + '.' + e)}`;
+}
+// Retorna lista de URLs candidatas em ordem de tentativa: jpg → png → jpeg → webp
+function productImageCandidates(item){
+  return ['jpg','png','jpeg','webp'].map(ext => productImage(item, ext));
 }
 function excelSerialToDate(serial){
   // Converte serial do Excel para Date usando UTC para evitar shift de fuso horário
@@ -1599,7 +1604,7 @@ function renderCatalog(){
 
   for(const item of STATE.view){
     const key = item.key;
-    const img = productImage(item);
+    const img = productImage(item, 'jpg');
     const gKey = groupKey(item);
     const siblings = getItemSiblings(item);
     const isMulti = siblings.length > 1;
@@ -1620,7 +1625,7 @@ function renderCatalog(){
     card.className = 'rounded-[28px] border border-slate-200 bg-white shadow-soft overflow-hidden';
     card.innerHTML = `
       <div class="aspect-[4/3] bg-slate-50 border-b border-slate-200 flex items-center justify-center overflow-hidden">
-        ${img ? `<img src="${img}" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white" onerror="this.style.display='none';this.parentElement.querySelector('.img-fallback').classList.remove('hidden')">` : ''}
+        ${img ? `<img src="${img}" data-srcs="${productImageCandidates(item).join('|')}" data-src-idx="0" alt="${safeHtml(item.produto)}" class="h-full w-full object-contain bg-white" onerror="(function(el){var srcs=el.dataset.srcs.split('|'),idx=parseInt(el.dataset.srcIdx||0)+1;if(idx<srcs.length){el.dataset.srcIdx=idx;el.src=srcs[idx];}else{el.style.display='none';el.parentElement.querySelector('.img-fallback').classList.remove('hidden');}})(this)">` : ''}
         <div class="img-fallback ${img ? 'hidden' : ''} flex flex-col items-center justify-center text-slate-400">
           <i class="fa-solid fa-image text-3xl"></i>
           <div class="mt-2 text-xs font-bold">Sem imagem</div>
@@ -1775,14 +1780,14 @@ function renderCart(){
   wrap.innerHTML = '';
 
   for(const item of items){
-    const img = productImage(item);
+    const img = productImage(item, 'jpg');
     const totalUnitsItem = item.mode === 'boxed' ? item.amount * item.packSize : item.amount;
     const row = document.createElement('div');
     row.className = 'rounded-[28px] border border-slate-200 bg-white p-4';
     row.innerHTML = `
       <div class="flex gap-3">
         <div class="h-20 w-20 shrink-0 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
-          ${img ? `<img src="${img}" class="h-full w-full object-contain bg-white">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
+          ${img ? `<img src="${img}" data-srcs="${productImageCandidates(item).join('|')}" data-src-idx="0" class="h-full w-full object-contain bg-white" onerror="(function(el){var srcs=el.dataset.srcs.split('|'),idx=parseInt(el.dataset.srcIdx||0)+1;if(idx<srcs.length){el.dataset.srcIdx=idx;el.src=srcs[idx];}else{el.style.display='none';}})(this)">` : `<i class="fa-solid fa-image text-slate-400"></i>`}
         </div>
 
         <div class="min-w-0 flex-1">
@@ -2512,8 +2517,12 @@ async function buildCatalogPdfBlob(perPage){
       doc.line(sectionX, y - 2.5, sectionX + sectionW, y - 2.5);
     }
 
-    const imgUrl = productImage(item);
-    const dataUrl = await imageUrlToDataUrl(imgUrl);
+    // Tenta jpg → png → jpeg → webp para o PDF
+    let dataUrl = '';
+    for(const imgUrl of productImageCandidates(item)){
+      dataUrl = await imageUrlToDataUrl(imgUrl);
+      if(dataUrl) break;
+    }
 
     doc.setFillColor(255,255,255);
     doc.roundedRect(sectionX, y, sectionW, imageBoxH, 3, 3, 'F');
