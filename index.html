@@ -732,24 +732,24 @@ function cleanText(v){
   return String(v ?? '').trim();
 }
 function decodeMojibake(value){
-  const str = String(value ?? '').trim();
+  let str = String(value ?? '');
   if(!str) return '';
-  // Só tenta corrigir sequências reais de mojibake (Latin-1 lido como UTF-8)
-  // Nunca usa escape/decodeURIComponent ou TextDecoder — corrompem texto UTF-8 válido
-  const MOJI = {
-    'Ã\u0081':'Á','Ã\u00A0':'À','Ã\u0082':'Â','Ã\u0083':'Ã','Ã\u0089':'É',
-    'Ã\u008A':'Ê','Ã\u008D':'Í','Ã\u0093':'Ó','Ã\u0094':'Ô','Ã\u0095':'Õ',
-    'Ã\u009A':'Ú','Ã\u0087':'Ç','Ã\u0091':'Ñ',
-    'Ã¡':'á','Ã ':'à','Ã¢':'â','Ã£':'ã','Ã©':'é','Ãª':'ê','Ã­':'í',
-    'Ã³':'ó','Ã´':'ô','Ãµ':'õ','Ãº':'ú','Ã§':'ç','Ã±':'ñ',
-    'â€™':"'",'â€œ':'"','â€"':'–','â€"':'—','Â°':'°','Â ':' ','ï¿½':''
-  };
-  const keys = Object.keys(MOJI).sort(function(a,b){return b.length-a.length;});
-  const hasMoji = keys.some(function(k){return str.indexOf(k)!==-1;});
-  if(!hasMoji) return str;
-  let out = str;
-  keys.forEach(function(k){if(out.indexOf(k)!==-1) out=out.split(k).join(MOJI[k]);});
-  return out;
+
+  const suspicious = /Ã|Â|�|â€™|â€œ|â€|ð/g;
+  if(!suspicious.test(str)) return str;
+
+  try{
+    const decoded = decodeURIComponent(escape(str));
+    if(decoded && decoded !== str) return decoded;
+  }catch(_){ }
+
+  try{
+    const bytes = Uint8Array.from([...str].map(ch => ch.charCodeAt(0) & 0xff));
+    const decoded = new TextDecoder('utf-8', { fatal:false }).decode(bytes);
+    if(decoded && decoded !== str) return decoded;
+  }catch(_){ }
+
+  return str;
 }
 function sanitizeDisplayText(value){
   return decodeMojibake(cleanText(value));
@@ -1020,8 +1020,7 @@ function normalizeOrder(rawOrder){
   order.archived = Boolean(order.archived);
   order.createdAt = order.createdAt || '';
   order.updatedAt = order.updatedAt || order.createdAt || '';
-  order.clienteCodigo = String(order.clienteCodigo || order.cliente || '').trim();
-  order.clienteNome = String(order.clienteNome || order.nomeCliente || '').trim();
+  order.clienteCodigo = sanitizeDisplayText(order.clienteCodigo || order.cliente);
   order.prazo = sanitizeDisplayText(order.prazo);
   order.campanha = sanitizeDisplayText(order.campanha);
   order.observacoes = sanitizeDisplayText(order.observacoes);
