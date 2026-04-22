@@ -2581,8 +2581,14 @@ async function buildCatalogPdfBlob(showGrade){
     const rawData = await imageUrlToDataUrl(rawUrl);
     const img = await loadImgForPdfCrop(rawData);
     if(img?.dataUrl){
-      const fit = fitRect(img.w, img.h, ibW - 8, ibH - 8);
-      doc.addImage(img.dataUrl, 'PNG', ibX+4+fit.x, ibY+4+fit.y, fit.w, fit.h, undefined, 'FAST');
+      // Opção B: força imagem a ocupar 85% da altura do box, mantendo proporção
+      const targetH = ibH * 0.85;
+      const scale   = targetH / img.h;
+      const drawW   = img.w * scale;
+      const drawH   = targetH;
+      const drawX   = ibX + (ibW - drawW) / 2;
+      const drawY   = ibY + (ibH - drawH) / 2;
+      doc.addImage(img.dataUrl, 'PNG', drawX, drawY, drawW, drawH, undefined, 'FAST');
     }
 
     // ── Info à direita ────────────────────────────────────────
