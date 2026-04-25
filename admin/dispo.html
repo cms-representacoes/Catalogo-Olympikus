@@ -546,6 +546,9 @@
             <button class="filter-pill" data-filter="ocultos" id="pillOcultos" style="border-color:#AFA9EC;color:#3C3489;background:#EEEDFE">
               <i class="fa-solid fa-eye-slash mr-1"></i>Ocultos <span id="ocultosBadge" class="ml-1 hidden bg-[#3C3489] text-white text-[10px] font-extrabold rounded-full px-1.5 py-0.5">0</span>
             </button>
+            <button class="filter-pill" data-filter="finalizados" id="pillFinalizados" style="border-color:#bbf7d0;color:#14532d;background:#dcfce7" data-tip="Produtos com saldo zerado e desmembramentos finalizados">
+              <i class="fa-solid fa-circle-check mr-1"></i>Finalizados <span id="finalizadosBadge" class="ml-1 hidden bg-[#14532d] text-white text-[10px] font-extrabold rounded-full px-1.5 py-0.5">0</span>
+            </button>
           </div>
           <div class="text-xs font-bold text-slate-400" id="tableCount">— itens</div>
         </div>
@@ -891,38 +894,41 @@ async function loadDispo(){
 
     await loadOrders();
 
-    const res = await fetch(`${DISPO_FILE_URL}?t=${Date.now()}`, { cache:'no-store' });
-    if(!res.ok) throw new Error(`Falha ao carregar DISPO.xlsx (${res.status})`);
+    // Lê do dispo.json via Worker
+    const res = await fetch(WORKER_URL, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'getDispo' })
+    });
+    if(!res.ok) throw new Error(`Falha ao carregar DISPO (${res.status})`);
 
-    const buffer = await res.arrayBuffer();
-    const workbook = XLSX.read(buffer, { type:'array', cellDates:true });
-    const sheetName = workbook.SheetNames.includes('DISPO') ? 'DISPO' : workbook.SheetNames[0];
-    const ws = workbook.Sheets[sheetName];
-    const rows = XLSX.utils.sheet_to_json(ws, { defval:null, raw:false });
+    const json = await res.json();
+    if(!Array.isArray(json)) throw new Error('Formato inválido do dispo.json');
 
-    STATE.dispoRows = rows.map(row => {
-      const saldo = Number(row['SALDO'] || row['Saldo'] || 0);
-      const codigo = sanitizeDisplayText(row['Código'] || row['CODIGO'] || row['Codigo'] || row['REF'] || row['Referência'] || row['Referencia']);
-      const produto = sanitizeDisplayText(row['Produto'] || row['PRODUTO'] || row['Descrição'] || row['Descricao']);
-      const cor = sanitizeDisplayText(row['COR'] || row['Cor'] || row['Cor Descrição'] || row['Cor Descricao']);
-      const dataEntrega = row['DATA ENTREGA'] || row['DATA_ENTREGA'] || row['Data Entrega'] || row['Prev. Faturamento'] || null;
-      const pedidoMae = sanitizeDisplayText(row['PEDIDO MÃE'] || row['PEDIDO MAE'] || row['Pedido Mae'] || '');
-      const gci = sanitizeDisplayText(String(row['GCI'] || row['Gci'] || ''));
-      const ebm = sanitizeDisplayText(String(row['EBM'] || row['Ebm'] || ''));
-      const filial = sanitizeDisplayText(String(row['FILIAL'] || row['Filial'] || row['filial'] || ''));
-      const num = sanitizeDisplayText(String(row['Nº'] ?? row['N'] ?? row['Numero'] ?? row['NUM'] ?? ''));
-      return { num, codigo, produto, cor, dataEntrega, saldo, pedidoMae, gci, ebm, filial };
+    STATE.dispoRows = json.map(row => {
+      const saldo      = Number(row.saldo || 0);
+      const codigo     = sanitizeDisplayText(row.codigo || '');
+      const produto    = sanitizeDisplayText(row.produto || '');
+      const cor        = sanitizeDisplayText(row.cor || '');
+      const dataEntrega = row.dataEntrega || null;
+      const pedidoMae  = sanitizeDisplayText(row.pedidoMae || '');
+      const gci        = sanitizeDisplayText(String(row.gci || ''));
+      const ebm        = sanitizeDisplayText(String(row.ebm || ''));
+      const filial     = sanitizeDisplayText(String(row.filial || ''));
+      const num        = sanitizeDisplayText(String(row.num || ''));
+      const grade      = row.grade || {};
+      return { num, codigo, produto, cor, dataEntrega, saldo, pedidoMae, gci, ebm, filial, grade };
     }).filter(row => row.codigo || row.produto);
 
     STATE.dispoLoadedAt = new Date();
     _bannerShownThisLoad = false;
     $('dispoNotLoaded').classList.add('hidden');
-    atualizarBadgeOcultos(); // chamado aqui — após STATE.dispoRows populado
+    atualizarBadgeOcultos();
     renderDispo();
     showToast('DISPO carregada com sucesso.', 'success');
   }catch(err){
     console.error(err);
-    showToast('Não foi possível carregar a DISPO. Verifique o arquivo DISPO.xlsx.', 'error');
+    showToast('Não foi possível carregar a DISPO. Verifique se o dispo.json foi importado.', 'error');
   }finally{
     $('btnRefreshDispo').disabled = false;
     $('btnRefreshDispo').innerHTML = '<i class="fa-solid fa-rotate-right text-slate-400"></i> Atualizar DISPO';
@@ -937,6 +943,7 @@ function computeRows(){
   return computeAllRows().filter(row => {
     const f = STATE.activeFilter;
     if(f === 'ocultos') return isOculto(row);
+    if(f === 'finalizados') return isDispoFinalizado(row);
     if(isOculto(row)) return false;
     if(q){
       const hay = `${row.codigo} ${row.produto} ${row.cor}`.toLowerCase();
@@ -949,6 +956,48 @@ function computeRows(){
     if(f === 'saldo-positivo') return row.saldoReal > 0;
     return true;
   });
+}
+
+function isDispoFinalizado(row){
+  // Finalizado = saldoReal <= 0 e todos desmembramentos com situação Finalizado
+  if(row.saldoReal > 0) return false;
+  const key = desmKey(row);
+  const lojas = STATE.desmembramentos[key] || {};
+  const linhas = Object.values(lojas);
+  if(!linhas.length) return row.saldoReal <= 0; // sem desmembramentos mas saldo zerado
+  return linhas.every(sit => (sit||'').toLowerCase() === 'finalizado');
+}
+
+async function excluirDaDispoJson(row){
+  if(!confirm(`Excluir "${row.produto} — ${row.cor}" da DISPO?\n\nEssa ação não pode ser desfeita.`)) return;
+  try{
+    // Remove da lista local
+    const chave = r => `${r.codigo}|${r.produto}|${r.cor}`.toUpperCase();
+    const alvo = chave(row);
+    const novaLista = STATE.dispoRows.filter(r => chave(r) !== alvo);
+
+    // Salva no Worker
+    const res = await fetch(WORKER_URL, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'saveDispo', data: novaLista.map(r => ({
+        num: r.num, ebm: r.ebm, gci: r.gci, filial: r.filial,
+        codigo: r.codigo, produto: r.produto, cor: r.cor,
+        dataEntrega: r.dataEntrega, pedidoMae: r.pedidoMae,
+        saldo: r.saldo, grade: r.grade || {}
+      }))})
+    });
+    if(!res.ok) throw new Error('Falha ao salvar');
+    const result = await res.json();
+    if(!result.success) throw new Error(result.error);
+
+    STATE.dispoRows = novaLista;
+    renderDispo();
+    showToast(`"${row.produto}" removido da DISPO.`, 'success');
+  }catch(err){
+    console.error(err);
+    showToast('Erro ao excluir. Tente novamente.', 'error');
+  }
 }
 
 function setKpiFilter(filter){
@@ -1146,8 +1195,11 @@ function renderDispo(){
           <div class="btn-group">
             ${STATE.activeFilter === 'ocultos'
               ? `<button class="icon-btn reexibir btn-reexibir" data-gci="${safeHtml(String(row.gci||''))}" title="Reexibir"><i class="fa-solid fa-eye" style="font-size:12px"></i></button>`
+              : STATE.activeFilter === 'finalizados'
+              ? `<button class="icon-btn btn-excluir-dispo" data-idx="${idx}" title="Excluir da DISPO" style="color:#b91c1c;border-color:#fca5a5" onclick="excluirDaDispoJson(STATE.dispoRows.find(r=>'${safeHtml(row.codigo)}|${safeHtml(row.produto)}|${safeHtml(row.cor)}'.toUpperCase()===((r.codigo+'|'+r.produto+'|'+r.cor).toUpperCase())))"><i class="fa-solid fa-trash-can" style="font-size:12px"></i></button>`
               : `<button class="icon-btn desm btn-desmembrar" data-idx="${idx}" title="Desmembrar"><i class="fa-solid fa-table-list" style="font-size:12px"></i></button>
                  <button class="icon-btn ocultar btn-ocultar" data-gci="${safeHtml(String(row.gci||''))}" title="Ocultar"><i class="fa-solid fa-eye-slash" style="font-size:12px"></i></button>
+                 <button class="icon-btn btn-excluir-dispo" data-idx="${idx}" title="Excluir da DISPO" style="color:#b91c1c;border-color:#fca5a5" onclick="excluirDaDispoJson(STATE.dispoRows.find(r=>'${safeHtml(row.codigo)}|${safeHtml(row.produto)}|${safeHtml(row.cor)}'.toUpperCase()===((r.codigo+'|'+r.produto+'|'+r.cor).toUpperCase())))"><i class="fa-solid fa-trash-can" style="font-size:12px"></i></button>
                  ${row._antecipavel ? `<button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-gci="${safeHtml(String(row.gci||''))}"><i class="fa-solid fa-angles-up text-[10px]"></i>${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}</button>` : ''}`
             }
           </div>
@@ -1737,7 +1789,6 @@ async function toggleOculto(gci){
 function atualizarBadgeOcultos(){
   const badge = $('ocultosBadge');
   if(!badge) return;
-  // Só filtra órfãos se a DISPO já foi carregada
   if(STATE.dispoRows?.length){
     const keysAtivas = new Set(STATE.dispoRows.map(r => ocultarKey(r)));
     const ocultosAtivos = [...STATE.ocultos].filter(k => keysAtivas.has(k));
@@ -1747,6 +1798,16 @@ function atualizarBadgeOcultos(){
     }
   }
   const n = STATE.ocultos.size;
+  badge.textContent = n;
+  badge.classList.toggle('hidden', n === 0);
+  atualizarBadgeFinalizados();
+}
+
+function atualizarBadgeFinalizados(){
+  const badge = $('finalizadosBadge');
+  if(!badge || !STATE.dispoRows?.length) return;
+  const allRows = computeAllRows();
+  const n = allRows.filter(r => isDispoFinalizado(r)).length;
   badge.textContent = n;
   badge.classList.toggle('hidden', n === 0);
 }
