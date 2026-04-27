@@ -976,13 +976,48 @@
       </div>
 
       <div class="grid grid-cols-2 gap-3 mb-5">
-        <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Código *</label><input id="cpCodigo" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="43242437"></div>
+        <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Código *</label><input id="cpCodigo" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="43242437" oninput="sugerirNomeImagem()"></div>
         <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Produto *</label><input id="cpProduto" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="PASSO"></div>
         <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Cor código *</label><input id="cpCorCodigo" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="PTO/PT" oninput="sugerirNomeImagem()"></div>
         <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Cor</label><input id="cpCor" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="PRETO/PRETO"></div>
-        <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Categoria</label><input id="cpCategoria" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="FTW"></div>
-        <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Segmento</label><input id="cpSegmento" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="Caminhada"></div>
-        <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Gênero</label><input id="cpGenero" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="Masculino"></div>
+        <div>
+          <label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Categoria</label>
+          <select id="cpCategoria" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" onchange="toggleManual(this,'cpCategoriaManual')">
+            <option value="">Selecionar...</option>
+            <option>FTW</option>
+            <option>ACC</option>
+            <option>CHI</option>
+            <option>MEIA</option>
+            <option>V&A</option>
+            <option value="__manual__">Outro (digitar)</option>
+          </select>
+          <input id="cpCategoriaManual" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm mt-1 hidden" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="Digite a categoria">
+        </div>
+        <div>
+          <label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Segmento</label>
+          <select id="cpSegmento" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" onchange="toggleManual(this,'cpSegmentoManual')">
+            <option value="">Selecionar...</option>
+            <option>Caminhada</option>
+            <option>Casual</option>
+            <option>Chinelos</option>
+            <option>Corrida</option>
+            <option>Performance</option>
+            <option>Treino</option>
+            <option value="__manual__">Outro (digitar)</option>
+          </select>
+          <input id="cpSegmentoManual" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm mt-1 hidden" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="Digite o segmento">
+        </div>
+        <div>
+          <label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Gênero</label>
+          <select id="cpGenero" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" onchange="toggleManual(this,'cpGeneroManual')">
+            <option value="">Selecionar...</option>
+            <option>Masculino</option>
+            <option>Feminino</option>
+            <option>Unissex</option>
+            <option value="__manual__">Outro (digitar)</option>
+          </select>
+          <input id="cpGeneroManual" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm mt-1 hidden" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="Digite o gênero">
+        </div>
         <div><label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Preço (R$)</label><input id="cpPreco" type="number" step="0.01" class="focus-ring w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" style="background:var(--card);color:var(--text);border-color:var(--line)" placeholder="279.99"></div>
         <div class="col-span-2">
           <label class="text-xs font-bold text-slate-500 block mb-1" style="color:var(--muted)">Nome do arquivo de imagem</label>
@@ -2620,6 +2655,156 @@ async function confirmarImportarProdutos(){
 // ── CADASTRAR PRODUTO MANUAL ──────────────────────────────────────────────────
 let _cpImagemBase64 = null;
 let _cpImagemExt = 'jpg';
+
+function toggleManual(select, manualId){
+  const manual = $(manualId);
+  if(!manual) return;
+  if(select.value === '__manual__'){
+    manual.classList.remove('hidden');
+    manual.focus();
+  } else {
+    manual.classList.add('hidden');
+    manual.value = '';
+  }
+}
+
+function getCpSelectValue(selectId, manualId){
+  const sel = $(selectId);
+  if(!sel) return '';
+  if(sel.value === '__manual__') return ($(manualId)?.value.trim() || '').toUpperCase();
+  return (sel.value || '').toUpperCase();
+}
+
+function abrirCadastrarProduto(){ $('modalCadastrarProduto').classList.remove('hidden'); }
+
+function fecharCadastrarProduto(){
+  $('modalCadastrarProduto').classList.add('hidden');
+  ['cpCodigo','cpProduto','cpCorCodigo','cpCor','cpPreco','cpImagem',
+   'cpCategoriaManual','cpSegmentoManual','cpGeneroManual'].forEach(id=>{ const el=$(id); if(el) el.value=''; });
+  ['cpCategoria','cpSegmento','cpGenero'].forEach(id=>{ const el=$(id); if(el) el.value=''; });
+  ['cpCategoriaManual','cpSegmentoManual','cpGeneroManual'].forEach(id=>{ $(id)?.classList.add('hidden'); });
+  limparImagemProduto();
+}
+
+function limparImagemProduto(){
+  _cpImagemBase64 = null;
+  _cpImagemExt = 'jpg';
+  const prev = $('cpImagemPreview');
+  const wrap = $('cpImagemPreviewWrap');
+  const area = $('cpImagemUploadArea');
+  const inp  = $('cpImagemFile');
+  if(prev) prev.src = '';
+  if(wrap) wrap.classList.add('hidden');
+  if(area) area.classList.remove('hidden');
+  if(inp)  inp.value = '';
+}
+
+function gerarNomeImagem(){
+  const codigo    = ($('cpCodigo')?.value.trim()    || '').toUpperCase();
+  const corCodigo = ($('cpCorCodigo')?.value.trim() || '').toUpperCase();
+  if(!codigo || !corCodigo) return '';
+  return `${codigo}_${corCodigo.replace(/\//g,'_')}`;
+}
+
+function sugerirNomeImagem(){
+  const nome = gerarNomeImagem();
+  if(nome && !_cpImagemBase64){
+    const cpImagem = $('cpImagem');
+    if(cpImagem) cpImagem.value = nome;
+  }
+}
+
+function previewImagemProduto(input){
+  const file = input.files[0];
+  if(!file) return;
+  _cpImagemExt = file.name.split('.').pop().toLowerCase() || 'jpg';
+  // Normalizar extensão
+  if(!['jpg','jpeg','png','webp'].includes(_cpImagemExt)) _cpImagemExt = 'jpg';
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const dataUrl = e.target.result;
+    _cpImagemBase64 = dataUrl.split(',')[1];
+
+    const prev = $('cpImagemPreview');
+    const wrap = $('cpImagemPreviewWrap');
+    const area = $('cpImagemUploadArea');
+    if(prev) prev.src = dataUrl;
+    if(wrap) wrap.classList.remove('hidden');
+    if(area) area.classList.add('hidden');
+
+    // Sempre gera o nome no padrão {CODIGO}_{COR_CODIGO}.ext
+    const nomeGerado = gerarNomeImagem();
+    const cpImagem = $('cpImagem');
+    if(cpImagem) cpImagem.value = nomeGerado || file.name.replace(/\.[^.]+$/, '').toUpperCase();
+  };
+  reader.readAsDataURL(file);
+}
+
+async function salvarProdutoManual(){
+  const codigo    = ($('cpCodigo')?.value.trim()    || '').toUpperCase();
+  const produto   = ($('cpProduto')?.value.trim()   || '').toUpperCase();
+  const corCodigo = ($('cpCorCodigo')?.value.trim() || '').toUpperCase();
+  const cor       = ($('cpCor')?.value.trim()       || corCodigo).toUpperCase();
+  const categoria = getCpSelectValue('cpCategoria','cpCategoriaManual');
+  const segmento  = getCpSelectValue('cpSegmento','cpSegmentoManual');
+  const genero    = getCpSelectValue('cpGenero','cpGeneroManual');
+
+  if(!codigo || !produto || !corCodigo){ showToast('Código, Produto e Cor código são obrigatórios.', 'error'); return; }
+
+  const nomeImagemBase = ($('cpImagem')?.value.trim() || gerarNomeImagem() || `${codigo}_${corCodigo.replace(/\//g,'_')}`).toUpperCase();
+  const nomeArquivo = `${nomeImagemBase}.${_cpImagemExt}`;
+
+  const novoItem = {
+    imagem: nomeImagemBase, categoria, segmento,
+    codigo, produto, corCodigo, cor, genero,
+    preco: Number($('cpPreco')?.value || 0),
+    custo: 0
+  };
+
+  const btn = $('btnSalvarProdutoManual');
+  if(btn){ btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Salvando...'; }
+
+  try{
+    const resGet = await fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getProdutos'}) });
+    const atual = resGet.ok ? await resGet.json() : [];
+
+    const k = `${codigo}|${corCodigo}`;
+    if(atual.some(r => `${(r.codigo||'').toUpperCase()}|${(r.corCodigo||'').toUpperCase()}` === k)){
+      if(!confirm(`Já existe um produto com Código "${codigo}" e Cor "${corCodigo}". Deseja incluir mesmo assim?`)){
+        if(btn){ btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-plus"></i> Adicionar produto'; }
+        return;
+      }
+    }
+
+    if(_cpImagemBase64){
+      if(btn) btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando imagem...';
+      const resImg = await fetch(WORKER_URL, {
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'uploadImagem', nome:nomeArquivo, nomeArquivo, base64:_cpImagemBase64 })
+      });
+      if(!resImg.ok) throw new Error('Falha ao enviar imagem');
+      const imgResult = await resImg.json();
+      if(!imgResult.success) throw new Error(imgResult.error || 'Erro no upload da imagem');
+    }
+
+    if(btn) btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando produto...';
+    const listaFinal = [...atual, novoItem];
+    const resSave = await fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'saveProdutos', data:listaFinal}) });
+    if(!resSave.ok) throw new Error('Falha ao salvar produto');
+    const result = await resSave.json();
+    if(!result.success) throw new Error(result.error);
+
+    showToast(`Produto "${produto}" adicionado${_cpImagemBase64?' com imagem':''}!`, 'success');
+    fecharCadastrarProduto();
+  }catch(err){
+    console.error(err);
+    showToast(`Erro: ${err.message}`, 'error');
+  }finally{
+    if(btn){ btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-plus"></i> Adicionar produto'; }
+  }
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 function abrirCadastrarProduto(){ $('modalCadastrarProduto').classList.remove('hidden'); }
 
