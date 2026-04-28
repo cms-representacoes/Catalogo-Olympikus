@@ -567,14 +567,28 @@ function limparUploadImagem(){
 function previewUploadImagem(input){
   const file = input.files[0];
   if(!file) return;
-  _uploadExt = file.name.split('.').pop().toLowerCase() || 'jpg';
-  if(!['jpg','jpeg','png','webp'].includes(_uploadExt)) _uploadExt = 'jpg';
+  _uploadExt = 'jpg'; // sempre salva como jpg após compressão
   const reader = new FileReader();
   reader.onload = e => {
-    _uploadBase64 = e.target.result.split(',')[1];
-    $('uploadPreview').src = e.target.result;
-    $('uploadPreviewWrap').classList.remove('hidden');
-    $('uploadArea2').classList.add('hidden');
+    // Comprimir via canvas antes de exibir e enviar
+    const img = new Image();
+    img.onload = () => {
+      const MAX = 800;
+      let w = img.width, h = img.height;
+      if(w > MAX || h > MAX){
+        if(w > h){ h = Math.round(h * MAX/w); w = MAX; }
+        else      { w = Math.round(w * MAX/h); h = MAX; }
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      _uploadBase64 = dataUrl.split(',')[1];
+      $('uploadPreview').src = dataUrl;
+      $('uploadPreviewWrap').classList.remove('hidden');
+      $('uploadArea2').classList.add('hidden');
+    };
+    img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
@@ -582,7 +596,7 @@ function previewUploadImagem(input){
 async function enviarImagem(){
   if(!_uploadBase64){ showToast('Selecione uma imagem primeiro.','error'); return; }
   const nomeBase    = $('uploadNomeArquivo').value.trim() || `${_uploadItem.artigo}_${_uploadItem.cor.replace(/\//g,'_')}`;
-  const nomeArquivo = `${nomeBase}.${_uploadExt}`;
+  const nomeArquivo = `${nomeBase}.jpg`; // sempre jpg após compressão
   const btn = $('btnEnviarImagem');
   const prev = btn.innerHTML;
   btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
