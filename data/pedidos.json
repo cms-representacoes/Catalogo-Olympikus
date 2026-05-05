@@ -453,7 +453,7 @@
       "nome": "WILLAME"
     },
     "clienteCodigo": "65934",
-    "clienteNome": "SILAS CALÃADOS",
+    "clienteNome": "SILAS CALÃÂADOS",
     "prazo": "Z35 - 63/91/119 D",
     "campanha": "",
     "observacoes": "",
@@ -609,67 +609,6 @@
           }
         ],
         "prevFaturamento": "5/23/26"
-      }
-    ]
-  },
-  {
-    "id": "PED-20260505195455-690",
-    "createdAt": "2026-05-05T22:54:55.697Z",
-    "updatedAt": "2026-05-05T22:54:56.018Z",
-    "status": "Pendente",
-    "archived": false,
-    "isDuplicate": false,
-    "preposto": {
-      "codigo": "3616654",
-      "nome": "MARCOS"
-    },
-    "clienteCodigo": "71378",
-    "clienteNome": "Globo Calçados",
-    "prazo": "Z35 - 63/91/119 D",
-    "campanha": "CO681 +28DD OLY",
-    "observacoes": "",
-    "totals": {
-      "packs": 1,
-      "units": 12
-    },
-    "items": [
-      {
-        "codigo": "43342471",
-        "produto": "NUVEM",
-        "cor": "LUNCHB",
-        "gci": "5240741",
-        "ebm": "13175377",
-        "amount": 1,
-        "mode": "boxed",
-        "packSize": 12,
-        "totalUnits": 12,
-        "grade": [
-          {
-            "size": "39",
-            "qty": 1
-          },
-          {
-            "size": "40",
-            "qty": 2
-          },
-          {
-            "size": "41",
-            "qty": 3
-          },
-          {
-            "size": "42",
-            "qty": 3
-          },
-          {
-            "size": "43",
-            "qty": 2
-          },
-          {
-            "size": "44",
-            "qty": 1
-          }
-        ],
-        "prevFaturamento": "4/1/26"
       }
     ]
   }
