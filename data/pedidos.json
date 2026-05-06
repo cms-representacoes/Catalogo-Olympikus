@@ -453,7 +453,7 @@
       "nome": "WILLAME"
     },
     "clienteCodigo": "65934",
-    "clienteNome": "SILAS CALÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂADOS",
+    "clienteNome": "SILAS CALÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂADOS",
     "prazo": "Z35 - 63/91/119 D",
     "campanha": "",
     "observacoes": "",
@@ -834,6 +834,67 @@
           }
         ],
         "prevFaturamento": "31/05/26"
+      }
+    ]
+  },
+  {
+    "id": "PED-20260506160732-492",
+    "createdAt": "2026-05-06T19:07:32.121Z",
+    "updatedAt": "2026-05-06T19:07:32.593Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "109839",
+      "nome": "MARIANA"
+    },
+    "clienteCodigo": "13385",
+    "clienteNome": "FRANCISCO GRADEWOOL DE ARAUJO ME",
+    "prazo": "Z34 - 56/84/112 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43299316",
+        "produto": "ACQUA",
+        "cor": "PRETO",
+        "gci": "7426391",
+        "ebm": "13263561",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "5/5/26"
       }
     ]
   }
