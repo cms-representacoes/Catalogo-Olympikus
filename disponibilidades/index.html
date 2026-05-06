@@ -300,13 +300,26 @@ function fixEncoding(s){
 // ── CARREGAR DADOS ────────────────────────────────────────────────────────────
 async function loadData(){
   try{
-    const res = await fetch(WORKER_URL, {
-      method:'PATCH', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ action:'getDisponibilidades' })
-    });
-    if(!res.ok) throw new Error('Falha ao carregar');
-    STATE.itens = (await res.json())
-      .filter(i => !i._oculto)
+    // Carrega disponibilidades + lista de ocultos em paralelo
+    const [dispRes, ocultosRes] = await Promise.all([
+      fetch(WORKER_URL, {
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'getDisponibilidades' })
+      }),
+      fetch(WORKER_URL, {
+        method:'PATCH', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'getOcultosDisp' })
+      })
+    ]);
+    if(!dispRes.ok) throw new Error('Falha ao carregar');
+    const itens = await dispRes.json();
+    const ocultosArr = ocultosRes.ok ? await ocultosRes.json() : [];
+    const ocultosSet = new Set(Array.isArray(ocultosArr) ? ocultosArr : []);
+    const ocultarKey = (i) => `${String(i.artigo||'').toUpperCase()}|${String(i.cor||'').toUpperCase()}`;
+
+    STATE.itens = itens
+      .filter(i => !i._oculto)                        // legado: flag inline
+      .filter(i => !ocultosSet.has(ocultarKey(i)))    // novo: lista do admin
       .map(i => ({ ...i, prevFat: fixEncoding(i.prevFat) }));
     applyFilters();
     $('loadingState').classList.add('hidden');
