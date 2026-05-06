@@ -579,6 +579,22 @@
 if(localStorage.getItem('disp_dark')==='1') document.documentElement.classList.add('dark');
 
 const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
+// Token de autenticação enviado nas writes do Worker
+// IMPORTANTE: este token também precisa estar configurado como variável ADMIN_TOKEN no Cloudflare Worker
+const ADMIN_TOKEN = '1b489c97-7bc7-466a-a675-f559e1226371d9bea53d-a920-4059-a31c-6bc0b6d8c4c8';
+
+// Wrapper de fetch que adiciona X-Admin-Token automaticamente em todas as chamadas
+function workerFetch(opts = {}){
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(opts.headers || {})
+  };
+  // Só adiciona o token se for uma chamada autenticada (write)
+  if(ADMIN_TOKEN && ADMIN_TOKEN !== '__COLAR_TOKEN_AQUI__'){
+    headers['X-Admin-Token'] = ADMIN_TOKEN;
+  }
+  return fetch(WORKER_URL, { ...opts, headers });
+}
 const ADMIN_PASSWORD = 'cmsrepasse';
 const STORAGE_KEY_AUTH = 'disp_admin_auth_v1';
 // Base pública das imagens (mesma pasta usada pelo catálogo de Disponibilidades)
@@ -658,9 +674,9 @@ function safeHtml(v){ return String(v??'').replaceAll('&','&amp;').replaceAll('<
 async function loadData(){
   try{
     const [dispRes, ocultosRes, histRes] = await Promise.all([
-      fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getDisponibilidades'}) }),
-      fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getOcultosDisp'}) }),
-      fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getImagensHistorico'}) })
+      workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getDisponibilidades'}) }),
+      workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getOcultosDisp'}) }),
+      workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getImagensHistorico'}) })
     ]);
     STATE.itens   = dispRes.ok ? await dispRes.json() : [];
     const oc      = ocultosRes.ok ? await ocultosRes.json() : [];
@@ -1083,7 +1099,7 @@ async function bulkExcluir(){
   const setKeys = new Set(keys);
   STATE.itens = STATE.itens.filter(i => !setKeys.has(ocultarKey(i)));
   try{
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'saveDisponibilidades', data: STATE.itens })
     });
@@ -1259,7 +1275,7 @@ async function enviarImagem(){
   const prev = btn.innerHTML;
   btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
   try{
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'uploadImagem', nome:nomeArquivo, nomeArquivo, base64:_uploadBase64 })
     });
@@ -1274,7 +1290,7 @@ async function enviarImagem(){
     );
     if(idx !== -1){
       STATE.itens[idx].imagem = nomeBase;
-      await fetch(WORKER_URL, {
+      await workerFetch({
         method:'PATCH', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ action:'saveDisponibilidades', data: STATE.itens })
       });
@@ -1283,7 +1299,7 @@ async function enviarImagem(){
     // Salva no histórico de imagens — persiste mesmo se produto for excluído
     const histKey = `${_uploadItem.artigo}|${_uploadItem.cor}`;
     STATE.imgHist[histKey] = nomeBase;
-    await fetch(WORKER_URL, {
+    await workerFetch({
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'saveImagensHistorico', data: { [histKey]: nomeBase } })
     });
@@ -1388,7 +1404,7 @@ async function reexibirItem(key){
 
 async function salvarOcultos(){
   try{
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'saveOcultosDisp', data:[...STATE.ocultos] })
     });
@@ -1412,7 +1428,7 @@ async function excluirItem(key){
     !(String(i.artigo||'').toUpperCase()===artigo && String(i.cor||'').toUpperCase()===cor)
   );
   try{
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'saveDisponibilidades', data: STATE.itens })
     });
@@ -1463,7 +1479,7 @@ async function processarXlsx(file){
   if(!file) return;
   // Carrega JSON atual
   try{
-    const res = await fetch(WORKER_URL, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getDisponibilidades'}) });
+    const res = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getDisponibilidades'}) });
     _jsonAtual = res.ok ? await res.json() : [];
   }catch(e){ _jsonAtual = []; }
 
@@ -1598,7 +1614,7 @@ async function confirmarImportar(){
 
     btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
     const listaFinal = [..._jsonAtual, ...novosParaSalvar, ...conflitosParaSalvar];
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method:'PATCH', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'saveDisponibilidades', data:listaFinal })
     });
