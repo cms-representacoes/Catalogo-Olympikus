@@ -28,6 +28,33 @@
     /* Cards grid */
     .cards-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; }
 
+    /* Indicador de progresso da listagem */
+    .pagination-status{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      margin:24px auto 8px;
+      padding:10px 18px;
+      max-width:fit-content;
+      font-size:12px; font-weight:700;
+      color:var(--muted);
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:999px;
+      box-shadow:0 1px 4px rgba(15,23,42,.04);
+      transition:opacity .2s;
+    }
+    .pagination-status::before{
+      content:''; display:inline-block;
+      width:6px; height:6px; border-radius:50%;
+      background:var(--accent);
+    }
+    .pagination-status.complete::before{ background:#16a34a; }
+    .pagination-status.complete{ color:#16a34a; border-color:rgba(22,163,74,.25); background:rgba(22,163,74,.06); }
+    .pagination-status .ps-bold{ color:var(--text); font-weight:800; }
+    .pagination-status.complete .ps-bold{ color:#16a34a; }
+    @media (max-width:480px){
+      .pagination-status{ font-size:11px; padding:8px 14px; }
+    }
+
     /* Card produto */
     .prod-card{
       background:var(--card);
@@ -86,6 +113,18 @@
 
     /* Header */
     .main-header{ background:rgba(255,255,255,.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:50; box-shadow:0 1px 8px rgba(15,23,42,.06); }
+    .filters-bar{
+      position:sticky;
+      top: 64px;
+      z-index:40;
+      background: rgba(247,248,250,.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+      margin:0 -16px;
+      padding:10px 16px;
+    }
+    @media(min-width:640px){ .filters-bar{ top:72px; margin:0 -24px; padding:10px 24px; } }
 
     /* Modal zoom */
     .modal-zoom{ position:fixed; inset:0; z-index:200; background:rgba(0,0,0,.8); display:flex; align-items:center; justify-content:center; padding:24px; }
@@ -173,8 +212,8 @@
 
 <main class="max-w-[1400px] mx-auto px-4 sm:px-6 py-6">
 
-  <!-- Filtros -->
-  <div class="flex flex-wrap items-center gap-2 mb-4">
+  <!-- Filtros (sticky) -->
+  <div class="filters-bar flex flex-wrap items-center gap-2 mb-4">
     <button class="filter-pill active" data-filter="todos" onclick="setFilter('todos')">Todos</button>
     <button class="filter-pill" data-filter="ua" onclick="setFilter('ua')">Under Armour</button>
     <button class="filter-pill" data-filter="oly" onclick="setFilter('oly')">Olympikus</button>
@@ -205,6 +244,11 @@
   <!-- Cards -->
   <div id="cardsWrap" class="cards-grid hidden"></div>
 
+  <!-- Indicador de progresso da listagem (Mostrando X de Y) -->
+  <div id="paginationStatus" class="pagination-status hidden" aria-live="polite">
+    <span id="paginationStatusText"></span>
+  </div>
+
 </main>
 
 <!-- FAB PDF -->
@@ -225,7 +269,11 @@ const STATE = {
   filtrados:  [],
   filtro:     'todos',
   search:     '',
-  selecionados: new Set()
+  selecionados: new Set(),
+  // Paginação
+  pageSize:    24,        // produtos por "página" (lote)
+  rendered:    0,         // quantos já estão no DOM
+  io:          null       // IntersectionObserver da sentinela
 };
 
 function showToast(msg, type='info'){
@@ -309,13 +357,136 @@ function applyFilters(){
 // ── RENDER CARDS ──────────────────────────────────────────────────────────────
 function prodKey(item){ return `${item.artigo}|${item.cor}`; }
 
+// Cria o HTML de UM card (extraído pra reuso entre lotes)
+function buildCardHtml(item){
+  const key = prodKey(item);
+  const isSel = STATE.selecionados.has(key);
+  const corSafe = String(item.cor || '').replace(/\//g, '_').toUpperCase();
+  const imgSrc = (item.artigo && corSafe) ? `${IMG_BASE}${item.artigo}_${corSafe}.jpg` : '';
+
+  const grade = item.grade || {};
+  const gradeEntries = Object.entries(grade).filter(([,v]) => Number(v) > 0);
+  const gradeHtml = gradeEntries.length
+    ? `<div class="grade-grid">${gradeEntries.map(([k,v]) =>
+        `<div class="grade-pill"><span class="gp-num">${safeHtml(k)}</span><span class="gp-qty">${v}</span></div>`
+      ).join('')}</div>`
+    : '<span style="font-size:11px;color:var(--muted)">—</span>';
+
+  const prevFatLimpo = (item.prevFat||'')
+    .replace(/Ã\u00aa/g,'ª').replace(/Ã\u00ba/g,'º')
+    .replace(/Ã§/g,'ç').replace(/Ã£/g,'ã').replace(/Ã¢/g,'â')
+    .replace(/Ã©/g,'é').replace(/Ã\u00a3/g,'ã')
+    .replace(/\u00c3\u00aa/g,'ª').replace(/\u00c3\u00ba/g,'º')
+    .trim();
+
+  const chipEmpresa = isUA(item)
+    ? `<span class="chip chip-ua"><i class="fa-solid fa-building" style="font-size:9px"></i> UA · ${safeHtml(item.empresa||'')}</span>`
+    : `<span class="chip chip-oly"><i class="fa-solid fa-building" style="font-size:9px"></i> OLY · ${safeHtml(item.empresa||'')}</span>`;
+
+  const card = document.createElement('article');
+  card.className = `prod-card${isSel?' selecionado':''}`;
+  card.dataset.key = key;
+  card.innerHTML = `
+    <button class="btn-fav${isSel?' ativo':''}" onclick="toggleFav('${safeHtml(key)}',this)" title="${isSel?'Remover do PDF':'Adicionar ao PDF'}">
+      <i class="fa-${isSel?'solid':'regular'} fa-heart"></i>
+    </button>
+    ${imgSrc ? `<button class="btn-zoom" onclick="abrirZoom('${safeHtml(imgSrc)}')" title="Zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></button>` : ''}
+    <div class="card-img">
+      ${imgSrc
+        ? `<img src="${safeHtml(imgSrc)}" alt="${safeHtml(item.descricao)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')">`
+        : ''}
+      <div class="no-img${imgSrc?' hidden':''}">
+        <i class="fa-solid fa-image text-2xl"></i>
+        <div class="text-xs mt-2 font-semibold">Sem imagem</div>
+      </div>
+    </div>
+    <div class="p-4">
+      <div class="text-base font-extrabold leading-tight mb-1" style="color:var(--text)">${safeHtml(item.descricao||'—')}</div>
+      <div class="text-xs font-semibold mb-3" style="color:var(--muted)">${safeHtml(item.artigo)} · ${safeHtml(item.cor)}</div>
+      <div class="flex flex-wrap gap-1.5 mb-3">
+        ${chipEmpresa}
+        ${prevFatLimpo ? `<span class="chip" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;font-size:10px"><i class="fa-regular fa-calendar" style="font-size:9px"></i> ${safeHtml(prevFatLimpo)}</span>` : ''}
+      </div>
+      <div class="flex items-center justify-between mb-2">
+        <div class="text-lg font-black" style="color:var(--accent)">R$ ${Number(item.pdv||0).toFixed(2)}</div>
+        <div class="text-xs font-semibold" style="color:var(--muted)">T. ${Number(item.totalGeral||0).toLocaleString('pt-BR')} un</div>
+      </div>
+      ${gradeHtml}
+    </div>`;
+  return card;
+}
+
+// Cria/posiciona a sentinela usada pelo IntersectionObserver
+function ensureScrollSentinel(wrap){
+  let sentinel = $('cardsSentinel');
+  if(!sentinel){
+    sentinel = document.createElement('div');
+    sentinel.id = 'cardsSentinel';
+    sentinel.style.cssText = 'grid-column:1/-1;height:1px;';
+  }
+  wrap.appendChild(sentinel); // sempre move pro final do wrap
+  return sentinel;
+}
+
+// Atualiza o indicador "Mostrando X de Y produtos"
+function updatePaginationStatus(){
+  const el = $('paginationStatus');
+  const txt = $('paginationStatusText');
+  if(!el || !txt) return;
+  const total = STATE.filtrados.length;
+  const shown = STATE.rendered;
+  if(total === 0){
+    el.classList.add('hidden');
+    el.classList.remove('complete');
+    return;
+  }
+  el.classList.remove('hidden');
+  if(shown >= total){
+    el.classList.add('complete');
+    txt.innerHTML = `Todos os <span class="ps-bold">${total}</span> produto${total!==1?'s':''} carregado${total!==1?'s':''} ✓`;
+  } else {
+    el.classList.remove('complete');
+    txt.innerHTML = `Mostrando <span class="ps-bold">${shown}</span> de <span class="ps-bold">${total}</span> · role para ver mais`;
+  }
+}
+
+// Renderiza o próximo lote (até pageSize itens)
+function renderNextBatch(){
+  const wrap = $('cardsWrap');
+  if(!wrap) return;
+  const start = STATE.rendered;
+  const end = Math.min(start + STATE.pageSize, STATE.filtrados.length);
+  if(start >= end) return;
+
+  const frag = document.createDocumentFragment();
+  for(let i = start; i < end; i++){
+    frag.appendChild(buildCardHtml(STATE.filtrados[i]));
+  }
+  // Insere antes da sentinela pra ela continuar sendo o último filho
+  const sentinel = $('cardsSentinel');
+  if(sentinel) wrap.insertBefore(frag, sentinel);
+  else wrap.appendChild(frag);
+  STATE.rendered = end;
+
+  // Se não há mais itens, desconecta o observer
+  if(STATE.rendered >= STATE.filtrados.length && STATE.io){
+    STATE.io.disconnect();
+    STATE.io = null;
+    if(sentinel) sentinel.remove();
+  }
+  updatePaginationStatus();
+}
+
 function renderCards(){
   const wrap = $('cardsWrap');
   wrap.innerHTML = '';
+  STATE.rendered = 0;
+  if(STATE.io){ STATE.io.disconnect(); STATE.io = null; }
 
   if(!STATE.filtrados.length){
     wrap.classList.add('hidden');
     $('emptyState').classList.remove('hidden');
+    updatePaginationStatus();
     return;
   }
   $('emptyState').classList.add('hidden');
@@ -324,78 +495,18 @@ function renderCards(){
   // Selecionar todos bar
   $('selBar').classList.toggle('visivel', STATE.itens.length > 0);
 
-  STATE.filtrados.forEach(item => {
-    const key = prodKey(item);
-    const isSel = STATE.selecionados.has(key);
-    const corSafe = String(item.cor || '').replace(/\//g, '_').toUpperCase();
-    const imgSrc = (item.artigo && corSafe) ? `${IMG_BASE}${item.artigo}_${corSafe}.jpg` : '';
+  // Primeiro lote
+  ensureScrollSentinel(wrap);
+  renderNextBatch();
 
-    // Grade igual ao repasses — pill por numeração
-    const grade = item.grade || {};
-    const gradeEntries = Object.entries(grade).filter(([,v]) => Number(v) > 0);
-    const gradeHtml = gradeEntries.length
-      ? `<div class="grade-grid">${gradeEntries.map(([k,v]) =>
-          `<div class="grade-pill"><span class="gp-num">${safeHtml(k)}</span><span class="gp-qty">${v}</span></div>`
-        ).join('')}</div>`
-      : '<span style="font-size:11px;color:var(--muted)">—</span>';
-
-    // Encoding da quinzena — decodificar caracteres mal formados
-    const prevFatLimpo = (item.prevFat||'')
-      .replace(/Ã\u00aa/g,'ª').replace(/Ã\u00ba/g,'º')
-      .replace(/Ã§/g,'ç').replace(/Ã£/g,'ã').replace(/Ã¢/g,'â')
-      .replace(/Ã©/g,'é').replace(/Ã\u00a3/g,'ã')
-      .replace(/\u00c3\u00aa/g,'ª').replace(/\u00c3\u00ba/g,'º')
-      .trim();
-
-    // Chip empresa modo claro
-    const chipEmpresa = isUA(item)
-      ? `<span class="chip chip-ua"><i class="fa-solid fa-building" style="font-size:9px"></i> UA · ${safeHtml(item.empresa||'')}</span>`
-      : `<span class="chip chip-oly"><i class="fa-solid fa-building" style="font-size:9px"></i> OLY · ${safeHtml(item.empresa||'')}</span>`;
-
-    const card = document.createElement('article');
-    card.className = `prod-card${isSel?' selecionado':''}`;
-    card.dataset.key = key;
-
-    card.innerHTML = `
-      <!-- Coração -->
-      <button class="btn-fav${isSel?' ativo':''}" onclick="toggleFav('${safeHtml(key)}',this)" title="${isSel?'Remover do PDF':'Adicionar ao PDF'}">
-        <i class="fa-${isSel?'solid':'regular'} fa-heart"></i>
-      </button>
-
-      <!-- Lupa -->
-      ${imgSrc ? `<button class="btn-zoom" onclick="abrirZoom('${safeHtml(imgSrc)}')" title="Zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></button>` : ''}
-
-      <!-- Imagem -->
-      <div class="card-img">
-        ${imgSrc
-          ? `<img src="${safeHtml(imgSrc)}" alt="${safeHtml(item.descricao)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')">`
-          : ''}
-        <div class="no-img${imgSrc?' hidden':''}">
-          <i class="fa-solid fa-image text-2xl"></i>
-          <div class="text-xs mt-2 font-semibold">Sem imagem</div>
-        </div>
-      </div>
-
-      <!-- Info -->
-      <div class="p-4">
-        <div class="text-base font-extrabold leading-tight mb-1" style="color:var(--text)">${safeHtml(item.descricao||'—')}</div>
-        <div class="text-xs font-semibold mb-3" style="color:var(--muted)">${safeHtml(item.artigo)} · ${safeHtml(item.cor)}</div>
-
-        <div class="flex flex-wrap gap-1.5 mb-3">
-          ${chipEmpresa}
-          ${prevFatLimpo ? `<span class="chip" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;font-size:10px"><i class="fa-regular fa-calendar" style="font-size:9px"></i> ${safeHtml(prevFatLimpo)}</span>` : ''}
-        </div>
-
-        <div class="flex items-center justify-between mb-2">
-          <div class="text-lg font-black" style="color:var(--accent)">R$ ${Number(item.pdv||0).toFixed(2)}</div>
-          <div class="text-xs font-semibold" style="color:var(--muted)">T. ${Number(item.totalGeral||0).toLocaleString('pt-BR')} un</div>
-        </div>
-
-        ${gradeHtml}
-      </div>`;
-
-    wrap.appendChild(card);
-  });
+  // Observer para lotes seguintes
+  if(STATE.rendered < STATE.filtrados.length){
+    const sentinel = $('cardsSentinel');
+    STATE.io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) renderNextBatch(); });
+    }, { rootMargin: '600px 0px' }); // dispara 600px antes de aparecer
+    if(sentinel) STATE.io.observe(sentinel);
+  }
 
   atualizarFAB();
   sincronizarChkTodos();
