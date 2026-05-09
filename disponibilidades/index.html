@@ -217,6 +217,10 @@
     <button class="filter-pill active" data-filter="todos" onclick="setFilter('todos')">Todos</button>
     <button class="filter-pill" data-filter="ua" onclick="setFilter('ua')">Under Armour</button>
     <button class="filter-pill" data-filter="oly" onclick="setFilter('oly')">Olympikus</button>
+    <!-- Separador -->
+    <div class="w-px h-5 bg-slate-200 mx-1"></div>
+    <!-- Filtros de tabela especial — gerados dinamicamente -->
+    <div id="filtrosTabela" class="flex flex-wrap gap-2"></div>
     <div class="ml-auto flex items-center gap-2">
       <!-- Selecionar todos -->
       <div class="sel-bar" id="selBar">
@@ -318,9 +322,10 @@ async function loadData(){
     const ocultarKey = (i) => `${String(i.artigo||'').toUpperCase()}|${String(i.cor||'').toUpperCase()}`;
 
     STATE.itens = itens
-      .filter(i => !i._oculto)                        // legado: flag inline
-      .filter(i => !ocultosSet.has(ocultarKey(i)))    // novo: lista do admin
+      .filter(i => !i._oculto)
+      .filter(i => !ocultosSet.has(ocultarKey(i)))
       .map(i => ({ ...i, prevFat: fixEncoding(i.prevFat) }));
+    renderFiltrosTabela();
     applyFilters();
     $('loadingState').classList.add('hidden');
   }catch(err){
@@ -331,9 +336,22 @@ async function loadData(){
 
 // ── FILTROS ───────────────────────────────────────────────────────────────────
 function isUA(item){
+  if(item.marca === 'UA') return true;
+  if(item.marca === 'OLY') return false;
+  // fallback para itens sem campo marca
   return (item.empresa||'').toUpperCase().includes('VULSP') ||
-         (item.empresa||'').toUpperCase().includes('VDIST') ||
-         (item.categoria||'').toUpperCase().includes('UA');
+         (item.empresa||'').toUpperCase().includes('VDIST');
+}
+
+function renderFiltrosTabela(){
+  const codigos = [...new Set(STATE.itens.map(i => i.codigoTabela).filter(Boolean))].sort();
+  const wrap = $('filtrosTabela');
+  if(!wrap) return;
+  wrap.innerHTML = codigos.map(cod => `
+    <button class="filter-pill" data-filter="tabela_${cod}" onclick="setFilter('tabela_${cod}')"
+      style="border-color:#d1d5db;color:#374151">
+      <i class="fa-solid fa-tag" style="font-size:10px"></i> ${cod}
+    </button>`).join('');
 }
 
 function setFilter(f){
@@ -355,12 +373,14 @@ function applyFilters(){
   $('btnClearSearch').classList.toggle('hidden', !q);
 
   STATE.filtrados = STATE.itens.filter(item => {
-    if(STATE.filtro === 'ua')  return isUA(item);
-    if(STATE.filtro === 'oly') return !isUA(item);
+    const f = STATE.filtro;
+    if(f === 'ua')  return isUA(item);
+    if(f === 'oly') return !isUA(item);
+    if(f.startsWith('tabela_')) return (item.codigoTabela||'') === f.replace('tabela_','');
     return true;
   }).filter(item => {
     if(!q) return true;
-    return `${item.descricao} ${item.artigo} ${item.cor} ${item.linha} ${item.empresa}`.toLowerCase().includes(q);
+    return `${item.descricao} ${item.artigo} ${item.cor} ${item.linha} ${item.empresa} ${item.codigoTabela||''}`.toLowerCase().includes(q);
   });
 
   $('countLabel').textContent = `${STATE.filtrados.length} produto${STATE.filtrados.length!==1?'s':''}`;
@@ -392,9 +412,15 @@ function buildCardHtml(item){
     .replace(/\u00c3\u00aa/g,'ª').replace(/\u00c3\u00ba/g,'º')
     .trim();
 
-  const chipEmpresa = isUA(item)
-    ? `<span class="chip chip-ua"><i class="fa-solid fa-building" style="font-size:9px"></i> UA · ${safeHtml(item.empresa||'')}</span>`
-    : `<span class="chip chip-oly"><i class="fa-solid fa-building" style="font-size:9px"></i> OLY · ${safeHtml(item.empresa||'')}</span>`;
+  // Chip marca
+  const chipMarca = isUA(item)
+    ? `<span class="chip chip-ua">UA</span>`
+    : `<span class="chip chip-oly">OLY</span>`;
+
+  // Chip tabela especial
+  const chipTabela = item.codigoTabela
+    ? `<span class="chip" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-size:10px"><i class="fa-solid fa-tag" style="font-size:9px"></i> ${safeHtml(item.codigoTabela)}</span>`
+    : '';
 
   const card = document.createElement('article');
   card.className = `prod-card${isSel?' selecionado':''}`;
@@ -417,13 +443,18 @@ function buildCardHtml(item){
       <div class="text-base font-extrabold leading-tight mb-1" style="color:var(--text)">${safeHtml(item.descricao||'—')}</div>
       <div class="text-xs font-semibold mb-3" style="color:var(--muted)">${safeHtml(item.artigo)} · ${safeHtml(item.cor)}</div>
       <div class="flex flex-wrap gap-1.5 mb-3">
-        ${chipEmpresa}
-        ${prevFatLimpo ? `<span class="chip" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;font-size:10px"><i class="fa-regular fa-calendar" style="font-size:9px"></i> ${safeHtml(prevFatLimpo)}</span>` : ''}
+        ${chipMarca}
+        ${chipTabela}
       </div>
       <div class="flex items-center justify-between mb-2">
         <div class="text-lg font-black" style="color:var(--accent)">R$ ${Number(item.pdv||0).toFixed(2)}</div>
         <div class="text-xs font-semibold" style="color:var(--muted)">T. ${Number(item.totalGeral||0).toLocaleString('pt-BR')} un</div>
       </div>
+      ${item.mkp || item.custo ? `
+      <div class="flex items-center gap-3 mb-2 px-3 py-2 rounded-xl" style="background:#f8fafc;border:0.5px solid #e2e8f0">
+        ${item.mkp ? `<div class="text-xs"><span style="color:var(--muted);font-weight:600">MKP</span> <span class="font-extrabold" style="color:#6d28d9">${safeHtml(item.mkp)}</span></div>` : ''}
+        ${item.custo ? `<div class="text-xs ml-auto"><span style="color:var(--muted);font-weight:600">Custo</span> <span class="font-bold" style="color:var(--text)">R$ ${Number(item.custo).toFixed(2)}</span></div>` : ''}
+      </div>` : ''}
       ${gradeHtml}
     </div>`;
   return card;

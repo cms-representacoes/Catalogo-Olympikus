@@ -379,6 +379,7 @@
         <thead>
           <tr id="theadRow">
             <th class="th-bulk" style="width:32px;text-align:center;padding-left:14px"><input type="checkbox" id="bulkSelectAll" onchange="bulkSelectAll(this.checked)" style="accent-color:var(--accent);cursor:pointer"></th>
+            <th data-col="marca" class="sortable" onclick="setSort('marca')">Marca <span class="sort-icon"></span></th>
             <th data-col="prevFat" class="sortable" onclick="setSort('prevFat')">Prev. Fat. <span class="sort-icon"></span></th>
             <th data-col="empresa" class="sortable" onclick="setSort('empresa')">Empresa <span class="sort-icon"></span></th>
             <th data-col="artigo" class="sortable" onclick="setSort('artigo')">Artigo <span class="sort-icon"></span></th>
@@ -389,6 +390,9 @@
             <th data-col="categoria" class="sortable" onclick="setSort('categoria')">Categoria <span class="sort-icon"></span></th>
             <th data-col="pdv" class="sortable text-right" onclick="setSort('pdv')">PDV <span class="sort-icon"></span></th>
             <th data-col="totalGeral" class="sortable text-right" onclick="setSort('totalGeral')">T. Geral <span class="sort-icon"></span></th>
+            <th data-col="codigoTabela" class="sortable" onclick="setSort('codigoTabela')">Cód. Tabela <span class="sort-icon"></span></th>
+            <th data-col="mkp" class="sortable" onclick="setSort('mkp')">MKP <span class="sort-icon"></span></th>
+            <th data-col="custo" class="sortable text-right" onclick="setSort('custo')">Custo <span class="sort-icon"></span></th>
             <th data-col="grade">Grade</th>
             <th data-col="acoes"></th>
           </tr>
@@ -881,8 +885,8 @@ function applyFilters(){
   const filtrados = STATE.itens.filter(item => {
     if(f === 'ocultos') return isOculto(item);
     if(isOculto(item)) return false;
-    if(f === 'ua')  return (item.empresa||'').toUpperCase().includes('VULSP') || (item.empresa||'').toUpperCase().includes('VDIST') || (item.categoria||'').toUpperCase().includes('UA') || (item.categoria||'').toUpperCase().includes('UNDER');
-    if(f === 'oly') return !(item.empresa||'').toUpperCase().includes('VULSP') && !(item.empresa||'').toUpperCase().includes('VDIST');
+    if(f === 'ua')  return item.marca === 'UA' || (item.empresa||'').toUpperCase().includes('VULSP') || (item.empresa||'').toUpperCase().includes('VDIST');
+    if(f === 'oly') return item.marca === 'OLY' || (item.marca === '' && !(item.empresa||'').toUpperCase().includes('VULSP') && !(item.empresa||'').toUpperCase().includes('VDIST'));
     if(f === 'semimg'){
       // sem campo imagem cadastrado E status do check é miss (ou ainda não checado)
       const status = STATE.imgChecks.get(imgCheckKey(item));
@@ -1135,18 +1139,22 @@ function setSort(col){
 
 // ── COLUNAS ───────────────────────────────────────────────────────────────────
 const COLUNAS_DEF = [
-  { id:'prevFat',    label:'Prev. Fat.' },
-  { id:'empresa',    label:'Empresa' },
-  { id:'artigo',     label:'Artigo' },
-  { id:'descricao',  label:'Descrição' },
-  { id:'cor',        label:'Cor' },
-  { id:'linha',      label:'Linha' },
-  { id:'genero',     label:'Gênero' },
-  { id:'categoria',  label:'Categoria' },
-  { id:'pdv',        label:'PDV' },
-  { id:'totalGeral', label:'T. Geral' },
-  { id:'grade',      label:'Grade' },
-  { id:'acoes',      label:'' },
+  { id:'marca',        label:'Marca' },
+  { id:'prevFat',      label:'Prev. Fat.' },
+  { id:'empresa',      label:'Empresa' },
+  { id:'artigo',       label:'Artigo' },
+  { id:'descricao',    label:'Descrição' },
+  { id:'cor',          label:'Cor' },
+  { id:'linha',        label:'Linha' },
+  { id:'genero',       label:'Gênero' },
+  { id:'categoria',    label:'Categoria' },
+  { id:'pdv',          label:'PDV' },
+  { id:'totalGeral',   label:'T. Geral' },
+  { id:'codigoTabela', label:'Cód. Tabela' },
+  { id:'mkp',          label:'MKP' },
+  { id:'custo',        label:'Custo' },
+  { id:'grade',        label:'Grade' },
+  { id:'acoes',        label:'' },
 ];
 
 let _colsOcultas = new Set(JSON.parse(localStorage.getItem('disp_cols_ocultas')||'[]'));
@@ -1367,11 +1375,19 @@ function renderTable(itens){
          <button class="icon-btn ocultar" onclick="ocultarItem('${safeHtml(key)}')" data-tip="Ocultar"><i class="fa-solid fa-eye-slash text-xs"></i></button>
          <button class="icon-btn excluir" onclick="excluirItem('${safeHtml(key)}')" data-tip="Excluir"><i class="fa-solid fa-trash-can text-xs"></i></button>`;
 
+    // Marca — chip
+    const marcaChip = item.marca === 'UA'
+      ? `<span class="chip-ua">UA</span>`
+      : item.marca === 'OLY'
+      ? `<span class="chip-oly">OLY</span>`
+      : `<span style="font-size:10px;color:var(--muted)">—</span>`;
+
     const isSel = STATE.selecionados.has(key);
     return `<tr class="${oculto?'oculto':''} ${isSel?'row-selected':''}" data-row-key="${safeHtml(key)}">
       <td class="td-bulk" style="width:32px;text-align:center;padding-left:14px"><input type="checkbox" ${isSel?'checked':''} onchange="bulkToggleItem('${safeHtml(key)}',this.checked)" style="accent-color:var(--accent);cursor:pointer" onclick="event.stopPropagation()"></td>
+      <td data-col="marca">${marcaChip}</td>
       <td data-col="prevFat" class="font-semibold text-xs whitespace-nowrap" style="color:var(--muted)">${safeHtml(item.prevFat||'—')}</td>
-      <td data-col="empresa">${chipEmpresa}${empresaVal}</td>
+      <td data-col="empresa" class="text-xs" style="color:var(--muted)">${safeHtml(item.empresa||'—')}</td>
       <td data-col="artigo" class="font-extrabold text-xs" style="color:var(--brand)">${safeHtml(item.artigo||'—')}</td>
       <td data-col="descricao" class="font-bold" style="color:var(--text)">${safeHtml(item.descricao||'—')}</td>
       <td data-col="cor" class="text-xs font-semibold" style="color:var(--muted)">${safeHtml(item.cor||'—')}</td>
@@ -1380,6 +1396,9 @@ function renderTable(itens){
       <td data-col="categoria" class="text-xs" style="color:var(--muted)">${safeHtml(item.categoria||'—')}</td>
       <td data-col="pdv" class="text-right font-bold text-xs">R$ ${Number(item.pdv||0).toFixed(2)}</td>
       <td data-col="totalGeral" class="text-right font-extrabold" style="color:var(--brand)">${Number(item.totalGeral||0).toLocaleString('pt-BR')}</td>
+      <td data-col="codigoTabela" class="text-xs font-bold" style="color:var(--muted)">${safeHtml(item.codigoTabela||'—')}</td>
+      <td data-col="mkp" class="text-xs font-semibold" style="color:var(--muted)">${safeHtml(item.mkp||'—')}</td>
+      <td data-col="custo" class="text-right text-xs font-semibold" style="color:var(--muted)">${item.custo ? `R$ ${Number(item.custo).toFixed(2)}` : '—'}</td>
       <td data-col="grade"><div class="flex flex-wrap gap-1 max-w-xs">${gradeStr}</div></td>
       <td data-col="acoes"><div class="flex items-center gap-1">${btns}</div></td>
     </tr>`;
@@ -1450,7 +1469,7 @@ function fecharImportar(){
   _novos=[]; _conflitos=[];
 }
 
-const COLS_FIXAS = new Set(['PREV. FAT','EMPRESA','ARTIGO','DESCRIÇÃO','COR','LINHA','GÉNERO','CATEGORIA','PDV','T. GER','T. GRD']);
+const COLS_FIXAS = new Set(['MARCA','PREV. FAT','EMPRESA','ARTIGO','DESCRIÇÃO','COR','LINHA','GÉNERO','CATEGORIA','PDV','T. GER','T. GRD','T. COR','CODIGO TABELA','TABELA ESPECIAL?','MKP','CUSTO']);
 
 function rowToItem(row){
   const grade = {};
@@ -1460,17 +1479,21 @@ function rowToItem(row){
     if(!isNaN(n) && n > 0) grade[col] = n;
   }
   return {
-    prevFat:    String(row['PREV. FAT'] || '').trim(),
-    empresa:    String(row['EMPRESA']   || '').trim(),
-    artigo:     String(row['ARTIGO']    || '').trim().toUpperCase(),
-    descricao:  String(row['DESCRIÇÃO'] || '').trim().toUpperCase(),
-    cor:        String(row['COR']       || '').trim().toUpperCase(),
-    linha:      String(row['LINHA']     || '').trim().toUpperCase(),
-    genero:     String(row['GÉNERO']    || row['GENERO'] || '').trim().toUpperCase(),
-    categoria:  String(row['CATEGORIA'] || '').trim().toUpperCase(),
-    pdv:        Number(row['PDV']       || 0),
-    totalGeral: Number(row['T. GER']   || 0),
-    imagem:     '', // preenchido ao fazer upload
+    marca:        String(row['MARCA']      || '').trim().toUpperCase(),
+    prevFat:      String(row['PREV. FAT']  || '').trim(),
+    empresa:      String(row['EMPRESA']    || '').trim(),
+    artigo:       String(row['ARTIGO']     || '').trim().toUpperCase(),
+    descricao:    String(row['DESCRIÇÃO']  || '').trim().toUpperCase(),
+    cor:          String(row['COR']        || '').trim().toUpperCase(),
+    linha:        String(row['LINHA']      || '').trim().toUpperCase(),
+    genero:       String(row['GÉNERO']     || row['GENERO'] || '').trim().toUpperCase(),
+    categoria:    String(row['CATEGORIA']  || '').trim().toUpperCase(),
+    pdv:          Number(row['PDV']        || 0),
+    totalGeral:   Number(row['T. GER']     || 0),
+    codigoTabela: String(row['CODIGO TABELA'] || '').trim().toUpperCase(),
+    mkp:          String(row['MKP']        || '').trim(),
+    custo:        Number(row['CUSTO']      || 0),
+    imagem:       '',
     grade
   };
 }
