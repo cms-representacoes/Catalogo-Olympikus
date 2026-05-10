@@ -2210,26 +2210,6 @@
     "marca": "OLY",
     "prevFat": "PRT. ENTREGA",
     "empresa": "VDIST",
-    "artigo": "OIWB221805",
-    "descricao": "MOCHILA SHAMMY",
-    "cor": "MRINHO",
-    "linha": "CONFORTO",
-    "genero": "UNISSEX",
-    "categoria": "CASUAL",
-    "pdv": 139.99,
-    "totalGeral": 5,
-    "codigoTabela": "E4687",
-    "mkp": "MKP 2.3",
-    "custo": 60.87,
-    "imagem": "OIWB221805_MRINHO",
-    "grade": {
-      "U": 5
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VDIST",
     "artigo": "OIWB241805",
     "descricao": "MOCHILA SHAMMY 2.0",
     "cor": "CASCAL",
@@ -2344,26 +2324,6 @@
     "imagem": "OIWB241805_VESRED",
     "grade": {
       "U": 3636
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VDIST",
-    "artigo": "OIWB241813",
-    "descricao": "MINI BAG",
-    "cor": "LIMSUR",
-    "linha": "CONFORTO",
-    "genero": "UNISSEX",
-    "categoria": "CASUAL",
-    "pdv": 119.99,
-    "totalGeral": 5,
-    "codigoTabela": "E4686",
-    "mkp": "MKP 2.8",
-    "custo": 42.85,
-    "imagem": "OIWB241813_LIMSUR",
-    "grade": {
-      "U": 5
     }
   },
   {
@@ -2924,46 +2884,6 @@
     "imagem": "OIWB241822_REDWOD",
     "grade": {
       "U": 9
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VDIST",
-    "artigo": "OIWB231810",
-    "descricao": "GYM BAG SM",
-    "cor": "NVALNA",
-    "linha": "COMPLEMENTO",
-    "genero": "UNISSEX",
-    "categoria": "TREINO",
-    "pdv": 179.99,
-    "totalGeral": 2,
-    "codigoTabela": "E4687",
-    "mkp": "MKP 2.3",
-    "custo": 78.26,
-    "imagem": "OIWB231810_NVALNA",
-    "grade": {
-      "U": 2
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "PRT. ENTREGA",
-    "empresa": "VDIST",
-    "artigo": "OIWB231810",
-    "descricao": "GYM BAG SM",
-    "cor": "PTO/BC",
-    "linha": "COMPLEMENTO",
-    "genero": "UNISSEX",
-    "categoria": "TREINO",
-    "pdv": 179.99,
-    "totalGeral": 4,
-    "codigoTabela": "E4687",
-    "mkp": "MKP 2.3",
-    "custo": 78.26,
-    "imagem": "OIWB231810_PTO_BC",
-    "grade": {
-      "U": 4
     }
   },
   {
@@ -5225,35 +5145,6 @@
     "marca": "OLY",
     "prevFat": "",
     "empresa": "VULTS",
-    "artigo": "43796431",
-    "descricao": "CORRE PACE",
-    "cor": "BCO/RY",
-    "linha": "RESPONSIVIDADE",
-    "genero": "UNISSEX",
-    "categoria": "CORRIDA",
-    "pdv": 1999.99,
-    "totalGeral": 53,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "35": 2,
-      "36": 3,
-      "37": 8,
-      "38": 6,
-      "39": 2,
-      "40": 9,
-      "41": 8,
-      "42": 11,
-      "43": 2,
-      "44": 2
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "",
-    "empresa": "VULTS",
     "artigo": "43777397",
     "descricao": "CORRE SUPRA 2",
     "cor": "ARENML",
@@ -6043,67 +5934,6 @@
     "marca": "OLY",
     "prevFat": "",
     "empresa": "VULTS",
-    "artigo": "43340469",
-    "descricao": "CORRE TRILHA 3",
-    "cor": "PTOMSG",
-    "linha": "VERSATIL",
-    "genero": "UNISSEX",
-    "categoria": "CORRIDA",
-    "pdv": 599.99,
-    "totalGeral": 2,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43340469_PTOMSG",
-    "grade": {
-      "36": 1,
-      "37": 1
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "",
-    "empresa": "VULTS",
-    "artigo": "43364281",
-    "descricao": "CORRE 3 BAW",
-    "cor": "CAMLMT",
-    "linha": "INTENSA",
-    "genero": "MASCULINO",
-    "categoria": "CORRIDA",
-    "pdv": 599.99,
-    "totalGeral": 1,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "37": 1
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "",
-    "empresa": "VULTS",
-    "artigo": "43442447",
-    "descricao": "CORRE 5 VANDERLEI",
-    "cor": "BRZMLT",
-    "linha": "CORRE FORCA",
-    "genero": "UNISSEX",
-    "categoria": "CORRIDA",
-    "pdv": 599.99,
-    "totalGeral": 4,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "40": 4
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "",
-    "empresa": "VULTS",
     "artigo": "43758365",
     "descricao": "CORRE MAX",
     "cor": "ARENIT",
@@ -6218,26 +6048,6 @@
       "42": 183,
       "43": 137,
       "44": 15
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "",
-    "empresa": "VULTS",
-    "artigo": "43474322",
-    "descricao": "CORRE 3 MARATO.POA24",
-    "cor": "LRJ/NN",
-    "linha": "CORRIDA INTENSA",
-    "genero": "UNISSEX",
-    "categoria": "CORRIDA",
-    "pdv": 499.99,
-    "totalGeral": 1,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "37": 1
     }
   }
 ]
