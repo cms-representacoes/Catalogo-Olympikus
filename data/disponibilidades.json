@@ -5687,5 +5687,100 @@
       "43": 137,
       "44": 15
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULTS",
+    "artigo": "OFMWT26610",
+    "descricao": "TSHIRT ESSENTIAL MC 2.0 M",
+    "cor": "BRANCO",
+    "linha": "ESSENTIAL",
+    "genero": "MASCULINO",
+    "categoria": "TREINO",
+    "pdv": 89.99,
+    "totalGeral": 14755,
+    "codigoTabela": "E4600",
+    "mkp": "2.9",
+    "custo": 31,
+    "imagem": "OFMWT26610_BRANCO",
+    "grade": {
+      "P": 2438,
+      "M": 4868,
+      "G": 4532,
+      "GG": 2575,
+      "G1": 78,
+      "G2": 112,
+      "G3": 152
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULTS",
+    "artigo": "OFMWT26610",
+    "descricao": "TSHIRT ESSENTIAL MC 2.0 M",
+    "cor": "NAVAL",
+    "linha": "ESSENTIAL",
+    "genero": "MASCULINO",
+    "categoria": "TREINO",
+    "pdv": 89.99,
+    "totalGeral": 10699,
+    "codigoTabela": "E4600",
+    "mkp": "2.9",
+    "custo": 31,
+    "imagem": "OFMWT26610_NAVAL",
+    "grade": {
+      "P": 2165,
+      "M": 3461,
+      "G": 3179,
+      "GG": 1814,
+      "G3": 80
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULTS",
+    "artigo": "OFMWT26610",
+    "descricao": "TSHIRT ESSENTIAL MC 2.0 M",
+    "cor": "PCGRAY",
+    "linha": "ESSENTIAL",
+    "genero": "MASCULINO",
+    "categoria": "TREINO",
+    "pdv": 89.99,
+    "totalGeral": 165,
+    "codigoTabela": "E4600",
+    "mkp": "2.9",
+    "custo": 31,
+    "imagem": "OFMWT26610_PCGRAY",
+    "grade": {
+      "GG": 46,
+      "G2": 40,
+      "G3": 79
+    }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "PRT. ENTREGA",
+    "empresa": "VULTS",
+    "artigo": "OFMWT26610",
+    "descricao": "TSHIRT ESSENTIAL MC 2.0 M",
+    "cor": "PRETO",
+    "linha": "ESSENTIAL",
+    "genero": "MASCULINO",
+    "categoria": "TREINO",
+    "pdv": 89.99,
+    "totalGeral": 13807,
+    "codigoTabela": "E4600",
+    "mkp": "2.9",
+    "custo": 31,
+    "imagem": "OFMWT26610_PRETO",
+    "grade": {
+      "P": 2953,
+      "M": 4837,
+      "G": 4273,
+      "GG": 1744
+    }
   }
 ]
