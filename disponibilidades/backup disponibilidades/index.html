@@ -337,25 +337,21 @@ async function loadData(){
 // ── FILTROS ───────────────────────────────────────────────────────────────────
 function isUA(item){
   if(item.marca === 'UA') return true;
-  if(item.marca === 'OLY' || item.marca === 'CORRE') return false;
+  if(item.marca === 'OLY') return false;
+  // fallback para itens sem campo marca
   return (item.empresa||'').toUpperCase().includes('VULSP') ||
          (item.empresa||'').toUpperCase().includes('VDIST');
 }
 
 function renderFiltrosTabela(){
   const codigos = [...new Set(STATE.itens.map(i => i.codigoTabela).filter(Boolean))].sort();
-  const temCorre = STATE.itens.some(i => i.marca === 'CORRE');
   const wrap = $('filtrosTabela');
   if(!wrap) return;
-  let html = '';
-  if(temCorre){
-    html += `<button class="filter-pill" data-filter="corre" onclick="setFilter('corre')" style="border-color:#bbf7d0;color:#15803d"><i class="fa-solid fa-shoe-prints" style="font-size:10px"></i> Corre</button>`;
-  }
-  html += codigos.map(cod => `
-    <button class="filter-pill" data-filter="tabela_${cod}" onclick="setFilter('tabela_${cod}')" style="border-color:#d1d5db;color:#374151">
+  wrap.innerHTML = codigos.map(cod => `
+    <button class="filter-pill" data-filter="tabela_${cod}" onclick="setFilter('tabela_${cod}')"
+      style="border-color:#d1d5db;color:#374151">
       <i class="fa-solid fa-tag" style="font-size:10px"></i> ${cod}
     </button>`).join('');
-  wrap.innerHTML = html;
 }
 
 function setFilter(f){
@@ -378,9 +374,8 @@ function applyFilters(){
 
   STATE.filtrados = STATE.itens.filter(item => {
     const f = STATE.filtro;
-    if(f === 'ua')    return isUA(item);
-    if(f === 'oly')   return item.marca === 'OLY' || (item.marca === '' && !isUA(item));
-    if(f === 'corre') return item.marca === 'CORRE';
+    if(f === 'ua')  return isUA(item);
+    if(f === 'oly') return !isUA(item);
     if(f.startsWith('tabela_')) return (item.codigoTabela||'') === f.replace('tabela_','');
     return true;
   }).filter(item => {
@@ -418,24 +413,13 @@ function buildCardHtml(item){
     .trim();
 
   // Chip marca
-  const isCorre = item.marca === 'CORRE';
-  const isTabEsp = !!item.codigoTabela;
-  const chipMarca = item.marca === 'UA'
+  const chipMarca = isUA(item)
     ? `<span class="chip chip-ua">UA</span>`
-    : item.marca === 'CORRE'
-    ? `<span class="chip chip-oly">CORRE</span>`
     : `<span class="chip chip-oly">OLY</span>`;
 
-  const chipTabela = isTabEsp
+  // Chip tabela especial
+  const chipTabela = item.codigoTabela
     ? `<span class="chip" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-size:10px"><i class="fa-solid fa-tag" style="font-size:9px"></i> ${safeHtml(item.codigoTabela)}</span>`
-    : '';
-
-  // Empresa e quinzena — só para não tabela especial
-  const chipEmpresa = !isTabEsp && item.empresa
-    ? `<span class="chip" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;font-size:10px">${safeHtml(item.empresa)}</span>`
-    : '';
-  const chipQuinzena = !isTabEsp && prevFatLimpo
-    ? `<span class="chip" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;font-size:10px"><i class="fa-regular fa-calendar" style="font-size:9px"></i> ${safeHtml(prevFatLimpo)}</span>`
     : '';
 
   const card = document.createElement('article');
@@ -459,13 +443,14 @@ function buildCardHtml(item){
       <div class="text-base font-extrabold leading-tight mb-1" style="color:var(--text)">${safeHtml(item.descricao||'—')}</div>
       <div class="text-xs font-semibold mb-3" style="color:var(--muted)">${safeHtml(item.artigo)} · ${safeHtml(item.cor)}</div>
       <div class="flex flex-wrap gap-1.5 mb-3">
-        ${chipMarca}${chipTabela}${chipEmpresa}${chipQuinzena}
+        ${chipMarca}
+        ${chipTabela}
       </div>
       <div class="flex items-center justify-between mb-2">
         <div class="text-lg font-black" style="color:var(--accent)">R$ ${Number(item.pdv||0).toFixed(2)}</div>
         <div class="text-xs font-semibold" style="color:var(--muted)">T. ${Number(item.totalGeral||0).toLocaleString('pt-BR')} un</div>
       </div>
-      ${isTabEsp && (item.mkp || item.custo) ? `
+      ${item.mkp || item.custo ? `
       <div class="flex items-center gap-3 mb-2 px-3 py-2 rounded-xl" style="background:#f8fafc;border:0.5px solid #e2e8f0">
         ${item.mkp ? `<div class="text-xs"><span style="color:var(--muted);font-weight:600">MKP</span> <span class="font-extrabold" style="color:#6d28d9">${safeHtml(item.mkp)}</span></div>` : ''}
         ${item.custo ? `<div class="text-xs ml-auto"><span style="color:var(--muted);font-weight:600">Custo</span> <span class="font-bold" style="color:var(--text)">R$ ${Number(item.custo).toFixed(2)}</span></div>` : ''}
@@ -793,22 +778,16 @@ async function gerarPDF(){
       doc.line(tx, ty, tx+infoAreaW, ty);
       ty += 10;
 
-      // Boxes: MKP | PDV | Custo
+      // Boxes: Prev. Fat. | PDV | T. Geral
       const boxGap=6, boxW=(infoAreaW-boxGap*2)/3, boxH=32;
 
-      // MKP (ou Prev.Fat se não tiver tabela especial)
+      // Prev. Fat.
       sc(C.white,'fill'); sc(C.border,'draw'); doc.setLineWidth(0.4);
       doc.roundedRect(tx, ty, boxW, boxH, 4,4,'FD');
       doc.setFont('helvetica','bold'); doc.setFontSize(6.5); sc(C.muted);
-      if(item.codigoTabela && item.mkp){
-        doc.text('MKP', tx+6, ty+8);
-        doc.setFont('helvetica','bold'); doc.setFontSize(11); sc(C.text);
-        doc.text(String(item.mkp), tx+6, ty+22);
-      } else {
-        doc.text('PREV. FATURAMENTO', tx+6, ty+8);
-        doc.setFont('helvetica','bold'); doc.setFontSize(9); sc(C.text);
-        doc.text(fixEncoding(item.prevFat||'—'), tx+6, ty+22);
-      }
+      doc.text('PREV. FATURAMENTO', tx+6, ty+8);
+      doc.setFont('helvetica','bold'); doc.setFontSize(9); sc(C.text);
+      doc.text(fixEncoding(item.prevFat||'—'), tx+6, ty+22);
 
       // PDV
       const bx2 = tx+boxW+boxGap;
@@ -819,20 +798,14 @@ async function gerarPDF(){
       doc.setFont('helvetica','bold'); doc.setFontSize(14); sc(C.green);
       doc.text(`R$ ${Number(item.pdv||0).toFixed(2)}`, bx2+6, ty+24);
 
-      // Custo (ou T.Geral se não tiver tabela especial)
+      // T. Geral
       const bx3 = bx2+boxW+boxGap;
       sc(C.white,'fill'); sc(C.border,'draw');
       doc.roundedRect(bx3, ty, boxW, boxH, 4,4,'FD');
       doc.setFont('helvetica','bold'); doc.setFontSize(6.5); sc(C.muted);
-      if(item.codigoTabela && item.custo){
-        doc.text('CUSTO', bx3+6, ty+8);
-        doc.setFont('helvetica','bold'); doc.setFontSize(11); sc(C.text);
-        doc.text(`R$ ${Number(item.custo).toFixed(2)}`, bx3+6, ty+22);
-      } else {
-        doc.text('T. GERAL', bx3+6, ty+8);
-        doc.setFont('helvetica','bold'); doc.setFontSize(14); sc(C.text);
-        doc.text(Number(item.totalGeral||0).toLocaleString('pt-BR'), bx3+6, ty+24);
-      }
+      doc.text('T. GERAL', bx3+6, ty+8);
+      doc.setFont('helvetica','bold'); doc.setFontSize(14); sc(C.text);
+      doc.text(Number(item.totalGeral||0).toLocaleString('pt-BR'), bx3+6, ty+24);
 
       ty += boxH+10;
 
