@@ -686,6 +686,16 @@
 if(localStorage.getItem('admin_dark') === '1' || localStorage.getItem('dispo_dark') === '1') document.documentElement.classList.add('dark');
 
 const WORKER_URL = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
+// Token de autenticação para writes administrativas no Worker
+const ADMIN_TOKEN = '1b489c97-7bc7-466a-a675-f559e1226371d9bea53d-a920-4059-a31c-6bc0b6d8c4c8';
+// Wrapper que adiciona automaticamente o X-Admin-Token nas chamadas
+function workerFetch(opts = {}){
+  const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+  if(ADMIN_TOKEN && ADMIN_TOKEN !== '__COLAR_TOKEN_AQUI__'){
+    headers['X-Admin-Token'] = ADMIN_TOKEN;
+  }
+  return workerFetch({ ...opts, headers });
+}
 const DISPO_FILE_URL = '../DISPO.xlsx';
 const STORAGE_KEYS = {
   adminAuth: 'repasse_admin_auth_v1'
@@ -869,7 +879,7 @@ async function loadOrders(){
 
     // Carrega desmembramentos via PATCH
     try{
-      const dRes = await fetch(WORKER_URL, {
+      const dRes = await workerFetch({
         method:'PATCH',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify({action:'get'})
@@ -895,7 +905,7 @@ async function loadDispo(){
     await loadOrders();
 
     // Lê do dispo.json via Worker
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'getDispo' })
@@ -977,7 +987,7 @@ async function excluirDaDispoJson(row){
     const novaLista = STATE.dispoRows.filter(r => chave(r) !== alvo);
 
     // Salva no Worker
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'saveDispo', data: novaLista.map(r => ({
@@ -1352,7 +1362,7 @@ async function saveDesmembramento(){
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
 
   try{
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'save', data: STATE.desmembramentos })
@@ -1591,7 +1601,7 @@ async function confirmarAntecipacao(){
     };
     const updatedOrder = { ...order, items: updatedItems, history:[...(order.history||[]),histEntry], updatedAt: now };
     try{
-      await fetch(WORKER_URL, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(updatedOrder) });
+      await workerFetch({ method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(updatedOrder) });
       const idx = STATE.orders.findIndex(o=>o.id===orderId);
       if(idx!==-1) STATE.orders[idx] = updatedOrder;
       ok++;
@@ -1739,7 +1749,7 @@ function isOculto(row){ return STATE.ocultos.has(ocultarKey(row)); }
 
 async function salvarOcultos(){
   try{
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method:'PATCH',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'saveOcultos', data: [...STATE.ocultos] })
@@ -1757,7 +1767,7 @@ async function salvarOcultos(){
 
 async function carregarOcultos(){
   try{
-    const res = await fetch(WORKER_URL, {
+    const res = await workerFetch({
       method:'PATCH',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ action:'getOcultos' })
