@@ -321,8 +321,8 @@
     <button class="filter-pill" data-filter="ocultos" onclick="setFilter('ocultos')">
       <i class="fa-solid fa-eye-slash text-[10px]"></i> Ocultos <span id="badgeOcultos" class="text-[10px] font-extrabold bg-slate-200 text-slate-700 rounded-full px-1.5 py-0.5 hidden">0</span>
     </button>
-    <button id="btnExportarSemImg" onclick="exportarSemImagemXlsx()" class="filter-pill hidden ml-auto" style="background:#fef3c7;border-color:#fbbf24;color:#92400e;font-weight:700">
-      <i class="fa-solid fa-file-arrow-down text-[10px]"></i> Exportar XLSX
+    <button id="btnExportarAtual" onclick="exportarFiltradoXlsx()" class="filter-pill ml-auto" style="background:#fef3c7;border-color:#fbbf24;color:#92400e;font-weight:700" title="Exporta XLSX com todos os itens filtrados atualmente">
+      <i class="fa-solid fa-file-arrow-down text-[10px]"></i> Exportar <span class="lbl-count">0</span>
     </button>
     <div class="text-xs font-semibold text-slate-400" id="countLabel">— itens</div>
   </div>
@@ -661,6 +661,7 @@ const $ = id => document.getElementById(id);
 // ── ESTADO ───────────────────────────────────────────────────────────────────
 const STATE = {
   itens: [],       // todos do JSON
+  filtrados: [],   // resultado de applyFilters (usado pelo export)
   ocultos: new Set(),
   filtro: 'todos',
   search: '',
@@ -964,9 +965,6 @@ function isOculto(item){ return STATE.ocultos.has(ocultarKey(item)); }
 function setFilter(f){
   STATE.filtro = f;
   document.querySelectorAll('.filter-pill').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
-  // Botão "Exportar XLSX" só aparece quando filtro "Sem imagem" está ativo
-  const btnExp = $('btnExportarSemImg');
-  if(btnExp) btnExp.classList.toggle('hidden', f !== 'semimg');
   applyFilters();
 }
 
@@ -1043,6 +1041,15 @@ function applyFilters(){
   }
 
   renderTable(filtrados);
+
+  // Atualiza STATE.filtrados (usado pelo export "atual") + label dinâmico do botão
+  STATE.filtrados = filtrados;
+  const btnExp = $('btnExportarAtual');
+  if(btnExp){
+    btnExp.querySelector('.lbl-count').textContent = filtrados.length;
+    btnExp.classList.toggle('opacity-50', filtrados.length === 0);
+    btnExp.disabled = filtrados.length === 0;
+  }
 }
 
 // Popula os selects de filtro com valores únicos do dataset
@@ -1883,27 +1890,24 @@ async function enviarImagensEmLote(mapImagens, chavesAlvo){
   return { sucesso, falhas };
 }
 
-// ── EXPORT XLSX DE PRODUTOS SEM IMAGEM ────────────────────────────────────────
+// ── EXPORT XLSX (lista filtrada atualmente visível) ───────────────────────────
 // Exporta TODAS as colunas fixas + grades dinâmicas (só tamanhos que aparecem na lista)
 // Reconstrói COR com "/" (banco guarda "CH_BLK", exporta como "CH/BLK")
-function exportarSemImagemXlsx(listaOpcional){
+// listaOpcional: usa lista específica (ex: produtos do lote pós-import)
+function exportarFiltradoXlsx(listaOpcional){
   if(typeof XLSX === 'undefined'){
     showToast('Biblioteca XLSX não carregada.', 'error');
     return;
   }
 
-  // Define a lista: se passou, usa; senão, calcula sem-img a partir de STATE.itens
+  // Lista: explícita > STATE.filtrados > fallback aplicando filtros agora
   let lista = listaOpcional;
   if(!lista){
-    lista = STATE.itens.filter(item => {
-      if(isOculto(item)) return false;
-      const status = STATE.imgChecks.get(imgCheckKey(item));
-      return !item.imagem && status !== 'has';
-    });
+    lista = (STATE.filtrados && STATE.filtrados.length) ? STATE.filtrados : [];
   }
 
   if(!lista.length){
-    showToast('Nenhum produto sem imagem para exportar.', 'info');
+    showToast('Nenhum produto para exportar com o filtro atual.', 'info');
     return;
   }
 
@@ -1919,20 +1923,17 @@ function exportarSemImagemXlsx(listaOpcional){
       }
     }
   }
-  // Ordena: letras (P, M, G, GG...) antes de números (34, 35, 36...)
   const tamanhos = [...tamanhosSet].sort((a,b) => {
     const aNum = !isNaN(Number(a)), bNum = !isNaN(Number(b));
     if(aNum && !bNum) return 1;
     if(!aNum && bNum) return -1;
     if(aNum && bNum) return Number(a) - Number(b);
-    // Ambos texto: ordem semântica P < M < G < GG < XG
     const ordem = ['PP','P','M','G','GG','XG','XGG','XXG'];
     const ia = ordem.indexOf(a), ib = ordem.indexOf(b);
     if(ia !== -1 && ib !== -1) return ia - ib;
     return a.localeCompare(b);
   });
 
-  // Monta linhas
   const rows = lista.map(p => {
     const base = {
       'MARCA':           p.marca        || '',
@@ -1950,7 +1951,6 @@ function exportarSemImagemXlsx(listaOpcional){
       'MKP':             p.mkp          || '',
       'CUSTO':           p.custo        || 0
     };
-    // Adiciona colunas de tamanho (vazias se produto não tiver)
     for(const tam of tamanhos){
       base[tam] = (p.grade && p.grade[tam]) ? Number(p.grade[tam]) : '';
     }
@@ -1964,7 +1964,6 @@ function exportarSemImagemXlsx(listaOpcional){
   ];
 
   const ws = XLSX.utils.json_to_sheet(rows, { header: headerFinal });
-  // Larguras: fixas conhecidas + tamanhos com 6
   const colWidths = [
     {wch:8},{wch:14},{wch:10},{wch:12},{wch:40},{wch:14},
     {wch:14},{wch:10},{wch:14},{wch:8},{wch:10},{wch:14},{wch:8},{wch:10},
@@ -1972,14 +1971,29 @@ function exportarSemImagemXlsx(listaOpcional){
   ];
   ws['!cols'] = colWidths;
 
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Sem Imagem');
+  // Nome do arquivo inteligente conforme filtro ativo
+  const hoje = new Date().toISOString().slice(0,10);
+  let sufixo = 'produtos';
+  if(!listaOpcional){
+    const f = STATE.filtro;
+    if(f === 'semimg')  sufixo = 'sem-imagem';
+    else if(f === 'ua') sufixo = 'UA';
+    else if(f === 'oly') sufixo = 'OLY';
+    else if(f === 'ocultos') sufixo = 'ocultos';
+  } else {
+    sufixo = 'sem-imagem'; // chamada pós-import (lista do lote sem img)
+  }
+  const nome = `${sufixo}-${hoje}.xlsx`;
 
-  const hoje = new Date().toISOString().slice(0,10); // YYYY-MM-DD
-  const nome = `sem-imagem-${hoje}.xlsx`;
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, sufixo.toUpperCase().slice(0,31));
   XLSX.writeFile(wb, nome);
   showToast(`${lista.length} produto(s) exportado(s) → ${nome}`, 'success');
 }
+
+// Alias retrocompatível (chamadas antigas continuam funcionando)
+function exportarSemImagemXlsx(listaOpcional){ return exportarFiltradoXlsx(listaOpcional); }
+
 
 
 async function confirmarImportar(){
