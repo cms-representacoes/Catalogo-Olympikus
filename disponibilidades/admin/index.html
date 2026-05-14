@@ -1470,12 +1470,13 @@ function renderTable(itens){
          <button class="icon-btn ocultar" onclick="ocultarItem('${safeHtml(key)}')" data-tip="Ocultar"><i class="fa-solid fa-eye-slash text-xs"></i></button>
          <button class="icon-btn excluir" onclick="excluirItem('${safeHtml(key)}')" data-tip="Excluir"><i class="fa-solid fa-trash-can text-xs"></i></button>`;
 
-    // Marca — chip
-    const marcaChip = item.marca === 'UA'
+    // Marca — chip dinâmico (reconhece qualquer marca nova)
+    const marcaVal = String(item.marca || '').trim().toUpperCase();
+    const marcaChip = marcaVal === 'UA'
       ? `<span class="chip-ua">UA</span>`
-      : item.marca === 'OLY'
-      ? `<span class="chip-oly">OLY</span>`
-      : `<span style="font-size:10px;color:var(--muted)">—</span>`;
+      : marcaVal
+        ? `<span class="chip-oly">${safeHtml(marcaVal)}</span>`
+        : `<span style="font-size:10px;color:var(--muted)">—</span>`;
 
     const isSel = STATE.selecionados.has(key);
     return `<tr class="${oculto?'oculto':''} ${isSel?'row-selected':''}" data-row-key="${safeHtml(key)}">
@@ -1883,8 +1884,8 @@ async function enviarImagensEmLote(mapImagens, chavesAlvo){
 }
 
 // ── EXPORT XLSX DE PRODUTOS SEM IMAGEM ────────────────────────────────────────
+// Exporta TODAS as colunas fixas + grades dinâmicas (só tamanhos que aparecem na lista)
 // Reconstrói COR com "/" (banco guarda "CH_BLK", exporta como "CH/BLK")
-// Aceita lista opcional (caso contrário, usa o que está atualmente filtrado como sem-img)
 function exportarSemImagemXlsx(listaOpcional){
   if(typeof XLSX === 'undefined'){
     showToast('Biblioteca XLSX não carregada.', 'error');
@@ -1909,20 +1910,67 @@ function exportarSemImagemXlsx(listaOpcional){
   // Reconstrói cor: troca _ por / (assumindo sempre /, conforme decidido)
   const reconstruirCor = (cor) => String(cor || '').replace(/_/g, '/');
 
-  const rows = lista.map(p => ({
-    'MARCA':     p.marca     || '',
-    'PREV. FAT': p.prevFat   || '',
-    'EMPRESA':   p.empresa   || '',
-    'ARTIGO':    p.artigo    || '',
-    'DESCRIÇÃO': p.descricao || '',
-    'COR':       reconstruirCor(p.cor)
-  }));
-
-  const ws = XLSX.utils.json_to_sheet(rows, {
-    header: ['MARCA','PREV. FAT','EMPRESA','ARTIGO','DESCRIÇÃO','COR']
+  // ── Coletar TODOS os tamanhos únicos que aparecem em qualquer produto da lista
+  const tamanhosSet = new Set();
+  for(const p of lista){
+    if(p.grade && typeof p.grade === 'object'){
+      for(const tam of Object.keys(p.grade)){
+        if(p.grade[tam] && Number(p.grade[tam]) > 0) tamanhosSet.add(tam);
+      }
+    }
+  }
+  // Ordena: letras (P, M, G, GG...) antes de números (34, 35, 36...)
+  const tamanhos = [...tamanhosSet].sort((a,b) => {
+    const aNum = !isNaN(Number(a)), bNum = !isNaN(Number(b));
+    if(aNum && !bNum) return 1;
+    if(!aNum && bNum) return -1;
+    if(aNum && bNum) return Number(a) - Number(b);
+    // Ambos texto: ordem semântica P < M < G < GG < XG
+    const ordem = ['PP','P','M','G','GG','XG','XGG','XXG'];
+    const ia = ordem.indexOf(a), ib = ordem.indexOf(b);
+    if(ia !== -1 && ib !== -1) return ia - ib;
+    return a.localeCompare(b);
   });
-  // Larguras razoáveis
-  ws['!cols'] = [{wch:8},{wch:14},{wch:10},{wch:12},{wch:40},{wch:14}];
+
+  // Monta linhas
+  const rows = lista.map(p => {
+    const base = {
+      'MARCA':           p.marca        || '',
+      'PREV. FAT':       p.prevFat      || '',
+      'EMPRESA':         p.empresa      || '',
+      'ARTIGO':          p.artigo       || '',
+      'DESCRIÇÃO':       p.descricao    || '',
+      'COR':             reconstruirCor(p.cor),
+      'LINHA':           p.linha        || '',
+      'GÉNERO':          p.genero       || '',
+      'CATEGORIA':       p.categoria    || '',
+      'PDV':             p.pdv          || 0,
+      'T. GER':          p.totalGeral   || 0,
+      'CODIGO TABELA':   p.codigoTabela || '',
+      'MKP':             p.mkp          || '',
+      'CUSTO':           p.custo        || 0
+    };
+    // Adiciona colunas de tamanho (vazias se produto não tiver)
+    for(const tam of tamanhos){
+      base[tam] = (p.grade && p.grade[tam]) ? Number(p.grade[tam]) : '';
+    }
+    return base;
+  });
+
+  const headerFinal = [
+    'MARCA','PREV. FAT','EMPRESA','ARTIGO','DESCRIÇÃO','COR',
+    'LINHA','GÉNERO','CATEGORIA','PDV','T. GER','CODIGO TABELA','MKP','CUSTO',
+    ...tamanhos
+  ];
+
+  const ws = XLSX.utils.json_to_sheet(rows, { header: headerFinal });
+  // Larguras: fixas conhecidas + tamanhos com 6
+  const colWidths = [
+    {wch:8},{wch:14},{wch:10},{wch:12},{wch:40},{wch:14},
+    {wch:14},{wch:10},{wch:14},{wch:8},{wch:10},{wch:14},{wch:8},{wch:10},
+    ...tamanhos.map(() => ({wch:6}))
+  ];
+  ws['!cols'] = colWidths;
 
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, 'Sem Imagem');
@@ -1932,6 +1980,7 @@ function exportarSemImagemXlsx(listaOpcional){
   XLSX.writeFile(wb, nome);
   showToast(`${lista.length} produto(s) exportado(s) → ${nome}`, 'success');
 }
+
 
 async function confirmarImportar(){
   const btn = $('btnConfirmar');
