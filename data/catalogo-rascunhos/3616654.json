@@ -1,1 +1,69 @@
-[]
+[
+  {
+    "id": "rasc-1779299824752-3xkpki",
+    "tipo": "rascunho",
+    "createdAt": "2026-05-20T17:57:04.747Z",
+    "updatedAt": "2026-05-20T17:57:04.747Z",
+    "comissionista": "3616654",
+    "comissionistaNome": "MARCOS",
+    "clientCode": "63095",
+    "payment": "",
+    "priceTable": "OL025",
+    "campaign": "",
+    "pedidoCliente": "",
+    "items": [
+      {
+        "codigo": "43540500",
+        "produto": "CARDIO",
+        "cor": "MUSLRJ",
+        "corCodigo": "",
+        "genero": "Unissex",
+        "tam": "34/44",
+        "categoria": "FTW",
+        "grade": {
+          "37": 1,
+          "38": 2,
+          "39": 2,
+          "40": 1
+        },
+        "gradeBase": {
+          "37": 1,
+          "38": 2,
+          "39": 2,
+          "40": 1
+        },
+        "boxes": 1,
+        "qty": 6,
+        "totalQty": 6,
+        "precoNum": 499.99,
+        "precoFmt": "R$ 499,99",
+        "precosPrazo": {
+          "AV": 241.95,
+          "14D": 243.75,
+          "21D": 244.65,
+          "28D": 245.53,
+          "35D": 246.43,
+          "42D": 247.33,
+          "49D": 248.23,
+          "56D": 249.1,
+          "63D": 250,
+          "70D": 251.55,
+          "77D": 253.13,
+          "84D": 254.7,
+          "91D": 256.83,
+          "98D": 258.95,
+          "105D": 261.1,
+          "112D": 263.25,
+          "119D": 265.43
+        },
+        "colecao": "",
+        "imagem": "",
+        "imgSrc": "./imagens_olympikus/43540500_MUSLRJ.jpg",
+        "dataDesejada": "2026-07-15",
+        "pedidoCliente": ""
+      }
+    ],
+    "totalItens": 1,
+    "semGrade": 0
+  }
+]
