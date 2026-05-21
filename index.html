@@ -570,6 +570,11 @@
       document.addEventListener('keydown', (e)=>{
         if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
+
+      // Abre o modal automaticamente se vier do catálogo (?abrir=marca)
+      if(new URLSearchParams(window.location.search).get('abrir') === 'marca'){
+        openModal();
+      }
     })();
   </script>
 </body>
