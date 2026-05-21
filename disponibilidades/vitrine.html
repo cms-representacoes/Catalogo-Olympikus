@@ -531,11 +531,11 @@ const WORKER_URL  = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
 const IMG_BASE    = '../Catalogo/';
 
 // ── MARCA ATIVA (vem da URL ?marca=oly|ua) ───────────────────────────────────
-// Sem o parâmetro, volta ao portal com o modal de seleção de marca aberto.
+// Sem o parâmetro, redireciona para o splash de seleção.
 const _params = new URLSearchParams(location.search);
 const MARCA_ATIVA = String(_params.get('marca') || '').toLowerCase();
 if(MARCA_ATIVA !== 'oly' && MARCA_ATIVA !== 'ua'){
-  location.replace('https://marcosrepcms-max.github.io/Catalogo-Olympikus/?abrir=marca&app=disponibilidades');
+  location.replace('index.html');
 }
 
 // Identidade visual oficial de cada marca + logo embutido

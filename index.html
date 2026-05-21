@@ -588,6 +588,11 @@
       var params = new URLSearchParams(window.location.search);
       if(params.get('abrir') === 'marca'){
         openModal(params.get('app') || 'catalogo');
+        // Remove o parâmetro da URL para o modal não reabrir ao recarregar
+        params.delete('abrir');
+        params.delete('app');
+        var query = params.toString();
+        history.replaceState(null, '', window.location.pathname + (query ? '?' + query : ''));
       }
     })();
   </script>
