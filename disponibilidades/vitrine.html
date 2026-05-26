@@ -306,9 +306,11 @@
       background:#f1f5f9; color:#cbd5e1; cursor:not-allowed;
     }
     .cart-grade-ctrl input{
-      flex:1; min-width:0; text-align:center; font-weight:900;
+      flex:1 1 auto; width:100%; min-width:34px; box-sizing:border-box;
+      text-align:center; font-weight:900;
       border:none; background:#fff; font-size:15px; color:var(--text);
-      -moz-appearance:textfield;
+      padding:0; margin:0; display:block;
+      -moz-appearance:textfield; appearance:textfield;
     }
     .cart-grade-ctrl input:focus{ outline:2px solid var(--accent-light); outline-offset:-2px; }
     .cart-grade-ctrl input::-webkit-outer-spin-button,
@@ -320,6 +322,33 @@
       cursor:pointer; display:inline-flex; align-items:center; gap:5px;
     }
     .cart-clear-grade:hover{ background:#f1f5f9; color:var(--text); }
+    /* Mini-modal de confirmação */
+    .confirm-card{
+      background:#fff; border-radius:18px; padding:24px 22px;
+      width:100%; max-width:340px; text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,.3);
+      animation:confirmIn .18s ease-out;
+    }
+    @keyframes confirmIn{ from{ transform:scale(.92); opacity:0; } to{ transform:scale(1); opacity:1; } }
+    .confirm-icon{
+      width:52px; height:52px; border-radius:50%;
+      background:#fef2f2; color:#dc2626;
+      display:flex; align-items:center; justify-content:center;
+      font-size:24px; margin:0 auto 14px;
+    }
+    .confirm-title{ font-size:16px; font-weight:900; color:var(--text); margin-bottom:6px; }
+    .confirm-msg{ font-size:13px; color:var(--muted); line-height:1.5; margin-bottom:20px; }
+    .confirm-actions{ display:flex; gap:9px; }
+    .confirm-btn-cancel{
+      flex:1; background:#fff; border:1px solid var(--line); color:var(--muted);
+      font-size:13px; font-weight:700; padding:11px; border-radius:11px; cursor:pointer;
+    }
+    .confirm-btn-cancel:hover{ background:#f1f5f9; }
+    .confirm-btn-ok{
+      flex:1; background:#dc2626; border:none; color:#fff;
+      font-size:13px; font-weight:800; padding:11px; border-radius:11px; cursor:pointer;
+    }
+    .confirm-btn-ok:hover{ background:#b91c1c; }
     .cart-item-fields{
       display:grid; grid-template-columns:1fr 1fr; gap:8px;
     }
@@ -703,6 +732,19 @@
   </div>
 </div>
 
+<!-- ── Mini-modal de confirmação ──────────────────────────────────────── -->
+<div id="confirmModal" class="modal-bg hidden" style="z-index:200" onclick="if(event.target===this)fecharConfirm()">
+  <div class="confirm-card">
+    <div class="confirm-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+    <div class="confirm-title" id="confirmTitle">Tem certeza?</div>
+    <div class="confirm-msg" id="confirmMsg">Esta ação não pode ser desfeita.</div>
+    <div class="confirm-actions">
+      <button class="confirm-btn-cancel" onclick="fecharConfirm()">Cancelar</button>
+      <button class="confirm-btn-ok" id="confirmOkBtn">Confirmar</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const WORKER_URL  = 'https://repasse-worker-cms.marcosrep-cms.workers.dev';
 const IMG_BASE    = '../Catalogo/';
@@ -930,24 +972,32 @@ async function loadData(){
 
 // ── FILTROS ───────────────────────────────────────────────────────────────────
 // As "pills de campanha" (tabela especial) só aparecem quando o usuário
-// já interagiu com uma CATEGORIA. Animação fade-in suave.
-// Define os GRUPOS de categoria — fundem categorias relacionadas
-const GRUPOS_CATEGORIA = [
-  { id:'calcados',    label:'Calçados',   emoji:'👟', match:/TEN|CALCAD|CHINEL|SAND/ },
-  { id:'vestuario',   label:'Vestuário',  emoji:'👕', match:/VEST|CAMIS|SHORT|BERMUD|CAL[CÇ]A|REGATA|JAQUET|MOLET|MEIA/ },
-  { id:'acessorios',  label:'Acessórios', emoji:'🛍️', match:/ACES|MOCHIL|BOLSA|BONE/ }
-];
-
+// Categoria = valor REAL da coluna CATEGORIA (sem agrupar).
+// Ícone escolhido por palavra-chave; nome exibido capitalizado.
 function semAcento(s){
   return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
-function grupoDeCategoria(catRaw){
-  const c = semAcento(String(catRaw||'').trim().toUpperCase());
-  if(!c) return '';
-  for(const g of GRUPOS_CATEGORIA){
-    if(g.match.test(c)) return g.id;
-  }
-  return '';
+
+// Normaliza a categoria crua → chave única (UPPER, sem acento, trim)
+function categoriaKey(catRaw){
+  return semAcento(String(catRaw||'').trim().toUpperCase());
+}
+
+// Ícone Font Awesome por categoria (casa por palavra-chave)
+function iconeCategoria(catKey){
+  const c = catKey || '';
+  if(/TEN|CALCAD/.test(c))            return 'fa-shoe-prints';
+  if(/CHINEL|SAND/.test(c))           return 'fa-sun';
+  if(/MEIA|MEIAS/.test(c))            return 'fa-socks';
+  if(/VEST|CAMIS|ROUPA|MOLET/.test(c))return 'fa-shirt';
+  if(/ACES|MOCHIL|BOLSA|BONE/.test(c))return 'fa-bag-shopping';
+  return 'fa-tag';
+}
+
+// Nome bonito: "TENIS" → "Tenis", "ACESSORIOS" → "Acessorios"
+function nomeCategoria(catKey){
+  if(!catKey) return '';
+  return catKey.charAt(0) + catKey.slice(1).toLowerCase();
 }
 
 // ── PERSISTÊNCIA DOS FILTROS (sessionStorage — zera ao fechar navegador) ──────
@@ -1023,18 +1073,19 @@ function renderDrawerOpcoes(){
       ${safeHtml(nomeBonito(g))} <span class="cnt">(${generos[g]})</span>
     </label>`).join('') : '<div class="text-xs" style="color:var(--muted)">Nenhum gênero.</div>';
 
-  // Categoria — pelos grupos presentes
+  // Categoria — valores REAIS da coluna (sem agrupar)
   const catCount = {};
   for(const it of STATE.itens){
-    const gid = grupoDeCategoria(it.categoria);
-    if(gid) catCount[gid] = (catCount[gid]||0) + 1;
+    const ck = categoriaKey(it.categoria);
+    if(ck) catCount[ck] = (catCount[ck]||0) + 1;
   }
   const boxC = $('filtroCategoriaBox');
-  const visiveis = GRUPOS_CATEGORIA.filter(g => catCount[g.id]);
-  boxC.innerHTML = visiveis.length ? visiveis.map(g => `
+  const catKeys = Object.keys(catCount).sort();
+  boxC.innerHTML = catKeys.length ? catKeys.map(ck => `
     <label class="drawer-opt">
-      <input type="checkbox" ${STATE.filtroCategoria.has(g.id)?'checked':''} onchange="toggleCategoria('${g.id}',this.checked)">
-      <span style="font-size:13px;line-height:1">${g.emoji}</span> ${g.label} <span class="cnt">(${catCount[g.id]})</span>
+      <input type="checkbox" ${STATE.filtroCategoria.has(ck)?'checked':''} onchange="toggleCategoria('${safeHtml(ck)}',this.checked)">
+      <i class="fa-solid ${iconeCategoria(ck)}" style="font-size:14px;width:18px;text-align:center;color:#64748b"></i>
+      ${safeHtml(nomeCategoria(ck))} <span class="cnt">(${catCount[ck]})</span>
     </label>`).join('') : '<div class="text-xs" style="color:var(--muted)">Nenhuma categoria.</div>';
 
   // Ordenação
@@ -1093,8 +1144,7 @@ function renderChipsAtivos(){
     chips.push(`<span class="chip-ativo">${safeHtml(nomeBonito(g))} <button onclick="toggleGenero('${safeHtml(g)}',false)">×</button></span>`);
   }
   for(const c of STATE.filtroCategoria){
-    const grupo = GRUPOS_CATEGORIA.find(x => x.id === c);
-    chips.push(`<span class="chip-ativo">${grupo?grupo.label:c} <button onclick="toggleCategoria('${c}',false)">×</button></span>`);
+    chips.push(`<span class="chip-ativo">${safeHtml(nomeCategoria(c))} <button onclick="toggleCategoria('${safeHtml(c)}',false)">×</button></span>`);
   }
   wrap.innerHTML = chips.join('');
 }
@@ -1117,7 +1167,7 @@ function applyFilters(){
     // Gênero (multi — OR interno)
     .filter(item => STATE.filtroGenero.size === 0 || STATE.filtroGenero.has(String(item.genero||'').trim().toUpperCase()))
     // Categoria (multi — OR interno)
-    .filter(item => STATE.filtroCategoria.size === 0 || STATE.filtroCategoria.has(grupoDeCategoria(item.categoria)))
+    .filter(item => STATE.filtroCategoria.size === 0 || STATE.filtroCategoria.has(categoriaKey(item.categoria)))
     // Busca livre
     .filter(item => {
       if(!q) return true;
@@ -1807,14 +1857,32 @@ function cartSetField(key, field, val){
   saveCartToStorage();
 }
 
+// ── MINI-MODAL DE CONFIRMAÇÃO ───────────────────────────────────────────────
+let _confirmCallback = null;
+function abrirConfirm(titulo, msg, onOk){
+  $('confirmTitle').textContent = titulo;
+  $('confirmMsg').textContent   = msg;
+  _confirmCallback = onOk;
+  $('confirmModal').classList.remove('hidden');
+}
+function fecharConfirm(){
+  $('confirmModal').classList.add('hidden');
+  _confirmCallback = null;
+}
+
 function cartClearAll(){
   if(!STATE.cart.size) return;
-  if(!confirm('Tem certeza que deseja limpar toda a sacola?\n\nTodos os produtos e quantidades serão removidos. Esta ação não pode ser desfeita.')) return;
-  STATE.cart.clear();
-  saveCartToStorage();
-  atualizarFabContador();
-  renderCartUI();
-  showToast('Sacola limpa', 'info');
+  abrirConfirm(
+    'Limpar a sacola?',
+    'Todos os produtos e quantidades serão removidos. Esta ação não pode ser desfeita.',
+    () => {
+      STATE.cart.clear();
+      saveCartToStorage();
+      atualizarFabContador();
+      renderCartUI();
+      showToast('Sacola limpa', 'info');
+    }
+  );
 }
 
 // Zera só a grade de 1 produto (mantém o produto na sacola)
@@ -2199,6 +2267,57 @@ aplicarIdentidadeMarca();
 loadCartFromStorage();
 atualizarFabContador();
 loadData();
+
+// Liga o botão OK do mini-modal de confirmação
+$('confirmOkBtn').addEventListener('click', () => {
+  const cb = _confirmCallback;
+  fecharConfirm();
+  if(typeof cb === 'function') cb();
+});
+
+// ── SWIPE: arrastar o drawer de filtros para a esquerda fecha ───────────────
+(function(){
+  const bg = $('drawerFiltrosBg');
+  if(!bg) return;
+  const panel = bg.querySelector('.drawer-panel');
+  if(!panel) return;
+  let startX = 0, startY = 0, dragging = false, deltaX = 0;
+
+  panel.addEventListener('touchstart', (e) => {
+    if(e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    dragging = true;
+    deltaX = 0;
+    panel.style.transition = 'none';
+  }, { passive:true });
+
+  panel.addEventListener('touchmove', (e) => {
+    if(!dragging) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    // só considera swipe horizontal (evita conflito com scroll vertical)
+    if(Math.abs(dy) > Math.abs(dx)) return;
+    deltaX = Math.min(0, dx); // só para a esquerda
+    panel.style.transform = `translateX(${deltaX}px)`;
+  }, { passive:true });
+
+  panel.addEventListener('touchend', () => {
+    if(!dragging) return;
+    dragging = false;
+    panel.style.transition = 'transform .2s ease-out';
+    // arrastou mais de 70px pra esquerda → fecha
+    if(deltaX < -70){
+      panel.style.transform = 'translateX(-100%)';
+      setTimeout(() => {
+        fecharDrawerFiltros();
+        panel.style.transform = '';
+      }, 200);
+    } else {
+      panel.style.transform = 'translateX(0)';
+    }
+  });
+})();
 </script>
 </body>
 </html>
