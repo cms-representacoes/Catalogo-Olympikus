@@ -1482,66 +1482,6 @@
   {
     "marca": "OLY",
     "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "OIWB221802",
-    "descricao": "MOCHILA BRAZE",
-    "cor": "CEREJA",
-    "linha": "CONFORTO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 179.99,
-    "totalGeral": 45,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 45
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "OIWB221806",
-    "descricao": "MOCHILA ESSENTIAL",
-    "cor": "MAUVE",
-    "linha": "COMPLEMENTO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 149.99,
-    "totalGeral": 45,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 45
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "OIWB261826",
-    "descricao": "MOCHILA ESSENTIAL ESTAMPA",
-    "cor": "PRETO",
-    "linha": "COMPLEMENTO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 149.99,
-    "totalGeral": 45,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 45
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
     "empresa": "VDIST",
     "artigo": "OIWB251806",
     "descricao": "SHOULDER BAG MINI",
@@ -1743,26 +1683,6 @@
     "marca": "OLY",
     "prevFat": "JUNHO",
     "empresa": "VDIST",
-    "artigo": "OICR261714",
-    "descricao": "BONE CORRE FOCO",
-    "cor": "FLPSPT",
-    "linha": "CORRE FOCO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 0,
-    "totalGeral": 780,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 780
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VDIST",
     "artigo": "OIWB251712",
     "descricao": "BONE COMFY CASUAL",
     "cor": "ARNT25",
@@ -1897,26 +1817,6 @@
     "imagem": "OIWC231704_BLUSH",
     "grade": {
       "U": 1123
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VDIST",
-    "artigo": "OICR261714",
-    "descricao": "BONE CORRE FOCO",
-    "cor": "PT_PRT",
-    "linha": "CORRE FOCO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 0,
-    "totalGeral": 1146,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 1146
     }
   },
   {
@@ -2623,26 +2523,6 @@
     "marca": "OLY",
     "prevFat": "JUNHO",
     "empresa": "VDIST",
-    "artigo": "OISB241825",
-    "descricao": "MOCHILA CABO DE ACO",
-    "cor": "NAVAL",
-    "linha": "COMPLEMENTO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 249.99,
-    "totalGeral": 8716,
-    "codigoTabela": "E4687",
-    "mkp": "2.3",
-    "custo": 108.69,
-    "imagem": "",
-    "grade": {
-      "U": 8716
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VDIST",
     "artigo": "OIWB241803",
     "descricao": "MOCHILA PRIME",
     "cor": "NVLPRT",
@@ -2863,60 +2743,6 @@
     "marca": "OLY",
     "prevFat": "JUNHO",
     "empresa": "VULTS",
-    "artigo": "OIWB271811",
-    "descricao": "GYM SACK 2.0",
-    "cor": "CHAMA",
-    "linha": "CORRE FORCA",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 0,
-    "totalGeral": 0,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {}
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "OIWB271811",
-    "descricao": "GYM SACK 2.0",
-    "cor": "NAVAL",
-    "linha": "CORRE FORCA",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 0,
-    "totalGeral": 0,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {}
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "OIWB271811",
-    "descricao": "GYM SACK 2.0",
-    "cor": "PRETO",
-    "linha": "CORRE FORCA",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 0,
-    "totalGeral": 0,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {}
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
     "artigo": "OIWB251811",
     "descricao": "MOCHILA BASIC NEW",
     "cor": "CASCAL",
@@ -2929,24 +2755,6 @@
     "mkp": "2.8",
     "custo": 42.85,
     "imagem": "OIWB251811_CASCAL",
-    "grade": {}
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "OIWB251811",
-    "descricao": "MOCHILA BASIC NEW",
-    "cor": "MAUVE",
-    "linha": "COMPLEMENTO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 119.99,
-    "totalGeral": 0,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
     "grade": {}
   },
   {
@@ -2983,24 +2791,6 @@
     "mkp": "2.8",
     "custo": 42.85,
     "imagem": "OIWB251811_PRETO",
-    "grade": {}
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "OIWB251811",
-    "descricao": "MOCHILA BASIC NEW",
-    "cor": "SALMAO",
-    "linha": "COMPLEMENTO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 119.99,
-    "totalGeral": 0,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
     "grade": {}
   }
 ]
