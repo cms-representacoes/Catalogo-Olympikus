@@ -270,51 +270,42 @@
       display:flex; align-items:center; justify-content:center;
     }
     .cart-grade-grid{
-      display:grid; grid-template-columns:repeat(auto-fill, minmax(92px, 1fr));
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(96px, 1fr));
       gap:8px; margin-bottom:8px;
     }
     .cart-grade-box{
       border:1px solid var(--line); border-radius:11px;
-      padding:8px 6px; text-align:center; background:#f8fafc;
+      padding:8px 7px; text-align:center; background:#f8fafc;
       transition:border-color .2s, background .2s;
     }
-    .cart-grade-box.pending{
-      border-color:#fbbf24; background:#fffbeb;
-    }
-    .cart-grade-box.ok{
-      border-color:var(--accent); background:#fff;
-    }
+    .cart-grade-box.pending{ border-color:#fbbf24; background:#fffbeb; }
+    .cart-grade-box.ok{ border-color:var(--accent); background:#fff; }
     .cart-grade-tam{ font-size:15px; font-weight:900; color:var(--text); }
-    .cart-grade-disp{ font-size:10px; color:var(--muted); margin:1px 0 7px; }
-    /* Stepper grande (tablet-friendly: 38px altura) */
-    .cart-grade-ctrl{
-      display:flex; align-items:stretch;
-      border:1px solid var(--line); border-radius:9px;
-      overflow:hidden; height:38px;
+    .cart-grade-disp{ font-size:10px; color:var(--muted); margin:1px 0 6px; }
+    /* Quantidade pedida — destaque grande */
+    .cart-grade-qty{
+      font-size:20px; font-weight:900; color:var(--text);
+      line-height:1; margin-bottom:6px;
     }
-    .cart-grade-ctrl.ok{ border-color:var(--accent); }
+    .cart-grade-box.pending .cart-grade-qty{ color:#cbd5e1; }
+    /* Stepper: 2 botões grandes lado a lado (tablet-friendly) */
+    .cart-grade-ctrl{
+      display:flex; gap:6px;
+    }
     .cart-grade-ctrl button{
-      width:38px; flex-shrink:0;
-      border:none; background:#fff; color:var(--text);
+      flex:1; height:38px;
+      border:1px solid var(--line); border-radius:9px;
+      background:#fff; color:var(--text);
       cursor:pointer; font-weight:900; font-size:20px; line-height:1;
       display:flex; align-items:center; justify-content:center;
       -webkit-tap-highlight-color:transparent;
     }
-    .cart-grade-ctrl button.minus{ border-right:1px solid var(--line); }
-    .cart-grade-ctrl button.plus{ border-left:1px solid var(--line); }
+    .cart-grade-ctrl button.plus{ border-color:var(--accent); color:var(--accent-dark,#5f8c00); }
+    .cart-grade-ctrl button:active{ transform:scale(.94); }
     .cart-grade-ctrl button:disabled{
-      background:#f1f5f9; color:#cbd5e1; cursor:not-allowed;
+      background:#f1f5f9; color:#cbd5e1; border-color:var(--line);
+      cursor:not-allowed; transform:none;
     }
-    .cart-grade-ctrl input{
-      flex:1 1 auto; width:100%; min-width:34px; box-sizing:border-box;
-      text-align:center; font-weight:900;
-      border:none; background:#fff; font-size:15px; color:var(--text);
-      padding:0; margin:0; display:block;
-      -moz-appearance:textfield; appearance:textfield;
-    }
-    .cart-grade-ctrl input:focus{ outline:2px solid var(--accent-light); outline-offset:-2px; }
-    .cart-grade-ctrl input::-webkit-outer-spin-button,
-    .cart-grade-ctrl input::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
     /* Botão limpar grade do produto */
     .cart-clear-grade{
       background:#fff; border:1px solid var(--line); color:var(--muted);
@@ -531,7 +522,7 @@
     <!-- Busca -->
     <div class="flex items-center gap-2 rounded-full px-4 py-2 flex-1 max-w-sm" style="background:var(--card);border:1px solid var(--line)">
       <i class="fa-solid fa-magnifying-glass text-sm" style="color:var(--muted)"></i>
-      <input id="searchInput" class="bg-transparent text-sm outline-none w-full" style="color:var(--text)" placeholder="Buscar produto, artigo ou cor..." oninput="applyFilters()">
+      <input id="searchInput" class="bg-transparent text-sm outline-none w-full" style="color:var(--text)" placeholder="Buscar produto, artigo ou cor..." oninput="applyFilters()" onkeydown="if(event.key==='Escape'){limparBusca();this.blur();}">
       <button id="btnClearSearch" class="hidden" onclick="limparBusca()" style="color:var(--muted);background:none;border:none;cursor:pointer;font-size:14px">✕</button>
     </div>
 
@@ -1968,14 +1959,16 @@ function cartItemHtml(it){
     const ped  = Number(it.gradePedido[t] || 0);
     const restante = disp - ped;
     const pendente = ped === 0;
+    const kEsc = safeHtml(it.key);
+    const tEsc = safeHtml(t);
     return `
       <div class="cart-grade-box ${pendente?'pending':'ok'}">
-        <div class="cart-grade-tam">${safeHtml(t)}</div>
-        <div class="cart-grade-disp">${restante}/${disp}</div>
-        <div class="cart-grade-ctrl ${pendente?'':'ok'}">
-          <button class="minus" onclick="cartUpdateQty('${safeHtml(it.key)}','${safeHtml(t)}',-1)" ${ped===0?'disabled':''}>−</button>
-          <input type="number" inputmode="numeric" value="${ped}" min="0" max="${disp}" onchange="cartSetQty('${safeHtml(it.key)}','${safeHtml(t)}',this.value)" onfocus="this.select()">
-          <button class="plus" onclick="cartUpdateQty('${safeHtml(it.key)}','${safeHtml(t)}',1)" ${restante===0?'disabled':''}>+</button>
+        <div class="cart-grade-tam">${tEsc}</div>
+        <div class="cart-grade-disp">${restante}/${disp} disp.</div>
+        <div class="cart-grade-qty">${ped}</div>
+        <div class="cart-grade-ctrl">
+          <button class="minus" onclick="cartUpdateQty('${kEsc}','${tEsc}',-1)" ${ped===0?'disabled':''}>−</button>
+          <button class="plus" onclick="cartUpdateQty('${kEsc}','${tEsc}',1)" ${restante===0?'disabled':''}>+</button>
         </div>
       </div>`;
   }).join('');
