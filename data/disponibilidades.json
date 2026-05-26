@@ -1227,33 +1227,5 @@
       "39": 4,
       "40": 4
     }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "43286101",
-    "descricao": "ATMOS /101",
-    "cor": "PEWTER",
-    "linha": "COTIDIANO",
-    "genero": "FEMININO",
-    "categoria": "TENIS",
-    "pdv": 189.99,
-    "totalGeral": 1489,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "33": 23,
-      "34": 67,
-      "35": 184,
-      "36": 236,
-      "37": 425,
-      "38": 353,
-      "39": 136,
-      "40": 17,
-      "41": 48
-    }
   }
 ]
