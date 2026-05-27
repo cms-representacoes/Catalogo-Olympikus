@@ -239,8 +239,70 @@
     ],
     "criadoEm": 1779921596051,
     "expiraEm": 1780094396051,
-    "status": "aguardando",
-    "resposta": null,
-    "respondidoEm": null
+    "status": "respondido",
+    "resposta": {
+      "itens": [
+        {
+          "artigo": "1384672",
+          "cor": "CASTST",
+          "descricao": "MOCHILA UA HUST 6.0 BACKP",
+          "pdv": 399.99,
+          "categoria": "ACESSORIOS",
+          "grade": {
+            "U": 6
+          }
+        },
+        {
+          "artigo": "1369222",
+          "cor": "BKMSIL",
+          "descricao": "MALA UA UNDENIABLE 5.0 DU",
+          "pdv": 379.99,
+          "categoria": "ACESSORIOS",
+          "grade": {
+            "U": 6
+          }
+        },
+        {
+          "artigo": "1326799",
+          "cor": "WHBLAC",
+          "descricao": "SPORTSTYLE LEFT CHEST SS",
+          "pdv": 129.99,
+          "categoria": "VESTUARIO",
+          "grade": {
+            "P": 2,
+            "M": 4,
+            "G": 4,
+            "GG": 2
+          }
+        },
+        {
+          "artigo": "1386793",
+          "cor": "MGLHBL",
+          "descricao": "CAM MC UA M BOX.SPORTS UP",
+          "pdv": 129.99,
+          "categoria": "VESTUARIO",
+          "grade": {
+            "P": 4,
+            "M": 8,
+            "G": 8,
+            "GG": 5
+          }
+        },
+        {
+          "artigo": "1386793",
+          "cor": "ACYRED",
+          "descricao": "CAM MC UA M BOX.SPORTS UP",
+          "pdv": 129.99,
+          "categoria": "VESTUARIO",
+          "grade": {
+            "P": 4,
+            "M": 8,
+            "G": 8,
+            "GG": 4
+          }
+        }
+      ]
+    },
+    "respondidoEm": 1779921810912
   }
 }
