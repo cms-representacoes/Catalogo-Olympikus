@@ -483,8 +483,57 @@
     ],
     "criadoEm": 1779908139574,
     "expiraEm": 1780080939574,
-    "status": "aguardando",
-    "resposta": null,
-    "respondidoEm": null
+    "status": "respondido",
+    "resposta": {
+      "itens": [
+        {
+          "artigo": "43341472",
+          "cor": "RYLMHO",
+          "descricao": "CHALLENGER 6",
+          "pdv": 329.99,
+          "categoria": "TENIS",
+          "grade": {
+            "37": 1,
+            "38": 2,
+            "39": 2,
+            "40": 1
+          }
+        },
+        {
+          "artigo": "OIWB241828",
+          "cor": "PRETO",
+          "descricao": "MOCHILA SPORTSTYLE",
+          "pdv": 249.99,
+          "categoria": "ACESSORIOS",
+          "grade": {
+            "U": 6
+          }
+        },
+        {
+          "artigo": "OIMSA81922",
+          "cor": "BCPTMC",
+          "descricao": "TRIPK.MEIA MEDIA 39/44",
+          "pdv": 47.99,
+          "categoria": "MEIA",
+          "grade": {
+            "39/44": 6
+          }
+        },
+        {
+          "artigo": "OFMWT26610",
+          "cor": "PRETO",
+          "descricao": "TSHIRT ESSENTIAL MC 2.0 M",
+          "pdv": 89.99,
+          "categoria": "VESTUARIO",
+          "grade": {
+            "P": 2,
+            "M": 4,
+            "G": 4,
+            "GG": 2
+          }
+        }
+      ]
+    },
+    "respondidoEm": 1779908289216
   }
 }
