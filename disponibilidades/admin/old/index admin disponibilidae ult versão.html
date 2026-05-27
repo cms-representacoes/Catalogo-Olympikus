@@ -371,12 +371,6 @@
           style="border-color:var(--accent-dark);background:rgba(204,255,0,.1);color:var(--accent-dark)">
           <i class="fa-solid fa-upload text-xs"></i> Importar xlsx
         </button>
-        <!-- Imagens em lote (novo fluxo simples) -->
-        <button onclick="abrirImagensLoteSimples()" data-tip="Subir imagens em lote (.jpg/.png)"
-          class="focus-ring rounded-full border px-4 py-2 text-sm font-bold flex items-center gap-2 transition-colors"
-          style="border-color:#fbbf24;background:#fef3c7;color:#92400e">
-          <i class="fa-solid fa-images text-xs"></i> Imagens em lote
-        </button>
         <!-- Tabela Especial -->
         <button onclick="abrirTabelaEspecial()" data-tip="Importar tabela especial"
           class="focus-ring rounded-full border px-4 py-2 text-sm font-bold flex items-center gap-2 transition-colors"
@@ -409,9 +403,6 @@
     <button class="filter-pill" data-filter="oly" onclick="setFilter('oly')">Olympikus <span id="badgeOLY" class="text-[10px] font-extrabold bg-slate-200 text-slate-700 rounded-full px-1.5 py-0.5">0</span></button>
     <button class="filter-pill" data-filter="semimg" onclick="setFilter('semimg')">
       <i class="fa-solid fa-image text-[10px]" style="color:#dc2626"></i> Sem imagem <span id="badgeSemImg" class="text-[10px] font-extrabold bg-rose-100 text-rose-700 rounded-full px-1.5 py-0.5 hidden">0</span>
-    </button>
-    <button class="filter-pill" data-filter="aguardando" onclick="setFilter('aguardando')" style="background:#fef3c7;border-color:#fbbf24;color:#92400e">
-      <i class="fa-solid fa-hourglass-half text-[10px]"></i> Aguardando imagem <span id="badgeAguardando" class="text-[10px] font-extrabold bg-amber-200 text-amber-900 rounded-full px-1.5 py-0.5 hidden">0</span>
     </button>
     <button class="filter-pill" data-filter="ocultos" onclick="setFilter('ocultos')">
       <i class="fa-solid fa-eye-slash text-[10px]"></i> Ocultos <span id="badgeOcultos" class="text-[10px] font-extrabold bg-slate-200 text-slate-700 rounded-full px-1.5 py-0.5 hidden">0</span>
@@ -725,53 +716,6 @@
   </div>
 </div>
 
-<!-- ═══ Modal Upload de Imagens em Lote (independente) ═══════════════════ -->
-<div id="modalImgLote" class="hidden fixed inset-0 z-[160] bg-slate-950/55 p-4 flex items-center justify-center" onclick="if(event.target===this)fecharImagensLote()">
-  <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl flex flex-col" style="max-height:90vh">
-    <div class="flex items-center gap-3 px-5 py-3 border-b border-slate-100">
-      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#fef3c7;color:#92400e">
-        <i class="fa-solid fa-images"></i>
-      </div>
-      <div class="flex-1">
-        <div class="text-base font-extrabold text-slate-900">Subir imagens em lote</div>
-        <div class="text-[11px] text-slate-500" id="imgLoteSubt">—</div>
-      </div>
-      <button onclick="fecharImagensLote()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500">
-        <i class="fa-solid fa-xmark text-sm"></i>
-      </button>
-    </div>
-    <div class="px-5 py-4 flex-1 overflow-y-auto">
-      <div class="rounded-xl border-2 border-dashed border-amber-300 bg-amber-50 p-6 text-center cursor-pointer hover:bg-amber-100" onclick="$('inputImgLoteSimples').click()">
-        <i class="fa-solid fa-cloud-upload text-3xl text-amber-500 mb-2 block"></i>
-        <div class="text-sm font-bold text-amber-800">Selecione as imagens</div>
-        <div class="text-[11px] text-amber-700 mt-1">Formato: <b>ARTIGO_COR.jpg</b> · pode selecionar várias</div>
-        <input type="file" id="inputImgLoteSimples" accept="image/jpeg,image/png,image/webp" multiple class="hidden" onchange="processarImagensLoteSimples(this.files)">
-      </div>
-
-      <!-- Status -->
-      <div id="imgLoteStatus" class="hidden mt-4 space-y-2"></div>
-
-      <!-- Barra de progresso -->
-      <div id="imgLoteProgresso" class="hidden mt-4">
-        <div class="flex justify-between text-xs font-bold mb-1">
-          <span class="text-slate-600">Enviando...</span>
-          <span class="text-slate-900" id="imgLoteCount">0/0</span>
-        </div>
-        <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-          <div id="imgLoteBar" class="h-full bg-amber-500 transition-all" style="width:0%"></div>
-        </div>
-        <div class="text-[10px] text-slate-500 mt-1 font-mono" id="imgLoteAtual">—</div>
-      </div>
-    </div>
-    <div class="px-5 py-3 border-t border-slate-100 bg-slate-50 flex gap-2">
-      <button onclick="fecharImagensLote()" class="flex-1 py-2 rounded-lg border border-slate-200 text-sm font-bold text-slate-600 bg-white hover:bg-slate-50">Fechar</button>
-      <button id="btnImgLoteEnviar" onclick="enviarImagensLoteSimples()" disabled class="flex-1 py-2 rounded-lg text-white text-sm font-extrabold disabled:opacity-50" style="background:#d97706">
-        <i class="fa-solid fa-upload"></i> Enviar imagens
-      </button>
-    </div>
-  </div>
-</div>
-
 <!-- ═══ Modal de Confirmação genérico ════════════════════════════════════ -->
 <div id="modalConfirm" class="hidden fixed inset-0 z-[170] bg-slate-950/55 p-4 flex items-center justify-center" onclick="if(event.target===this)fecharConfirm(false)">
   <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl p-6 text-center">
@@ -966,179 +910,6 @@ let _jsonAtual = [];
 let _novos = [];
 let _conflitos = [];
 let _cruzadosTabEsp = 0;
-
-// ═══════════════════════════════════════════════════════════════════════════
-// UPLOAD DE IMAGENS EM LOTE (fluxo SIMPLES — independente do import)
-// Cruza com STATE.itens (banco), envia imagens e REMOVE flag _aguardandoImagem
-// ═══════════════════════════════════════════════════════════════════════════
-let _imgLote = new Map();        // chave (ARTIGO_COR) → File
-let _imgLoteCasadas = [];        // chaves que existem no banco
-let _imgLoteOrfas = [];          // chaves sem produto correspondente
-let _imgLoteAguardando = 0;      // quantos itens estão aguardando imagem
-
-function abrirImagensLoteSimples(){
-  $('modalImgLote').classList.remove('hidden');
-  _imgLote = new Map();
-  _imgLoteCasadas = [];
-  _imgLoteOrfas = [];
-  $('imgLoteStatus').classList.add('hidden');
-  $('imgLoteProgresso').classList.add('hidden');
-  $('btnImgLoteEnviar').disabled = true;
-  $('inputImgLoteSimples').value = '';
-  _imgLoteAguardando = (STATE.itens||[]).filter(i => i._aguardandoImagem).length;
-  $('imgLoteSubt').textContent = _imgLoteAguardando > 0
-    ? `${_imgLoteAguardando} produto(s) aguardando imagem`
-    : `Substitui/adiciona imagens dos produtos no banco`;
-}
-
-function fecharImagensLote(){
-  $('modalImgLote').classList.add('hidden');
-}
-
-function processarImagensLoteSimples(fileList){
-  _imgLote = new Map();
-  _imgLoteCasadas = [];
-  _imgLoteOrfas = [];
-  if(!fileList || !fileList.length){
-    $('imgLoteStatus').classList.add('hidden');
-    $('btnImgLoteEnviar').disabled = true;
-    return;
-  }
-  for(const f of fileList){
-    if(!/^image\/(jpeg|png|webp)$/i.test(f.type)) continue;
-    const chave = normalizarChaveImagem(f.name);
-    if(!chave) continue;
-    _imgLote.set(chave, f);
-  }
-  if(!_imgLote.size){
-    showToast('Nenhuma imagem válida (jpg/png/webp).','error');
-    return;
-  }
-  // Cruza com STATE.itens
-  const chavesBanco = new Set();
-  const aguardandoSet = new Set();
-  for(const it of (STATE.itens||[])){
-    const k = chaveImagemDoProduto(it);
-    if(k){
-      chavesBanco.add(k);
-      if(it._aguardandoImagem) aguardandoSet.add(k);
-    }
-  }
-  let casadasComAguardando = 0;
-  for(const k of _imgLote.keys()){
-    if(chavesBanco.has(k)){
-      _imgLoteCasadas.push(k);
-      if(aguardandoSet.has(k)) casadasComAguardando++;
-    } else {
-      _imgLoteOrfas.push(k);
-    }
-  }
-  const wrap = $('imgLoteStatus');
-  wrap.classList.remove('hidden');
-  wrap.innerHTML = `
-    <div class="rounded-lg bg-green-50 border border-green-200 p-3 text-xs">
-      <i class="fa-solid fa-check text-green-600"></i>
-      <b class="text-green-800">${_imgLoteCasadas.length}</b> imagem(ns) correspondem a produtos do banco
-      ${casadasComAguardando > 0 ? `<div class="text-[10px] text-green-700 mt-1">💡 ${casadasComAguardando} estavam aguardando imagem — serão liberadas para a vitrine</div>` : ''}
-    </div>
-    ${_imgLoteOrfas.length ? `
-    <div class="rounded-lg bg-amber-50 border border-amber-200 p-3 text-xs">
-      <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
-      <b class="text-amber-800">${_imgLoteOrfas.length}</b> imagem(ns) sem produto correspondente — serão ignoradas
-      <details class="mt-1 text-[10px] text-amber-700">
-        <summary class="cursor-pointer font-bold">ver lista</summary>
-        <div class="mt-1 font-mono max-h-32 overflow-y-auto">${_imgLoteOrfas.map(safeHtml).join('<br>')}</div>
-      </details>
-    </div>` : ''}
-  `;
-  $('btnImgLoteEnviar').disabled = (_imgLoteCasadas.length === 0);
-}
-
-async function enviarImagensLoteSimples(){
-  if(!_imgLoteCasadas.length){ showToast('Nenhuma imagem casada para enviar.','info'); return; }
-  const btn = $('btnImgLoteEnviar');
-  const prev = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
-
-  $('imgLoteProgresso').classList.remove('hidden');
-  $('imgLoteCount').textContent = `0/${_imgLoteCasadas.length}`;
-  $('imgLoteBar').style.width = '0%';
-
-  const sucesso = [], falhas = [];
-  let done = 0;
-  const CONC = 3;
-  const fila = _imgLoteCasadas.slice();
-
-  async function worker(){
-    while(fila.length){
-      const chave = fila.shift();
-      if(!chave) break;
-      $('imgLoteAtual').textContent = chave;
-      try{
-        await enviarUmaImagem(chave, _imgLote.get(chave));
-        sucesso.push(chave);
-      }catch(e){
-        try{
-          await new Promise(r => setTimeout(r, 600));
-          await enviarUmaImagem(chave, _imgLote.get(chave));
-          sucesso.push(chave);
-        }catch(e2){
-          falhas.push({ chave, erro: e2.message || String(e2) });
-        }
-      }
-      done++;
-      $('imgLoteCount').textContent = `${done}/${_imgLoteCasadas.length}`;
-      $('imgLoteBar').style.width = `${(done / _imgLoteCasadas.length) * 100}%`;
-    }
-  }
-  await Promise.all(Array.from({length:CONC}, () => worker()));
-
-  // Atualiza STATE.itens: preenche imagem + remove flag aguardando
-  const sucessoSet = new Set(sucesso);
-  const histPayload = {};
-  let removidasFlag = 0;
-  for(const it of STATE.itens){
-    const k = chaveImagemDoProduto(it);
-    if(!k || !sucessoSet.has(k)) continue;
-    it.imagem = k;
-    if(it._aguardandoImagem){
-      delete it._aguardandoImagem;
-      removidasFlag++;
-    }
-    histPayload[`${it.artigo}|${it.cor}`] = k;
-    STATE.imgHist[`${it.artigo}|${it.cor}`] = k;
-  }
-
-  try{
-    await workerFetch({
-      method:'PATCH', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ action:'saveDisponibilidades', data: STATE.itens })
-    });
-    if(Object.keys(histPayload).length){
-      await workerFetch({
-        method:'PATCH', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ action:'saveImagensHistorico', data: histPayload })
-      });
-    }
-  }catch(e){ console.error(e); }
-
-  $('imgLoteAtual').textContent = '✅ concluído';
-  let msg = `${sucesso.length} imagem(ns) enviada(s)`;
-  if(removidasFlag > 0) msg += ` · ${removidasFlag} liberada(s) para a vitrine`;
-  if(falhas.length) msg += ` · ⚠️ ${falhas.length} falharam`;
-  showToast(msg, falhas.length ? 'error' : 'success');
-
-  btn.disabled = false;
-  btn.innerHTML = prev;
-  applyFilters?.();
-
-  if(!falhas.length){
-    setTimeout(() => fecharImagensLote(), 1500);
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
 
 // ── AUTH ─────────────────────────────────────────────────────────────────────
 function doLogin(){
@@ -1457,7 +1228,6 @@ function applyFilters(){
   const filtrados = STATE.itens.filter(item => {
     if(f === 'ocultos') return isOculto(item);
     if(isOculto(item)) return false;
-    if(f === 'aguardando') return !!item._aguardandoImagem;
     if(f === 'ua')  return isUA(item);
     if(f === 'oly') return String(item.marca||'').trim().toUpperCase() === 'OLY';
     if(f === 'semimg'){
@@ -1482,14 +1252,12 @@ function applyFilters(){
   const oly   = todos.filter(i => String(i.marca||'').trim().toUpperCase() === 'OLY');
   const oc    = STATE.itens.filter(i => isOculto(i));
   const semImg = todos.filter(i => !i.imagem && STATE.imgChecks.get(imgCheckKey(i)) !== 'has');
-  const aguardando = todos.filter(i => !!i._aguardandoImagem);
 
   if($('badgeTodos')) $('badgeTodos').textContent = todos.length;
   if($('badgeUA'))    $('badgeUA').textContent    = ua.length;
   if($('badgeOLY'))   $('badgeOLY').textContent   = oly.length;
   if($('badgeOcultos')){ $('badgeOcultos').textContent = oc.length; $('badgeOcultos').classList.toggle('hidden', oc.length===0); }
   if($('badgeSemImg')){ $('badgeSemImg').textContent = semImg.length; $('badgeSemImg').classList.toggle('hidden', semImg.length===0); }
-  if($('badgeAguardando')){ $('badgeAguardando').textContent = aguardando.length; $('badgeAguardando').classList.toggle('hidden', aguardando.length===0); }
   if($('countLabel')) $('countLabel').textContent = `${filtrados.length} iten${filtrados.length!==1?'s':''}`;
 
   // Ordenação
@@ -1882,7 +1650,6 @@ async function enviarImagem(){
     );
     if(idx !== -1){
       STATE.itens[idx].imagem = nomeBase;
-      delete STATE.itens[idx]._aguardandoImagem; // imagem chegou → não está mais aguardando
       await workerFetch({
         method:'PATCH', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ action:'saveDisponibilidades', data: STATE.itens })
@@ -2511,24 +2278,24 @@ async function anlConfirmar(){
     return;
   }
 
-  // Separa COM e SEM imagem (mas TODOS vão pro banco)
+  // Separa COM e SEM imagem
   const comImg = selecionados.filter(r => r.temImg);
   const semImg = selecionados.filter(r => !r.temImg);
 
-  // Se há sem imagem, pergunta sobre baixar o XLSX paralelo
+  // Se há sem imagem, pergunta sobre o XLSX paralelo (modal bonito)
   if(semImg.length){
     abrirConfirm(
       `${semImg.length} produto(s) sem imagem`,
-      `Esses produtos serão importados marcados como "Aguardando imagem" — ficarão ocultos da vitrine até você subir as imagens.\n\nDeseja baixar um XLSX com a lista deles para facilitar o processo de busca das imagens?`,
+      `Esses produtos NÃO serão importados para a vitrine.\n\nDeseja baixar um XLSX com a lista deles para processar depois?`,
       async () => {
         await anlPrepararDownloadSemImg(semImg);
-        anlExecutarSalvar(selecionados);
+        anlExecutarSalvar(comImg);
       },
-      () => anlExecutarSalvar(selecionados),
-      { okText:'Baixar XLSX e continuar', cancelText:'Continuar sem baixar' }
+      () => anlExecutarSalvar(comImg),
+      { okText:'Baixar e continuar', cancelText:'Continuar sem baixar' }
     );
   } else {
-    anlExecutarSalvar(selecionados);
+    anlExecutarSalvar(comImg);
   }
 }
 
@@ -2570,7 +2337,7 @@ async function anlPrepararDownloadSemImg(semImg){
 }
 
 // Salva os COM imagem no JSON do Worker
-async function anlExecutarSalvar(itens){
+async function anlExecutarSalvar(comImg){
   const btn = $('btnAnlConfirmar');
   const prev = btn.innerHTML;
   btn.disabled = true;
@@ -2578,8 +2345,7 @@ async function anlExecutarSalvar(itens){
   try{
     // Reconstrói lista final: JSON atual SUBSTITUI itens com mesma chave + adiciona novos
     const novosMap = new Map();
-    let aguardando = 0, prontos = 0;
-    for(const r of itens){
+    for(const r of comImg){
       const it = r.item;
       const k = `${it.artigo}|${it.cor}`;
       // Preserva imagem do banco/histórico/cache de verificação
@@ -2591,21 +2357,15 @@ async function anlExecutarSalvar(itens){
         );
         if(noBanco && noBanco.imagem) imagem = noBanco.imagem;
         else if(STATE.imgHist && STATE.imgHist[k]) imagem = STATE.imgHist[k];
+        // Caso a verificação ao GitHub confirmou que existe, usa o nome gerado
         else if(STATE.imgChecks?.get(k) === 'has'){
           imagem = getProductImageName(it);
         }
       }
-      // Flag de aguardando imagem (vitrine NÃO mostra)
-      const aguardandoImg = !imagem;
-      if(aguardandoImg) aguardando++; else prontos++;
-      novosMap.set(k, {
-        ...it,
-        imagem,
-        _aguardandoImagem: aguardandoImg ? true : undefined  // só inclui se true
-      });
+      novosMap.set(k, { ...it, imagem });
     }
 
-    // Lista final
+    // Lista final: do banco atual remove os que foram atualizados, adiciona os novos
     const filtrado = (_jsonAtual||[]).filter(r => {
       const k = `${String(r.artigo||'').toUpperCase()}|${String(r.cor||'').toUpperCase()}`;
       return !novosMap.has(k);
@@ -2626,9 +2386,7 @@ async function anlExecutarSalvar(itens){
     popularFiltrosSec?.();
     applyFilters?.();
 
-    let msg = `${prontos} pronto(s) na vitrine`;
-    if(aguardando > 0) msg += ` · ${aguardando} aguardando imagem`;
-    showToast(msg, 'success');
+    showToast(`${comImg.length} produto(s) importado(s) com sucesso!`, 'success');
     fecharAnalise();
     fecharImportar();
   }catch(e){
@@ -2903,34 +2661,6 @@ async function processarXlsxMulti(fileList){
   if(itensParaVerificar.length){
     showToast(`Verificando ${itensParaVerificar.length} imagem(ns)...`, 'info');
     await verificarImagensImport(itensParaVerificar);
-  }
-
-  // ALÉM disso, re-verifica os itens AGUARDANDO IMAGEM já no banco
-  // (caso a imagem já tenha sido subida via GitHub ou outro canal)
-  const aguardandoBanco = (_jsonAtual||[]).filter(i => i._aguardandoImagem);
-  if(aguardandoBanco.length){
-    await verificarImagensImport(aguardandoBanco);
-    // Promove aqueles cuja imagem agora foi confirmada
-    let promovidos = 0;
-    for(const it of aguardandoBanco){
-      const k = `${String(it.artigo||'').toUpperCase()}|${String(it.cor||'').toUpperCase()}`;
-      if(STATE.imgChecks?.get(k) === 'has'){
-        it.imagem = getProductImageName(it);
-        delete it._aguardandoImagem;
-        promovidos++;
-      }
-    }
-    if(promovidos){
-      // Persiste em background
-      workerFetch({
-        method:'PATCH', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ action:'saveDisponibilidades', data: _jsonAtual })
-      }).then(() => {
-        STATE.itens = _jsonAtual.slice();
-        showToast(`${promovidos} produto(s) liberado(s) para a vitrine (imagem chegou)`, 'success');
-        applyFilters?.();
-      }).catch(e => console.warn(e));
-    }
   }
 
   // Classifica cada produto

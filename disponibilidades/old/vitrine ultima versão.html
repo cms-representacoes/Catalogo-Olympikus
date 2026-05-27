@@ -1727,7 +1727,6 @@ async function loadData(){
 
     STATE.itens = itens
       .filter(i => !i._oculto)
-      .filter(i => !i._aguardandoImagem)  // produtos aguardando imagem não aparecem
       .filter(i => !ocultosSet.has(ocultarKey(i)))
       // Filtra pela marca ativa (vem da URL) — produtos de outras marcas não entram
       .filter(i => String(i.marca||'').trim().toLowerCase() === MARCA_ATIVA)
