@@ -99,5 +99,64 @@
       ]
     },
     "respondidoEm": 1779902909529
+  },
+  "CQNHJD": {
+    "vendedor": "3616654",
+    "vendedorNome": "MARCOS",
+    "cliente": "TALENTUS",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "43409454",
+        "cor": "ARENIT",
+        "descricao": "EROS 2",
+        "categoria": "TENIS",
+        "linha": "CLASSICO",
+        "genero": "MASCULINO",
+        "empresa": "AZABA",
+        "pdv": 229.99,
+        "grade": {
+          "34": 28,
+          "35": 36,
+          "36": 18,
+          "37": 12,
+          "38": 60,
+          "39": 24,
+          "40": 24,
+          "41": 60
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43298343",
+        "cor": "MRHDRD",
+        "descricao": "DYNAMIC / 343",
+        "categoria": "TENIS",
+        "linha": "COTIDIANO",
+        "genero": "MASCULINO",
+        "empresa": "VULTS",
+        "pdv": 299.99,
+        "grade": {
+          "37": 5,
+          "38": 95,
+          "39": 187,
+          "40": 397,
+          "41": 382,
+          "42": 353,
+          "43": 228,
+          "44": 76
+        },
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1779904210440,
+    "expiraEm": 1780077010440,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
   }
 }
