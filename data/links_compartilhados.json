@@ -138,9 +138,25 @@
           "grade": {
             "33/38": 12
           }
+        },
+        {
+          "artigo": "43344456",
+          "cor": "PRETO",
+          "descricao": "ADRENA 2",
+          "pdv": 329.99,
+          "mkp": "",
+          "custo": "",
+          "categoria": "TENIS",
+          "tabelaEsp": false,
+          "grade": {
+            "35": 1,
+            "36": 2,
+            "37": 2,
+            "38": 1
+          }
         }
       ]
     },
-    "respondidoEm": 1780069675825
+    "respondidoEm": 1780069748122
   }
 }
