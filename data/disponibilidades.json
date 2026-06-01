@@ -9882,14 +9882,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMSR23605_FLOTAL",
     "grade": {
       "P": 154,
       "M": 295,
       "G": 298,
       "GG": 151
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
