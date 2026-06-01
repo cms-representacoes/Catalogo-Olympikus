@@ -5699,14 +5699,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26615_BRANCO",
     "grade": {
       "P": 208,
       "M": 430,
       "G": 460,
       "GG": 247
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -5800,7 +5799,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26615_PRETO",
     "grade": {
       "P": 344,
       "M": 680,
@@ -5809,8 +5808,7 @@
       "G1": 33,
       "G2": 54,
       "G3": 28
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -5827,7 +5825,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIWWT26615_TAPTRY",
     "grade": {
       "P": 180,
       "M": 352,
@@ -5836,8 +5834,7 @@
       "G1": 57,
       "G2": 75,
       "G3": 48
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
