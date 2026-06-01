@@ -10161,15 +10161,14 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMSR25706_PSTCHE",
     "grade": {
       "PP": 12,
       "P": 146,
       "M": 275,
       "G": 278,
       "GG": 134
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -10209,14 +10208,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWT25114_SILGRE",
     "grade": {
       "P": 70,
       "M": 162,
       "G": 132,
       "GG": 59
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -10609,7 +10607,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWT22304_SILGRE",
     "grade": {
       "P": 378,
       "M": 735,
@@ -10618,8 +10616,7 @@
       "G1": 22,
       "G2": 59,
       "G3": 24
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -10636,14 +10633,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMST22309_PRETO",
     "grade": {
       "P": 417,
       "M": 734,
       "G": 732,
       "GG": 350
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -10660,14 +10656,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMST22309_SILGRE",
     "grade": {
       "P": 296,
       "M": 518,
       "G": 511,
       "GG": 250
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -10775,14 +10770,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMST25312_TAPTRY",
     "grade": {
       "P": 503,
       "M": 980,
       "G": 984,
       "GG": 509
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -10914,14 +10908,13 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWT25640_TAPTRY",
     "grade": {
       "P": 434,
       "M": 842,
       "G": 842,
       "GG": 434
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -11230,7 +11223,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWT26619_SILGRE",
     "grade": {
       "P": 207,
       "M": 341,
@@ -11239,8 +11232,7 @@
       "G1": 4,
       "G2": 59,
       "G3": 34
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -11348,7 +11340,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWT26719_BRANCO",
     "grade": {
       "P": 317,
       "M": 590,
@@ -11357,8 +11349,7 @@
       "G1": 32,
       "G2": 24,
       "G3": 16
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -11402,7 +11393,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWT26719_PRETO",
     "grade": {
       "P": 1114,
       "M": 2098,
@@ -11411,8 +11402,7 @@
       "G1": 2,
       "G2": 80,
       "G3": 28
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
@@ -11452,7 +11442,7 @@
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
-    "imagem": "",
+    "imagem": "OIMWT26719_SILGRE",
     "grade": {
       "P": 270,
       "M": 481,
@@ -11461,8 +11451,7 @@
       "G1": 29,
       "G2": 45,
       "G3": 21
-    },
-    "_aguardandoImagem": true
+    }
   },
   {
     "marca": "OLY",
