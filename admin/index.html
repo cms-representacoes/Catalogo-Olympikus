@@ -449,6 +449,19 @@
     .dark .filter-status-btn.fs-active-todos{ background:linear-gradient(135deg,#5b8cff,#4f7bff) !important; color:#fff !important; border-color:transparent !important; }
     .dark .order-card-compact{ border-color:rgba(255,255,255,.10) !important; }
     .dark .order-card-compact:hover{ border-color:#5b8cff !important; box-shadow:0 10px 26px -10px rgba(0,0,0,.6) !important; }
+
+    /* ── Cabeçalho + abas de filtro congelados ao rolar ── */
+    #secaoFiltros{ position:sticky; top:calc(var(--admin-header-h, 84px) + 22px); z-index:20; }
+    #secaoFiltros > div{
+      background:#ffffff; border:1px solid #e2e8f0; border-radius:16px;
+      padding:10px 14px; margin-bottom:0;
+      box-shadow:0 8px 20px -12px rgba(15,23,42,.28);
+    }
+    .dark #secaoFiltros > div{
+      background:rgba(20,29,54,.97) !important; border-color:rgba(255,255,255,.10) !important;
+      -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+      box-shadow:0 10px 26px -12px rgba(0,0,0,.6) !important;
+    }
 </style>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
@@ -4063,6 +4076,19 @@ document.addEventListener('mouseup', (e)=>{
   }).catch(()=>{});
 });
 // ─────────────────────────────────────────────────────────────────────────────
+</script>
+<script>
+(function(){
+  function setStickyOffset(){
+    var h = document.getElementById('adminHeader');
+    if(h) document.documentElement.style.setProperty('--admin-header-h', h.offsetHeight + 'px');
+  }
+  window.addEventListener('resize', setStickyOffset);
+  window.addEventListener('load', setStickyOffset);
+  document.addEventListener('DOMContentLoaded', setStickyOffset);
+  setTimeout(setStickyOffset, 300);
+  setTimeout(setStickyOffset, 1200);
+})();
 </script>
 </body>
 </html>
