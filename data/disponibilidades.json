@@ -16712,31 +16712,6 @@
     "marca": "OLY",
     "prevFat": "JUNHO",
     "empresa": "AZABA",
-    "artigo": "43343458",
-    "descricao": "VOLTA 2",
-    "cor": "PRETO",
-    "linha": "VERSATIL",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 349.99,
-    "totalGeral": 213,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43343458_PRETO",
-    "grade": {
-      "38": 13,
-      "39": 29,
-      "40": 50,
-      "41": 58,
-      "42": 51,
-      "43": 12
-    }
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
     "artigo": "43358451",
     "descricao": "INVERSE 2",
     "cor": "LNRMLT",
@@ -17753,32 +17728,6 @@
       "44": 402
     },
     "_pdvResgatado": true
-  },
-  {
-    "marca": "OLY",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "43343458",
-    "descricao": "VOLTA 2",
-    "cor": "PTO_PT",
-    "linha": "VERSATIL",
-    "genero": "MASCULINO",
-    "categoria": "TENIS",
-    "pdv": 349.99,
-    "totalGeral": 123,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "43343458_PTO_PT",
-    "grade": {
-      "37": 9,
-      "38": 12,
-      "40": 24,
-      "41": 24,
-      "42": 24,
-      "43": 22,
-      "44": 8
-    }
   },
   {
     "marca": "OLY",
