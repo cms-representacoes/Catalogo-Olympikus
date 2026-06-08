@@ -12534,19 +12534,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 16938,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43344456_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 16938,
-      "2Q_OUT": 12437,
-      "2Q_SET": 6313,
-      "2Q_AGO": 1394
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12559,19 +12555,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 16558,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43344456_ELDERB",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 16558,
-      "2Q_OUT": 12057,
-      "2Q_SET": 5933,
-      "2Q_AGO": 1014
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12584,19 +12576,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 15565,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43344456_PEWTER",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 15565,
-      "2Q_OUT": 11064,
-      "2Q_SET": 4940,
-      "2Q_AGO": 21
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12609,19 +12597,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 15654,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43344456_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 15654,
-      "2Q_OUT": 11153,
-      "2Q_SET": 5029,
-      "2Q_AGO": 110
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12634,19 +12618,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 3213,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43701259_ARECHB",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 3213,
-      "2Q_OUT": 1081,
-      "2Q_SET": 1081,
-      "2Q_AGO": 1081
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12659,19 +12639,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 2136,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43701259_CZESCH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2136,
-      "2Q_OUT": 4,
-      "2Q_SET": 4,
-      "2Q_AGO": 4
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12684,19 +12660,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 4020,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43701259_MLT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 4020,
-      "2Q_OUT": 1888,
-      "2Q_SET": 1888,
-      "2Q_AGO": 1888
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12709,19 +12681,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 4984,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43701259_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 4984,
-      "2Q_OUT": 2852,
-      "2Q_SET": 2852,
-      "2Q_AGO": 2870
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12734,19 +12702,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 12192,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_ALGDNA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 12192,
-      "2Q_OUT": 7536,
-      "2Q_SET": 5647,
-      "2Q_AGO": 375
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12759,19 +12723,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 11842,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_ARECZA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11842,
-      "2Q_OUT": 7186,
-      "2Q_SET": 5297,
-      "2Q_AGO": 25
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12784,19 +12744,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 11824,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_CST_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11824,
-      "2Q_OUT": 7168,
-      "2Q_SET": 5279,
-      "2Q_AGO": 7
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12809,19 +12765,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 12069,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_LNRMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 12069,
-      "2Q_OUT": 7413,
-      "2Q_SET": 5524,
-      "2Q_AGO": 252
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12834,19 +12786,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 11819,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11819,
-      "2Q_OUT": 7163,
-      "2Q_SET": 5274,
-      "2Q_AGO": 2
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12859,19 +12807,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 12781,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43353470_RSANAL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 12781,
-      "2Q_OUT": 8125,
-      "2Q_SET": 6236,
-      "2Q_AGO": 964
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12884,19 +12828,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 50439,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43369229_MARITM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 50439,
-      "2Q_OUT": 32907,
-      "2Q_SET": 12917,
-      "2Q_AGO": 1380
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12909,19 +12849,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 49477,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43369229_MILITR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 49477,
-      "2Q_OUT": 31945,
-      "2Q_SET": 11955,
-      "2Q_AGO": 418
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12934,19 +12870,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 55772,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43369229_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 55772,
-      "2Q_OUT": 38240,
-      "2Q_SET": 18250,
-      "2Q_AGO": 6713
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12959,19 +12891,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 49168,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43369229_PWT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 49168,
-      "2Q_OUT": 31636,
-      "2Q_SET": 11646,
-      "2Q_AGO": 109
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -12984,19 +12912,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 35089,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43407464_LUNSTL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 35089,
-      "2Q_OUT": 28291,
-      "2Q_SET": 13022,
-      "2Q_AGO": 3480
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13009,19 +12933,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 37793,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43407464_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 37793,
-      "2Q_OUT": 30995,
-      "2Q_SET": 15726,
-      "2Q_AGO": 6184
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13034,19 +12954,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 33126,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43407464_STLMRH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 33126,
-      "2Q_OUT": 26328,
-      "2Q_SET": 11059,
-      "2Q_AGO": 1520
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13059,18 +12975,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 11351,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43697386_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11351,
-      "2Q_OUT": 7758,
-      "2Q_SET": 4343
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13083,18 +12996,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 11351,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43697386_LAVAND",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11351,
-      "2Q_OUT": 7758,
-      "2Q_SET": 4343
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13107,19 +13017,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 11418,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43697386_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11418,
-      "2Q_OUT": 7825,
-      "2Q_SET": 4410,
-      "2Q_AGO": 67
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13132,19 +13038,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 90604,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43616206_BRSMRT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 90604,
-      "2Q_OUT": 60444,
-      "2Q_SET": 23719,
-      "2Q_AGO": 3551
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13157,19 +13059,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 91817,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43616206_CHBHIB",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 91817,
-      "2Q_OUT": 61657,
-      "2Q_SET": 24932,
-      "2Q_AGO": 4764
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13182,19 +13080,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 90670,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43616206_MRHPSC",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 90670,
-      "2Q_OUT": 60510,
-      "2Q_SET": 23785,
-      "2Q_AGO": 3617
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13207,19 +13101,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 12691,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43632407_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 12691,
-      "2Q_OUT": 10655,
-      "2Q_SET": 4502,
-      "2Q_AGO": 1165
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13232,19 +13122,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 13797,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43632407_LAVAND",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 13797,
-      "2Q_OUT": 11761,
-      "2Q_SET": 5608,
-      "2Q_AGO": 2271
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13257,19 +13143,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 12961,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43632407_MARITM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 12961,
-      "2Q_OUT": 10925,
-      "2Q_SET": 4772,
-      "2Q_AGO": 1435
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13282,19 +13164,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 14869,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43632407_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 14869,
-      "2Q_OUT": 12833,
-      "2Q_SET": 6680,
-      "2Q_AGO": 3343
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13307,19 +13185,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 42630,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43376462_MRTMHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 42630,
-      "2Q_OUT": 28871,
-      "2Q_SET": 11818,
-      "2Q_AGO": 55
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13332,18 +13206,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 42575,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43376462_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 42575,
-      "2Q_OUT": 28816,
-      "2Q_SET": 11763
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13356,19 +13227,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 42757,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43376462_VDEMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 42757,
-      "2Q_OUT": 28998,
-      "2Q_SET": 11945,
-      "2Q_AGO": 182
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13381,19 +13248,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 58474,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43389459_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 58474,
-      "2Q_OUT": 41906,
-      "2Q_SET": 24688,
-      "2Q_AGO": 12356
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13406,19 +13269,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 47211,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43389459_PTODST",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 47211,
-      "2Q_OUT": 30643,
-      "2Q_SET": 13425,
-      "2Q_AGO": 1093
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13431,19 +13290,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 6,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43395156_AREMUS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 6,
-      "2Q_OUT": 6,
-      "2Q_SET": 6,
-      "2Q_AGO": 6
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13456,19 +13311,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 3,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43395156_MILITR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 3,
-      "2Q_OUT": 3,
-      "2Q_SET": 3,
-      "2Q_AGO": 3
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13481,19 +13332,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 5,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43395156_PTRLEO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 5,
-      "2Q_OUT": 5,
-      "2Q_SET": 5,
-      "2Q_AGO": 5
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13506,17 +13353,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 2931,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43547338_LILAS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2931,
-      "2Q_OUT": 0
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13529,17 +13374,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 2931,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43547338_MARFIM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2931,
-      "2Q_OUT": 0
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13552,17 +13395,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 2931,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43547338_MRHRSA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2931,
-      "2Q_OUT": 0
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13575,17 +13416,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 2931,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43547338_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2931,
-      "2Q_OUT": 0
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13598,19 +13437,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 67466,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43606391_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 67466,
-      "2Q_OUT": 41160,
-      "2Q_SET": 16426,
-      "2Q_AGO": 6993
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13623,19 +13458,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 74199,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43606391_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 74199,
-      "2Q_OUT": 47893,
-      "2Q_SET": 23159,
-      "2Q_AGO": 13726
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13648,18 +13479,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 22162,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_MLT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 22162,
-      "2Q_OUT": 13319,
-      "2Q_SET": 1495
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13672,18 +13500,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 22162,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_MRHRSA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 22162,
-      "2Q_OUT": 13319,
-      "2Q_SET": 1495
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13696,18 +13521,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 22162,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 22162,
-      "2Q_OUT": 13319,
-      "2Q_SET": 1495
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13720,18 +13542,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 22162,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_PT_VMH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 22162,
-      "2Q_OUT": 13319,
-      "2Q_SET": 1495
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13744,19 +13563,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 22642,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43772253_VDJLIS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 22642,
-      "2Q_OUT": 13799,
-      "2Q_SET": 1975,
-      "2Q_AGO": 480
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13769,19 +13584,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 11803,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43649393_AREMUS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11803,
-      "2Q_OUT": 7642,
-      "2Q_SET": 4612,
-      "2Q_AGO": 18
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13794,18 +13605,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 11785,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43649393_MILITR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11785,
-      "2Q_OUT": 7624,
-      "2Q_SET": 4594
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13818,18 +13626,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 11785,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43649393_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11785,
-      "2Q_OUT": 7624,
-      "2Q_SET": 4594
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13842,18 +13647,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 11785,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43649393_PTRLEO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11785,
-      "2Q_OUT": 7624,
-      "2Q_SET": 4594
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13866,20 +13668,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 3675,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_ARTPTO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 3651,
-      "2Q_OUT": 3675,
-      "2Q_SET": 3141,
-      "2Q_AGO": 166
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13892,20 +13690,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 3969,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_GFT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 3945,
-      "2Q_OUT": 3969,
-      "2Q_SET": 3435,
-      "2Q_AGO": 460
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13918,19 +13712,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 3509,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_LLS_RX",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 3485,
-      "2Q_OUT": 3509,
-      "2Q_SET": 2975
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13943,20 +13734,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 4287,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_MUSCZE",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 4263,
-      "2Q_OUT": 4287,
-      "2Q_SET": 3753,
-      "2Q_AGO": 778
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13969,20 +13756,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 4877,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43228494_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 4853,
-      "2Q_OUT": 4877,
-      "2Q_SET": 4343,
-      "2Q_AGO": 1368
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -13995,20 +13778,16 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 7,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43231496_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 7,
-      "2Q_OUT": 7,
-      "2Q_SET": 7,
-      "2Q_AGO": 7
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14021,20 +13800,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 10556,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43244493_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 10556,
-      "2Q_OUT": 6032,
-      "2Q_SET": 972,
-      "2Q_AGO": 2
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14047,19 +13822,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 10554,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43244493_CALDLA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 10554,
-      "2Q_OUT": 6030,
-      "2Q_SET": 970
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14072,19 +13844,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 10554,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43244493_PEWTER",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 10554,
-      "2Q_OUT": 6030,
-      "2Q_SET": 970
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14097,19 +13866,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 10554,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43244493_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 10554,
-      "2Q_OUT": 6030,
-      "2Q_SET": 970
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14122,20 +13888,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 19522,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43460476_HIBISC",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 19522,
-      "2Q_OUT": 13978,
-      "2Q_SET": 7990,
-      "2Q_AGO": 2614
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14148,20 +13910,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 18491,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43460476_MRHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 18491,
-      "2Q_OUT": 12947,
-      "2Q_SET": 6959,
-      "2Q_AGO": 1583
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14174,20 +13932,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 17051,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43460476_PEWTER",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 17051,
-      "2Q_OUT": 11507,
-      "2Q_SET": 5519,
-      "2Q_AGO": 143
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14200,20 +13954,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 18785,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43460476_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 18785,
-      "2Q_OUT": 13259,
-      "2Q_SET": 7271,
-      "2Q_AGO": 1895
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14226,20 +13976,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 9,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43467492_ORGANZ",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 9,
-      "2Q_OUT": 9,
-      "2Q_SET": 9,
-      "2Q_AGO": 9
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14252,18 +13998,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 2412,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_ARTPTO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2412,
-      "2Q_OUT": 249
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14276,18 +14020,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 2412,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_GFT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2412,
-      "2Q_OUT": 249
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14300,18 +14042,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 2412,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_LLS_RX",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2412,
-      "2Q_OUT": 249
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14324,18 +14064,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 2412,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_MUSCZE",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2412,
-      "2Q_OUT": 249
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14348,18 +14086,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 2412,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43531485_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2412,
-      "2Q_OUT": 249
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14372,19 +14108,16 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 698,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43532498_ARNGRF",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 698,
-      "2Q_OUT": 536,
-      "2Q_SET": 536
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14397,19 +14130,16 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 698,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43532498_MRHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 698,
-      "2Q_OUT": 536,
-      "2Q_SET": 536
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14422,19 +14152,16 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 698,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43532498_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 698,
-      "2Q_OUT": 536,
-      "2Q_SET": 536
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14447,19 +14174,16 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 698,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43532498_STEEL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 698,
-      "2Q_OUT": 536,
-      "2Q_SET": 536
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14472,17 +14196,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 14,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_AZUL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 14
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14495,17 +14218,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 14,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_CHBMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 14
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14518,17 +14240,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 14,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_CRSMRH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 14
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14541,17 +14262,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 14,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_MRH_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 14
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14564,17 +14284,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 14,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 14
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14587,17 +14306,16 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 14,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43552497_VRD_CL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 14
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14610,19 +14328,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 55838,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_AREMIS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 55838,
-      "2Q_OUT": 36970,
-      "2Q_SET": 14672,
-      "2Q_AGO": 430
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14635,19 +14349,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 55842,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_BCODUN",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 55842,
-      "2Q_OUT": 36974,
-      "2Q_SET": 14676,
-      "2Q_AGO": 434
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14660,19 +14370,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 55668,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_BGMVML",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 55668,
-      "2Q_OUT": 36800,
-      "2Q_SET": 14502,
-      "2Q_AGO": 260
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14685,18 +14391,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 55408,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_BRANCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 55408,
-      "2Q_OUT": 36540,
-      "2Q_SET": 14242
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14709,19 +14412,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 56074,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_CHB_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 56074,
-      "2Q_OUT": 37206,
-      "2Q_SET": 14908,
-      "2Q_AGO": 666
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14734,19 +14433,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 55464,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43752263_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 55464,
-      "2Q_OUT": 36596,
-      "2Q_SET": 14298,
-      "2Q_AGO": 56
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14759,18 +14454,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 43923,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBTN068_BRANCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 43923,
-      "2Q_OUT": 29318,
-      "2Q_SET": 8402
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14783,18 +14475,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 249.99,
-    "totalGeral": 43923,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "OBTN068_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 43923,
-      "2Q_OUT": 29318,
-      "2Q_SET": 8402
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14807,19 +14496,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 6194,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43393460_LILAS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 6194,
-      "2Q_OUT": 4195,
-      "2Q_SET": 4207,
-      "2Q_AGO": 1054
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14832,19 +14517,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 5653,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43393460_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 5653,
-      "2Q_OUT": 3654,
-      "2Q_SET": 3678,
-      "2Q_AGO": 525
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14857,19 +14538,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 5320,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43393460_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 5320,
-      "2Q_OUT": 3321,
-      "2Q_SET": 3333,
-      "2Q_AGO": 180
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14882,19 +14559,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 7281,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43393460_VERMUS",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 7281,
-      "2Q_OUT": 5282,
-      "2Q_SET": 5294,
-      "2Q_AGO": 2141
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14907,19 +14580,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 53316,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43409454_ALGODA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 53316,
-      "2Q_OUT": 42290,
-      "2Q_SET": 19632,
-      "2Q_AGO": 2012
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14932,19 +14601,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 60198,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43409454_BRANCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 60198,
-      "2Q_OUT": 49172,
-      "2Q_SET": 26514,
-      "2Q_AGO": 8894
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14957,19 +14622,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 58105,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43409454_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 58105,
-      "2Q_OUT": 47079,
-      "2Q_SET": 24421,
-      "2Q_AGO": 6801
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -14982,19 +14643,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 9068,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_ALGODA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 9068,
-      "2Q_OUT": 5954,
-      "2Q_SET": 2089,
-      "2Q_AGO": 658
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15007,19 +14664,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 8473,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 8473,
-      "2Q_OUT": 5359,
-      "2Q_SET": 1494,
-      "2Q_AGO": 63
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15032,19 +14685,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 9952,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_BRANCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 9952,
-      "2Q_OUT": 6838,
-      "2Q_SET": 2973,
-      "2Q_AGO": 1560
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15057,19 +14706,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 8846,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_LUNAR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 8846,
-      "2Q_OUT": 5732,
-      "2Q_SET": 1867,
-      "2Q_AGO": 436
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15082,18 +14727,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 8410,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 8410,
-      "2Q_OUT": 5296,
-      "2Q_SET": 1431
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15106,19 +14748,15 @@
     "genero": "INFANTIL",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 9010,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43406455_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 9010,
-      "2Q_OUT": 5896,
-      "2Q_SET": 2031,
-      "2Q_AGO": 612
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15131,19 +14769,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 21644,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43608374_MRHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 21644,
-      "2Q_OUT": 9686,
-      "2Q_SET": 761,
-      "2Q_AGO": 761
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15156,19 +14790,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 20901,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43608374_MUSGO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 20901,
-      "2Q_OUT": 8943,
-      "2Q_SET": 18,
-      "2Q_AGO": 18
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15181,19 +14811,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 199.99,
-    "totalGeral": 20886,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43608374_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 20886,
-      "2Q_OUT": 8928,
-      "2Q_SET": 3,
-      "2Q_AGO": 3
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15206,19 +14832,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 43313,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_ALGMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 43313,
-      "2Q_OUT": 30287,
-      "2Q_SET": 14465,
-      "2Q_AGO": 1146
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15231,19 +14853,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 42525,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_ARTPTO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 42525,
-      "2Q_OUT": 29499,
-      "2Q_SET": 13677,
-      "2Q_AGO": 358
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15256,19 +14874,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 42879,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_AZCLBR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 42879,
-      "2Q_OUT": 29853,
-      "2Q_SET": 14031,
-      "2Q_AGO": 712
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15281,18 +14895,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 42167,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 42167,
-      "2Q_OUT": 29141,
-      "2Q_SET": 13319
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15305,19 +14916,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 45283,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43342471_RYLMHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 45283,
-      "2Q_OUT": 32257,
-      "2Q_SET": 16435,
-      "2Q_AGO": 3116
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15330,19 +14937,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 130817,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43298343_MRHDRD",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 130817,
-      "2Q_OUT": 94958,
-      "2Q_SET": 44911,
-      "2Q_AGO": 15757
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15355,19 +14958,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 128450,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43298343_PT_LJA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 128450,
-      "2Q_OUT": 92591,
-      "2Q_SET": 42544,
-      "2Q_AGO": 13390
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15380,19 +14979,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 16497,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43293443_ALGODA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 16497,
-      "2Q_OUT": 10983,
-      "2Q_SET": 4029,
-      "2Q_AGO": 711
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15405,19 +15000,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 16320,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43293443_MILITR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 16320,
-      "2Q_OUT": 10806,
-      "2Q_SET": 3852,
-      "2Q_AGO": 534
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15430,19 +15021,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 15813,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43293443_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 15813,
-      "2Q_OUT": 10299,
-      "2Q_SET": 3345,
-      "2Q_AGO": 27
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15455,19 +15042,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 124506,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43299316_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 124506,
-      "2Q_OUT": 88688,
-      "2Q_SET": 46290,
-      "2Q_AGO": 19363
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15480,19 +15063,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 109467,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43299316_CHBORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 109467,
-      "2Q_OUT": 73649,
-      "2Q_SET": 31251,
-      "2Q_AGO": 4324
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15505,19 +15084,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 124794,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43299316_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 124794,
-      "2Q_OUT": 88976,
-      "2Q_SET": 46578,
-      "2Q_AGO": 19651
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15530,19 +15105,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 92723,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43320114_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 92723,
-      "2Q_OUT": 61535,
-      "2Q_SET": 22705,
-      "2Q_AGO": 1130
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15555,19 +15126,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 92498,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43320114_PTRMRH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 92498,
-      "2Q_OUT": 61310,
-      "2Q_SET": 22480,
-      "2Q_AGO": 905
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15580,19 +15147,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 187776,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43336749_MARITM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 187776,
-      "2Q_OUT": 120588,
-      "2Q_SET": 40110,
-      "2Q_AGO": 65
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15605,19 +15168,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 188155,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43336749_MUSGO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 188155,
-      "2Q_OUT": 120967,
-      "2Q_SET": 40489,
-      "2Q_AGO": 444
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15630,19 +15189,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 187736,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43336749_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 187736,
-      "2Q_OUT": 120548,
-      "2Q_SET": 40070,
-      "2Q_AGO": 25
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15655,19 +15210,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 187727,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43336749_PTRSCO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 187727,
-      "2Q_OUT": 120539,
-      "2Q_SET": 40061,
-      "2Q_AGO": 16
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15680,19 +15231,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 75329,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43588382_CZESPT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 75329,
-      "2Q_OUT": 53848,
-      "2Q_SET": 24165,
-      "2Q_AGO": 9641
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15705,19 +15252,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 229.99,
-    "totalGeral": 68799,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43588382_PWT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 68799,
-      "2Q_OUT": 47318,
-      "2Q_SET": 17635,
-      "2Q_AGO": 3111
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15730,19 +15273,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 85043,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43286101_PEWTER",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 85043,
-      "2Q_OUT": 58136,
-      "2Q_SET": 19903,
-      "2Q_AGO": 208
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15755,18 +15294,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 84835,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43286101_PRETO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 84835,
-      "2Q_OUT": 57928,
-      "2Q_SET": 19695
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15779,18 +15315,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 141333,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43759258_CHBVNL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 141333,
-      "2Q_OUT": 89607,
-      "2Q_SET": 25613
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15803,18 +15336,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 141333,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43759258_LUNAR",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 141333,
-      "2Q_OUT": 89607,
-      "2Q_SET": 25613
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15827,18 +15357,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 189.99,
-    "totalGeral": 141333,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43759258_PT_BRZ",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 141333,
-      "2Q_OUT": 89607,
-      "2Q_SET": 25613
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15851,20 +15378,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 30684,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_BCO_PI",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 30684,
-      "2Q_OUT": 21132,
-      "2Q_SET": 8544,
-      "2Q_AGO": 1498
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15877,20 +15400,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 29222,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_MARORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 29222,
-      "2Q_OUT": 19670,
-      "2Q_SET": 7082,
-      "2Q_AGO": 36
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15903,20 +15422,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 29418,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_MLT_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 29418,
-      "2Q_OUT": 19866,
-      "2Q_SET": 7278,
-      "2Q_AGO": 232
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15929,20 +15444,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 29276,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 29276,
-      "2Q_OUT": 19724,
-      "2Q_SET": 7136,
-      "2Q_AGO": 90
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15955,20 +15466,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 30044,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43226499_STLART",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 30044,
-      "2Q_OUT": 20492,
-      "2Q_SET": 7904,
-      "2Q_AGO": 858
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -15981,20 +15488,16 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 1,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43300495_ARENIT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 1,
-      "2Q_OUT": 1,
-      "2Q_SET": 1,
-      "2Q_AGO": 1
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16007,20 +15510,16 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 279.99,
-    "totalGeral": 4,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43300495_MRHO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 4,
-      "2Q_OUT": 4,
-      "2Q_SET": 4,
-      "2Q_AGO": 4
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16033,20 +15532,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 15599,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43386475_ALGLIL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 15599,
-      "2Q_OUT": 9998,
-      "2Q_SET": 1016,
-      "2Q_AGO": 19
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16059,20 +15554,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 15627,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43386475_GRAORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 15627,
-      "2Q_OUT": 10026,
-      "2Q_SET": 1044,
-      "2Q_AGO": 47
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16085,19 +15576,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 15580,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43386475_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 15580,
-      "2Q_OUT": 9979,
-      "2Q_SET": 997
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16110,20 +15598,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 1138,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43546486_CZ_CHB",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 1138,
-      "2Q_OUT": 1138,
-      "2Q_SET": 1138,
-      "2Q_AGO": 1138
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16136,20 +15620,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 1714,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43546486_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 1714,
-      "2Q_OUT": 1714,
-      "2Q_SET": 1714,
-      "2Q_AGO": 1714
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16162,20 +15642,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 299.99,
-    "totalGeral": 721,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43546486_VDEMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 721,
-      "2Q_OUT": 721,
-      "2Q_SET": 721,
-      "2Q_AGO": 721
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16188,18 +15664,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 49656,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43303329_CHUMBO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 49656,
-      "2Q_OUT": 34506,
-      "2Q_SET": 13014
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16212,19 +15685,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 49828,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43303329_PTO_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 49828,
-      "2Q_OUT": 34678,
-      "2Q_SET": 13186,
-      "2Q_AGO": 172
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16237,20 +15706,16 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 259.99,
-    "totalGeral": 15,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43489502_CHB_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 15,
-      "2Q_OUT": 15,
-      "2Q_SET": 15,
-      "2Q_AGO": 15
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16263,19 +15728,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 699.99,
-    "totalGeral": 2597,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43790399_PTO_LM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2597,
-      "2Q_OUT": 2597,
-      "2Q_SET": 2597,
-      "2Q_AGO": 2597
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16288,19 +15749,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 72209,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43341472_ALGLMA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 72209,
-      "2Q_OUT": 46352,
-      "2Q_SET": 17244,
-      "2Q_AGO": 1810
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16313,19 +15770,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 71007,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43341472_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 71007,
-      "2Q_OUT": 45150,
-      "2Q_SET": 16042,
-      "2Q_AGO": 608
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16338,19 +15791,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 70809,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43341472_PTPT10",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 70809,
-      "2Q_OUT": 44952,
-      "2Q_SET": 15844,
-      "2Q_AGO": 410
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16363,19 +15812,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 329.99,
-    "totalGeral": 73756,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43341472_VMH_PT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 73756,
-      "2Q_OUT": 47899,
-      "2Q_SET": 18791,
-      "2Q_AGO": 3357
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16388,20 +15833,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 38,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43500491_ARENML",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 38,
-      "2Q_OUT": 38,
-      "2Q_SET": 38,
-      "2Q_AGO": 38
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16414,20 +15855,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 4010,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43500491_CHBMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 4010,
-      "2Q_OUT": 4010,
-      "2Q_SET": 4010,
-      "2Q_AGO": 4010
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16440,20 +15877,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 2142,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43500491_LNRMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2142,
-      "2Q_OUT": 2142,
-      "2Q_SET": 2142,
-      "2Q_AGO": 2142
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16466,20 +15899,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 379.99,
-    "totalGeral": 4881,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43500491_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 4881,
-      "2Q_OUT": 4881,
-      "2Q_SET": 4881,
-      "2Q_AGO": 4881
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16492,20 +15921,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 11127,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_CHBMLT",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11127,
-      "2Q_OUT": 8973,
-      "2Q_SET": 4130,
-      "2Q_AGO": 6
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16518,20 +15943,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 11124,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_LIMATL",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11124,
-      "2Q_OUT": 8970,
-      "2Q_SET": 4127,
-      "2Q_AGO": 3
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16544,19 +15965,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 11121,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_LUNBEG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11121,
-      "2Q_OUT": 8967,
-      "2Q_SET": 4124
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16569,19 +15987,16 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 11121,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_MARORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11121,
-      "2Q_OUT": 8967,
-      "2Q_SET": 4124
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16594,19 +16009,16 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 449.99,
-    "totalGeral": 11121,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43510490_PTO_CH",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 11121,
-      "2Q_OUT": 8967,
-      "2Q_SET": 4124
-    },
-    "_pdvResgatado": true
+    "quinzenas": {},
+    "_pdvResgatado": true,
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16619,19 +16031,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 695,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43346463_ARESTO",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 695,
-      "2Q_OUT": 695,
-      "2Q_SET": 695,
-      "2Q_AGO": 695
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16644,19 +16052,15 @@
     "genero": "UNISSEX",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 1391,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43346463_BCOVDM",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 1391,
-      "2Q_OUT": 1391,
-      "2Q_SET": 1391,
-      "2Q_AGO": 1391
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16669,19 +16073,15 @@
     "genero": "FEMININO",
     "categoria": "2S26",
     "pdv": 499.99,
-    "totalGeral": 1218,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43346463_MARORG",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 1218,
-      "2Q_OUT": 1218,
-      "2Q_SET": 1218,
-      "2Q_AGO": 1218
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -16694,19 +16094,15 @@
     "genero": "MASCULINO",
     "categoria": "2S26",
     "pdv": 399.99,
-    "totalGeral": 2,
+    "totalGeral": 0,
     "codigoTabela": "",
     "mkp": "",
     "custo": 0,
     "imagem": "43210417_PT_LJA",
     "grade": {},
     "_meta": true,
-    "quinzenas": {
-      "2Q_NOV": 2,
-      "2Q_OUT": 2,
-      "2Q_SET": 2,
-      "2Q_AGO": 2
-    }
+    "quinzenas": {},
+    "_semEstoque": true
   },
   {
     "marca": "OLY",
@@ -17937,5 +17333,28 @@
       "44": 52,
       "45": 89
     }
+  },
+  {
+    "marca": "OLY",
+    "prevFat": "2. QUINZ NOVEMBRO",
+    "empresa": "AZABA",
+    "artigo": "43467492",
+    "descricao": "DAY 2",
+    "cor": "PEWCAS",
+    "linha": "COTIDIANO",
+    "genero": "FEMININO",
+    "categoria": "2S26",
+    "pdv": 279.99,
+    "totalGeral": 250,
+    "codigoTabela": "",
+    "mkp": "",
+    "custo": 0,
+    "imagem": "43467492_PEWCAS",
+    "grade": {},
+    "_meta": true,
+    "quinzenas": {
+      "2Q_NOV": 250
+    },
+    "_pdvResgatado": true
   }
 ]
