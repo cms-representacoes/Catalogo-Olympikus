@@ -2,8 +2,8 @@
   {
     "id": "rasc-1780997532924-80dp4b",
     "tipo": "rascunho",
-    "createdAt": "2026-06-09T09:32:12.919Z",
-    "updatedAt": "2026-06-09T09:32:12.919Z",
+    "createdAt": "2026-06-09T09:41:23.893Z",
+    "updatedAt": "2026-06-09T09:41:23.893Z",
     "comissionista": "25471",
     "comissionistaNome": "WILLAME",
     "clientCode": "1072110",
@@ -16,7 +16,7 @@
         "codigo": "OBWSR241921",
         "produto": "TRIPACK MEIA NEON CANO INVISÍVEL 33/38",
         "cor": "BFCBPO",
-        "corCodigo": "",
+        "corCodigo": "BFCBPO",
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
@@ -51,7 +51,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OBWSR241921_BFCBPO",
         "imgSrc": "./imagens_olympikus/OBWSR241921_BFCBPO.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -60,7 +60,7 @@
         "codigo": "OBWSR241921",
         "produto": "TRIPACK MEIA NEON CANO INVISÍVEL 33/38",
         "cor": "BBABAB",
-        "corCodigo": "",
+        "corCodigo": "BBABAB",
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
@@ -95,7 +95,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OBWSR241921_BBABAB",
         "imgSrc": "./imagens_olympikus/OBWSR241921_BBABAB.jpg",
         "dataDesejada": "2026-06-25",
         "pedidoCliente": ""
@@ -104,7 +104,7 @@
         "codigo": "OBMSR241922",
         "produto": "TRIPACK MEIA NEON CANO INVISÍVEL 39/44",
         "cor": "BFCBPO",
-        "corCodigo": "",
+        "corCodigo": "BFCBPO",
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
@@ -139,7 +139,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OBMSR241922_BFCBPO",
         "imgSrc": "./imagens_olympikus/OBMSR241922_BFCBPO.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -148,7 +148,7 @@
         "codigo": "OIWSA26197",
         "produto": "TRIPAK MEIA INVISIVEL SEM FLEECE 33/38",
         "cor": "BCPTMC",
-        "corCodigo": "",
+        "corCodigo": "BCPTMC",
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
@@ -179,7 +179,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIWSA26197_BCPTMC",
         "imgSrc": "./imagens_olympikus/OIWSA26197_BCPTMC.jpg",
         "dataDesejada": "",
         "pedidoCliente": ""
@@ -188,7 +188,7 @@
         "codigo": "OIMSA26199",
         "produto": "TRIPACK MEIA INVISÍVEL SEM FLEECE 39/44",
         "cor": "BCPTMC",
-        "corCodigo": "",
+        "corCodigo": "BCPTMC",
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
@@ -223,7 +223,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIMSA26199_BCPTMC",
         "imgSrc": "./imagens_olympikus/OIMSA26199_BCPTMC.jpg",
         "dataDesejada": "2026-06-03",
         "pedidoCliente": ""
@@ -232,7 +232,7 @@
         "codigo": "OIMSA81920",
         "produto": "TRIPACK MEIA CURTA 39/44",
         "cor": "BCPTMC",
-        "corCodigo": "",
+        "corCodigo": "BCPTMC",
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
@@ -267,7 +267,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIMSA81920_BCPTMC",
         "imgSrc": "./imagens_olympikus/OIMSA81920_BCPTMC.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -276,7 +276,7 @@
         "codigo": "OIWSA81919",
         "produto": "TRIPACK MEIA CURTA 33/38",
         "cor": "BCPTMC",
-        "corCodigo": "",
+        "corCodigo": "BCPTMC",
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
@@ -311,7 +311,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIWSA81919_BCPTMC",
         "imgSrc": "./imagens_olympikus/OIWSA81919_BCPTMC.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -320,7 +320,7 @@
         "codigo": "OIWSA26196",
         "produto": "MEIA CANO INVISIVEL SEM FLEECE 33/38",
         "cor": "MESCLA",
-        "corCodigo": "",
+        "corCodigo": "MESCLA",
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
@@ -355,7 +355,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIWSA26196_MESCLA",
         "imgSrc": "./imagens_olympikus/OIWSA26196_MESCLA.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -364,7 +364,7 @@
         "codigo": "OIWSA26196",
         "produto": "MEIA CANO INVISIVEL SEM FLEECE 33/38",
         "cor": "PRETO",
-        "corCodigo": "",
+        "corCodigo": "PRETO",
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
@@ -399,7 +399,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIWSA26196_PRETO",
         "imgSrc": "./imagens_olympikus/OIWSA26196_PRETO.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -408,7 +408,7 @@
         "codigo": "OIWSA26196",
         "produto": "MEIA CANO INVISIVEL SEM FLEECE 33/38",
         "cor": "BRANCO",
-        "corCodigo": "",
+        "corCodigo": "BRANCO",
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
@@ -443,7 +443,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIWSA26196_BRANCO",
         "imgSrc": "./imagens_olympikus/OIWSA26196_BRANCO.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -452,7 +452,7 @@
         "codigo": "OIMSA26198",
         "produto": "MEIA CANO INVISIVEL SEM FLEECE 39/44",
         "cor": "MESCLA",
-        "corCodigo": "",
+        "corCodigo": "MESCLA",
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
@@ -487,7 +487,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIMSA26198_MESCLA",
         "imgSrc": "./imagens_olympikus/OIMSA26198_MESCLA.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -496,7 +496,7 @@
         "codigo": "OIMSA26198",
         "produto": "MEIA CANO INVISIVEL SEM FLEECE 39/44",
         "cor": "PRETO",
-        "corCodigo": "",
+        "corCodigo": "PRETO",
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
@@ -531,7 +531,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIMSA26198_PRETO",
         "imgSrc": "./imagens_olympikus/OIMSA26198_PRETO.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -540,7 +540,7 @@
         "codigo": "OIMSA26198",
         "produto": "MEIA CANO INVISIVEL SEM FLEECE 39/44",
         "cor": "BRANCO",
-        "corCodigo": "",
+        "corCodigo": "BRANCO",
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
@@ -575,7 +575,7 @@
           "119D": 0
         },
         "colecao": "",
-        "imagem": "",
+        "imagem": "OIMSA26198_BRANCO",
         "imgSrc": "./imagens_olympikus/OIMSA26198_BRANCO.jpg",
         "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
@@ -588,11 +588,15 @@
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
-        "grade": null,
-        "gradeBase": null,
+        "grade": {
+          "39/44": 12
+        },
+        "gradeBase": {
+          "39/44": 12
+        },
         "boxes": 1,
-        "qty": 1,
-        "totalQty": 1,
+        "qty": 12,
+        "totalQty": 12,
         "precoNum": 21.99,
         "precoFmt": "R$ 21,99",
         "precosPrazo": {
@@ -617,7 +621,7 @@
         "colecao": "",
         "imagem": "",
         "imgSrc": "./imagens_olympikus/OIMSA21193_BRANCO.jpg",
-        "dataDesejada": "",
+        "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
       },
       {
@@ -628,11 +632,15 @@
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
-        "grade": null,
-        "gradeBase": null,
+        "grade": {
+          "39/44": 12
+        },
+        "gradeBase": {
+          "39/44": 12
+        },
         "boxes": 1,
-        "qty": 1,
-        "totalQty": 1,
+        "qty": 12,
+        "totalQty": 12,
         "precoNum": 21.99,
         "precoFmt": "R$ 21,99",
         "precosPrazo": {
@@ -657,7 +665,7 @@
         "colecao": "",
         "imagem": "",
         "imgSrc": "./imagens_olympikus/OIMSA21193_MESCLA.jpg",
-        "dataDesejada": "",
+        "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
       },
       {
@@ -668,11 +676,15 @@
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
-        "grade": null,
-        "gradeBase": null,
+        "grade": {
+          "39/44": 12
+        },
+        "gradeBase": {
+          "39/44": 12
+        },
         "boxes": 1,
-        "qty": 1,
-        "totalQty": 1,
+        "qty": 12,
+        "totalQty": 12,
         "precoNum": 21.99,
         "precoFmt": "R$ 21,99",
         "precosPrazo": {
@@ -697,7 +709,7 @@
         "colecao": "",
         "imagem": "",
         "imgSrc": "./imagens_olympikus/OIMSA21193_PRETO.jpg",
-        "dataDesejada": "",
+        "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
       },
       {
@@ -708,11 +720,15 @@
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
-        "grade": null,
-        "gradeBase": null,
+        "grade": {
+          "33/38": 12
+        },
+        "gradeBase": {
+          "33/38": 12
+        },
         "boxes": 1,
-        "qty": 3,
-        "totalQty": 3,
+        "qty": 12,
+        "totalQty": 12,
         "precoNum": 21.99,
         "precoFmt": "R$ 21,99",
         "precosPrazo": {
@@ -737,7 +753,7 @@
         "colecao": "",
         "imagem": "",
         "imgSrc": "./imagens_olympikus/OIWSA21194_PRETO.jpg",
-        "dataDesejada": "",
+        "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
       },
       {
@@ -748,11 +764,15 @@
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
-        "grade": null,
-        "gradeBase": null,
+        "grade": {
+          "33/38": 12
+        },
+        "gradeBase": {
+          "33/38": 12
+        },
         "boxes": 1,
-        "qty": 3,
-        "totalQty": 3,
+        "qty": 12,
+        "totalQty": 12,
         "precoNum": 21.99,
         "precoFmt": "R$ 21,99",
         "precosPrazo": {
@@ -777,7 +797,7 @@
         "colecao": "",
         "imagem": "",
         "imgSrc": "./imagens_olympikus/OIWSA21194_MESCLA.jpg",
-        "dataDesejada": "",
+        "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
       },
       {
@@ -788,11 +808,15 @@
         "genero": "Feminino",
         "tam": "33/38",
         "categoria": "MEIA",
-        "grade": null,
-        "gradeBase": null,
+        "grade": {
+          "33/38": 12
+        },
+        "gradeBase": {
+          "33/38": 12
+        },
         "boxes": 1,
-        "qty": 3,
-        "totalQty": 3,
+        "qty": 12,
+        "totalQty": 12,
         "precoNum": 21.99,
         "precoFmt": "R$ 21,99",
         "precosPrazo": {
@@ -817,7 +841,7 @@
         "colecao": "",
         "imagem": "",
         "imgSrc": "./imagens_olympikus/OIWSA21194_BRANCO.jpg",
-        "dataDesejada": "",
+        "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
       },
       {
@@ -829,14 +853,14 @@
         "tam": "33/38",
         "categoria": "MEIA",
         "grade": {
-          "33/38": 6
+          "33/38": 12
         },
         "gradeBase": {
-          "33/38": 6
+          "33/38": 12
         },
         "boxes": 1,
-        "qty": 6,
-        "totalQty": 6,
+        "qty": 12,
+        "totalQty": 12,
         "precoNum": 19.99,
         "precoFmt": "R$ 19,99",
         "precosPrazo": {
@@ -872,11 +896,15 @@
         "genero": "Masculino",
         "tam": "39/44",
         "categoria": "MEIA",
-        "grade": null,
-        "gradeBase": null,
+        "grade": {
+          "39/44": 12
+        },
+        "gradeBase": {
+          "39/44": 12
+        },
         "boxes": 1,
-        "qty": 1,
-        "totalQty": 1,
+        "qty": 12,
+        "totalQty": 12,
         "precoNum": 19.99,
         "precoFmt": "R$ 19,99",
         "precosPrazo": {
@@ -901,12 +929,12 @@
         "colecao": "",
         "imagem": "",
         "imgSrc": "./imagens_olympikus/OIMSA22192_PRETO.jpg",
-        "dataDesejada": "",
+        "dataDesejada": "2026-06-30",
         "pedidoCliente": ""
       }
     ],
     "totalItens": 21,
-    "semGrade": 8
+    "semGrade": 1
   },
   {
     "id": "rasc-1780861743048-hqp1zd",
