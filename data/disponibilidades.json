@@ -15066,27 +15066,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1378415",
-    "descricao": "MOCHILA UA LOUDON BACKPAC",
-    "cor": "TITWHI",
-    "linha": "SPORTSTYLE",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 279.99,
-    "totalGeral": 55,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 55
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1383434",
     "descricao": "BUCKET ISO-CHILL ARMOURVE",
     "cor": "BKCAST",
@@ -15187,27 +15166,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1383441",
-    "descricao": "BONE M BLITZING TRUCKER",
-    "cor": "BLBKWT",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "ACESSORIOS",
-    "pdv": 179.99,
-    "totalGeral": 280,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 280
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1369781",
     "descricao": "BONE STORM BLITZING ADJ",
     "cor": "BKBKJG",
@@ -15250,27 +15208,6 @@
     "empresa": "VULSP",
     "artigo": "1376701",
     "descricao": "BONE MEN'S UA BLITZING AD",
-    "cor": "ARGRBK",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "ACESSORIOS",
-    "pdv": 169.99,
-    "totalGeral": 1179,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 1179
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1376701",
-    "descricao": "BONE MEN'S UA BLITZING AD",
     "cor": "TITCGR",
     "linha": "SPORTSTYLE",
     "genero": "MASCULINO",
@@ -15284,27 +15221,6 @@
     "grade": {
       "U": 1636
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1376701",
-    "descricao": "BONE MEN'S UA BLITZING AD",
-    "cor": "WBBKBK",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "ACESSORIOS",
-    "pdv": 169.99,
-    "totalGeral": 1759,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 1759
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -15345,27 +15261,6 @@
     "grade": {
       "U": 104
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VDIST",
-    "artigo": "1389932",
-    "descricao": "FAIXA DE CABECA W MINI EL",
-    "cor": "CGBBWH",
-    "linha": "SPORTSTYLE",
-    "genero": "FEMININO",
-    "categoria": "ACESSORIOS",
-    "pdv": 129.99,
-    "totalGeral": 25,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 25
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -15531,48 +15426,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1384672",
-    "descricao": "MOCHILA UA HUST 6.0 BACKP",
-    "cor": "BKBMGD",
-    "linha": "TREINO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 399.99,
-    "totalGeral": 131,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 131
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1384672",
-    "descricao": "MOCHILA UA HUST 6.0 BACKP",
-    "cor": "BLBKWT",
-    "linha": "TREINO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 399.99,
-    "totalGeral": 341,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 341
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "6001576",
     "descricao": "SHOULDER BAG UA STUDIO PU",
     "cor": "BKBKBK",
@@ -15708,48 +15561,6 @@
     "grade": {
       "U": 908
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "6000397",
-    "descricao": "MOCHILA HUSTLE SPORT 6.0",
-    "cor": "BLKSWT",
-    "linha": "TREINO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 349.99,
-    "totalGeral": 1240,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 1240
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "6000397",
-    "descricao": "MOCHILA HUSTLE SPORT 6.0",
-    "cor": "JBJBWH",
-    "linha": "TREINO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 349.99,
-    "totalGeral": 602,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 602
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -15956,27 +15767,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1378415",
-    "descricao": "MOCHILA UA LOUDON BACKPAC",
-    "cor": "SWWBWB",
-    "linha": "SPORTSTYLE",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 279.99,
-    "totalGeral": 48,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 48
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1388914",
     "descricao": "POCHETE UA LAUNCH RUN BEL",
     "cor": "BKBKCA",
@@ -16012,27 +15802,6 @@
     "grade": {
       "U": 121
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1376456",
-    "descricao": "MOCHILA UA LOUDON BACKPAC",
-    "cor": "BLKWHT",
-    "linha": "TRAIN",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 229.99,
-    "totalGeral": 512,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 512
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -16614,33 +16383,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "AZABA",
-    "artigo": "6007001",
-    "descricao": "UA IGNITE VI SL SE",
-    "cor": "WTWTBK",
-    "linha": "AFTER SPORT",
-    "genero": "MASCULINO",
-    "categoria": "CHINELOS",
-    "pdv": 189.99,
-    "totalGeral": 1275,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "33/34": 2,
-      "35/36": 6,
-      "37/38": 216,
-      "39/40": 483,
-      "41/42": 466,
-      "43/44": 93,
-      "45/46": 9
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
     "artigo": "3027786",
     "descricao": "UA DAILY",
     "cor": "BLKBKW",
@@ -16721,33 +16463,6 @@
     "empresa": "AZABA",
     "artigo": "6006999",
     "descricao": "UA ANSA LIGHT",
-    "cor": "MNYDWG",
-    "linha": "SLIDE",
-    "genero": "MASCULINO",
-    "categoria": "CHINELOS",
-    "pdv": 129.99,
-    "totalGeral": 910,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "33/34": 29,
-      "35/36": 105,
-      "37/38": 156,
-      "39/40": 218,
-      "41/42": 225,
-      "43/44": 107,
-      "45/46": 70
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "6006999",
-    "descricao": "UA ANSA LIGHT",
     "cor": "WTBKBK",
     "linha": "SLIDE",
     "genero": "MASCULINO",
@@ -16812,29 +16527,6 @@
       "M": 86,
       "G": 40
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1364269",
-    "descricao": "SHORT UA TECH GRAPHIC",
-    "cor": "BKBKGR",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 189.99,
-    "totalGeral": 50,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 15,
-      "M": 20,
-      "G": 15
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -16910,30 +16602,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1377043",
-    "descricao": "JAQUETA UA OUTRUN THE STO",
-    "cor": "BKREFL",
-    "linha": "RUN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 499.99,
-    "totalGeral": 36,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 8,
-      "M": 10,
-      "G": 11,
-      "GG": 7
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1382525",
     "descricao": "LEGGINGS MERIDIAN ANKLE L",
     "cor": "KBRKBR",
@@ -16981,30 +16649,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1379288",
-    "descricao": "BLUSA 1/2 ZIP UA LAUNCH P",
-    "cor": "REMIRF",
-    "linha": "RUN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 399.99,
-    "totalGeral": 76,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 13,
-      "M": 22,
-      "G": 26,
-      "GG": 15
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1379349",
     "descricao": "BLUSA MANGA LONGA UA QUAL",
     "cor": "BLKRFL",
@@ -17024,56 +16668,6 @@
       "G": 10,
       "GG": 3
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1379349",
-    "descricao": "BLUSA MANGA LONGA UA QUAL",
-    "cor": "ELTARF",
-    "linha": "RUN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 399.99,
-    "totalGeral": 85,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "PP": 5,
-      "P": 18,
-      "M": 30,
-      "G": 23,
-      "GG": 9
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1379349",
-    "descricao": "BLUSA MANGA LONGA UA QUAL",
-    "cor": "REMIRF",
-    "linha": "RUN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 399.99,
-    "totalGeral": 31,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "PP": 5,
-      "P": 8,
-      "M": 11,
-      "G": 6,
-      "GG": 1
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -17145,31 +16739,6 @@
       "G": 45,
       "GG": 12
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1382521",
-    "descricao": "SHORTS MERIDIAN BIKE SHOR",
-    "cor": "CLAYGR",
-    "linha": "TREINO",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 349.99,
-    "totalGeral": 84,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "PP": 8,
-      "P": 17,
-      "M": 29,
-      "G": 21,
-      "GG": 9
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -17317,30 +16886,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1379158",
-    "descricao": "CAM ML MERIDIAN LS LONGLI",
-    "cor": "BLKBLK",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 299.99,
-    "totalGeral": 33,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "PP": 5,
-      "P": 8,
-      "M": 15,
-      "G": 5
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1382519",
     "descricao": "SHORTS MERIDIAN MIDDY",
     "cor": "BLKBLK",
@@ -17482,77 +17027,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1377088",
-    "descricao": "SHORTS MOTION BIKE-W",
-    "cor": "BLKJEG",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 279.99,
-    "totalGeral": 836,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 172,
-      "M": 294,
-      "G": 259,
-      "GG": 111
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1377088",
-    "descricao": "SHORTS MOTION BIKE-W",
-    "cor": "FUDUDM",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 279.99,
-    "totalGeral": 95,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 42,
-      "M": 38,
-      "G": 15
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1377088",
-    "descricao": "SHORTS MOTION BIKE-W",
-    "cor": "RAGARG",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 279.99,
-    "totalGeral": 128,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 27,
-      "M": 48,
-      "G": 45,
-      "GG": 8
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "6005126",
     "descricao": "SHORT UA M 96 TERRACE",
     "cor": "BLKWHT",
@@ -17594,31 +17068,6 @@
       "G": 73,
       "GG": 37
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1383559",
-    "descricao": "LEGGING UA HG AUTHENTICS",
-    "cor": "BLKWHT",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 269.99,
-    "totalGeral": 63,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "PP": 7,
-      "P": 19,
-      "M": 25,
-      "G": 11,
-      "GG": 1
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -17667,77 +17116,6 @@
       "G": 18,
       "GG": 9
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1384417",
-    "descricao": "TOP VANISH SEAMLESS LOW B",
-    "cor": "HARBWH",
-    "linha": "TREINO",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 269.99,
-    "totalGeral": 21,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 6,
-      "M": 9,
-      "G": 6
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1361524",
-    "descricao": "CAMISETA UA ARMOUR HG LS",
-    "cor": "BK_WHT",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 249.99,
-    "totalGeral": 742,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 123,
-      "M": 248,
-      "G": 248,
-      "GG": 123
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1361524",
-    "descricao": "CAMISETA UA ARMOUR HG LS",
-    "cor": "WHTBLK",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 249.99,
-    "totalGeral": 328,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 54,
-      "M": 110,
-      "G": 110,
-      "GG": 54
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -17908,30 +17286,6 @@
     "empresa": "VULSP",
     "artigo": "1383612",
     "descricao": "CAM MC UA PLAYOFF SS POLO",
-    "cor": "BLBLHG",
-    "linha": "GOLF",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 249.99,
-    "totalGeral": 136,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 24,
-      "M": 44,
-      "G": 44,
-      "GG": 24
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1383612",
-    "descricao": "CAM MC UA PLAYOFF SS POLO",
     "cor": "BLSMMN",
     "linha": "GOLF",
     "genero": "FEMININO",
@@ -17971,30 +17325,6 @@
       "G": 38,
       "GG": 20
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1383973",
-    "descricao": "CAM MC VANISH ENERGY SS",
-    "cor": "BLKBLK",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 249.99,
-    "totalGeral": 302,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 49,
-      "M": 101,
-      "G": 101,
-      "GG": 51
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -18115,30 +17445,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1384225",
-    "descricao": "BLUSA 1/2 ZIP TECH 1/2 ZI",
-    "cor": "TRANWH",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 249.99,
-    "totalGeral": 277,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 43,
-      "M": 91,
-      "G": 100,
-      "GG": 43
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1388693",
     "descricao": "LEGGING HEATGEAR RIB",
     "cor": "SLGWHT",
@@ -18253,31 +17559,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1373997",
-    "descricao": "T-SHIRT UA M LOGO EMB HEA",
-    "cor": "BLKWHT",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 229.99,
-    "totalGeral": 66,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 1,
-      "P": 10,
-      "M": 21,
-      "G": 22,
-      "GG": 12
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1379507",
     "descricao": "BERMUDA UA M'S CH. KNIT S",
     "cor": "BLKWHT",
@@ -18296,54 +17577,6 @@
       "G": 1038,
       "GG": 384
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1382802",
-    "descricao": "REG VANISH ENERGY TANK",
-    "cor": "BLKBLK",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 229.99,
-    "totalGeral": 228,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 40,
-      "M": 45,
-      "G": 79,
-      "GG": 64
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1382802",
-    "descricao": "REG VANISH ENERGY TANK",
-    "cor": "DIGDIG",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 229.99,
-    "totalGeral": 324,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 27,
-      "M": 95,
-      "G": 125,
-      "GG": 77
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -18924,54 +18157,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1383627",
-    "descricao": "SHORTS UA HG AUTHENTICS 8",
-    "cor": "CLH_BK",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 199.99,
-    "totalGeral": 1284,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 238,
-      "M": 402,
-      "G": 432,
-      "GG": 212
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1383654",
-    "descricao": "REG VANISH ENERGY CROP TA",
-    "cor": "BLKWHT",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 199.99,
-    "totalGeral": 74,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 11,
-      "M": 24,
-      "G": 23,
-      "GG": 16
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "6004997",
     "descricao": "CALCA UA BRAWLER 3.0 TAPE",
     "cor": "BLKWHT",
@@ -19197,54 +18382,6 @@
       "G": 139,
       "GG": 56
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1382427",
-    "descricao": "SHORTS UA RIVAL TERRY 6IN",
-    "cor": "CLROXW",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 179.99,
-    "totalGeral": 1124,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 175,
-      "M": 397,
-      "G": 374,
-      "GG": 178
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1383628",
-    "descricao": "SHORTS UA HG AUTHENTICS M",
-    "cor": "BLKWHT",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 179.99,
-    "totalGeral": 121,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 18,
-      "M": 26,
-      "G": 47,
-      "GG": 30
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -19625,30 +18762,6 @@
     "empresa": "VULSP",
     "artigo": "1386969",
     "descricao": "SHORTS UA TECH 7IN",
-    "cor": "BLK_WH",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 149.99,
-    "totalGeral": 4329,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 1041,
-      "M": 1698,
-      "G": 1008,
-      "GG": 582
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1386969",
-    "descricao": "SHORTS UA TECH 7IN",
     "cor": "CASTWH",
     "linha": "TRAIN",
     "genero": "MASCULINO",
@@ -19711,31 +18824,6 @@
       "G": 4834,
       "GG": 2355
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1326799",
-    "descricao": "SPORTSTYLE LEFT CHEST SS",
-    "cor": "GRLECG",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 129.99,
-    "totalGeral": 69,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 8,
-      "P": 9,
-      "M": 19,
-      "G": 20,
-      "GG": 13
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -19903,77 +18991,6 @@
   {
     "marca": "UA",
     "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "6023944",
-    "descricao": "CAM MC M VELOCITY 2.0 SS",
-    "cor": "ACDBLK",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 119.99,
-    "totalGeral": 159,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 47,
-      "M": 82,
-      "G": 9,
-      "GG": 21
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "6023944",
-    "descricao": "CAM MC M VELOCITY 2.0 SS",
-    "cor": "MGYBLK",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 119.99,
-    "totalGeral": 677,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 123,
-      "M": 251,
-      "G": 227,
-      "GG": 76
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1367891",
-    "descricao": "MEIA UA ESSENTIALS NS",
-    "cor": "BKWTBK",
-    "linha": "CORRIDA",
-    "genero": "MASCULINO",
-    "categoria": "MEIAS",
-    "pdv": 59.99,
-    "totalGeral": 31,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 9,
-      "M": 12,
-      "G": 10
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
     "empresa": "VULSP",
     "artigo": "1373126",
     "descricao": "MEIA UA ACCELERATE 1PK OT",
@@ -19996,28 +19013,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1367899",
-    "descricao": "MEIA UA CORE COTTONNS 3PK",
-    "cor": "BKBKST",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "MEIAS",
-    "pdv": 49.99,
-    "totalGeral": 27,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 6,
-      "G": 21
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1367900",
     "descricao": "MEIA UA CORE COTTLOCU 3PK",
     "cor": "BKBKST",
@@ -20034,27 +19029,6 @@
       "M": 212,
       "G": 9
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VDIST",
-    "artigo": "1369222",
-    "descricao": "MALA UA UNDENIABLE 5.0 DU",
-    "cor": "STBKBK",
-    "linha": "TREINO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 379.99,
-    "totalGeral": 2,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 2
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -20120,27 +19094,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VDIST",
-    "artigo": "1381912",
-    "descricao": "BOLSA UA LOUDON LITE CROS",
-    "cor": "BLKWHT",
-    "linha": "SPORTSTYLE",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 169.99,
-    "totalGeral": 3,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 3
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VDIST",
     "artigo": "1383447",
     "descricao": "BONE SPORTSTYLE TREND ADJ",
     "cor": "BLBKWT",
@@ -20176,27 +19129,6 @@
     "grade": {
       "U": 11
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1384672",
-    "descricao": "MOCHILA UA HUST 6.0 BACKP",
-    "cor": "CROCKB",
-    "linha": "TREINO",
-    "genero": "UNISSEX",
-    "categoria": "ACESSORIOS",
-    "pdv": 399.99,
-    "totalGeral": 12,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 12
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -20262,48 +19194,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1383485",
-    "descricao": "BONE W DRIVE ADJ",
-    "cor": "WHTMDY",
-    "linha": "GOLF",
-    "genero": "FEMININO",
-    "categoria": "ACESSORIOS",
-    "pdv": 159.99,
-    "totalGeral": 1,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 1
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1373101",
-    "descricao": "GORRO UA HALFTIME CUFF-BL",
-    "cor": "SWKBSW",
-    "linha": "SPORTSTYLE",
-    "genero": "FEMININO",
-    "categoria": "ACESSORIOS",
-    "pdv": 99.99,
-    "totalGeral": 7,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "U": 7
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1369831",
     "descricao": "LUVA W'S WEIGHTLIFTING GL",
     "cor": "BKBKSV",
@@ -20363,32 +19253,6 @@
   {
     "marca": "UA",
     "prevFat": "JUNHO",
-    "empresa": "AZABA",
-    "artigo": "6007001",
-    "descricao": "UA IGNITE VI SL SE",
-    "cor": "BKMRDG",
-    "linha": "AFTER SPORT",
-    "genero": "MASCULINO",
-    "categoria": "CHINELOS",
-    "pdv": 189.99,
-    "totalGeral": 753,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "33/34": 1,
-      "35/36": 4,
-      "37/38": 108,
-      "39/40": 285,
-      "41/42": 239,
-      "43/44": 116
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
     "empresa": "VULSP",
     "artigo": "1359378",
     "descricao": "CAMISETA UA TECH 2.0 SS",
@@ -20407,72 +19271,6 @@
       "M": 152,
       "G": 67
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "U1359388",
-    "descricao": "DV SHORTS UA TECH MESH",
-    "cor": "BKBKPG",
-    "linha": "TREINO",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 179.99,
-    "totalGeral": 35,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 21,
-      "G": 14
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "UIMWO99140",
-    "descricao": "1290140 INVALID.POLOUATEC",
-    "cor": "WHT_GP",
-    "linha": "OUTROS",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 299.99,
-    "totalGeral": 64,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 16,
-      "G": 48
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1364764",
-    "descricao": "CALCA UA RIVAL FLEECE",
-    "cor": "ACDMOW",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 229.99,
-    "totalGeral": 20,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 12,
-      "M": 8
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -20524,73 +19322,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1359393",
-    "descricao": "CAMISETA UA SPORTSTY.LEFT",
-    "cor": "VNRDBK",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 149.99,
-    "totalGeral": 194,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 72,
-      "M": 122
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1374655",
-    "descricao": "SHORTS UA W TECH MESH SHO",
-    "cor": "ACDPGR",
-    "linha": "ACADEMIA",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 149.99,
-    "totalGeral": 59,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "PP": 5,
-      "P": 46,
-      "M": 8
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1359390",
-    "descricao": "SHORTS UA TECH GRAPHIC",
-    "cor": "BKBKGR",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 119.99,
-    "totalGeral": 16,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 11,
-      "M": 5
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1382525",
     "descricao": "LEGGINGS MERIDIAN ANKLE L",
     "cor": "BLKBLK",
@@ -20615,31 +19346,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "6007181",
-    "descricao": "CALCA PJT RCK RIVAL FLEEC",
-    "cor": "BKCAST",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 399.99,
-    "totalGeral": 34,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 4,
-      "P": 1,
-      "M": 7,
-      "G": 12,
-      "GG": 10
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1373927",
     "descricao": "LEGGING MOTION ANKLE PRIN",
     "cor": "SWFDTP",
@@ -20658,75 +19364,6 @@
       "G": 8,
       "GG": 4
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1379758",
-    "descricao": "MANGA LONGA UA RIVAL FLEE",
-    "cor": "RACRED",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 349.99,
-    "totalGeral": 34,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 11,
-      "G": 23
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1377374",
-    "descricao": "POLO UA PERFORMANCE 3.0 -",
-    "cor": "JABLMN",
-    "linha": "GOLF",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 329.99,
-    "totalGeral": 45,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 5,
-      "P": 4,
-      "M": 14,
-      "G": 10,
-      "GG": 12
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1377088",
-    "descricao": "SHORTS MOTION BIKE-W",
-    "cor": "PLXPCR",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 279.99,
-    "totalGeral": 29,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 19,
-      "M": 10
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -20771,51 +19408,6 @@
       "G": 21,
       "GG": 3
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1386806",
-    "descricao": "CAMISETA MC UA M FULL TAN",
-    "cor": "BLK_WH",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 259.99,
-    "totalGeral": 14,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 6,
-      "M": 7,
-      "G": 1
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1379141",
-    "descricao": "CAM MC UA VANISH ENERGY S",
-    "cor": "RACRED",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 249.99,
-    "totalGeral": 18,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 10,
-      "G": 8
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -20888,28 +19480,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1365334",
-    "descricao": "CAPRI UA HG ARMOUR HI",
-    "cor": "CHLHWH",
-    "linha": "TREINO",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 229.99,
-    "totalGeral": 41,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 31,
-      "G": 10
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1382440",
     "descricao": "SHORTS UA FLY BY 2-IN-1 S",
     "cor": "BKBKRF",
@@ -20928,28 +19498,6 @@
       "G": 4,
       "GG": 2
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1383045",
-    "descricao": "CAM MC UA HW EMBROID PATC",
-    "cor": "WHTBLK",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 229.99,
-    "totalGeral": 16,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 8,
-      "G": 8
-    },
-    "_aguardandoImagem": true
   },
   {
     "marca": "UA",
@@ -21046,28 +19594,6 @@
     "marca": "UA",
     "prevFat": "JUNHO",
     "empresa": "VULSP",
-    "artigo": "1361901",
-    "descricao": "REGATA UA BASELINE COTTON",
-    "cor": "RD_WHT",
-    "linha": "BASKETBALL",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 179.99,
-    "totalGeral": 21,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 5,
-      "M": 16
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
     "artigo": "1326413",
     "descricao": "CAMISETA UA TECH 2.0 SS",
     "cor": "JABLWH",
@@ -21138,30 +19664,6 @@
     "empresa": "VULSP",
     "artigo": "1382911",
     "descricao": "CAMISETA MC UA SPORTSTYLE",
-    "cor": "STEBLK",
-    "linha": "SPORTSTYLE",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 149.99,
-    "totalGeral": 27,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "2GG": 1,
-      "P": 5,
-      "G": 14,
-      "GG": 7
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1382911",
-    "descricao": "CAMISETA MC UA SPORTSTYLE",
     "cor": "STLHWT",
     "linha": "SPORTSTYLE",
     "genero": "MASCULINO",
@@ -21223,226 +19725,5 @@
       "G": 137,
       "GG": 103
     }
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "6023944",
-    "descricao": "CAM MC M VELOCITY 2.0 SS",
-    "cor": "MOGRBK",
-    "linha": "TRAIN",
-    "genero": "MASCULINO",
-    "categoria": "VESTUARIO",
-    "pdv": 119.99,
-    "totalGeral": 113,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 40,
-      "M": 69,
-      "G": 4
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "6023947",
-    "descricao": "CAM MC W VELOCITY TWT SSC",
-    "cor": "BIPKWH",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 119.99,
-    "totalGeral": 119,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 57,
-      "G": 57,
-      "GG": 5
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "6023947",
-    "descricao": "CAM MC W VELOCITY TWT SSC",
-    "cor": "BLKWHT",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 119.99,
-    "totalGeral": 48,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 24,
-      "G": 24
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "6023947",
-    "descricao": "CAM MC W VELOCITY TWT SSC",
-    "cor": "LAVIWH",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 119.99,
-    "totalGeral": 126,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 3,
-      "M": 59,
-      "G": 59,
-      "GG": 5
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULTS",
-    "artigo": "6023947",
-    "descricao": "CAM MC W VELOCITY TWT SSC",
-    "cor": "MGRAWH",
-    "linha": "TRAIN",
-    "genero": "FEMININO",
-    "categoria": "VESTUARIO",
-    "pdv": 119.99,
-    "totalGeral": 138,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 57,
-      "G": 81
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1382942",
-    "descricao": "MEIA UA ESS NV MID CREW 3",
-    "cor": "WHMGBK",
-    "linha": "SPORTSTYLE",
-    "genero": "FEMININO",
-    "categoria": "MEIAS",
-    "pdv": 119.99,
-    "totalGeral": 15,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "P": 6,
-      "M": 6,
-      "G": 3
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1367898",
-    "descricao": "MEIA UA CORE COTTCREW 3PK",
-    "cor": "BKBKST",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "MEIAS",
-    "pdv": 49.99,
-    "totalGeral": 11,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 11
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "1367900",
-    "descricao": "MEIA UA CORE COTTLOCU 3PK",
-    "cor": "WHTWHT",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "MEIAS",
-    "pdv": 49.99,
-    "totalGeral": 17,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "M": 17
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "UBMWF1916",
-    "descricao": "1325916 MEIAO FLUMIN.HOME",
-    "cor": "ADRDGR",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "MEIAS",
-    "pdv": 49.99,
-    "totalGeral": 2,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "40/44": 2
-    },
-    "_aguardandoImagem": true
-  },
-  {
-    "marca": "UA",
-    "prevFat": "JUNHO",
-    "empresa": "VULSP",
-    "artigo": "UBMWA81949",
-    "descricao": "1329349 MEIA CHARGED CUSH",
-    "cor": "RY_BLU",
-    "linha": "ACADEMIA",
-    "genero": "MASCULINO",
-    "categoria": "MEIAS",
-    "pdv": 29.99,
-    "totalGeral": 11,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": 0,
-    "imagem": "",
-    "grade": {
-      "40/44": 11
-    },
-    "_aguardandoImagem": true
   }
 ]
