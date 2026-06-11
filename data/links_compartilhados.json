@@ -812,5 +812,60 @@
     "status": "aguardando",
     "resposta": null,
     "respondidoEm": null
+  },
+  "PECRMD": {
+    "vendedor": "25471",
+    "vendedorNome": "WILLAME",
+    "cliente": "Pitoco Calcados",
+    "marca": "oly",
+    "produtos": [
+      {
+        "artigo": "43353470",
+        "cor": "ALGDNA",
+        "descricao": "ELEVADO",
+        "categoria": "2S26",
+        "linha": "COTIDIANO",
+        "genero": "FEMININO",
+        "empresa": "AZABA",
+        "pdv": 279.99,
+        "grade": {},
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43369229",
+        "cor": "MARITM",
+        "descricao": "RUA",
+        "categoria": "2S26",
+        "linha": "VERSATIL",
+        "genero": "FEMININO",
+        "empresa": "AZABA",
+        "pdv": 259.99,
+        "grade": {},
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      },
+      {
+        "artigo": "43697386",
+        "cor": "ARENIT",
+        "descricao": "VIBE",
+        "categoria": "2S26",
+        "linha": "COTIDIANO",
+        "genero": "FEMININO",
+        "empresa": "AZABA",
+        "pdv": 249.99,
+        "grade": {},
+        "codigoTabela": "",
+        "mkp": "",
+        "custo": ""
+      }
+    ],
+    "criadoEm": 1781143064854,
+    "expiraEm": 1781315864854,
+    "status": "aguardando",
+    "resposta": null,
+    "respondidoEm": null
   }
 }
