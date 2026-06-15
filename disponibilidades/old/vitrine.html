@@ -175,6 +175,11 @@
       padding:10px 16px;
     }
     @media(min-width:640px){ .filters-bar{ top:72px; margin:0 -24px; padding:10px 24px; } }
+    /* Desktop (≥1024px): visão + campanhas na MESMA linha. Mobile fica empilhado.
+       Seletor mais específico (.filters-bar .controles-secundarios) pra vencer o flex-col do Tailwind. */
+    @media(min-width:1024px){
+      .filters-bar .controles-secundarios{ flex-direction:row; align-items:flex-start; gap:20px; flex-wrap:wrap; }
+    }
 
     /* Modal zoom */
     .modal-zoom{ position:fixed; inset:0; z-index:200; background:rgba(0,0,0,.8); display:flex; align-items:center; justify-content:center; padding:24px; }
@@ -1467,30 +1472,31 @@
         </div>
       </div>
     </div>
-    <!-- Linha 1.5: toggle de visão (Disponíveis x Meta 2S26) — só aparece se houver 2S26 -->
-    <div id="visaoBar" class="hidden pt-2" style="border-top:1px dashed var(--line)">
-      <div class="flex items-center gap-2">
-        <span class="text-[11px] font-extrabold uppercase tracking-wide hidden sm:inline" style="color:var(--muted)">
-          <i class="fa-solid fa-eye text-[10px]"></i> Mostrar
-        </span>
-        <div class="inline-flex rounded-full p-0.5" style="background:var(--bg-subtle, #f1f5f9); border:1px solid var(--line)">
-          <button id="btnVisaoDispo" onclick="setVisao('disponivel')" class="px-3 py-1 text-xs font-bold rounded-full transition-all" style="background:#fff; color:var(--text); box-shadow:0 1px 3px rgba(0,0,0,.08)">
-            <i class="fa-solid fa-box text-[10px]"></i> Disponíveis
-            <span id="badgeDispo" class="ml-1 text-[10px] font-extrabold" style="opacity:.7">0</span>
-          </button>
-          <button id="btnVisaoMeta" onclick="setVisao('meta')" class="px-3 py-1 text-xs font-bold rounded-full transition-all" style="background:transparent; color:var(--muted)">
-            <i class="fa-solid fa-industry text-[10px]"></i> 2S26
-            <span id="badgeMeta" class="ml-1 text-[10px] font-extrabold" style="opacity:.7">0</span>
-          </button>
+    <!-- Controles secundários: visão (Disponíveis x 2S26) + campanhas.
+         No desktop vão pra mesma linha (ver .controles-secundarios na media query). -->
+    <div class="controles-secundarios flex flex-col gap-2">
+      <!-- toggle de visão (Disponíveis x Meta 2S26) — só aparece se houver 2S26 -->
+      <div id="visaoBar" class="hidden pt-2" style="border-top:1px dashed var(--line)">
+        <div class="flex items-center gap-2">
+          <div class="inline-flex rounded-full p-0.5" style="background:var(--bg-subtle, #f1f5f9); border:1px solid var(--line)">
+            <button id="btnVisaoDispo" onclick="setVisao('disponivel')" class="px-3 py-1 text-xs font-bold rounded-full transition-all" style="background:#fff; color:var(--text); box-shadow:0 1px 3px rgba(0,0,0,.08)">
+              <i class="fa-solid fa-box text-[10px]"></i> Disponíveis
+              <span id="badgeDispo" class="ml-1 text-[10px] font-extrabold" style="opacity:.7">0</span>
+            </button>
+            <button id="btnVisaoMeta" onclick="setVisao('meta')" class="px-3 py-1 text-xs font-bold rounded-full transition-all" style="background:transparent; color:var(--muted)">
+              <i class="fa-solid fa-industry text-[10px]"></i> 2S26
+              <span id="badgeMeta" class="ml-1 text-[10px] font-extrabold" style="opacity:.7">0</span>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Linha 2: campanhas (pills) — oculta se não houver -->
-    <div id="campanhasBar" class="hidden items-center gap-1.5 flex-wrap pt-2" style="border-top:1px dashed var(--line)">
-      <span class="text-[11px] font-extrabold uppercase tracking-wide" style="color:var(--muted)">
-        <i class="fa-solid fa-tag text-[10px]"></i> Campanhas
-      </span>
-      <div id="campanhasPills" class="flex flex-wrap gap-1.5"></div>
+      <!-- campanhas (pills) — oculta se não houver -->
+      <div id="campanhasBar" class="hidden items-center gap-1.5 flex-wrap pt-2" style="border-top:1px dashed var(--line)">
+        <span class="text-[11px] font-extrabold uppercase tracking-wide" style="color:var(--muted)">
+          <i class="fa-solid fa-tag text-[10px]"></i> Campanhas
+        </span>
+        <div id="campanhasPills" class="flex flex-wrap gap-1.5"></div>
+      </div>
     </div>
   </div>
 
