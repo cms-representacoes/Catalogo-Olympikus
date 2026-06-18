@@ -29,7 +29,7 @@
       },
       "total": 6,
       "prev_fat": "22/09/2026",
-      "acao": "REPASSAR"
+      "acao": "CANCELAR"
     },
     {
       "marca": "OLY",
@@ -17625,6 +17625,6 @@
       "acao": "MANTER"
     }
   ],
-  "atualizadoEm": "2026-06-18T21:24:53.230Z",
+  "atualizadoEm": "2026-06-18T21:24:55.207Z",
   "importadoPor": "JORGE"
 }
