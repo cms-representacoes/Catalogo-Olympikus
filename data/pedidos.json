@@ -2271,5 +2271,90 @@
         "prevFaturamento": "16/07/2026"
       }
     ]
+  },
+  {
+    "id": "PED-20260619094838-162",
+    "createdAt": "2026-06-19T12:48:38.907Z",
+    "updatedAt": "2026-06-19T12:48:37.119Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "139706",
+    "clienteNome": "",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43758365",
+        "produto": "CORRE MAX",
+        "cor": "PSGCLR",
+        "num": "25",
+        "gci": "7442534",
+        "ebm": "13279955",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 6,
+        "grade": [
+          {
+            "size": "36",
+            "qty": 1
+          },
+          {
+            "size": "37",
+            "qty": 2
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "24/06/2026"
+      },
+      {
+        "codigo": "43758365",
+        "produto": "CORRE MAX",
+        "cor": "PTO/GF",
+        "num": "31",
+        "gci": "7442533",
+        "ebm": "13279957",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 6,
+        "grade": [
+          {
+            "size": "39",
+            "qty": 1
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 2
+          },
+          {
+            "size": "42",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "24/06/2026"
+      }
+    ]
   }
 ]
