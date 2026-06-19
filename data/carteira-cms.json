@@ -100679,7 +100679,7 @@
       "preco_unit": 119.06,
       "total_preco": 5714.88,
       "prev_fat": "46273",
-      "acao": "REPASSAR"
+      "acao": "MANTER"
     },
     {
       "marca": "OLY",
@@ -122032,6 +122032,6 @@
       "acao": "MANTER"
     }
   ],
-  "atualizadoEm": "2026-06-19T21:25:54.800Z",
+  "atualizadoEm": "2026-06-19T21:31:48.693Z",
   "importadoPor": "JORGE"
 }
