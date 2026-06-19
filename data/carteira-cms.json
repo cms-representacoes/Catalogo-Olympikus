@@ -4359,17 +4359,7 @@
       "preco_unit": 300,
       "total_preco": 1800,
       "prev_fat": "46233",
-      "acao": "REPASSAR",
-      "repasse": {
-        "pendente": false,
-        "destinos": [
-          {
-            "codigo": "18529",
-            "nome": "C JANIO P DE SA CONFECCOES",
-            "porta": ""
-          }
-        ]
-      }
+      "acao": "MANTER"
     },
     {
       "marca": "OLY",
@@ -122052,6 +122042,6 @@
       "acao": "MANTER"
     }
   ],
-  "atualizadoEm": "2026-06-19T21:00:25.274Z",
+  "atualizadoEm": "2026-06-19T21:09:10.450Z",
   "importadoPor": "JORGE"
 }
