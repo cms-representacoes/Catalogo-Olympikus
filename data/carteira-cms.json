@@ -83076,8 +83076,14 @@
       "prev_fat": "46204",
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "3132954",
+            "nome": "C S COSTA MODAS",
+            "porta": "MARUZI GRAJAU"
+          }
+        ]
       }
     },
     {
@@ -122030,6 +122036,6 @@
       "acao": "MANTER"
     }
   ],
-  "atualizadoEm": "2026-06-19T20:51:43.220Z",
+  "atualizadoEm": "2026-06-19T20:52:30.832Z",
   "importadoPor": "JORGE"
 }
