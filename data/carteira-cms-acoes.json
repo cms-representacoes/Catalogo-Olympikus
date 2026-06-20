@@ -6,11 +6,6 @@
         "pendente": false,
         "destinos": [
           {
-            "codigo": "2373565",
-            "nome": "M C DE SOUSA SILVA",
-            "porta": "DUTRA MARUZI"
-          },
-          {
             "codigo": "19701",
             "nome": "M.E.DE OLIVEIRA",
             "porta": ""
@@ -19,6 +14,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-20T01:31:47.233Z",
+  "atualizadoEm": "2026-06-20T01:32:05.998Z",
   "por": "JORGE"
 }
