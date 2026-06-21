@@ -40,8 +40,15 @@
         "pendente": true,
         "destinos": []
       }
+    },
+    "105709|7498457|43304478|PRETO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-21T23:39:41.574Z",
+  "atualizadoEm": "2026-06-21T23:39:50.590Z",
   "por": "JORGE"
 }
