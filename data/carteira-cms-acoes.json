@@ -141,11 +141,17 @@
     "105709|7526209|43447473|ATLVRD|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "121069",
+            "nome": "CODO MAGAZINE MODAS LTDA",
+            "porta": "CODO"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:35:29.682Z",
+  "atualizadoEm": "2026-06-22T17:36:02.728Z",
   "por": "JORGE"
 }
