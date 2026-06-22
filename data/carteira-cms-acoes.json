@@ -121,8 +121,12 @@
           }
         ]
       }
+    },
+    "21511|7520937|43447473|LUNMHO||12": {
+      "acao": "MANTER",
+      "repasse": null
     }
   },
-  "atualizadoEm": "2026-06-21T23:52:18.927Z",
+  "atualizadoEm": "2026-06-22T12:27:10.526Z",
   "por": "JORGE"
 }
