@@ -45,8 +45,11 @@
       "repasse": null
     },
     "21511|7498789|43447473|LUNMHO|1221|6": {
-      "acao": "MANTER",
-      "repasse": null
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     },
     "105709|7534823|43447473|LUNMHO|1221|6": {
       "acao": "MANTER",
@@ -69,6 +72,6 @@
       "repasse": null
     }
   },
-  "atualizadoEm": "2026-06-22T17:15:38.502Z",
+  "atualizadoEm": "2026-06-22T17:27:39.128Z",
   "por": "JORGE"
 }
