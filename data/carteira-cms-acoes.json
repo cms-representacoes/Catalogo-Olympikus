@@ -267,11 +267,17 @@
     "105709|7508408|43304478|MUSGO|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "75383",
+            "nome": "IMPERATRIZ MAGAZINE LTDA",
+            "porta": "IMP MAGAZ"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:45:41.962Z",
+  "atualizadoEm": "2026-06-22T17:45:53.319Z",
   "por": "JORGE"
 }
