@@ -332,11 +332,17 @@
     "105709|7498459|43304478|VRD/CL|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "1664105",
+            "nome": "HIPERMAIS DISTRIBUIDORA",
+            "porta": ""
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:48:31.612Z",
+  "atualizadoEm": "2026-06-22T17:48:59.178Z",
   "por": "JORGE"
 }
