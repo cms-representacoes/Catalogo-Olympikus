@@ -442,6 +442,11 @@
             "codigo": "121069",
             "nome": "CODO MAGAZINE MODAS LTDA",
             "porta": "CODO"
+          },
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI"
           }
         ]
       }
@@ -454,6 +459,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:52:36.650Z",
+  "atualizadoEm": "2026-06-22T17:53:14.381Z",
   "por": "JORGE"
 }
