@@ -511,13 +511,10 @@
       }
     },
     "18529|5337815|43389459|PTODST|123321|60": {
-      "acao": "REPASSAR",
-      "repasse": {
-        "pendente": true,
-        "destinos": []
-      }
+      "acao": "MANTER",
+      "repasse": null
     }
   },
-  "atualizadoEm": "2026-06-22T19:25:29.257Z",
+  "atualizadoEm": "2026-06-22T19:25:40.297Z",
   "por": "JORGE"
 }
