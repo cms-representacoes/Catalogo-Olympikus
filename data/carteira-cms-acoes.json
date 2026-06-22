@@ -371,11 +371,17 @@
     "21511|7561129|43304478|LILAS|12111|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2929",
+            "nome": "FIRMINO SILVA RIBEIRO",
+            "porta": ""
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:50:25.559Z",
+  "atualizadoEm": "2026-06-22T17:50:42.264Z",
   "por": "JORGE"
 }
