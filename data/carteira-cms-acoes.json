@@ -5,8 +5,11 @@
       "repasse": null
     },
     "21511|7498787|43304478|PRETO|1221|6": {
-      "acao": "MANTER",
-      "repasse": null
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     },
     "21511|7534856|43304478|PRETO|1221|6": {
       "acao": "MANTER",
@@ -178,6 +181,6 @@
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:37:41.906Z",
+  "atualizadoEm": "2026-06-22T17:38:39.428Z",
   "por": "JORGE"
 }
