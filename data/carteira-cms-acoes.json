@@ -115,11 +115,17 @@
     "105709|7551101|43447473|MARBRI|111111|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "58568",
+            "nome": "M SANTOS GUERRA ME",
+            "porta": ""
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:33:40.266Z",
+  "atualizadoEm": "2026-06-22T17:34:15.700Z",
   "por": "JORGE"
 }
