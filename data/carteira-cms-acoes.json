@@ -380,8 +380,15 @@
           }
         ]
       }
+    },
+    "105709|7526260|43304478|LILAS|11211|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T17:50:42.264Z",
+  "atualizadoEm": "2026-06-22T17:50:58.914Z",
   "por": "JORGE"
 }
