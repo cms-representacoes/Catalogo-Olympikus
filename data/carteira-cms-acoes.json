@@ -125,11 +125,17 @@
     "21511|7520937|43447473|LUNMHO||12": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "63095",
+            "nome": "DUTRA MAGAZINE LTDA",
+            "porta": "PRES DUTRA"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T12:27:40.225Z",
+  "atualizadoEm": "2026-06-22T12:27:53.577Z",
   "por": "JORGE"
 }
