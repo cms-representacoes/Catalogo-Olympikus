@@ -128,11 +128,17 @@
     "21511|7526246|43447473|ATLVRD|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "11948",
+            "nome": "BACABAL MAGAZINE LTDA",
+            "porta": "BACABAL"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:35:13.828Z",
+  "atualizadoEm": "2026-06-22T17:35:20.083Z",
   "por": "JORGE"
 }
