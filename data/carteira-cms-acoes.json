@@ -241,11 +241,17 @@
     "105709|7526207|43304478|CINZA|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "1026378",
+            "nome": "SANTA LUZIA MAGAZINE LTDA",
+            "porta": "SANT LUZIA"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:44:08.711Z",
+  "atualizadoEm": "2026-06-22T17:44:26.222Z",
   "por": "JORGE"
 }
