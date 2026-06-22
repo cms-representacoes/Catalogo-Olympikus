@@ -345,11 +345,17 @@
     "105709|7561097|43304478|VRD/CL|12111|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI"
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:49:08.778Z",
+  "atualizadoEm": "2026-06-22T17:49:48.778Z",
   "por": "JORGE"
 }
