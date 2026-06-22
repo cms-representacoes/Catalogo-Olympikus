@@ -306,11 +306,17 @@
     "21511|7498791|43304478|VRD/CL|123321|12": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "destinos": [
+          {
+            "codigo": "19701",
+            "nome": "M.E.DE OLIVEIRA",
+            "porta": ""
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-22T17:47:36.296Z",
+  "atualizadoEm": "2026-06-22T17:47:50.054Z",
   "por": "JORGE"
 }
