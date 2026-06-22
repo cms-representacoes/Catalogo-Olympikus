@@ -76,8 +76,15 @@
     "7307|7521564|43447473|LUNMHO||12": {
       "acao": "MANTER",
       "repasse": null
+    },
+    "105709|7524840|43447473|LUNMHO||12": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-22T17:28:28.922Z",
+  "atualizadoEm": "2026-06-22T17:29:16.114Z",
   "por": "JORGE"
 }
