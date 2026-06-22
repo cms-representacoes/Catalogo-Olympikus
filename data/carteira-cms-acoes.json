@@ -84,8 +84,12 @@
     "2245855|7543842|43340469|MLTLAR|111111|6": {
       "acao": "MANTER",
       "repasse": null
+    },
+    "7307|7521564|43447473|LUNMHO||12": {
+      "acao": "MANTER",
+      "repasse": null
     }
   },
-  "atualizadoEm": "2026-06-22T17:15:24.982Z",
+  "atualizadoEm": "2026-06-22T17:15:27.984Z",
   "por": "JORGE"
 }
