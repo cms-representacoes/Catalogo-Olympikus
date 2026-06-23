@@ -723,8 +723,15 @@
           }
         ]
       }
+    },
+    "3834566|7745904|43447473|CH/VMH|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-23T14:49:25.040Z",
+  "atualizadoEm": "2026-06-23T14:49:29.806Z",
   "por": "JORGE"
 }
