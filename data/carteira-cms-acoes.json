@@ -727,11 +727,20 @@
     "3834566|7745904|43447473|CH/VMH|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-23T14:49:29.806Z",
+  "atualizadoEm": "2026-06-23T14:50:20.410Z",
   "por": "JORGE"
 }
