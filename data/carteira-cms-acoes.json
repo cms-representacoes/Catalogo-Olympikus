@@ -892,11 +892,20 @@
     "2245855|7499012|43447473|CH/VMH|1221|6": {
       "acao": "REPASSAR",
       "repasse": {
-        "pendente": true,
-        "destinos": []
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "1664105",
+            "nome": "HIPERMAIS DISTRIBUIDORA",
+            "porta": "",
+            "caixas": 1
+          }
+        ]
       }
     }
   },
-  "atualizadoEm": "2026-06-24T14:47:57.252Z",
+  "atualizadoEm": "2026-06-24T14:48:06.573Z",
   "por": "JORGE"
 }
