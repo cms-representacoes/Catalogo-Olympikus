@@ -368,6 +368,7 @@
       .fab-clientes span, .fab-perf span{ display:none; }
     }
   </style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <main class="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12">
@@ -655,29 +656,105 @@
   </a>
 </div>
 
+<style>
+  .perf-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+    background:rgba(8,12,22,.62);padding:20px;font-family:'Inter',system-ui,sans-serif}
+  .perf-modal[hidden]{display:none}
+  .perf-card{background:#fff;border-radius:18px;padding:26px 26px 22px;width:362px;max-width:100%;
+    box-shadow:0 26px 70px rgba(8,12,22,.55);animation:perfIn .18s ease}
+  @keyframes perfIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
+  .perf-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;
+    background:linear-gradient(135deg,#F2B705,#C77F0A);color:#3a2a00}
+  .perf-card h3{font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:600;
+    margin:0 0 4px;color:#15233B}
+  .perf-sub{font-size:13px;color:#64748b;margin:0 0 18px}
+  .perf-lbl{display:block;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin-bottom:7px}
+  .perf-inwrap{position:relative;display:flex;align-items:center}
+  .perf-inwrap input{width:100%;font-family:'Inter',sans-serif;font-size:15px;color:#15233B;
+    padding:11px 44px 11px 13px;border:1px solid #E2E6EC;border-radius:11px;background:#fff;outline:none;
+    transition:border-color .15s,box-shadow .15s}
+  .perf-inwrap input:focus{border-color:#C77F0A;box-shadow:0 0 0 3px rgba(242,183,5,.2)}
+  .perf-eye{position:absolute;right:6px;width:32px;height:32px;border:none;background:none;cursor:pointer;
+    color:#94a3b8;display:grid;place-items:center;border-radius:8px}
+  .perf-eye:hover{color:#475569;background:#F1F5F9}
+  .perf-err{font-size:12.5px;color:#C92A2A;margin-top:9px;font-weight:500;display:none}
+  .perf-err.show{display:block}
+  .perf-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+  .perf-btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer;
+    border-radius:10px;padding:10px 18px;border:1px solid transparent;transition:filter .15s,background .15s}
+  .perf-btn.ghost{background:#fff;border-color:#E2E6EC;color:#475569}
+  .perf-btn.ghost:hover{background:#F8FAFC}
+  .perf-btn.gold{background:linear-gradient(135deg,#F2B705,#C77F0A);color:#3a2a00}
+  .perf-btn.gold:hover{filter:brightness(1.06)}
+</style>
+
+<div class="perf-modal" id="perfModal" hidden>
+  <div class="perf-card" role="dialog" aria-modal="true" aria-labelledby="perfModalTitle">
+    <div class="perf-ico">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h3 id="perfModalTitle">Análise de Performance</h3>
+    <p class="perf-sub">Área restrita · informe a senha de acesso</p>
+    <label class="perf-lbl" for="perfPwd">Senha</label>
+    <div class="perf-inwrap">
+      <input id="perfPwd" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="••••••••">
+      <button type="button" class="perf-eye" id="perfEye" aria-label="Mostrar senha">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+    <div class="perf-err" id="perfErr">Senha incorreta. Tente novamente.</div>
+    <div class="perf-actions">
+      <button type="button" class="perf-btn ghost" id="perfCancel">Cancelar</button>
+      <button type="button" class="perf-btn gold" id="perfEnter">Entrar</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   // Acesso ao relatório de performance protegido por senha (hash SHA-256).
   // Para trocar a senha, gere o novo hash e substitua PERF_HASH.
   var PERF_URL = "https://marcosrepcms-max.github.io/Catalogo-Olympikus_2.0/analise-performance-vendas/";
   var PERF_HASH = "e92a82fcced79d8cf15b7732165727848f1bf54aebc0467a2f5599957b9dd334";
+  var EYE_ON  = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>';
+  var EYE_OFF = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-7-11-7a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 7 11 7a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
   async function sha256(s){
     var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
     return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
   }
-  var btn = document.getElementById('fabPerf');
-  if(btn){
-    btn.addEventListener('click', async function(e){
-      e.preventDefault();
-      var pwd = prompt('Senha de acesso ao relatório de performance:');
-      if(pwd === null) return;
-      try{
-        var h = await sha256(pwd.trim());
-        if(h === PERF_HASH){ window.location.href = PERF_URL; }
-        else { alert('Senha incorreta.'); }
-      }catch(_){ alert('Não foi possível validar a senha neste navegador.'); }
-    });
+  var btn=document.getElementById('fabPerf');
+  var modal=document.getElementById('perfModal');
+  var input=document.getElementById('perfPwd');
+  var err=document.getElementById('perfErr');
+  var eye=document.getElementById('perfEye');
+  function open(){ modal.hidden=false; err.classList.remove('show'); input.value=''; input.type='password';
+    eye.innerHTML=EYE_ON; eye.setAttribute('aria-label','Mostrar senha'); setTimeout(function(){input.focus();},40); }
+  function close(){ modal.hidden=true; }
+  async function submit(){
+    var pwd=input.value.trim(); if(!pwd) return;
+    try{
+      var h=await sha256(pwd);
+      if(h===PERF_HASH){ window.location.href=PERF_URL; }
+      else { err.textContent='Senha incorreta. Tente novamente.'; err.classList.add('show'); input.select(); }
+    }catch(_){ err.textContent='Não foi possível validar neste navegador.'; err.classList.add('show'); }
   }
+  if(btn) btn.addEventListener('click', function(e){ e.preventDefault(); open(); });
+  document.getElementById('perfEnter').addEventListener('click', submit);
+  document.getElementById('perfCancel').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+  input.addEventListener('input', function(){ err.classList.remove('show'); });
+  input.addEventListener('keydown', function(e){
+    if(e.key==='Enter'){ e.preventDefault(); submit(); }
+    else if(e.key==='Escape'){ close(); }
+  });
+  eye.addEventListener('click', function(){
+    var toText = input.type==='password';
+    input.type = toText ? 'text' : 'password';
+    eye.innerHTML = toText ? EYE_OFF : EYE_ON;
+    eye.setAttribute('aria-label', toText ? 'Ocultar senha' : 'Mostrar senha');
+    input.focus();
+  });
 })();
 </script>
 
