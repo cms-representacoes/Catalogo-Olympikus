@@ -904,8 +904,15 @@
           }
         ]
       }
+    },
+    "2245855|7499010|43447473|LUNMHO|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": true,
+        "destinos": []
+      }
     }
   },
-  "atualizadoEm": "2026-06-24T14:48:06.573Z",
+  "atualizadoEm": "2026-06-24T14:51:24.327Z",
   "por": "JORGE"
 }
