@@ -3720,7 +3720,7 @@ function notifShowSystem(count){
 }
 async function notifPollAdmin(){
   try{
-    const remote = await workerRequest('GET');
+    const remote = await workerGetOrders();
     if(!Array.isArray(remote)) return;
 
     // Primeira execução: apenas inicializa o Set, não notifica
@@ -3736,6 +3736,15 @@ async function notifPollAdmin(){
     for(const o of remote) _notifKnownIds.add(o.id);
 
     if(novos.length > 0){
+      // Atualiza a lista visível automaticamente (sem precisar clicar em Atualizar)
+      STATE.orders = remote.sort((a,b)=>{
+        const db = parseDate(b.updatedAt || b.createdAt || b.data)?.getTime() || 0;
+        const da = parseDate(a.updatedAt || a.createdAt || a.data)?.getTime() || 0;
+        return db - da;
+      });
+      applyFilters();
+      renderKpisOperacionais();
+
       _notifCount += novos.length;
       notifUpdateBadge();
       notifPlaySound();
