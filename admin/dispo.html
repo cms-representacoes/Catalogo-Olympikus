@@ -462,6 +462,10 @@
     .dark .filter-pill.active{ background:linear-gradient(135deg,#5b8cff,#4f7bff) !important; border-color:transparent !important; color:#fff !important; box-shadow:0 8px 18px -10px rgba(91,140,255,.8) !important; }
     .dispo-chk, .dispo-chk-all{ width:15px; height:15px; cursor:pointer; accent-color:var(--brand,#4f46e5); }
     .th-chk, .td-chk{ text-align:center; }
+    .badge-rateio{ display:inline-block; font-size:9px; font-weight:800; background:#ede9fe; color:#6d28d9; border-radius:999px; padding:1px 7px; vertical-align:middle; }
+    .dark .badge-rateio{ background:rgba(124,58,237,.30); color:#c4b5fd; }
+    .rateio-inp{ -moz-appearance:textfield; }
+    .rateio-inp::-webkit-outer-spin-button, .rateio-inp::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
 </style>
 </head>
 <body>
@@ -791,7 +795,8 @@ const STATE = {
   sortCol: 'saldoReal',
   sortDir: 'asc',
   activeFilter: 'all',
-  searchQuery: ''
+  searchQuery: '',
+  rateio: {}
 };
 
 // ── UTILITIES ─────────────────────────────────────────────────────────────────
@@ -1026,6 +1031,10 @@ async function loadDispo(){
     }).filter(row => row.codigo || row.produto);
 
     STATE.dispoLoadedAt = new Date();
+    try{
+      const rr = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'getRateio' }) });
+      if(rr.ok){ const rj = await rr.json(); STATE.rateio = (rj && typeof rj==='object' && !Array.isArray(rj)) ? rj : {}; }
+    }catch(e){ console.warn('Falha ao carregar rateio', e); }
     _bannerShownThisLoad = false;
     $('dispoNotLoaded').classList.add('hidden');
     atualizarBadgeOcultos();
@@ -1171,6 +1180,98 @@ document.addEventListener('change', (e)=>{
     atualizarBulkBarDispo();
   }
 });
+
+const PREPOSTOS_RATEIO = [
+  {codigo:'114611', nome:'JORGE'}, {codigo:'109839', nome:'MARIANA'},
+  {codigo:'1333497', nome:'RAFAEL'}, {codigo:'25471', nome:'WILLAME'},
+  {codigo:'25745', nome:'LÉO'}, {codigo:'3616654', nome:'MARCOS'},
+  {codigo:'25846', nome:'CMS'}
+];
+let _rateioNum = null, _rateioPack = 12, _rateioMaxPares = 0;
+function _paresPorCaixa(row){
+  const g = row.grade || {};
+  const tot = Object.values(g).reduce((s,v)=>s+(Number(v)||0),0);
+  return tot === 6 ? 6 : 12;
+}
+function abrirRateio(num){
+  const row = STATE.dispoRows.find(r => String(r.num) === String(num));
+  if(!row){ showToast('Linha não encontrada.', 'error'); return; }
+  _rateioNum = String(num);
+  _rateioPack = _paresPorCaixa(row);
+  _rateioMaxPares = Math.max(0, Number(row.saldo||0));
+  const maxCx = Math.floor(_rateioMaxPares / _rateioPack);
+  $('rateioTitulo').textContent = `${row.produto} — ${row.cor}`;
+  $('rateioSub').textContent = `Nº ${row.num} · GCI ${row.gci||'—'} · total: ${_rateioMaxPares} pares (${maxCx} cx de ${_rateioPack})`;
+  const atual = (STATE.rateio && STATE.rateio[_rateioNum]) || {};
+  $('rateioLista').innerHTML = PREPOSTOS_RATEIO.map(p=>{
+    const pares = Number(atual[p.codigo]||0);
+    const cx = pares ? pares/_rateioPack : 0;
+    const cxVal = cx ? (Number.isInteger(cx)?cx:cx.toFixed(2)) : '';
+    return `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:12px;padding:8px 12px">
+      <span style="font-weight:800;font-size:13px;color:var(--text)">${safeHtml(p.nome)}</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <input type="number" min="0" step="1" class="rateio-inp" data-code="${p.codigo}" value="${cxVal}" oninput="recalcRateio()" placeholder="0" style="width:62px;text-align:center;border:1px solid var(--line);border-radius:8px;padding:5px 6px;font-weight:800;font-size:13px;background:var(--card);color:var(--text)">
+        <span style="font-size:11px;color:var(--muted);min-width:62px;text-align:right" class="rateio-pares" data-code="${p.codigo}">${pares} pares</span>
+      </div>
+    </div>`;
+  }).join('');
+  recalcRateio();
+  $('rateioModal').classList.remove('hidden');
+}
+function recalcRateio(){
+  let usado = 0;
+  document.querySelectorAll('#rateioLista .rateio-inp').forEach(inp=>{
+    let cx = Number(inp.value||0); if(cx<0){ cx=0; inp.value=0; }
+    const pares = Math.round(cx * _rateioPack);
+    usado += pares;
+    const lbl = document.querySelector(`.rateio-pares[data-code="${inp.dataset.code}"]`);
+    if(lbl) lbl.textContent = `${pares} pares`;
+  });
+  const rest = _rateioMaxPares - usado;
+  const restCx = rest/_rateioPack;
+  const el = $('rateioRestante');
+  el.textContent = `${rest} pares (${Number.isInteger(restCx)?restCx:restCx.toFixed(1)} cx)`;
+  el.style.color = rest < 0 ? '#dc2626' : 'var(--brand)';
+  const btn = $('rateioBtnSalvar');
+  if(btn){ btn.disabled = rest<0; btn.style.opacity = rest<0?'.5':'1'; btn.style.cursor = rest<0?'not-allowed':'pointer'; }
+}
+function fecharRateio(){ $('rateioModal').classList.add('hidden'); _rateioNum = null; }
+async function salvarRateio(){
+  if(!_rateioNum) return;
+  const cota = {}; let usado = 0;
+  document.querySelectorAll('#rateioLista .rateio-inp').forEach(inp=>{
+    const pares = Math.round(Number(inp.value||0) * _rateioPack);
+    if(pares > 0){ cota[inp.dataset.code] = pares; usado += pares; }
+  });
+  if(usado > _rateioMaxPares){ showToast('A soma passou do total disponível.', 'error'); return; }
+  const novo = { ...(STATE.rateio||{}) };
+  if(Object.keys(cota).length) novo[_rateioNum] = cota; else delete novo[_rateioNum];
+  const btn = $('rateioBtnSalvar'); const prev = btn?btn.textContent:'';
+  if(btn){ btn.disabled=true; btn.textContent='Salvando...'; }
+  try{
+    const res = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'saveRateio', data: novo }) });
+    if(!res.ok) throw new Error('Falha ao salvar');
+    const r = await res.json(); if(!r.success) throw new Error(r.error||'Erro');
+    STATE.rateio = novo;
+    fecharRateio(); renderDispo();
+    showToast(Object.keys(cota).length ? 'Rateio salvo.' : 'Rateio removido.', 'success');
+  }catch(err){ console.error(err); showToast('Erro ao salvar rateio.', 'error'); }
+  finally{ if(btn){ btn.disabled=false; btn.textContent=prev; } }
+}
+async function liberarRateio(){
+  if(!_rateioNum) return;
+  if(!confirm('Liberar este produto para TODOS os vendedores? O rateio será removido.')) return;
+  const novo = { ...(STATE.rateio||{}) };
+  delete novo[_rateioNum];
+  try{
+    const res = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ action:'saveRateio', data: novo }) });
+    if(!res.ok) throw new Error('Falha ao salvar');
+    const r = await res.json(); if(!r.success) throw new Error(r.error||'Erro');
+    STATE.rateio = novo;
+    fecharRateio(); renderDispo();
+    showToast('Liberado para todos.', 'success');
+  }catch(err){ console.error(err); showToast('Erro ao liberar.', 'error'); }
+}
 
 function setKpiFilter(filter){
   STATE.activeFilter = filter;
@@ -1350,7 +1451,7 @@ function renderDispo(){
         <td class="tabular-nums font-semibold text-slate-400 text-[11px]">${safeHtml(row.num||'—')}</td>
         <td class="font-extrabold tabular-nums text-[var(--brand)] text-xs">${safeHtml(row.gci||row.codigo||'—')}</td>
         <td>
-          <div class="font-extrabold text-slate-800">${safeHtml(row.produto)}${desmBadge}</div>
+          <div class="font-extrabold text-slate-800">${safeHtml(row.produto)}${desmBadge}${(STATE.rateio&&STATE.rateio[String(row.num||'')])?'<span class="badge-rateio ml-1">Rateado</span>':''}</div>
           <div class="text-xs text-slate-400 mt-0.5">${safeHtml(row.codigo||'')}</div>
         </td>
         <td class="text-slate-500 font-semibold">${safeHtml(row.cor)}</td>
@@ -1377,6 +1478,7 @@ function renderDispo(){
               : STATE.activeFilter === 'finalizados'
               ? `<button class="icon-btn btn-excluir-dispo" data-idx="${idx}" title="Excluir da DISPO" style="color:#b91c1c;border-color:#fca5a5" onclick="excluirDaDispoJson(STATE.dispoRows.find(r=>'${safeHtml(row.codigo)}|${safeHtml(row.produto)}|${safeHtml(row.cor)}'.toUpperCase()===((r.codigo+'|'+r.produto+'|'+r.cor).toUpperCase())))"><i class="fa-solid fa-trash-can" style="font-size:12px"></i></button>`
               : `<button class="icon-btn desm btn-desmembrar" data-idx="${idx}" title="Desmembrar"><i class="fa-solid fa-table-list" style="font-size:12px"></i></button>
+                 <button class="icon-btn btn-ratear" title="Ratear por vendedor" onclick="abrirRateio('${safeHtml(String(row.num||''))}')" style="color:#7c3aed;border-color:#ddd6fe"><i class="fa-solid fa-users" style="font-size:12px"></i></button>
                  <button class="icon-btn ocultar btn-ocultar" data-gci="${safeHtml(String(row.gci||''))}" title="Ocultar"><i class="fa-solid fa-eye-slash" style="font-size:12px"></i></button>
                  <button class="icon-btn btn-excluir-dispo" data-idx="${idx}" title="Excluir da DISPO" style="color:#b91c1c;border-color:#fca5a5" onclick="excluirDaDispoJson(STATE.dispoRows.find(r=>'${safeHtml(row.codigo)}|${safeHtml(row.produto)}|${safeHtml(row.cor)}'.toUpperCase()===((r.codigo+'|'+r.produto+'|'+r.cor).toUpperCase())))"><i class="fa-solid fa-trash-can" style="font-size:12px"></i></button>
                  ${row._antecipavel ? `<button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-gci="${safeHtml(String(row.gci||''))}"><i class="fa-solid fa-angles-up text-[10px]"></i>${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}</button>` : ''}`
@@ -2079,5 +2181,29 @@ $('antecipacaoModal').addEventListener('click', e=>{
 // Auto-load on page open
 loadDispo();
 </script>
+<!-- MODAL RATEIO -->
+<div id="rateioModal" class="hidden" style="position:fixed;inset:0;z-index:200;background:rgba(2,6,23,.55);display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto">
+  <div style="width:100%;max-width:560px;margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px">
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.04em">Rateio por vendedor</div>
+        <div id="rateioTitulo" style="font-size:17px;font-weight:900;color:var(--text)"></div>
+        <div id="rateioSub" style="font-size:12px;font-weight:600;color:var(--muted);margin-top:2px"></div>
+      </div>
+      <button onclick="fecharRateio()" style="border:0;background:transparent;color:var(--muted);font-size:24px;cursor:pointer;line-height:1">&times;</button>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--brand-soft);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin:12px 0">
+      <span style="font-weight:700;font-size:12px;color:var(--text)">Restante a distribuir</span>
+      <span id="rateioRestante" style="font-weight:900;font-size:15px;color:var(--brand)"></span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">Quantidade em <b>caixas</b> (os pares aparecem ao lado). Quem ficar com 0 não vê o produto.</div>
+    <div id="rateioLista" style="display:flex;flex-direction:column;gap:8px"></div>
+    <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+      <button id="rateioBtnSalvar" onclick="salvarRateio()" style="flex:1;min-width:140px;background:var(--brand);color:#fff;border:0;border-radius:999px;padding:11px;font-weight:800;font-size:14px;cursor:pointer">Salvar rateio</button>
+      <button onclick="liberarRateio()" style="background:transparent;border:1px solid #fca5a5;color:#dc2626;border-radius:999px;padding:11px 16px;font-weight:800;font-size:13px;cursor:pointer">Liberar p/ todos</button>
+      <button onclick="fecharRateio()" style="background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:11px 16px;font-weight:700;font-size:13px;cursor:pointer">Cancelar</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
