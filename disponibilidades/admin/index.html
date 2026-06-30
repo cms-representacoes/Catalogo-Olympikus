@@ -449,8 +449,11 @@
     <!-- Bulk actions (aparece quando há seleção) -->
     <div id="bulkBar" class="ml-auto flex items-center gap-2" style="display:none">
       <span class="text-xs font-bold" style="color:var(--muted)"><span id="bulkCount">0</span> selecionado(s)</span>
-      <button onclick="bulkOcultar()" class="focus-ring rounded-full border px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 transition-colors" style="border-color:var(--line);background:var(--card);color:var(--muted)">
+      <button id="bulkOcultarBtn" onclick="bulkOcultar()" class="focus-ring rounded-full border px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 transition-colors" style="border-color:var(--line);background:var(--card);color:var(--muted)">
         <i class="fa-solid fa-eye-slash text-[10px]"></i> Ocultar
+      </button>
+      <button id="bulkReexibirBtn" onclick="bulkReexibir()" class="focus-ring rounded-full border px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 transition-colors" style="display:none;border-color:#AFA9EC;background:#EEEDFE;color:#3C3489">
+        <i class="fa-solid fa-eye text-[10px]"></i> Reexibir
       </button>
       <button onclick="bulkExcluir()" class="focus-ring rounded-full border px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 transition-colors" style="border-color:#fecaca;background:#fef2f2;color:#b91c1c">
         <i class="fa-solid fa-trash-can text-[10px]"></i> Excluir
@@ -1452,6 +1455,14 @@ document.addEventListener('keydown', (e) => {
     return;
   }
 
+  // ENTER confirma o diálogo de confirmação (se o botão OK estiver habilitado).
+  // Cobre exclusão simples e a que exige digitar "EXCLUIR".
+  if(e.key === 'Enter' && $('confirmOverlay')?.classList.contains('open')){
+    const ok = $('confirmOkBtn');
+    if(ok && !ok.disabled){ e.preventDefault(); confirmDialogResolve(true); }
+    return;
+  }
+
   // ESC fecha modais abertos (em ordem de prioridade)
   if(e.key === 'Escape'){
     if($('confirmOverlay')?.classList.contains('open')){ confirmDialogResolve(false); return; }
@@ -1689,6 +1700,10 @@ function refreshBulkBar(){
   const bar = $('bulkBar');
   if(bar) bar.style.display = n > 0 ? '' : 'none';
   const lbl = $('bulkCount'); if(lbl) lbl.textContent = String(n);
+  // Na visão "Ocultos" mostra Reexibir; nas demais, Ocultar
+  const isOcultos = STATE.filtro === 'ocultos';
+  const bOc = $('bulkOcultarBtn');   if(bOc) bOc.style.display = isOcultos ? 'none' : '';
+  const bRe = $('bulkReexibirBtn');  if(bRe) bRe.style.display = isOcultos ? '' : 'none';
   // Sincroniza o checkbox "selecionar todos"
   const all = $('bulkSelectAll');
   if(all){
@@ -1740,6 +1755,15 @@ async function bulkExcluir(){
     showToast(`${keys.length} produto(s) excluído(s).`, 'success');
     applyFilters();
   }catch(err){ console.error(err); showToast('Erro ao excluir.','error'); }
+}
+async function bulkReexibir(){
+  const keys = [...STATE.selecionados];
+  if(!keys.length) return;
+  keys.forEach(k => STATE.ocultos.delete(k));
+  await salvarOcultos();
+  STATE.selecionados.clear();
+  showToast(`${keys.length} produto(s) reexibido(s).`, 'success');
+  applyFilters();
 }
 
 
