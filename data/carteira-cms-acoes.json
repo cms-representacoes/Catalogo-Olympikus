@@ -923,8 +923,24 @@
           }
         ]
       }
+    },
+    "3834566|7745873|43447473|MARBRI|1221|6": {
+      "acao": "REPASSAR",
+      "repasse": {
+        "pendente": false,
+        "boxSize": 6,
+        "totalCaixas": 1,
+        "destinos": [
+          {
+            "codigo": "2373565",
+            "nome": "M C DE SOUSA SILVA",
+            "porta": "DUTRA MARUZI",
+            "caixas": 1
+          }
+        ]
+      }
     }
   },
-  "atualizadoEm": "2026-06-26T17:04:43.804Z",
+  "atualizadoEm": "2026-06-30T14:12:12.082Z",
   "por": "JORGE"
 }
