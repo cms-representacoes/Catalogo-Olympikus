@@ -3016,5 +3016,32 @@
     "action": "getPrepostos",
     "createdAt": "2026-07-03T14:59:17.040Z",
     "updatedAt": "2026-07-03T14:59:17.040Z"
+  },
+  {
+    "action": "savePrepostos",
+    "data": [
+      {
+        "codigo": "114611",
+        "nome": "JORGE"
+      },
+      {
+        "codigo": "109839",
+        "nome": "MARIANA"
+      },
+      {
+        "codigo": "1333497",
+        "nome": "RAFAEL"
+      },
+      {
+        "codigo": "25471",
+        "nome": "WILLAME"
+      },
+      {
+        "codigo": "25745",
+        "nome": "LEANDRO"
+      }
+    ],
+    "createdAt": "2026-07-03T14:59:18.649Z",
+    "updatedAt": "2026-07-03T14:59:18.649Z"
   }
 ]
