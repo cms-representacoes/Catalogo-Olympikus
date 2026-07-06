@@ -2935,179 +2935,65 @@
     "exportedAt": "2026-07-03T11:59:17.659Z"
   },
   {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-03T14:39:10.680Z",
-    "updatedAt": "2026-07-03T14:39:10.680Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-03T14:40:19.838Z",
-    "updatedAt": "2026-07-03T14:40:19.838Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-03T14:58:08.987Z",
-    "updatedAt": "2026-07-03T14:58:08.987Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-03T14:58:40.255Z",
-    "updatedAt": "2026-07-03T14:58:40.255Z"
-  },
-  {
-    "action": "savePrepostos",
-    "data": [
+    "id": "PED-20260706160236-536",
+    "createdAt": "2026-07-06T19:02:36.742Z",
+    "updatedAt": "2026-07-06T19:02:37.700Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "18529",
+    "clienteNome": "TALENTUS",
+    "prazo": "Z30 - 28/56/84 D",
+    "campanha": "CO689 +56DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
       {
-        "codigo": "114611",
-        "nome": "JORGE"
-      },
-      {
-        "codigo": "109839",
-        "nome": "MARIANA"
-      },
-      {
-        "codigo": "1333497",
-        "nome": "RAFAEL"
-      },
-      {
-        "codigo": "25471",
-        "nome": "WILLAME"
-      },
-      {
-        "codigo": "25745",
-        "nome": "LEANDRO"
-      },
-      {
-        "codigo": "3616654",
-        "nome": "MARCOS"
+        "codigo": "43341472",
+        "produto": "CHALLENGER 6",
+        "cor": "PTO/CH",
+        "num": "38",
+        "gci": "7589365",
+        "ebm": "13429249",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "10/07/2026"
       }
-    ],
-    "createdAt": "2026-07-03T14:58:41.845Z",
-    "updatedAt": "2026-07-03T14:58:41.845Z"
-  },
-  {
-    "action": "savePrepostos",
-    "data": [
-      {
-        "codigo": "114611",
-        "nome": "JORGE"
-      },
-      {
-        "codigo": "109839",
-        "nome": "MARIANA"
-      },
-      {
-        "codigo": "1333497",
-        "nome": "RAFAEL"
-      },
-      {
-        "codigo": "25471",
-        "nome": "WILLAME"
-      },
-      {
-        "codigo": "25745",
-        "nome": "LEANDRO"
-      }
-    ],
-    "createdAt": "2026-07-03T14:59:15.151Z",
-    "updatedAt": "2026-07-03T14:59:15.151Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-03T14:59:17.040Z",
-    "updatedAt": "2026-07-03T14:59:17.040Z"
-  },
-  {
-    "action": "savePrepostos",
-    "data": [
-      {
-        "codigo": "114611",
-        "nome": "JORGE"
-      },
-      {
-        "codigo": "109839",
-        "nome": "MARIANA"
-      },
-      {
-        "codigo": "1333497",
-        "nome": "RAFAEL"
-      },
-      {
-        "codigo": "25471",
-        "nome": "WILLAME"
-      },
-      {
-        "codigo": "25745",
-        "nome": "LEANDRO"
-      }
-    ],
-    "createdAt": "2026-07-03T14:59:18.649Z",
-    "updatedAt": "2026-07-03T14:59:18.649Z"
-  },
-  {
-    "action": "savePrepostos",
-    "data": [
-      {
-        "codigo": "114611",
-        "nome": "JORGE"
-      },
-      {
-        "codigo": "109839",
-        "nome": "MARIANA"
-      },
-      {
-        "codigo": "1333497",
-        "nome": "RAFAEL"
-      },
-      {
-        "codigo": "25471",
-        "nome": "WILLAME"
-      },
-      {
-        "codigo": "25745",
-        "nome": "LEANDRO"
-      },
-      {
-        "codigo": "4322318",
-        "nome": "CHRISTIAN LUCAS"
-      }
-    ],
-    "createdAt": "2026-07-03T15:02:33.255Z",
-    "updatedAt": "2026-07-03T15:02:33.255Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-03T15:02:53.239Z",
-    "updatedAt": "2026-07-03T15:02:53.239Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-03T15:22:00.676Z",
-    "updatedAt": "2026-07-03T15:22:00.676Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-04T13:29:40.260Z",
-    "updatedAt": "2026-07-04T13:29:40.260Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-05T10:43:56.977Z",
-    "updatedAt": "2026-07-05T10:43:56.977Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-06T17:04:35.262Z",
-    "updatedAt": "2026-07-06T17:04:35.262Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-06T17:21:43.114Z",
-    "updatedAt": "2026-07-06T17:21:43.114Z"
-  },
-  {
-    "action": "getPrepostos",
-    "createdAt": "2026-07-06T19:51:53.763Z",
-    "updatedAt": "2026-07-06T19:51:53.763Z"
+    ]
   }
 ]
