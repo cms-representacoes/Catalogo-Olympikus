@@ -1083,12 +1083,11 @@ function isDispoFinalizado(row){
 }
 
 async function excluirDaDispoJson(row){
-  if(!confirm(`Excluir "${row.produto} — ${row.cor}" da DISPO?\n\nEssa ação não pode ser desfeita.`)) return;
+  if(!confirm(`Excluir "${row.produto} — ${row.cor}" (Nº ${row.num}) da DISPO?\n\nEssa ação não pode ser desfeita.`)) return;
   try{
     // Remove da lista local
-    const chave = r => `${r.codigo}|${r.produto}|${r.cor}`.toUpperCase();
-    const alvo = chave(row);
-    const novaLista = STATE.dispoRows.filter(r => chave(r) !== alvo);
+    const alvo = String(row.num ?? '').trim();
+    const novaLista = STATE.dispoRows.filter(r => String(r.num ?? '').trim() !== alvo);
 
     // Salva no Worker
     const res = await workerFetch({
@@ -1476,11 +1475,11 @@ function renderDispo(){
             ${STATE.activeFilter === 'ocultos'
               ? `<button class="icon-btn reexibir btn-reexibir" data-gci="${safeHtml(String(row.gci||''))}" title="Reexibir"><i class="fa-solid fa-eye" style="font-size:12px"></i></button>`
               : STATE.activeFilter === 'finalizados'
-              ? `<button class="icon-btn btn-excluir-dispo" data-idx="${idx}" title="Excluir da DISPO" style="color:#b91c1c;border-color:#fca5a5" onclick="excluirDaDispoJson(STATE.dispoRows.find(r=>'${safeHtml(row.codigo)}|${safeHtml(row.produto)}|${safeHtml(row.cor)}'.toUpperCase()===((r.codigo+'|'+r.produto+'|'+r.cor).toUpperCase())))"><i class="fa-solid fa-trash-can" style="font-size:12px"></i></button>`
+              ? `<button class="icon-btn btn-excluir-dispo" data-idx="${idx}" title="Excluir da DISPO" style="color:#b91c1c;border-color:#fca5a5" onclick="excluirDaDispoJson(STATE.dispoRows.find(r=>String(r.num)===String('${safeHtml(String(row.num||''))}')))"><i class="fa-solid fa-trash-can" style="font-size:12px"></i></button>`
               : `<button class="icon-btn desm btn-desmembrar" data-idx="${idx}" title="Desmembrar"><i class="fa-solid fa-table-list" style="font-size:12px"></i></button>
                  <button class="icon-btn btn-ratear" title="Ratear por vendedor" onclick="abrirRateio('${safeHtml(String(row.num||''))}')" style="color:#7c3aed;border-color:#ddd6fe"><i class="fa-solid fa-users" style="font-size:12px"></i></button>
                  <button class="icon-btn ocultar btn-ocultar" data-gci="${safeHtml(String(row.gci||''))}" title="Ocultar"><i class="fa-solid fa-eye-slash" style="font-size:12px"></i></button>
-                 <button class="icon-btn btn-excluir-dispo" data-idx="${idx}" title="Excluir da DISPO" style="color:#b91c1c;border-color:#fca5a5" onclick="excluirDaDispoJson(STATE.dispoRows.find(r=>'${safeHtml(row.codigo)}|${safeHtml(row.produto)}|${safeHtml(row.cor)}'.toUpperCase()===((r.codigo+'|'+r.produto+'|'+r.cor).toUpperCase())))"><i class="fa-solid fa-trash-can" style="font-size:12px"></i></button>
+                 <button class="icon-btn btn-excluir-dispo" data-idx="${idx}" title="Excluir da DISPO" style="color:#b91c1c;border-color:#fca5a5" onclick="excluirDaDispoJson(STATE.dispoRows.find(r=>String(r.num)===String('${safeHtml(String(row.num||''))}')))"><i class="fa-solid fa-trash-can" style="font-size:12px"></i></button>
                  ${row._antecipavel ? `<button class="btn-antecipa-row ${row._antecipavel.gradeDiferente ? 'btn-antecipa-warn' : 'btn-antecipa-ok'}" data-gci="${safeHtml(String(row.gci||''))}"><i class="fa-solid fa-angles-up text-[10px]"></i>${row._antecipavel.gradeDiferente ? '⚠ Grade diferente' : `${row._antecipavel.pedidosVinculados.length} pedido${row._antecipavel.pedidosVinculados.length>1?'s':''} — antecipar`}</button>` : ''}`
             }
           </div>
