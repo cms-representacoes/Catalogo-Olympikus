@@ -950,6 +950,16 @@
 
     /* Modal de export */
     .export-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+    /* Opções de ordenação do PDF */
+    .pdf-sort-opts{ display:flex; flex-direction:column; gap:6px; }
+    .pdf-sort-opt{ display:flex; align-items:center; gap:10px; padding:11px 14px; border:1px solid var(--line); border-radius:12px; cursor:pointer; font-size:14px; font-weight:600; color:var(--text); transition:all .15s; }
+    .pdf-sort-opt:hover{ border-color:var(--accent); background:rgba(0,0,0,.02); }
+    .pdf-sort-opt input{ accent-color:var(--accent); width:17px; height:17px; flex:0 0 auto; }
+    .pdf-sort-opt span{ display:flex; align-items:center; gap:9px; }
+    .pdf-sort-opt span i{ width:16px; text-align:center; color:var(--muted); }
+    .pdf-sort-opt:has(input:checked){ border-color:var(--accent); background:rgba(125,184,0,.07); }
+    .pdf-sort-opt:has(input:checked) span i{ color:var(--accent); }
     .export-grid .full{ grid-column:1 / -1; }
     .export-grid label{
       display:flex; flex-direction:column; gap:4px;
@@ -1780,7 +1790,33 @@
   </div>
 </div>
 
-<!-- ── Mini-modal de confirmação ──────────────────────────────────────── -->
+<!-- ── Modal: Ordenar PDF ─────────────────────────────────────────────── -->
+<div id="pdfSortModal" class="modal-bg hidden" onclick="if(event.target===this)fecharPdfSort()">
+  <div class="modal-sheet" style="max-width:380px">
+    <div class="modal-head">
+      <i class="fa-solid fa-arrow-down-a-z" style="color:var(--accent);font-size:18px"></i>
+      <h2>Ordenar PDF</h2>
+      <button class="btn-x" onclick="fecharPdfSort()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="pdf-sort-opts">
+        <label class="pdf-sort-opt"><input type="radio" name="pdfSort" value="padrao"><span><i class="fa-solid fa-layer-group"></i> Padrão (por categoria)</span></label>
+        <label class="pdf-sort-opt"><input type="radio" name="pdfSort" value="nome"><span><i class="fa-solid fa-arrow-down-a-z"></i> Nome (A-Z)</span></label>
+        <label class="pdf-sort-opt"><input type="radio" name="pdfSort" value="nome_desc"><span><i class="fa-solid fa-arrow-down-z-a"></i> Nome (Z-A)</span></label>
+        <label class="pdf-sort-opt"><input type="radio" name="pdfSort" value="preco_asc"><span><i class="fa-solid fa-arrow-down-1-9"></i> Menor preço</span></label>
+        <label class="pdf-sort-opt"><input type="radio" name="pdfSort" value="preco_desc"><span><i class="fa-solid fa-arrow-down-9-1"></i> Maior preço</span></label>
+        <label class="pdf-sort-opt"><input type="radio" name="pdfSort" value="disp_desc"><span><i class="fa-solid fa-boxes-stacked"></i> Maior disponibilidade</span></label>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="fecharPdfSort()">Cancelar</button>
+      <div class="info"></div>
+      <button class="btn-primary" onclick="confirmarPdfSort()">
+        <i class="fa-solid fa-file-pdf"></i> Gerar PDF
+      </button>
+    </div>
+  </div>
+</div>
 <div id="confirmModal" class="modal-bg hidden" style="z-index:200" onclick="if(event.target===this)fecharConfirm()">
   <div class="confirm-card">
     <div class="confirm-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
@@ -1848,6 +1884,7 @@ const STATE = {
   // Visão: 'disponivel' (padrão — produtos com grade) ou 'meta' (coleção 2S26)
   filtroVisao:     'disponivel',
   ordenacao:       'padrao',
+  pdfOrdem:        'padrao',   // ordem escolhida no modal do PDF
   search:     '',
   selecionados: new Set(),
   // Sacola: Map<key, item> onde key = artigo|cor
@@ -3675,21 +3712,59 @@ async function loadImgForPdfCrop(dataUrl){
 }
 
 // ── GERAR PDF ─────────────────────────────────────────────────────────────────
-async function gerarPDF(){
+// Ordena a seleção do PDF conforme o modo escolhido no modal.
+// (sem flutuar desejados pro topo — o PDF é pro cliente)
+function ordenarSelecaoPdf(arr, modo){
+  const a = arr.slice();
+  const totalDisp = it => it._meta
+    ? metaTotalValido(it)
+    : (Number(it.totalGeral) || (it.grade ? Object.values(it.grade).reduce((s,v)=>s+(Number(v)||0),0) : 0));
+  switch(modo){
+    case 'nome':       a.sort((x,y)=>String(x.descricao||'').localeCompare(String(y.descricao||''))); break;
+    case 'nome_desc':  a.sort((x,y)=>String(y.descricao||'').localeCompare(String(x.descricao||''))); break;
+    case 'preco_asc':  a.sort((x,y)=>(Number(x.pdv)||0)-(Number(y.pdv)||0)); break;
+    case 'preco_desc': a.sort((x,y)=>(Number(y.pdv)||0)-(Number(x.pdv)||0)); break;
+    case 'disp_desc':  a.sort((x,y)=>totalDisp(y)-totalDisp(x)); break;
+    default: // padrão: agrupa por categoria, depois nome
+      a.sort((x,y)=>{
+        const cx = categoriaKey(x.categoria), cy = categoriaKey(y.categoria);
+        if(cx !== cy) return cx.localeCompare(cy);
+        return String(x.descricao||'').localeCompare(String(y.descricao||''));
+      });
+  }
+  return a;
+}
+
+// Abre o modal de ordenação do PDF (valida que há seleção na visão ativa)
+function gerarPDF(){
+  const querMeta = STATE.filtroVisao === 'meta';
+  const n = STATE.itens.filter(i => STATE.selecionados.has(prodKey(i)) && (!!i._meta === querMeta)).length;
+  if(!n){ showToast('Selecione ao menos um produto.','info'); return; }
+  abrirPdfSort();
+}
+function abrirPdfSort(){
+  const r = document.querySelector(`input[name="pdfSort"][value="${STATE.pdfOrdem||'padrao'}"]`);
+  if(r) r.checked = true;
+  $('pdfSortModal').classList.remove('hidden');
+}
+function fecharPdfSort(){ $('pdfSortModal').classList.add('hidden'); }
+function confirmarPdfSort(){
+  const sel = document.querySelector('input[name="pdfSort"]:checked');
+  STATE.pdfOrdem = sel ? sel.value : 'padrao';
+  fecharPdfSort();
+  gerarPDFComOrdem(STATE.pdfOrdem);
+}
+
+async function gerarPDFComOrdem(modo){
   // Gera só do tipo da VISÃO ATIVA (Disponíveis x 2S26). Como a mesma
   // referência ARTIGO|COR pode existir como estoque (E) e meta (M), filtrar
   // só por prodKey traria as duas — então casamos com STATE.filtroVisao.
   const querMeta = STATE.filtroVisao === 'meta';
-  const selecionados = STATE.itens
+  let selecionados = STATE.itens
     .filter(i => STATE.selecionados.has(prodKey(i)))
-    .filter(i => !!i._meta === querMeta)
-    .sort((a,b) => {
-      // agrupa por categoria, depois por nome
-      const ca = categoriaKey(a.categoria), cb = categoriaKey(b.categoria);
-      if(ca !== cb) return ca.localeCompare(cb);
-      return String(a.descricao||'').localeCompare(String(b.descricao||''));
-    });
+    .filter(i => !!i._meta === querMeta);
   if(!selecionados.length){ showToast('Selecione ao menos um produto.','info'); return; }
+  selecionados = ordenarSelecaoPdf(selecionados, modo);
 
   // Vendedor nunca mistura pronta entrega com 2S26 → título/arquivo dinâmicos
   const todosMeta = querMeta;

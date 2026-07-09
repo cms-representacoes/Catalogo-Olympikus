@@ -2456,8 +2456,9 @@ function ehColecaoMeta(categoria){
 }
 
 // Detecta a MARCA (OLY/UA) pelo padrão do código ARTIGO — funciona linha a linha,
-// independente do nome do arquivo. Baseado em observação real dos exports "Pronta Entrega":
-//   OLY → 8 dígitos numéricos (ex: 43343458) OU 10-11 chars começando com "O" (ex: OIMWL25503)
+// independente do nome do arquivo. Baseado em observação real dos exports "Analitico"
+// (tanto Pronta Entrega quanto Quinzena/2S26 seguem o mesmo padrão):
+//   OLY → 8 dígitos numéricos (ex: 43343458) OU 9-11 chars começando com "O" (ex: OIWB23823, OIMWL25503, OBMSR241922)
 //   UA  → sempre 7 dígitos numéricos (ex: 3025902)
 // Retorna '' se o padrão não bater com nenhum dos dois (quem chama decide o fallback).
 function detectarMarcaPorArtigo(artigo){
@@ -2465,7 +2466,7 @@ function detectarMarcaPorArtigo(artigo){
   if(!a) return '';
   if(/^\d{7}$/.test(a)) return 'UA';
   if(/^\d{8}$/.test(a)) return 'OLY';
-  if(/^O[A-Z0-9]{9,10}$/.test(a)) return 'OLY';
+  if(/^O[A-Z0-9]{8,10}$/.test(a)) return 'OLY';
   return '';
 }
 
@@ -3384,7 +3385,9 @@ function pedirConfigImportacao(arquivos){
         : `<span style="color:#94a3b8">—</span>`;
       // Pronta Entrega: marca e categoria são detectadas PRODUTO A PRODUTO (ARTIGO + grade),
       // não pelo nome do arquivo — mostra badge de "automático" em vez do valor fixo
-      const marcaCell = a.detec.ehProntaEntrega
+      // Marca é detectada PRODUTO A PRODUTO (por ARTIGO) em qualquer arquivo do
+      // formato "Analitico" — tanto Pronta Entrega quanto Quinzena/2S26.
+      const marcaCell = (a.detec.ehProntaEntrega || a.detec.ehMeta)
         ? `<span style="font-weight:700; color:#0369a1">🔎 auto (por produto)</span>`
         : safeHtml(a.detec.marca);
       const catCell = a.detec.ehProntaEntrega
@@ -3573,36 +3576,41 @@ async function processarXlsxMulti(fileList){
       for(const row of rows){
         let categoriaOriginal = String(row['CATEGORIA']||'').trim().toUpperCase();
 
-        if(cfgArq.ehProntaEntrega){
-          // PRONTA ENTREGA: marca e categoria são decididas PRODUTO A PRODUTO,
-          // não pelo arquivo — permite subir OLY+UA juntos (ou um único arquivo
-          // combinado no futuro) sem depender do nome do arquivo.
-          const marcaPorArtigo = detectarMarcaPorArtigo(row['ARTIGO']);
-          if(marcaPorArtigo){
-            row['MARCA'] = marcaPorArtigo;
-          } else if(!String(row['MARCA']||'').trim()){
-            // ARTIGO com padrão não reconhecido → cai pro palpite do nome do arquivo
-            row['MARCA'] = cfgArq.marca;
-            _semMarcaDetectada++;
-          }
-          const bucket = classificarCategoriaLinha(row);
+        // MARCA por linha (ARTIGO) SEMPRE — os exports "Analitico" (Pronta Entrega
+        // e Quinzena/2S26) seguem o mesmo padrão de código, então isso vale pros dois.
+        // Permite subir OLY+UA juntos em qualquer um dos dois fluxos.
+        const marcaPorArtigo = detectarMarcaPorArtigo(row['ARTIGO']);
+        if(marcaPorArtigo){
+          row['MARCA'] = marcaPorArtigo;
+        } else if(!String(row['MARCA']||'').trim()){
+          // ARTIGO com padrão não reconhecido → cai pro palpite do nome do arquivo
+          row['MARCA'] = cfgArq.marca;
+          _semMarcaDetectada++;
+        }
+
+        // TIPO de produto por linha (TENIS/CHINELO/VESTUARIO/MEIA/ACESSORIO), calculado
+        // ANTES de mexer em row['CATEGORIA'] — precisa do texto original + grade intactos.
+        const bucket = classificarCategoriaLinha(row);
+
+        if(cfgArq.ehMeta){
+          // META PRODUTIVA: mantém CATEGORIA = "2S26" (ou o que veio da config) pra
+          // continuar disparando o fluxo de coleção no rowToItem (quinzena, T.GER etc).
+          // O tipo real do produto vai à parte, em item.categoriaProduto (segmentação).
+          row['CATEGORIA'] = cfgArq.categoria || categoriaOriginal;
+        } else if(cfgArq.ehProntaEntrega){
+          // PRONTA ENTREGA: a categoria da linha VIRA o próprio bucket detectado.
           row['CATEGORIA'] = bucket || categoriaOriginal;
-        } else {
-          // Fluxo legado: 1 arquivo = 1 categoria/marca, vindo do nome do arquivo
-          if(cfgArq.marca && !String(row['MARCA']||'').trim()){
-            row['MARCA'] = cfgArq.marca;
-          }
-          if(cfgArq.categoria){
-            // SEMPRE sobrescreve categoria (o XLSX bruto vem com sub-categoria errada)
-            row['CATEGORIA'] = cfgArq.categoria;
-          }
+        } else if(cfgArq.categoria){
+          // Fluxo legado: 1 arquivo = 1 categoria fixa, vinda do nome do arquivo
+          row['CATEGORIA'] = cfgArq.categoria;
         }
         if(prevFat && !String(row['PREV. FAT']||'').trim()){
           row['PREV. FAT'] = prevFat;
         }
         const item = rowToItem(row, cfgArq.quinzena);
         if(!item.artigo) continue;
-        if(cfgArq.ehProntaEntrega) item.categoriaOriginal = categoriaOriginal;
+        item.categoriaOriginal = categoriaOriginal;
+        item.categoriaProduto  = bucket || '';  // TENIS/CHINELO/VESTUARIO/MEIA/ACESSORIO — usado pra segmentar 2S26 na vitrine
         // Cruzamento automático com a tabela especial
         const antesCod = item.codigoTabela;
         aplicarTabelaEspecial(item);
