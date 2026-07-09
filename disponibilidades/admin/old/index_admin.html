@@ -101,7 +101,6 @@
     .toast-success{ background:#f0fdf4; color:#166534; border-color:#bbf7d0; }
     .toast-error{ background:#fef2f2; color:#b91c1c; border-color:#fecaca; }
     .toast-info{ background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
-    .toast-warning{ background:#fffbeb; color:#92400e; border-color:#fde68a; }
 
     /* Tooltips */
     [data-tip]{ position:relative; }
@@ -2447,59 +2446,6 @@ function ehColecaoMeta(categoria){
   return /^\d+S\d+$/.test(String(categoria||'').trim().toUpperCase());
 }
 
-// Detecta a MARCA (OLY/UA) pelo padrão do código ARTIGO — funciona linha a linha,
-// independente do nome do arquivo. Baseado em observação real dos exports "Pronta Entrega":
-//   OLY → 8 dígitos numéricos (ex: 43343458) OU 10-11 chars começando com "O" (ex: OIMWL25503)
-//   UA  → sempre 7 dígitos numéricos (ex: 3025902)
-// Retorna '' se o padrão não bater com nenhum dos dois (quem chama decide o fallback).
-function detectarMarcaPorArtigo(artigo){
-  const a = String(artigo||'').trim().toUpperCase();
-  if(!a) return '';
-  if(/^\d{7}$/.test(a)) return 'UA';
-  if(/^\d{8}$/.test(a)) return 'OLY';
-  if(/^O[A-Z0-9]{9,10}$/.test(a)) return 'OLY';
-  return '';
-}
-
-// Classifica a CATEGORIA "bucket" (TENIS/CHINELO/VESTUARIO/MEIA/ACESSORIO) de UMA linha,
-// usada nos arquivos PRONTA ENTREGA (várias categorias/marcas misturadas no mesmo arquivo).
-// Ordem:
-//  1) Texto da coluna CATEGORIA do XLSX já é explícito (CHINELO, SLIDE, MEIA,
-//     ACESSORIO/ACCESSORIES, VESTUARIO/APPAREL, TENIS/FOOTWEAR) → usa direto.
-//  2) Senão (nome de linha esportiva tipo CORRIDA/TREINO/BASQUETE/GOLF, que não diz
-//     o tipo de produto) → decide pela grade de tamanhos preenchida nesta linha.
-function classificarCategoriaLinha(row){
-  const catTxt = String(row['CATEGORIA']||'')
-    .toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-
-  if(/CHINEL|SLIDE|SAND/.test(catTxt))                        return 'CHINELO';
-  if(/\bMEIA/.test(catTxt))                                   return 'MEIA';
-  if(/ACESSORI|ACCESSORIES|MOCHIL|BOLSA|BONE/.test(catTxt))   return 'ACESSORIO';
-  if(/VESTUARIO|APPAREL/.test(catTxt))                        return 'VESTUARIO';
-  if(/TENIS|CALCAD|FOOTWEAR/.test(catTxt))                    return 'TENIS';
-
-  // Fallback pela grade: pega as colunas de tamanho com valor > 0 nesta linha
-  const chaves = [];
-  for(const [col, val] of Object.entries(row)){
-    if(COLS_FIXAS.has(col)) continue;
-    const n = Number(val);
-    if(!isNaN(n) && n > 0) chaves.push(String(col).trim().toUpperCase());
-  }
-  if(!chaves.length) return '';
-
-  const faixasChinelo = ['33/34','35/36','37/38','39/40','41/42','43/44','45/46'];
-  if(chaves.some(k => faixasChinelo.includes(k))) return 'CHINELO';
-
-  // Números soltos (aceita vírgula/ponto decimal: "28,5") → calçado numerado
-  if(chaves.some(k => /^\d+([.,]\d+)?$/.test(k))) return 'TENIS';
-
-  const roupaKeys = ['PP','P','M','G','GG','2GG','M/G','XG','XGG'];
-  if(chaves.some(k => roupaKeys.includes(k))) return 'VESTUARIO';
-
-  // Só "U", G1/G2/G3 ou outra faixa não reconhecida → acessório
-  return 'ACESSORIO';
-}
-
 function rowToItem(row, quinzenaHint){
   const categoria = String(row['CATEGORIA']  || '').trim().toUpperCase();
   const ehMeta = ehColecaoMeta(categoria);
@@ -3262,14 +3208,7 @@ function detectarDoNome(fileName){
     .replace(/\s+/g, ' ').trim();
 
   // Detecta MARCA: começa com "UA" (Under Armour), senão é OLY
-  // (Nos arquivos PRONTA ENTREGA isso é só um palpite inicial — a marca real
-  //  de cada linha é confirmada por detectarMarcaPorArtigo durante a importação.)
   const marca = /^UA\b|\bUA\b/.test(nome) ? 'UA' : 'OLY';
-
-  // NOVO: arquivo "Pronta Entrega" (export único com todas as categorias
-  // misturadas) → categoria vira responsabilidade de classificarCategoriaLinha,
-  // linha a linha, durante a importação — não do nome do arquivo.
-  const ehProntaEntrega = /\bPRONTA\b/.test(nome);
 
   // Detecta TIPO 2S26 (coleção meta produtiva)
   // Padrões: "2 QUINZ AGOSTO", "2QUINZ", "QUINZ", "2S26"
@@ -3277,19 +3216,17 @@ function detectarDoNome(fileName){
 
   // Detecta CATEGORIA: a ordem importa (verifica do mais específico ao genérico)
   let categoria = '';
-  if(ehProntaEntrega){
-    categoria = 'AUTO';  // classificado produto a produto na importação
-  } else if(ehMeta){
+  if(ehMeta){
     categoria = '2S26';  // categoria padrão pra coleção meta
   } else if(/\b(TENIS|TÊNIS|CALCAD|SHOES)\b/.test(nome)){
     categoria = 'TENIS';
-  } else if(/CHINEL|\bSAND\b/.test(nome)){
+  } else if(/\b(CHINEL|SAND)\b/.test(nome)){
     categoria = 'CHINELO';
   } else if(/\bMEIA(S)?\b/.test(nome)){
     categoria = 'MEIA';
-  } else if(/\bACC\b|ACESSORI|MOCHIL|\bBOLSA\b|\bBONE\b/.test(nome)){
+  } else if(/\b(ACC|ACESSORI|MOCHIL|BOLSA|BONE)\b/.test(nome)){
     categoria = 'ACESSORIO';
-  } else if(/VEST|CAMIS|\bROUPA\b|MOLET|REGAT|BERMUD|\bSHORT\b|\bCALCA\b|JAQUET|AGASAL/.test(nome)){
+  } else if(/\b(VEST|CAMIS|ROUPA|MOLET|REGAT|BERMUD|SHORT|CALCA|JAQUET|AGASAL)\b/.test(nome)){
     categoria = 'VESTUARIO';
   }
 
@@ -3297,7 +3234,7 @@ function detectarDoNome(fileName){
   // Ex: "1 QUINZ DEZEMBRO" → "1Q_DEZ" · "2 QUINZ AGOSTO" → "2Q_AGO"
   const quinzena = ehMeta ? parseQuinzena(nome) : '';
 
-  return { marca, categoria, ehMeta, ehProntaEntrega, quinzena };
+  return { marca, categoria, ehMeta, quinzena };
 }
 
 // Detecta se a primeira linha do XLSX é título mesclado e pula
@@ -3339,8 +3276,7 @@ function pedirConfigImportacao(arquivos){
       detec: detectarDoNome(f.name)
     }));
 
-    // Detecta se TUDO foi reconhecido (arquivos "Pronta Entrega" sempre contam como OK —
-    // a categoria deles é classificada produto a produto, não precisa de seleção manual)
+    // Detecta se TUDO foi reconhecido
     const algumNaoDetectado = analises.some(a => !a.detec.categoria);
 
     // Sugestão de mês — mês atual em PT-BR
@@ -3374,20 +3310,12 @@ function pedirConfigImportacao(arquivos){
             ? `<span style="font-weight:700; color:#5b21b6">${safeHtml(a.detec.quinzena)}</span>`
             : `<span style="font-weight:700; color:#b91c1c">⚠️ não lida</span>`)
         : `<span style="color:#94a3b8">—</span>`;
-      // Pronta Entrega: marca e categoria são detectadas PRODUTO A PRODUTO (ARTIGO + grade),
-      // não pelo nome do arquivo — mostra badge de "automático" em vez do valor fixo
-      const marcaCell = a.detec.ehProntaEntrega
-        ? `<span style="font-weight:700; color:#0369a1">🔎 auto (por produto)</span>`
-        : safeHtml(a.detec.marca);
-      const catCell = a.detec.ehProntaEntrega
-        ? `<span style="font-weight:700; color:#0369a1">🔎 auto (por produto)</span>`
-        : (ok ? safeHtml(a.detec.categoria) : selCat);
       return `
         <tr style="background:${corLinha}">
           <td style="padding:6px 8px; font-size:11px; color:${corTexto}">${iconeCheck}</td>
           <td style="padding:6px 8px; font-size:11px;">${safeHtml(a.nome)}</td>
-          <td style="padding:6px 8px; font-size:11px; font-weight:700">${marcaCell}</td>
-          <td style="padding:6px 8px; font-size:11px; font-weight:700">${catCell}</td>
+          <td style="padding:6px 8px; font-size:11px; font-weight:700">${safeHtml(a.detec.marca)}</td>
+          <td style="padding:6px 8px; font-size:11px; font-weight:700">${ok ? safeHtml(a.detec.categoria) : selCat}</td>
           <td style="padding:6px 8px; font-size:11px;">${quinzCell}</td>
         </tr>`;
     }).join('');
@@ -3400,7 +3328,7 @@ function pedirConfigImportacao(arquivos){
               ✨ Configurar importação
             </h2>
             <p style="margin:4px 0 0; font-size:12px; color:#64748b">
-              ${arquivos.length} arquivo(s) selecionado(s) · Detecção automática (arquivo Pronta Entrega classifica por produto)
+              ${arquivos.length} arquivo(s) selecionado(s) · Detecção automática pelo nome
             </p>
           </div>
           <div style="padding:16px 20px; overflow-y:auto; flex:1;">
@@ -3466,7 +3394,6 @@ function pedirConfigImportacao(arquivos){
           marca:   a.detec.marca,
           categoria,
           ehMeta,
-          ehProntaEntrega: a.detec.ehProntaEntrega,
           quinzena: a.detec.quinzena || ''
         };
       });
@@ -3543,40 +3470,20 @@ async function processarXlsxMulti(fileList){
       const ws  = wb.Sheets[wb.SheetNames[0]];
       // NOVO: usa o parser que pula linha mesclada automaticamente
       const rows = lerLinhasXlsx(ws);
-      let _semMarcaDetectada = 0;
       for(const row of rows){
-        let categoriaOriginal = String(row['CATEGORIA']||'').trim().toUpperCase();
-
-        if(cfgArq.ehProntaEntrega){
-          // PRONTA ENTREGA: marca e categoria são decididas PRODUTO A PRODUTO,
-          // não pelo arquivo — permite subir OLY+UA juntos (ou um único arquivo
-          // combinado no futuro) sem depender do nome do arquivo.
-          const marcaPorArtigo = detectarMarcaPorArtigo(row['ARTIGO']);
-          if(marcaPorArtigo){
-            row['MARCA'] = marcaPorArtigo;
-          } else if(!String(row['MARCA']||'').trim()){
-            // ARTIGO com padrão não reconhecido → cai pro palpite do nome do arquivo
-            row['MARCA'] = cfgArq.marca;
-            _semMarcaDetectada++;
-          }
-          const bucket = classificarCategoriaLinha(row);
-          row['CATEGORIA'] = bucket || categoriaOriginal;
-        } else {
-          // Fluxo legado: 1 arquivo = 1 categoria/marca, vindo do nome do arquivo
-          if(cfgArq.marca && !String(row['MARCA']||'').trim()){
-            row['MARCA'] = cfgArq.marca;
-          }
-          if(cfgArq.categoria){
-            // SEMPRE sobrescreve categoria (o XLSX bruto vem com sub-categoria errada)
-            row['CATEGORIA'] = cfgArq.categoria;
-          }
+        // SOBREESCREVE colunas faltantes/erradas com valores da config
+        if(cfgArq.marca && !String(row['MARCA']||'').trim()){
+          row['MARCA'] = cfgArq.marca;
+        }
+        if(cfgArq.categoria){
+          // SEMPRE sobrescreve categoria (o XLSX bruto vem com sub-categoria errada)
+          row['CATEGORIA'] = cfgArq.categoria;
         }
         if(prevFat && !String(row['PREV. FAT']||'').trim()){
           row['PREV. FAT'] = prevFat;
         }
         const item = rowToItem(row, cfgArq.quinzena);
         if(!item.artigo) continue;
-        if(cfgArq.ehProntaEntrega) item.categoriaOriginal = categoriaOriginal;
         // Cruzamento automático com a tabela especial
         const antesCod = item.codigoTabela;
         aplicarTabelaEspecial(item);
@@ -3623,10 +3530,7 @@ async function processarXlsxMulti(fileList){
     }catch(e){
       console.error('Erro lendo', file.name, e);
     }
-    arquivosInfo.push({ nome: file.name, qtd: qtdArquivo, semMarcaDetectada: _semMarcaDetectada });
-    if(_semMarcaDetectada > 0){
-      showToast(`⚠️ ${_semMarcaDetectada} produto(s) de "${file.name}" com ARTIGO em padrão não reconhecido — marca aplicada pelo nome do arquivo`, 'warning');
-    }
+    arquivosInfo.push({ nome: file.name, qtd: qtdArquivo });
   }
 
   // ANTES de classificar, faz verificação REAL no GitHub Pages das imagens dos itens
