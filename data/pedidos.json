@@ -4205,5 +4205,106 @@
         "prevFaturamento": "05/08/2026"
       }
     ]
+  },
+  {
+    "id": "PED-20260714101521-495",
+    "createdAt": "2026-07-14T13:15:21.550Z",
+    "updatedAt": "2026-07-14T13:15:22.112Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "10641",
+    "clienteNome": "",
+    "prazo": "Z35 - 63/91/119 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43342471",
+        "produto": "NUVEM",
+        "cor": "PTO/PT",
+        "num": "56",
+        "gci": "13738378",
+        "ebm": "5471467",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 3
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "25/09/2026"
+      },
+      {
+        "codigo": "43286101",
+        "produto": "ATMOS",
+        "cor": "PRETO",
+        "num": "59",
+        "gci": "7569326",
+        "ebm": "13389394",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "34",
+            "qty": 1
+          },
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 3
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "05/08/2026"
+      }
+    ]
   }
 ]
