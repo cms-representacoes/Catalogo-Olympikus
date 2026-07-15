@@ -1692,7 +1692,7 @@
       "nome": "MATTRIZ SPORTS SHOPPING",
       "cidade": "ARAGUAINA",
       "token": "mattriz-sports-shopping-hv3a3zmf",
-      "ultimaAtualizacaoLoja": "2026-07-15T18:43:59.321Z",
+      "ultimaAtualizacaoLoja": "2026-07-15T18:44:18.333Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -1737,8 +1737,8 @@
             "descricao": "CORRE 4",
             "cor": "CNQVRD",
             "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 5
+            "estoqueAtual": 5,
+            "venda": 0
           },
           {
             "id": "43720366|PLHARE",
