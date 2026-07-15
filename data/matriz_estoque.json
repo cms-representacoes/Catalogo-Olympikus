@@ -1903,15 +1903,6 @@
             "venda": 0
           },
           {
-            "id": "43485332|PTO/CH",
-            "artigo": "43485332",
-            "descricao": "CORRE TRILHA2",
-            "cor": "PTO/CH",
-            "preposto": null,
-            "estoqueAtual": 8,
-            "venda": 0
-          },
-          {
             "id": "43790399|ARTPTO",
             "artigo": "43790399",
             "descricao": "CORRE TURBO",
@@ -2197,8 +2188,9 @@
       "artigo": "43485332",
       "descricao": "CORRE TRILHA2",
       "cor": "PTO/CH",
-      "status": "pendente",
-      "criadoEm": "2026-07-15T18:19:13.320Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-15T18:19:13.320Z",
+      "resolvidoEm": "2026-07-15T19:12:43.483Z"
     },
     {
       "id": "pend_1784139741622_5on8m4",
