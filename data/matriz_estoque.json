@@ -1692,7 +1692,7 @@
       "nome": "MATTRIZ SPORTS SHOPPING",
       "cidade": "ARAGUAINA",
       "token": "mattriz-sports-shopping-hv3a3zmf",
-      "ultimaAtualizacaoLoja": "2026-07-15T18:29:21.850Z",
+      "ultimaAtualizacaoLoja": "2026-07-15T18:29:31.638Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -2007,7 +2007,7 @@
             "descricao": "CORRE VENTO 3",
             "cor": "PISCNA",
             "preposto": null,
-            "estoqueAtual": 2,
+            "estoqueAtual": 6,
             "venda": 0
           },
           {
@@ -2017,7 +2017,7 @@
             "cor": "PTO/CH",
             "preposto": null,
             "estoqueAtual": 2,
-            "venda": 0
+            "venda": 2
           },
           {
             "id": "43554334|PRETO",
