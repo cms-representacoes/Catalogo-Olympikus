@@ -2302,6 +2302,19 @@
       "status": "aprovado",
       "criadoEm": "2026-07-15T19:09:26.097Z",
       "resolvidoEm": "2026-07-15T19:12:09.419Z"
+    },
+    {
+      "id": "pend_1784143239432_erlr24",
+      "tipo": "remocao",
+      "lojaCodigo": "3068604",
+      "lojaNome": "MATTRIZ SPORTS SHOPPING",
+      "marca": "OLY FTW",
+      "itemId": "43561394|ARENML",
+      "artigo": "43561394",
+      "descricao": "PRIDE 4",
+      "cor": "ARENML",
+      "status": "pendente",
+      "criadoEm": "2026-07-15T19:20:39.432Z"
     }
   ]
 }
