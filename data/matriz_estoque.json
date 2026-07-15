@@ -2067,15 +2067,6 @@
         ],
         "OLY CHI": [
           {
-            "id": "54111405|ALGODA",
-            "artigo": "54111405",
-            "descricao": "POS CORRE",
-            "cor": "ALGODA",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
             "id": "54111405|ARENIT",
             "artigo": "54111405",
             "descricao": "POS CORRE",
@@ -2263,8 +2254,9 @@
       "artigo": "54111405",
       "descricao": "POS CORRE",
       "cor": "ALGODA",
-      "status": "pendente",
-      "criadoEm": "2026-07-15T18:32:26.948Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-15T18:32:26.948Z",
+      "resolvidoEm": "2026-07-15T19:12:20.046Z"
     },
     {
       "id": "pend_1784141903844_7iitpm",
