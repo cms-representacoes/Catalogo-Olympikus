@@ -2201,6 +2201,19 @@
       "cor": "AREOLY",
       "status": "pendente",
       "criadoEm": "2026-07-15T18:01:40.401Z"
+    },
+    {
+      "id": "pend_1784138785088_0oas47",
+      "tipo": "remocao",
+      "lojaCodigo": "3068604",
+      "lojaNome": "MATTRIZ SPORTS SHOPPING",
+      "marca": "OLY FTW",
+      "itemId": "43206446|BRANCO",
+      "artigo": "43206446",
+      "descricao": "CORRE 5",
+      "cor": "BRANCO",
+      "status": "pendente",
+      "criadoEm": "2026-07-15T18:06:25.088Z"
     }
   ]
 }
