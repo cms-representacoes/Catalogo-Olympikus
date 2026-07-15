@@ -1692,7 +1692,7 @@
       "nome": "MATTRIZ SPORTS SHOPPING",
       "cidade": "ARAGUAINA",
       "token": "mattriz-sports-shopping-hv3a3zmf",
-      "ultimaAtualizacaoLoja": "2026-07-15T18:29:34.657Z",
+      "ultimaAtualizacaoLoja": "2026-07-15T18:30:10.175Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -2025,8 +2025,8 @@
             "descricao": "COSMO",
             "cor": "PRETO",
             "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
+            "estoqueAtual": 0,
+            "venda": 1
           },
           {
             "id": "43342471|ALGMLT",
