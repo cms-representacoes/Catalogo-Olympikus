@@ -1973,6 +1973,15 @@
             "preposto": null,
             "estoqueAtual": 4,
             "venda": 2
+          },
+          {
+            "id": "43245330|RYLVRD",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "RYLVRD",
+            "estoqueAtual": 1,
+            "venda": 0,
+            "preposto": null
           }
         ],
         "OLY CHI": [
@@ -2319,8 +2328,9 @@
       "cor": "RYLVRD",
       "estoqueAtual": 1,
       "venda": 0,
-      "status": "pendente",
-      "criadoEm": "2026-07-15T21:15:19.401Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-15T21:15:19.401Z",
+      "resolvidoEm": "2026-07-15T21:15:37.654Z"
     }
   ]
 }
