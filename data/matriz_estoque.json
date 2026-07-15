@@ -1714,15 +1714,6 @@
             "venda": 0
           },
           {
-            "id": "43720366|CHBARE",
-            "artigo": "43720366",
-            "descricao": "CORRE 4",
-            "cor": "CHBARE",
-            "preposto": null,
-            "estoqueAtual": 2,
-            "venda": 0
-          },
-          {
             "id": "43720366|CNQVRD",
             "artigo": "43720366",
             "descricao": "CORRE 4",
@@ -2087,8 +2078,9 @@
       "artigo": "43720366",
       "descricao": "CORRE 4",
       "cor": "CHBARE",
-      "status": "pendente",
-      "criadoEm": "2026-07-15T18:00:17.936Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-15T18:00:17.936Z",
+      "resolvidoEm": "2026-07-15T19:13:56.827Z"
     },
     {
       "id": "pend_1784138500401_zufvbm",
