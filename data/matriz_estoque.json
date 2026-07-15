@@ -1768,15 +1768,6 @@
             "venda": 4
           },
           {
-            "id": "43206446|BRANCO",
-            "artigo": "43206446",
-            "descricao": "CORRE 5",
-            "cor": "BRANCO",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43206446|PRTMLT",
             "artigo": "43206446",
             "descricao": "CORRE 5",
@@ -2131,8 +2122,9 @@
       "artigo": "43206446",
       "descricao": "CORRE 5",
       "cor": "BRANCO",
-      "status": "pendente",
-      "criadoEm": "2026-07-15T18:06:25.088Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-15T18:06:25.088Z",
+      "resolvidoEm": "2026-07-15T19:13:04.749Z"
     },
     {
       "id": "pend_1784138798267_w7f7cf",
