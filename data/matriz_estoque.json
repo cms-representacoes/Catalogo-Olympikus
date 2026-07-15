@@ -1939,15 +1939,6 @@
             "venda": 2
           },
           {
-            "id": "43790399|CHBARE",
-            "artigo": "43790399",
-            "descricao": "CORRE TURBO",
-            "cor": "CHBARE",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43790399|LNRMLT",
             "artigo": "43790399",
             "descricao": "CORRE TURBO",
@@ -2241,8 +2232,9 @@
       "artigo": "43790399",
       "descricao": "CORRE TURBO",
       "cor": "CHBARE",
-      "status": "pendente",
-      "criadoEm": "2026-07-15T18:23:16.076Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-15T18:23:16.076Z",
+      "resolvidoEm": "2026-07-15T19:12:27.479Z"
     },
     {
       "id": "pend_1784140346948_vbp1o9",
