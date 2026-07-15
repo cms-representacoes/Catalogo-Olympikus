@@ -1692,7 +1692,7 @@
       "nome": "MATTRIZ SPORTS SHOPPING",
       "cidade": "ARAGUAINA",
       "token": "mattriz-sports-shopping-hv3a3zmf",
-      "ultimaAtualizacaoLoja": "2026-07-15T18:32:14.679Z",
+      "ultimaAtualizacaoLoja": "2026-07-15T18:32:47.617Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -2108,8 +2108,8 @@
             "descricao": "POS CORRE",
             "cor": "ARENIT",
             "preposto": null,
-            "estoqueAtual": 3,
-            "venda": 0
+            "estoqueAtual": 1,
+            "venda": 4
           },
           {
             "id": "54111405|PTO/PT",
