@@ -1,0 +1,2175 @@
+{
+  "atualizadoEm": "2026-07-15T14:00:07.369020+00:00",
+  "lojas": [
+    {
+      "codigo": "60437",
+      "nome": "CIOLE & ROCHA LTDA",
+      "cidade": "ACAILANDIA",
+      "token": "ciole-rocha-ltda-xaji0y6d",
+      "ultimaAtualizacaoLoja": null,
+      "marcas": {
+        "OLY FTW": [
+          {
+            "id": "43336749|PRETO",
+            "artigo": "43336749",
+            "descricao": "130G ULTRALEVE /749",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43299316|PESEGO",
+            "artigo": "43299316",
+            "descricao": "ACQUA",
+            "cor": "PESEGO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43299316|PRETO",
+            "artigo": "43299316",
+            "descricao": "ACQUA",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43286101|PRETO",
+            "artigo": "43286101",
+            "descricao": "ATMOS /101",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43232992|PRETO",
+            "artigo": "43232992",
+            "descricao": "AURA /992",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43783997|PT/DRD",
+            "artigo": "43783997",
+            "descricao": "AURORA /997",
+            "cor": "PT/DRD",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43629861|CHBAZL",
+            "artigo": "43629861",
+            "descricao": "BOREAL/861",
+            "cor": "CHBAZL",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43629861|PEOHIB",
+            "artigo": "43629861",
+            "descricao": "BOREAL/861",
+            "cor": "PEOHIB",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43425761|STEEL",
+            "artigo": "43425761",
+            "descricao": "CANDY/761",
+            "cor": "STEEL",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43888598|MRHPEL",
+            "artigo": "43888598",
+            "descricao": "CHALLENGER 2 / 598",
+            "cor": "MRHPEL",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43593855|PTOROM",
+            "artigo": "43593855",
+            "descricao": "COMBATE/855",
+            "cor": "PTOROM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|ALGCST",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "ALGCST",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          },
+          {
+            "id": "43720366|ALGSOL",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "ALGSOL",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|AZLMLT",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "AZLMLT",
+            "preposto": null,
+            "estoqueAtual": 6,
+            "venda": 0
+          },
+          {
+            "id": "43720366|BRANCO",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "BRANCO",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43720366|CHBARE",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "CHBARE",
+            "preposto": null,
+            "estoqueAtual": 5,
+            "venda": 0
+          },
+          {
+            "id": "43720366|CNQVRD",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "CNQVRD",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43720366|CZAMLM",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "CZAMLM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|PLHARE",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "PLHARE",
+            "preposto": null,
+            "estoqueAtual": 6,
+            "venda": 0
+          },
+          {
+            "id": "43720366|PRETO",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|PTO/PT",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "PTO/PT",
+            "preposto": null,
+            "estoqueAtual": 8,
+            "venda": 0
+          },
+          {
+            "id": "43720366|TURMRH",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "TURMRH",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43256424|AREOLY",
+            "artigo": "43256424",
+            "descricao": "CORRE 4 50 ANOS",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43382425|CNQMLT",
+            "artigo": "43382425",
+            "descricao": "CORRE 4 CONSC.NEGRA",
+            "cor": "CNQMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43206446|ARTPTO",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43206446|BRANCO",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "BRANCO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43206446|PRTMLT",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "PRTMLT",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43206446|PTO/BC",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "PTO/BC",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43442447|BRZMLT",
+            "artigo": "43442447",
+            "descricao": "CORRE 5 VANDERLEI",
+            "cor": "BRZMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|ARESOL",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "ARESOL",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43245330|CHBARE",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "CHBARE",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|LIM/PT",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "LIM/PT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|RXOMLT",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "RXOMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|RYLVRD",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "RYLVRD",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43245330|TQSMLT",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "TQSMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|VMHLRJ",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "VMHLRJ",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|ALGMLT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "ALGMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|ARENIT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "ARENIT",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43758365|AREOLY",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|CHUMBO",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "CHUMBO",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|CRSTAL",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "CRSTAL",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|DUNMLT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "DUNMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|LIMA",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "LIMA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|MC/CHB",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "MC/CHB",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|MIST",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "MIST",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PRETO",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PSGCLR",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PSGCLR",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PT/LJA",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PT/LJA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PTO/GF",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PTO/GF",
+            "preposto": null,
+            "estoqueAtual": 6,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PTO/PT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PTO/PT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|VMH/PT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "VMH/PT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43777397|AREOLY",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43777397|ARESOL",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "ARESOL",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43777397|RYLVRD",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "RYLVRD",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43777397|TQSMLT",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "TQSMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43485332|PTO/CH",
+            "artigo": "43485332",
+            "descricao": "CORRE TRILHA2",
+            "cor": "PTO/CH",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|AREOLY",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|ARESOL",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "ARESOL",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|ARTPTO",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43790399|AZAMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "AZAMLT",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43790399|BCOMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "BCOMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|CHBARE",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "CHBARE",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|LNRMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "LNRMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|MRHMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "MRHMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|PTO/LM",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "PTO/LM",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|RYLVRD",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "RYLVRD",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|VMLMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "VMLMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43496209|LIMLRJ",
+            "artigo": "43496209",
+            "descricao": "CORRE VENTO 2",
+            "cor": "LIMLRJ",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43447473|ALGMLT",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "ALGMLT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43447473|ALGPTO",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "ALGPTO",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43447473|PISCNA",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "PISCNA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43447473|PTO/CH",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "PTO/CH",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          },
+          {
+            "id": "43794979|CHBHIB",
+            "artigo": "43794979",
+            "descricao": "DELICATE 4 /979",
+            "cor": "CHBHIB",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43605213|DUNA",
+            "artigo": "43605213",
+            "descricao": "EASY 2",
+            "cor": "DUNA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43605213|PTO/BC",
+            "artigo": "43605213",
+            "descricao": "EASY 2",
+            "cor": "PTO/BC",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43605213|VANGRD",
+            "artigo": "43605213",
+            "descricao": "EASY 2",
+            "cor": "VANGRD",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43259650|MARITM",
+            "artigo": "43259650",
+            "descricao": "EASY/650",
+            "cor": "MARITM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43259650|PRETO",
+            "artigo": "43259650",
+            "descricao": "EASY/650",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43450243|CHUMBO",
+            "artigo": "43450243",
+            "descricao": "ESSENTIAL 2",
+            "cor": "CHUMBO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43444797|MARCOR",
+            "artigo": "43444797",
+            "descricao": "GRAVIDADE / 797",
+            "cor": "MARCOR",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43637886|PTO/LM",
+            "artigo": "43637886",
+            "descricao": "HOLOGRAMA /886",
+            "cor": "PTO/LM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43342471|ALGMLT",
+            "artigo": "43342471",
+            "descricao": "NUVEM",
+            "cor": "ALGMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43561394|CRLLMA",
+            "artigo": "43561394",
+            "descricao": "PRIDE 4",
+            "cor": "CRLLMA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43561394|LNRLRJ",
+            "artigo": "43561394",
+            "descricao": "PRIDE 4",
+            "cor": "LNRLRJ",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43346463|CHB/LM",
+            "artigo": "43346463",
+            "descricao": "QU4DRA 2",
+            "cor": "CHB/LM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43576296|PESBCO",
+            "artigo": "43576296",
+            "descricao": "REFLECT",
+            "cor": "PESBCO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43691174|LUNCZE",
+            "artigo": "43691174",
+            "descricao": "REVERB / 174",
+            "cor": "LUNCZE",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43422769|PTO/PK",
+            "artigo": "43422769",
+            "descricao": "SUNNA/769",
+            "cor": "PTO/PK",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43455789|PT/CHB",
+            "artigo": "43455789",
+            "descricao": "SUPERA/789",
+            "cor": "PT/CHB",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43718194|PRETO",
+            "artigo": "43718194",
+            "descricao": "SWIFT 4",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|ARENIT",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "ARENIT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|ARTPTO",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|CEREJA",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "CEREJA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|LUNAR",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "LUNAR",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|PRETO",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43625297|PRETO",
+            "artigo": "43625297",
+            "descricao": "TEAZ",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43775939|MRHO",
+            "artigo": "43775939",
+            "descricao": "VENUS 2/939",
+            "cor": "MRHO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43533261|AMR/LM",
+            "artigo": "43533261",
+            "descricao": "VOA 2",
+            "cor": "AMR/LM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43747951|CHGREN",
+            "artigo": "43747951",
+            "descricao": "VORTICE/951",
+            "cor": "CHGREN",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          }
+        ],
+        "OLY CHI": [
+          {
+            "id": "54111405|ALGODA",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "ALGODA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "54111405|ARENIT",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "ARENIT",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "54111405|PTO/PT",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "PTO/PT",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          }
+        ],
+        "UA FTW": [
+          {
+            "id": "6014732|FOGVRR",
+            "artigo": "6014732",
+            "descricao": "UA CH.ENDLESS",
+            "cor": "FOGVRR",
+            "preposto": "JORGE",
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "6014730|BKBKTX",
+            "artigo": "6014730",
+            "descricao": "UA CH.NONSTOP",
+            "cor": "BKBKTX",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "6014730|FOFORR",
+            "artigo": "6014730",
+            "descricao": "UA CH.NONSTOP",
+            "cor": "FOFORR",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "6006985|CABKMS",
+            "artigo": "6006985",
+            "descricao": "UA CH.QUICKER 2",
+            "cor": "CABKMS",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          }
+        ]
+      }
+    },
+    {
+      "codigo": "1948498",
+      "nome": "MATTRIZ ARAGUAINA",
+      "cidade": "ARAGUAINA",
+      "token": "mattriz-araguaina-pbhsahxt",
+      "ultimaAtualizacaoLoja": null,
+      "marcas": {
+        "OLY FTW": [
+          {
+            "id": "43299316|PESEGO",
+            "artigo": "43299316",
+            "descricao": "ACQUA",
+            "cor": "PESEGO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|ALGCST",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "ALGCST",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|AMLIML",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "AMLIML",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|AZLMLT",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "AZLMLT",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          },
+          {
+            "id": "43720366|BCOLRJ",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "BCOLRJ",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|BCOMLT",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "BCOMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|BRANCO",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "BRANCO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|CHBARE",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "CHBARE",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43720366|CNQVRD",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "CNQVRD",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43720366|LRJMLT",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "LRJMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|PLHARE",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "PLHARE",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43720366|PTO/PT",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "PTO/PT",
+            "preposto": null,
+            "estoqueAtual": 6,
+            "venda": 0
+          },
+          {
+            "id": "43720366|TURMRH",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "TURMRH",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43256424|AREOLY",
+            "artigo": "43256424",
+            "descricao": "CORRE 4 50 ANOS",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43206446|ARTPTO",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43206446|PRTMLT",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "PRTMLT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43206446|PTO/BC",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "PTO/BC",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43442447|BRZMLT",
+            "artigo": "43442447",
+            "descricao": "CORRE 5 VANDERLEI",
+            "cor": "BRZMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|ARESOL",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "ARESOL",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|CHBARE",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "CHBARE",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|PRTMLT",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "PRTMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|RXOMLT",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "RXOMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|RYLVRD",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "RYLVRD",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43245330|VMHLRJ",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "VMHLRJ",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43758365|ALGMLT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "ALGMLT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|ARENIT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "ARENIT",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          },
+          {
+            "id": "43758365|AREOLY",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|ARTPTO",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|CHUMBO",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "CHUMBO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|CRSTAL",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "CRSTAL",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|DUNMLT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "DUNMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|LIMA",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "LIMA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|MC/CHB",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "MC/CHB",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|MIST",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "MIST",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          },
+          {
+            "id": "43758365|MLT/PT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "MLT/PT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PRETO",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PSGCLR",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PSGCLR",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PT/LJA",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PT/LJA",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PTO/GF",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PTO/GF",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          },
+          {
+            "id": "43758365|VMH/PT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "VMH/PT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43777397|AREOLY",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43777397|ARESOL",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "ARESOL",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43777397|RYLVRD",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "RYLVRD",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43777397|TQSMLT",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "TQSMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43485332|ATLPTO",
+            "artigo": "43485332",
+            "descricao": "CORRE TRILHA2",
+            "cor": "ATLPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43485332|PTO/CH",
+            "artigo": "43485332",
+            "descricao": "CORRE TRILHA2",
+            "cor": "PTO/CH",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43485332|RYLMLT",
+            "artigo": "43485332",
+            "descricao": "CORRE TRILHA2",
+            "cor": "RYLMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|AREOLY",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|ARESOL",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "ARESOL",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|ARTPTO",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|AZAMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "AZAMLT",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43790399|CHBARE",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "CHBARE",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|LNRMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "LNRMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|MRHMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "MRHMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|PTO/LM",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "PTO/LM",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|RYLVRD",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "RYLVRD",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|VMLMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "VMLMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43447473|ALGMLT",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "ALGMLT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43447473|ALGPTO",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "ALGPTO",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43447473|PISCNA",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "PISCNA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43447473|PTO/CH",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "PTO/CH",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43418328|PRETO",
+            "artigo": "43418328",
+            "descricao": "INTUIT",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43342471|ALGMLT",
+            "artigo": "43342471",
+            "descricao": "NUVEM",
+            "cor": "ALGMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43561394|CRLLMA",
+            "artigo": "43561394",
+            "descricao": "PRIDE 4",
+            "cor": "CRLLMA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43561394|LNRLRJ",
+            "artigo": "43561394",
+            "descricao": "PRIDE 4",
+            "cor": "LNRLRJ",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43346463|CHB/LM",
+            "artigo": "43346463",
+            "descricao": "QU4DRA 2",
+            "cor": "CHB/LM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43576296|PESBCO",
+            "artigo": "43576296",
+            "descricao": "REFLECT",
+            "cor": "PESBCO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43524237|PTO/MH",
+            "artigo": "43524237",
+            "descricao": "SOMA",
+            "cor": "PTO/MH",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|ARENIT",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "ARENIT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|ARTPTO",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|LUNAR",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "LUNAR",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|PRETO",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43533261|AMR/LM",
+            "artigo": "43533261",
+            "descricao": "VOA 2",
+            "cor": "AMR/LM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          }
+        ],
+        "OLY CHI": [
+          {
+            "id": "54111405|ALGODA",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "ALGODA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "54111405|ARENIT",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "ARENIT",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "54111405|PTO/PT",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "PTO/PT",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          }
+        ],
+        "UA FTW": [
+          {
+            "id": "6014732|FOGVRR",
+            "artigo": "6014732",
+            "descricao": "UA CH.ENDLESS",
+            "cor": "FOGVRR",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "6014730|BKBKTX",
+            "artigo": "6014730",
+            "descricao": "UA CH.NONSTOP",
+            "cor": "BKBKTX",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "6009888|SGSGBK",
+            "artigo": "6009888",
+            "descricao": "UA TRIBASE REPS 2 SE",
+            "cor": "SGSGBK",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          }
+        ]
+      }
+    },
+    {
+      "codigo": "3068604",
+      "nome": "MATTRIZ SPORTS SHOPPING",
+      "cidade": "ARAGUAINA",
+      "token": "mattriz-sports-shopping-hv3a3zmf",
+      "ultimaAtualizacaoLoja": null,
+      "marcas": {
+        "OLY FTW": [
+          {
+            "id": "43701259|MLT/PT",
+            "artigo": "43701259",
+            "descricao": "BEATS",
+            "cor": "MLT/PT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|AZLMLT",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "AZLMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|BRANCO",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "BRANCO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|CHBARE",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "CHBARE",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43720366|CNQVRD",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "CNQVRD",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43720366|PLHARE",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "PLHARE",
+            "preposto": null,
+            "estoqueAtual": 4,
+            "venda": 0
+          },
+          {
+            "id": "43720366|PTO/PT",
+            "artigo": "43720366",
+            "descricao": "CORRE 4",
+            "cor": "PTO/PT",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "43256424|AREOLY",
+            "artigo": "43256424",
+            "descricao": "CORRE 4 50 ANOS",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43206446|ARTPTO",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43206446|BRANCO",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "BRANCO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43206446|CHBALI",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "CHBALI",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43206446|PRTMLT",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "PRTMLT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43206446|PTO/BC",
+            "artigo": "43206446",
+            "descricao": "CORRE 5",
+            "cor": "PTO/BC",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43245330|PRTMLT",
+            "artigo": "43245330",
+            "descricao": "CORRE GRAFENO 3",
+            "cor": "PRTMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|ARENIT",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "ARENIT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|ARTPTO",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|CHUMBO",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "CHUMBO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|CRSTAL",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "CRSTAL",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|MIST",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "MIST",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PSGCLR",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PSGCLR",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43758365|PTO/GF",
+            "artigo": "43758365",
+            "descricao": "CORRE MAX",
+            "cor": "PTO/GF",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43777397|AREOLY",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43777397|RYLVRD",
+            "artigo": "43777397",
+            "descricao": "CORRE SUPRA 2",
+            "cor": "RYLVRD",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43485332|ATLPTO",
+            "artigo": "43485332",
+            "descricao": "CORRE TRILHA2",
+            "cor": "ATLPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43485332|PTO/CH",
+            "artigo": "43485332",
+            "descricao": "CORRE TRILHA2",
+            "cor": "PTO/CH",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|ARESOL",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "ARESOL",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|ARTPTO",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|AZAMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "AZAMLT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|CHBARE",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "CHBARE",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|LNRMLT",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "LNRMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43790399|PTO/LM",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "PTO/LM",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43790399|RYLVRD",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "RYLVRD",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43447473|ALGMLT",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "ALGMLT",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43447473|ALGPTO",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "ALGPTO",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43447473|PISCNA",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "PISCNA",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43447473|PTO/CH",
+            "artigo": "43447473",
+            "descricao": "CORRE VENTO 3",
+            "cor": "PTO/CH",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "43554334|PRETO",
+            "artigo": "43554334",
+            "descricao": "COSMO",
+            "cor": "PRETO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43342471|ALGMLT",
+            "artigo": "43342471",
+            "descricao": "NUVEM",
+            "cor": "ALGMLT",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43561394|ARENML",
+            "artigo": "43561394",
+            "descricao": "PRIDE 4",
+            "cor": "ARENML",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43561394|MIST",
+            "artigo": "43561394",
+            "descricao": "PRIDE 4",
+            "cor": "MIST",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43346463|CHB/LM",
+            "artigo": "43346463",
+            "descricao": "QU4DRA 2",
+            "cor": "CHB/LM",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|ARTPTO",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "ARTPTO",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43559375|LUNAR",
+            "artigo": "43559375",
+            "descricao": "SWIFT 5",
+            "cor": "LUNAR",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "43263432|STOVAN",
+            "artigo": "43263432",
+            "descricao": "VOA 3",
+            "cor": "STOVAN",
+            "preposto": null,
+            "estoqueAtual": 1,
+            "venda": 0
+          }
+        ],
+        "OLY CHI": [
+          {
+            "id": "54111405|ALGODA",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "ALGODA",
+            "preposto": null,
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "54111405|ARENIT",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "ARENIT",
+            "preposto": null,
+            "estoqueAtual": 3,
+            "venda": 0
+          },
+          {
+            "id": "54111405|PTO/PT",
+            "artigo": "54111405",
+            "descricao": "POS CORRE",
+            "cor": "PTO/PT",
+            "preposto": null,
+            "estoqueAtual": 5,
+            "venda": 0
+          }
+        ],
+        "UA FTW": [
+          {
+            "id": "6014732|WTHGWT",
+            "artigo": "6014732",
+            "descricao": "UA CH.ENDLESS",
+            "cor": "WTHGWT",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "6014730|BHBHTX",
+            "artigo": "6014730",
+            "descricao": "UA CH.NONSTOP",
+            "cor": "BHBHTX",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          },
+          {
+            "id": "6014730|BKBKTX",
+            "artigo": "6014730",
+            "descricao": "UA CH.NONSTOP",
+            "cor": "BKBKTX",
+            "preposto": "JORGE",
+            "estoqueAtual": 2,
+            "venda": 0
+          },
+          {
+            "id": "6006985|TGCRCO",
+            "artigo": "6006985",
+            "descricao": "UA CH.QUICKER 2",
+            "cor": "TGCRCO",
+            "preposto": "JORGE",
+            "estoqueAtual": 1,
+            "venda": 0
+          }
+        ]
+      }
+    }
+  ],
+  "pendentes": []
+}
