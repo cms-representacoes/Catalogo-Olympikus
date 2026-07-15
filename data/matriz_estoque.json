@@ -46,60 +46,6 @@
             "venda": 0
           },
           {
-            "id": "43783997|PT/DRD",
-            "artigo": "43783997",
-            "descricao": "AURORA /997",
-            "cor": "PT/DRD",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43629861|CHBAZL",
-            "artigo": "43629861",
-            "descricao": "BOREAL/861",
-            "cor": "CHBAZL",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
-            "id": "43629861|PEOHIB",
-            "artigo": "43629861",
-            "descricao": "BOREAL/861",
-            "cor": "PEOHIB",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43425761|STEEL",
-            "artigo": "43425761",
-            "descricao": "CANDY/761",
-            "cor": "STEEL",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43888598|MRHPEL",
-            "artigo": "43888598",
-            "descricao": "CHALLENGER 2 / 598",
-            "cor": "MRHPEL",
-            "preposto": null,
-            "estoqueAtual": 2,
-            "venda": 0
-          },
-          {
-            "id": "43593855|PTOROM",
-            "artigo": "43593855",
-            "descricao": "COMBATE/855",
-            "cor": "PTOROM",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
             "id": "43720366|ALGCST",
             "artigo": "43720366",
             "descricao": "CORRE 4",
@@ -649,87 +595,6 @@
             "venda": 0
           },
           {
-            "id": "43794979|CHBHIB",
-            "artigo": "43794979",
-            "descricao": "DELICATE 4 /979",
-            "cor": "CHBHIB",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43605213|DUNA",
-            "artigo": "43605213",
-            "descricao": "EASY 2",
-            "cor": "DUNA",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43605213|PTO/BC",
-            "artigo": "43605213",
-            "descricao": "EASY 2",
-            "cor": "PTO/BC",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43605213|VANGRD",
-            "artigo": "43605213",
-            "descricao": "EASY 2",
-            "cor": "VANGRD",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43259650|MARITM",
-            "artigo": "43259650",
-            "descricao": "EASY/650",
-            "cor": "MARITM",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43259650|PRETO",
-            "artigo": "43259650",
-            "descricao": "EASY/650",
-            "cor": "PRETO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43450243|CHUMBO",
-            "artigo": "43450243",
-            "descricao": "ESSENTIAL 2",
-            "cor": "CHUMBO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43444797|MARCOR",
-            "artigo": "43444797",
-            "descricao": "GRAVIDADE / 797",
-            "cor": "MARCOR",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43637886|PTO/LM",
-            "artigo": "43637886",
-            "descricao": "HOLOGRAMA /886",
-            "cor": "PTO/LM",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
             "id": "43342471|ALGMLT",
             "artigo": "43342471",
             "descricao": "NUVEM",
@@ -784,33 +649,6 @@
             "venda": 0
           },
           {
-            "id": "43422769|PTO/PK",
-            "artigo": "43422769",
-            "descricao": "SUNNA/769",
-            "cor": "PTO/PK",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43455789|PT/CHB",
-            "artigo": "43455789",
-            "descricao": "SUPERA/789",
-            "cor": "PT/CHB",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43718194|PRETO",
-            "artigo": "43718194",
-            "descricao": "SWIFT 4",
-            "cor": "PRETO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
             "id": "43559375|ARENIT",
             "artigo": "43559375",
             "descricao": "SWIFT 5",
@@ -856,15 +694,6 @@
             "venda": 0
           },
           {
-            "id": "43625297|PRETO",
-            "artigo": "43625297",
-            "descricao": "TEAZ",
-            "cor": "PRETO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
             "id": "43775939|MRHO",
             "artigo": "43775939",
             "descricao": "VENUS 2/939",
@@ -878,15 +707,6 @@
             "artigo": "43533261",
             "descricao": "VOA 2",
             "cor": "AMR/LM",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43747951|CHGREN",
-            "artigo": "43747951",
-            "descricao": "VORTICE/951",
-            "cor": "CHGREN",
             "preposto": null,
             "estoqueAtual": 1,
             "venda": 0
