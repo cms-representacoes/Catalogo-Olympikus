@@ -2162,5 +2162,19 @@
       }
     }
   ],
-  "pendentes": []
+  "pendentes": [
+    {
+      "id": "pend_1784138402535_10zr0e",
+      "tipo": "remocao",
+      "lojaCodigo": "3068604",
+      "lojaNome": "MATTRIZ SPORTS SHOPPING",
+      "marca": "OLY FTW",
+      "itemId": "43720366|BRANCO",
+      "artigo": "43720366",
+      "descricao": "CORRE 4",
+      "cor": "BRANCO",
+      "status": "pendente",
+      "criadoEm": "2026-07-15T18:00:02.535Z"
+    }
+  ]
 }
