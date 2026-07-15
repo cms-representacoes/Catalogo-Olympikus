@@ -1795,15 +1795,6 @@
             "venda": 3
           },
           {
-            "id": "43206446|PTO/BC",
-            "artigo": "43206446",
-            "descricao": "CORRE 5",
-            "cor": "PTO/BC",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
             "id": "43245330|PRTMLT",
             "artigo": "43245330",
             "descricao": "CORRE GRAFENO 3",
@@ -2175,8 +2166,9 @@
       "artigo": "43206446",
       "descricao": "CORRE 5",
       "cor": "PTO/BC",
-      "status": "pendente",
-      "criadoEm": "2026-07-15T18:07:05.821Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-15T18:07:05.821Z",
+      "resolvidoEm": "2026-07-15T19:12:51.999Z"
     },
     {
       "id": "pend_1784139553320_j8q7j7",
