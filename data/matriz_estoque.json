@@ -2000,6 +2000,15 @@
             "estoqueAtual": 2,
             "venda": 0,
             "preposto": null
+          },
+          {
+            "id": "43485332|PTO/CH",
+            "artigo": "43485332",
+            "descricao": "CORRE TRILHA2",
+            "cor": "PTO/CH",
+            "estoqueAtual": 8,
+            "venda": 0,
+            "preposto": null
           }
         ],
         "OLY CHI": [
@@ -2361,8 +2370,9 @@
       "cor": "PTO/CH",
       "estoqueAtual": 8,
       "venda": 0,
-      "status": "pendente",
-      "criadoEm": "2026-07-15T21:16:49.453Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-15T21:16:49.453Z",
+      "resolvidoEm": "2026-07-15T21:22:07.130Z"
     },
     {
       "id": "pend_1784150245342_yaes05",
