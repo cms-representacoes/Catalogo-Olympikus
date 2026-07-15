@@ -1692,7 +1692,7 @@
       "nome": "MATTRIZ SPORTS SHOPPING",
       "cidade": "ARAGUAINA",
       "token": "mattriz-sports-shopping-hv3a3zmf",
-      "ultimaAtualizacaoLoja": "2026-07-15T18:39:01.979Z",
+      "ultimaAtualizacaoLoja": "2026-07-15T18:39:09.060Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -2079,8 +2079,8 @@
             "descricao": "SWIFT 5",
             "cor": "LUNAR",
             "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
+            "estoqueAtual": 4,
+            "venda": 2
           },
           {
             "id": "43263432|STOVAN",
