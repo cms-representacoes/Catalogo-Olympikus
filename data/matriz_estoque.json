@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:12:19.065Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:12:30.669Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -34,8 +34,9 @@
             "descricao": "CORRE 4",
             "cor": "AZLMLT",
             "preposto": null,
-            "estoqueAtual": 6,
-            "venda": 0
+            "estoqueAtual": 2,
+            "venda": 1,
+            "atualizadoEm": "2026-07-16T15:12:28.108Z"
           },
           {
             "id": "43720366|BRANCO",
