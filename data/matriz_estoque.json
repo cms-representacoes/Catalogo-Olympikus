@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:19:04.909Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:19:16.864Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -179,8 +179,9 @@
             "descricao": "CORRE 5 VANDERLEI",
             "cor": "BRZMLT",
             "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
+            "estoqueAtual": 12,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T15:19:14.517Z"
           },
           {
             "id": "43245330|ARESOL",
