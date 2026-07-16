@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T13:47:02.686Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T13:48:22.861Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -924,8 +924,9 @@
             "descricao": "CORRE 5",
             "cor": "ARTPTO",
             "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
+            "estoqueAtual": 2,
+            "venda": 5,
+            "atualizadoEm": "2026-07-16T13:48:19.966Z"
           },
           {
             "id": "43206446|PRTMLT",
