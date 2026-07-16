@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T14:43:24.739Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T14:44:04.746Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -1472,8 +1472,9 @@
             "descricao": "POS CORRE",
             "cor": "ARENIT",
             "preposto": null,
-            "estoqueAtual": 3,
-            "venda": 0
+            "estoqueAtual": 4,
+            "venda": 1,
+            "atualizadoEm": "2026-07-16T14:44:02.153Z"
           },
           {
             "id": "54111405|PTO/PT",
