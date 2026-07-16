@@ -1976,6 +1976,19 @@
       "cor": "CHBARE",
       "status": "pendente",
       "criadoEm": "2026-07-16T13:42:24.101Z"
+    },
+    {
+      "id": "pend_1784209373804_n35gfk",
+      "tipo": "remocao",
+      "lojaCodigo": "1948498",
+      "lojaNome": "MATTRIZ ARAGUAINA",
+      "marca": "OLY FTW",
+      "itemId": "43720366|LRJMLT",
+      "artigo": "43720366",
+      "descricao": "CORRE 4",
+      "cor": "LRJMLT",
+      "status": "pendente",
+      "criadoEm": "2026-07-16T13:42:53.804Z"
     }
   ]
 }
