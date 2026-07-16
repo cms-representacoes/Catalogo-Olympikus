@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T14:02:08.225Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T14:02:52.112Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -1085,7 +1085,7 @@
             "descricao": "CORRE MAX",
             "cor": "LIMA",
             "preposto": null,
-            "estoqueAtual": 1,
+            "estoqueAtual": 0,
             "venda": 0
           },
           {
