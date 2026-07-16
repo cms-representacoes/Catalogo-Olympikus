@@ -512,15 +512,6 @@
             "atualizadoEm": "2026-07-16T15:33:19.734Z"
           },
           {
-            "id": "43790399|MRHMLT",
-            "artigo": "43790399",
-            "descricao": "CORRE TURBO",
-            "cor": "MRHMLT",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43790399|PTO/LM",
             "artigo": "43790399",
             "descricao": "CORRE TURBO",
@@ -2272,8 +2263,9 @@
       "artigo": "43790399",
       "descricao": "CORRE TURBO",
       "cor": "MRHMLT",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T15:33:27.946Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T15:33:27.946Z",
+      "resolvidoEm": "2026-07-16T15:47:51.920Z"
     },
     {
       "id": "pend_1784216044355_yy4hc0",
