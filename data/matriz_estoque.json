@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:14:57.258Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:15:17.173Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -119,8 +119,9 @@
             "descricao": "CORRE 4 50 ANOS",
             "cor": "AREOLY",
             "preposto": null,
-            "estoqueAtual": 3,
-            "venda": 0
+            "estoqueAtual": 1,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T15:15:14.793Z"
           },
           {
             "id": "43382425|CNQMLT",
