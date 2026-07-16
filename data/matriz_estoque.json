@@ -1183,15 +1183,6 @@
             "atualizadoEm": "2026-07-16T14:25:35.886Z"
           },
           {
-            "id": "43485332|ATLPTO",
-            "artigo": "43485332",
-            "descricao": "CORRE TRILHA2",
-            "cor": "ATLPTO",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43485332|PTO/CH",
             "artigo": "43485332",
             "descricao": "CORRE TRILHA2",
@@ -1210,6 +1201,15 @@
             "estoqueAtual": 4,
             "venda": 0,
             "atualizadoEm": "2026-07-16T14:26:32.348Z"
+          },
+          {
+            "id": "43790399|AREOLY",
+            "artigo": "43790399",
+            "descricao": "CORRE TURBO",
+            "cor": "AREOLY",
+            "preposto": null,
+            "estoqueAtual": 0,
+            "venda": 0
           },
           {
             "id": "43790399|ARTPTO",
@@ -2136,8 +2136,9 @@
       "artigo": "43485332",
       "descricao": "CORRE TRILHA2",
       "cor": "ATLPTO",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T14:26:22.011Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T14:26:22.011Z",
+      "resolvidoEm": "2026-07-16T14:57:34.088Z"
     },
     {
       "id": "pend_1784212031330_ccsjuh",
@@ -2149,9 +2150,8 @@
       "artigo": "43790399",
       "descricao": "CORRE TURBO",
       "cor": "AREOLY",
-      "status": "aprovado",
-      "criadoEm": "2026-07-16T14:27:11.330Z",
-      "resolvidoEm": "2026-07-16T14:57:30.830Z"
+      "status": "pendente",
+      "criadoEm": "2026-07-16T14:27:11.330Z"
     },
     {
       "id": "pend_1784212043562_t6y33t",
