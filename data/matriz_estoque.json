@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:24:49.424Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:25:15.853Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -283,8 +283,9 @@
             "descricao": "CORRE MAX",
             "cor": "CHUMBO",
             "preposto": null,
-            "estoqueAtual": 2,
-            "venda": 0
+            "estoqueAtual": 6,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T15:25:13.232Z"
           },
           {
             "id": "43758365|CRSTAL",
