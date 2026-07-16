@@ -384,15 +384,6 @@
             "atualizadoEm": "2026-07-16T15:28:45.475Z"
           },
           {
-            "id": "43758365|VMH/PT",
-            "artigo": "43758365",
-            "descricao": "CORRE MAX",
-            "cor": "VMH/PT",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43777397|AREOLY",
             "artigo": "43777397",
             "descricao": "CORRE SUPRA 2",
@@ -2228,8 +2219,9 @@
       "artigo": "43758365",
       "descricao": "CORRE MAX",
       "cor": "VMH/PT",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T15:29:07.969Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T15:29:07.969Z",
+      "resolvidoEm": "2026-07-16T15:47:58.756Z"
     },
     {
       "id": "pend_1784215816835_50qonl",
