@@ -354,16 +354,6 @@
             "atualizadoEm": "2026-07-16T15:27:59.078Z"
           },
           {
-            "id": "43758365|PT/LJA",
-            "artigo": "43758365",
-            "descricao": "CORRE MAX",
-            "cor": "PT/LJA",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0,
-            "atualizadoEm": "2026-07-16T15:27:27.303Z"
-          },
-          {
             "id": "43758365|PTO/GF",
             "artigo": "43758365",
             "descricao": "CORRE MAX",
@@ -2206,8 +2196,9 @@
       "artigo": "43758365",
       "descricao": "CORRE MAX",
       "cor": "PT/LJA",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T15:28:14.102Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T15:28:14.102Z",
+      "resolvidoEm": "2026-07-16T15:48:02.290Z"
     },
     {
       "id": "pend_1784215747969_e6gf5t",
