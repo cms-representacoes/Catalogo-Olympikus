@@ -10,42 +10,6 @@
       "marcas": {
         "OLY FTW": [
           {
-            "id": "43336749|PRETO",
-            "artigo": "43336749",
-            "descricao": "130G ULTRALEVE /749",
-            "cor": "PRETO",
-            "preposto": null,
-            "estoqueAtual": 2,
-            "venda": 0
-          },
-          {
-            "id": "43299316|PESEGO",
-            "artigo": "43299316",
-            "descricao": "ACQUA",
-            "cor": "PESEGO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43299316|PRETO",
-            "artigo": "43299316",
-            "descricao": "ACQUA",
-            "cor": "PRETO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43286101|PRETO",
-            "artigo": "43286101",
-            "descricao": "ATMOS /101",
-            "cor": "PRETO",
-            "preposto": null,
-            "estoqueAtual": 2,
-            "venda": 0
-          },
-          {
             "id": "43720366|ALGCST",
             "artigo": "43720366",
             "descricao": "CORRE 4",
@@ -595,118 +559,10 @@
             "venda": 0
           },
           {
-            "id": "43342471|ALGMLT",
-            "artigo": "43342471",
-            "descricao": "NUVEM",
-            "cor": "ALGMLT",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43561394|CRLLMA",
-            "artigo": "43561394",
-            "descricao": "PRIDE 4",
-            "cor": "CRLLMA",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43561394|LNRLRJ",
-            "artigo": "43561394",
-            "descricao": "PRIDE 4",
-            "cor": "LNRLRJ",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
             "id": "43346463|CHB/LM",
             "artigo": "43346463",
             "descricao": "QU4DRA 2",
             "cor": "CHB/LM",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43576296|PESBCO",
-            "artigo": "43576296",
-            "descricao": "REFLECT",
-            "cor": "PESBCO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43691174|LUNCZE",
-            "artigo": "43691174",
-            "descricao": "REVERB / 174",
-            "cor": "LUNCZE",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43559375|ARENIT",
-            "artigo": "43559375",
-            "descricao": "SWIFT 5",
-            "cor": "ARENIT",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43559375|ARTPTO",
-            "artigo": "43559375",
-            "descricao": "SWIFT 5",
-            "cor": "ARTPTO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43559375|CEREJA",
-            "artigo": "43559375",
-            "descricao": "SWIFT 5",
-            "cor": "CEREJA",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43559375|LUNAR",
-            "artigo": "43559375",
-            "descricao": "SWIFT 5",
-            "cor": "LUNAR",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43559375|PRETO",
-            "artigo": "43559375",
-            "descricao": "SWIFT 5",
-            "cor": "PRETO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43775939|MRHO",
-            "artigo": "43775939",
-            "descricao": "VENUS 2/939",
-            "cor": "MRHO",
-            "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
-          },
-          {
-            "id": "43533261|AMR/LM",
-            "artigo": "43533261",
-            "descricao": "VOA 2",
-            "cor": "AMR/LM",
             "preposto": null,
             "estoqueAtual": 1,
             "venda": 0
