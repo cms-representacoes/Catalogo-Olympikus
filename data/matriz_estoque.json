@@ -1435,15 +1435,6 @@
             "preposto": null,
             "estoqueAtual": 0,
             "venda": 0
-          },
-          {
-            "id": "43533261|AMR/LM",
-            "artigo": "43533261",
-            "descricao": "VOA 2",
-            "cor": "AMR/LM",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
           }
         ],
         "OLY CHI": [
@@ -2461,8 +2452,9 @@
       "artigo": "43533261",
       "descricao": "VOA 2",
       "cor": "AMR/LM",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T14:47:53.210Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T14:47:53.210Z",
+      "resolvidoEm": "2026-07-16T14:56:41.615Z"
     },
     {
       "id": "pend_1784213573303_gh8zj6",
