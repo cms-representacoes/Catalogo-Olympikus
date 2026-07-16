@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T14:01:03.869Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T14:01:11.082Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -1047,8 +1047,9 @@
             "descricao": "CORRE MAX",
             "cor": "ARTPTO",
             "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
+            "estoqueAtual": 4,
+            "venda": 2,
+            "atualizadoEm": "2026-07-16T14:01:08.327Z"
           },
           {
             "id": "43758365|CHUMBO",
