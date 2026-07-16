@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T14:27:49.901Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T14:28:04.944Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -1263,8 +1263,9 @@
             "descricao": "CORRE TURBO",
             "cor": "AZAMLT",
             "preposto": null,
-            "estoqueAtual": 3,
-            "venda": 0
+            "estoqueAtual": 12,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T14:28:02.468Z"
           },
           {
             "id": "43790399|CHBARE",
