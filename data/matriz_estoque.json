@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T14:29:06.230Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T14:30:33.226Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -1330,8 +1330,9 @@
             "descricao": "CORRE VENTO 3",
             "cor": "ALGMLT",
             "preposto": null,
-            "estoqueAtual": 2,
-            "venda": 0
+            "estoqueAtual": 12,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T14:30:30.356Z"
           },
           {
             "id": "43447473|ALGPTO",
