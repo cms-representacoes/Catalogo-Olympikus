@@ -2407,6 +2407,19 @@
       "cor": "CHB/LM",
       "status": "pendente",
       "criadoEm": "2026-07-16T14:47:00.574Z"
+    },
+    {
+      "id": "pend_1784213230992_ii5u4v",
+      "tipo": "remocao",
+      "lojaCodigo": "1948498",
+      "lojaNome": "MATTRIZ ARAGUAINA",
+      "marca": "OLY FTW",
+      "itemId": "43559375|ARENIT",
+      "artigo": "43559375",
+      "descricao": "SWIFT 5",
+      "cor": "ARENIT",
+      "status": "pendente",
+      "criadoEm": "2026-07-16T14:47:10.992Z"
     }
   ]
 }
