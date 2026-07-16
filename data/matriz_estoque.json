@@ -1298,15 +1298,6 @@
             "atualizadoEm": "2026-07-16T14:28:53.164Z"
           },
           {
-            "id": "43790399|VMLMLT",
-            "artigo": "43790399",
-            "descricao": "CORRE TURBO",
-            "cor": "VMLMLT",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43447473|ALGMLT",
             "artigo": "43447473",
             "descricao": "CORRE VENTO 3",
@@ -2237,8 +2228,9 @@
       "artigo": "43790399",
       "descricao": "CORRE TURBO",
       "cor": "VMLMLT",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T14:29:01.047Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T14:29:01.047Z",
+      "resolvidoEm": "2026-07-16T14:57:17.497Z"
     },
     {
       "id": "pend_1784213116583_7oxkrj",
