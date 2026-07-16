@@ -105,15 +105,6 @@
             "atualizadoEm": "2026-07-16T15:14:40.027Z"
           },
           {
-            "id": "43720366|TURMRH",
-            "artigo": "43720366",
-            "descricao": "CORRE 4",
-            "cor": "TURMRH",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43256424|AREOLY",
             "artigo": "43256424",
             "descricao": "CORRE 4 50 ANOS",
@@ -1963,8 +1954,9 @@
       "artigo": "43720366",
       "descricao": "CORRE 4",
       "cor": "TURMRH",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T15:14:51.244Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T15:14:51.244Z",
+      "resolvidoEm": "2026-07-16T15:48:38.768Z"
     },
     {
       "id": "pend_1784215211662_00wgl8",
