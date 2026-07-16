@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:29:51.597Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:30:00.277Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -408,8 +408,9 @@
             "descricao": "CORRE SUPRA 2",
             "cor": "ARESOL",
             "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
+            "estoqueAtual": 2,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T15:29:57.773Z"
           },
           {
             "id": "43777397|RYLVRD",
