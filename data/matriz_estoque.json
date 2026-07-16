@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T14:46:50.010Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T14:47:06.123Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -1406,7 +1406,7 @@
             "descricao": "QU4DRA 2",
             "cor": "CHB/LM",
             "preposto": null,
-            "estoqueAtual": 1,
+            "estoqueAtual": 0,
             "venda": 0
           },
           {
