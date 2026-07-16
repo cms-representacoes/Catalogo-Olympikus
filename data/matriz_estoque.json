@@ -2342,6 +2342,19 @@
       "cor": "PESEGO",
       "status": "pendente",
       "criadoEm": "2026-07-16T14:45:16.583Z"
+    },
+    {
+      "id": "pend_1784213159915_cl46m6",
+      "tipo": "remocao",
+      "lojaCodigo": "1948498",
+      "lojaNome": "MATTRIZ ARAGUAINA",
+      "marca": "OLY FTW",
+      "itemId": "43418328|PRETO",
+      "artigo": "43418328",
+      "descricao": "INTUIT",
+      "cor": "PRETO",
+      "status": "pendente",
+      "criadoEm": "2026-07-16T14:45:59.915Z"
     }
   ]
 }
