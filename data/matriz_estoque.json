@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:14:16.975Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:14:42.901Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -101,7 +101,8 @@
             "cor": "PTO/PT",
             "preposto": null,
             "estoqueAtual": 8,
-            "venda": 0
+            "venda": 2,
+            "atualizadoEm": "2026-07-16T15:14:40.027Z"
           },
           {
             "id": "43720366|TURMRH",
