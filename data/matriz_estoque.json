@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T13:49:36.270Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T13:57:55.873Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -972,7 +972,7 @@
             "descricao": "CORRE GRAFENO 3",
             "cor": "CHBARE",
             "preposto": null,
-            "estoqueAtual": 1,
+            "estoqueAtual": 0,
             "venda": 0
           },
           {
