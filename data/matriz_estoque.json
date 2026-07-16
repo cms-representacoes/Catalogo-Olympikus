@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:19:16.864Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:20:01.829Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -189,8 +189,9 @@
             "descricao": "CORRE GRAFENO 3",
             "cor": "ARESOL",
             "preposto": null,
-            "estoqueAtual": 2,
-            "venda": 0
+            "estoqueAtual": 1,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T15:19:59.261Z"
           },
           {
             "id": "43245330|CHBARE",
