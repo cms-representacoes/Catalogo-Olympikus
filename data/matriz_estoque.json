@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T14:26:27.226Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T14:26:34.795Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -1225,8 +1225,9 @@
             "descricao": "CORRE TRILHA2",
             "cor": "RYLMLT",
             "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
+            "estoqueAtual": 4,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T14:26:32.348Z"
           },
           {
             "id": "43790399|AREOLY",
