@@ -2472,6 +2472,19 @@
       "cor": "AMR/LM",
       "status": "pendente",
       "criadoEm": "2026-07-16T14:47:53.210Z"
+    },
+    {
+      "id": "pend_1784213573303_gh8zj6",
+      "tipo": "remocao",
+      "lojaCodigo": "1948498",
+      "lojaNome": "MATTRIZ ARAGUAINA",
+      "marca": "OLY FTW",
+      "itemId": "43442447|BRZMLT",
+      "artigo": "43442447",
+      "descricao": "CORRE 5 VANDERLEI",
+      "cor": "BRZMLT",
+      "status": "pendente",
+      "criadoEm": "2026-07-16T14:52:53.303Z"
     }
   ]
 }
