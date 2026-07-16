@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:15:17.173Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:15:35.669Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -129,8 +129,9 @@
             "descricao": "CORRE 4 CONSC.NEGRA",
             "cor": "CNQMLT",
             "preposto": null,
-            "estoqueAtual": 1,
-            "venda": 0
+            "estoqueAtual": 2,
+            "venda": 2,
+            "atualizadoEm": "2026-07-16T15:15:33.334Z"
           },
           {
             "id": "43206446|ARTPTO",
