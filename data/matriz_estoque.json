@@ -240,15 +240,6 @@
             "venda": 0
           },
           {
-            "id": "43245330|VMHLRJ",
-            "artigo": "43245330",
-            "descricao": "CORRE GRAFENO 3",
-            "cor": "VMHLRJ",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43758365|ARENIT",
             "artigo": "43758365",
             "descricao": "CORRE MAX",
@@ -2073,8 +2064,9 @@
       "artigo": "43245330",
       "descricao": "CORRE GRAFENO 3",
       "cor": "VMHLRJ",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T15:21:44.044Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T15:21:44.044Z",
+      "resolvidoEm": "2026-07-16T15:48:22.294Z"
     },
     {
       "id": "pend_1784215460350_9oouk9",
