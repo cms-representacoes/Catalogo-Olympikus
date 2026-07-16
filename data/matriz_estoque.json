@@ -1897,6 +1897,19 @@
       "cor": "ALGCST",
       "status": "pendente",
       "criadoEm": "2026-07-16T13:41:11.980Z"
+    },
+    {
+      "id": "pend_1784209291875_im1y0k",
+      "tipo": "remocao",
+      "lojaCodigo": "1948498",
+      "lojaNome": "MATTRIZ ARAGUAINA",
+      "marca": "OLY FTW",
+      "itemId": "43720366|AMLIML",
+      "artigo": "43720366",
+      "descricao": "CORRE 4",
+      "cor": "AMLIML",
+      "status": "pendente",
+      "criadoEm": "2026-07-16T13:41:31.875Z"
     }
   ]
 }
