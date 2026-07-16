@@ -1212,15 +1212,6 @@
             "atualizadoEm": "2026-07-16T14:26:32.348Z"
           },
           {
-            "id": "43790399|AREOLY",
-            "artigo": "43790399",
-            "descricao": "CORRE TURBO",
-            "cor": "AREOLY",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43790399|ARTPTO",
             "artigo": "43790399",
             "descricao": "CORRE TURBO",
@@ -2158,8 +2149,9 @@
       "artigo": "43790399",
       "descricao": "CORRE TURBO",
       "cor": "AREOLY",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T14:27:11.330Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T14:27:11.330Z",
+      "resolvidoEm": "2026-07-16T14:57:30.830Z"
     },
     {
       "id": "pend_1784212043562_t6y33t",
