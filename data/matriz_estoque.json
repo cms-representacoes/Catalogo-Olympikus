@@ -1015,15 +1015,6 @@
             "atualizadoEm": "2026-07-16T14:00:43.115Z"
           },
           {
-            "id": "43758365|AREOLY",
-            "artigo": "43758365",
-            "descricao": "CORRE MAX",
-            "cor": "AREOLY",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43758365|ARTPTO",
             "artigo": "43758365",
             "descricao": "CORRE MAX",
@@ -1899,8 +1890,9 @@
       "artigo": "43758365",
       "descricao": "CORRE MAX",
       "cor": "AREOLY",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T14:00:58.692Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T14:00:58.692Z",
+      "resolvidoEm": "2026-07-16T14:58:13.296Z"
     },
     {
       "id": "pend_1784210486699_ob1b49",
