@@ -2183,6 +2183,19 @@
       "cor": "PT/LJA",
       "status": "pendente",
       "criadoEm": "2026-07-16T14:04:50.914Z"
+    },
+    {
+      "id": "pend_1784210700007_oib3uf",
+      "tipo": "remocao",
+      "lojaCodigo": "1948498",
+      "lojaNome": "MATTRIZ ARAGUAINA",
+      "marca": "OLY FTW",
+      "itemId": "43758365|PTO/GF",
+      "artigo": "43758365",
+      "descricao": "CORRE MAX",
+      "cor": "PTO/GF",
+      "status": "pendente",
+      "criadoEm": "2026-07-16T14:05:00.007Z"
     }
   ]
 }
