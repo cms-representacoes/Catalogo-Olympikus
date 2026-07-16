@@ -2316,6 +2316,19 @@
       "cor": "LIMLRJ",
       "status": "pendente",
       "criadoEm": "2026-07-16T15:35:23.716Z"
+    },
+    {
+      "id": "pend_1784216269776_u0x2cn",
+      "tipo": "remocao",
+      "lojaCodigo": "60437",
+      "lojaNome": "CIOLE & ROCHA LTDA",
+      "marca": "OLY CHI",
+      "itemId": "54111405|ALGODA",
+      "artigo": "54111405",
+      "descricao": "POS CORRE",
+      "cor": "ALGODA",
+      "status": "pendente",
+      "criadoEm": "2026-07-16T15:37:49.776Z"
     }
   ]
 }
