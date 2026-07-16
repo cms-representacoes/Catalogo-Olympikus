@@ -786,7 +786,7 @@
       "nome": "MATTRIZ ARAGUAINA",
       "cidade": "ARAGUAINA",
       "token": "mattriz-araguaina-pbhsahxt",
-      "ultimaAtualizacaoLoja": "2026-07-16T13:57:55.873Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T13:58:15.759Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -991,7 +991,8 @@
             "cor": "RXOMLT",
             "preposto": null,
             "estoqueAtual": 1,
-            "venda": 0
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T13:58:13.082Z"
           },
           {
             "id": "43245330|RYLVRD",
