@@ -6,7 +6,7 @@
       "nome": "CIOLE & ROCHA LTDA",
       "cidade": "ACAILANDIA",
       "token": "ciole-rocha-ltda-xaji0y6d",
-      "ultimaAtualizacaoLoja": "2026-07-16T15:28:26.765Z",
+      "ultimaAtualizacaoLoja": "2026-07-16T15:28:47.966Z",
       "marcas": {
         "OLY FTW": [
           {
@@ -379,8 +379,9 @@
             "descricao": "CORRE MAX",
             "cor": "PTO/PT",
             "preposto": null,
-            "estoqueAtual": 2,
-            "venda": 0
+            "estoqueAtual": 10,
+            "venda": 0,
+            "atualizadoEm": "2026-07-16T15:28:45.475Z"
           },
           {
             "id": "43758365|VMH/PT",
