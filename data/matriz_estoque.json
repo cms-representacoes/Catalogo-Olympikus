@@ -1221,15 +1221,6 @@
             "venda": 0
           },
           {
-            "id": "43790399|ARESOL",
-            "artigo": "43790399",
-            "descricao": "CORRE TURBO",
-            "cor": "ARESOL",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43790399|ARTPTO",
             "artigo": "43790399",
             "descricao": "CORRE TURBO",
@@ -2180,8 +2171,9 @@
       "artigo": "43790399",
       "descricao": "CORRE TURBO",
       "cor": "ARESOL",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T14:27:23.562Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T14:27:23.562Z",
+      "resolvidoEm": "2026-07-16T14:57:27.655Z"
     },
     {
       "id": "pend_1784212095987_3mzko1",
