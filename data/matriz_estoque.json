@@ -1099,15 +1099,6 @@
             "atualizadoEm": "2026-07-16T14:03:20.270Z"
           },
           {
-            "id": "43758365|PRETO",
-            "artigo": "43758365",
-            "descricao": "CORRE MAX",
-            "cor": "PRETO",
-            "preposto": null,
-            "estoqueAtual": 0,
-            "venda": 0
-          },
-          {
             "id": "43758365|PSGCLR",
             "artigo": "43758365",
             "descricao": "CORRE MAX",
@@ -2022,8 +2013,9 @@
       "artigo": "43758365",
       "descricao": "CORRE MAX",
       "cor": "PRETO",
-      "status": "pendente",
-      "criadoEm": "2026-07-16T14:04:19.657Z"
+      "status": "aprovado",
+      "criadoEm": "2026-07-16T14:04:19.657Z",
+      "resolvidoEm": "2026-07-16T14:57:53.524Z"
     },
     {
       "id": "pend_1784210690914_kpalto",
