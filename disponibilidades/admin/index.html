@@ -2440,10 +2440,15 @@ function aplicarTabelaEspecial(item){
   const ref = _tabelaEspecial[k];
   if(ref){
     item.codigoTabela = ref.codigoTabela;
-    if(ref.custo) item.custo = ref.custo;
-    if(ref.mkp)   item.mkp   = ref.mkp;
+    item.custo = ref.custo || '';
+    item.mkp   = ref.mkp   || '';
+  } else {
+    // Artigo NÃO está em nenhuma campanha ativa na tabela especial salva agora
+    // → limpa (não deixa campanha "fantasma" grudada de uma importação antiga).
+    item.codigoTabela = '';
+    item.custo = '';
+    item.mkp   = '';
   }
-  // Regra 4: se NÃO está na tabela, mantém o que já tinha (não apaga).
   return item;
 }
 
