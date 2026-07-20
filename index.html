@@ -465,7 +465,7 @@
         </div>
       </a>
 
-      <a id="btnCatalogo" href="https://cms-representacoes.github.io/apps-oly-v2/" class="portal-card card-catalogo focus-ring">
+      <a id="btnCatalogo" href="https://cms-representacoes.github.io/apps-oly-v2/?marca=oly" class="portal-card card-catalogo focus-ring">
         <div class="portal-card-tag tag-catalogo">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           Catálogo Digital
@@ -656,7 +656,6 @@
         if(lastFocus) lastFocus.focus();
       }
 
-      if(btnCatalogo) btnCatalogo.addEventListener('click', (e)=>{ e.preventDefault(); openModal('catalogo'); });
       if(btnDisp) btnDisp.addEventListener('click', (e)=>{ e.preventDefault(); openModal('disponibilidades'); });
       btnClose.addEventListener('click', closeModal);
       modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });

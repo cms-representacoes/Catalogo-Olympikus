@@ -369,6 +369,39 @@
       }
       .fab-rfv span, .fab-clientes span, .fab-perf span{ display:none; }
     }
+
+    /* ── Login do Portal (sessão compartilhada) ── */
+    .lg-bg{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:rgba(5,8,16,.72);padding:20px;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif}
+    .lg-bg[hidden]{display:none}
+    .lg-modal{background:#141c30;border:1px solid #253248;border-radius:24px;padding:32px 28px;max-width:460px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,.5);max-height:90vh;overflow-y:auto}
+    .lg-icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(150deg,#9c66ff 0%,#7c3aed 48%,#3b0c8e 100%);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:15px;margin-bottom:16px}
+    .lg-title{font-size:20px;font-weight:800;color:#f1f5f9;margin-bottom:4px}
+    .lg-sub{font-size:13px;color:#94a3b8;margin-bottom:22px}
+    .lg-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+    .lg-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;border:1px solid #253248;background:#0f172a;cursor:pointer;transition:.15s;width:100%;text-align:left;font-family:inherit}
+    .lg-name{line-height:1.2}
+    .lg-item:hover{border-color:#7c3aed;background:#1a1030}
+    .lg-avatar{width:34px;height:34px;border-radius:10px;background:#1e293b;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;color:#a5b4fc;flex:none}
+    .lg-item.selected{border-color:#7c3aed;background:linear-gradient(150deg,rgba(156,102,255,.16),rgba(59,12,142,.16))}
+    .lg-item.selected .lg-avatar{background:linear-gradient(150deg,#9c66ff,#7c3aed);color:#fff}
+    .lg-name{font-size:14px;font-weight:700;color:#f1f5f9}
+    .lg-pwbox{margin-top:14px;padding-top:14px;border-top:1px solid #253248;display:none}
+    .lg-pwbox.show{display:block}
+    .lg-pwlabel{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#94a3b8;margin-bottom:6px;display:block}
+    .lg-pwinput{width:100%;background:#0f172a;border:1px solid #334155;border-radius:10px;padding:11px 13px;color:#f1f5f9;font-size:14px;letter-spacing:2px;font-family:inherit}
+    .lg-pwinput:focus{outline:none;border-color:#7c3aed}
+    .lg-err{font-size:12px;color:#f87171;margin-top:8px;display:none}
+    .lg-err.show{display:block}
+    .lg-btn{width:100%;margin-top:16px;background:linear-gradient(150deg,#9c66ff 0%,#7c3aed 48%,#3b0c8e 100%);color:#fff;border:none;border-radius:12px;padding:13px;font-weight:800;font-size:14px;cursor:pointer;display:none}
+    .lg-btn.show{display:block}
+    .lg-btn:disabled{opacity:.6;cursor:default}
+    .lg-note{font-size:11.5px;color:#64748b;margin-top:10px;text-align:center}
+
+    .welcome-bar{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px}
+    .welcome-txt{font-size:13.5px;color:#94a3b8}
+    .welcome-txt b{color:#e2e8f0;font-weight:800;font-size:17px}
+    .welcome-switch{font-size:12px;color:#7c8cff;background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit}
+    .admin-only[hidden]{display:none !important}
   </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -385,7 +418,7 @@
         <span class="portal-label">Portal do Vendedor</span>
       </div>
 
-      <button id="btnAdmin" class="btn-admin" type="button" aria-label="Abrir área administrativa">
+      <button id="btnAdmin" class="btn-admin admin-only" type="button" aria-label="Abrir área administrativa" hidden>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
           <circle cx="12" cy="12" r="3"/>
@@ -393,6 +426,11 @@
         <span class="btn-admin-label">Admin</span>
       </button>
     </header>
+
+    <div class="welcome-bar fade-up-2" id="welcomeBar" hidden>
+      <span class="welcome-txt" id="welcomeTxt"></span>
+      <button class="welcome-switch" id="btnTrocarUsuario" type="button">Trocar usuário</button>
+    </div>
 
     <div class="text-center mb-8 sm:mb-10 fade-up-2 px-2">
       <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight mb-2">Selecione o catálogo</h1>
@@ -648,7 +686,7 @@
     <span>RFV</span>
   </a>
 
-  <a href="#" id="fabPerf" class="fab-perf" title="Análise de Performance (acesso restrito)" aria-label="Análise de Performance">
+  <a href="#" id="fabPerf" class="fab-perf admin-only" title="Análise de Performance" aria-label="Análise de Performance" hidden>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 3v18h18"/>
       <path d="M7 16v-4M12 16V8M17 16v-7"/>
@@ -667,105 +705,165 @@
   </a>
 </div>
 
-<style>
-  .perf-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
-    background:rgba(8,12,22,.62);padding:20px;font-family:'Inter',system-ui,sans-serif}
-  .perf-modal[hidden]{display:none}
-  .perf-card{background:#fff;border-radius:18px;padding:26px 26px 22px;width:362px;max-width:100%;
-    box-shadow:0 26px 70px rgba(8,12,22,.55);animation:perfIn .18s ease}
-  @keyframes perfIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
-  .perf-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;
-    background:linear-gradient(135deg,#F2B705,#C77F0A);color:#3a2a00}
-  .perf-card h3{font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:600;
-    margin:0 0 4px;color:#15233B}
-  .perf-sub{font-size:13px;color:#64748b;margin:0 0 18px}
-  .perf-lbl{display:block;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;
-    letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin-bottom:7px}
-  .perf-inwrap{position:relative;display:flex;align-items:center}
-  .perf-inwrap input{width:100%;font-family:'Inter',sans-serif;font-size:15px;color:#15233B;
-    padding:11px 44px 11px 13px;border:1px solid #E2E6EC;border-radius:11px;background:#fff;outline:none;
-    transition:border-color .15s,box-shadow .15s}
-  .perf-inwrap input:focus{border-color:#C77F0A;box-shadow:0 0 0 3px rgba(242,183,5,.2)}
-  .perf-eye{position:absolute;right:6px;width:32px;height:32px;border:none;background:none;cursor:pointer;
-    color:#94a3b8;display:grid;place-items:center;border-radius:8px}
-  .perf-eye:hover{color:#475569;background:#F1F5F9}
-  .perf-err{font-size:12.5px;color:#C92A2A;margin-top:9px;font-weight:500;display:none}
-  .perf-err.show{display:block}
-  .perf-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
-  .perf-btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer;
-    border-radius:10px;padding:10px 18px;border:1px solid transparent;transition:filter .15s,background .15s}
-  .perf-btn.ghost{background:#fff;border-color:#E2E6EC;color:#475569}
-  .perf-btn.ghost:hover{background:#F8FAFC}
-  .perf-btn.gold{background:linear-gradient(135deg,#F2B705,#C77F0A);color:#3a2a00}
-  .perf-btn.gold:hover{filter:brightness(1.06)}
-</style>
-
-<div class="perf-modal" id="perfModal" hidden>
-  <div class="perf-card" role="dialog" aria-modal="true" aria-labelledby="perfModalTitle">
-    <div class="perf-ico">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+<div class="lg-bg" id="lgBg" hidden>
+  <div class="lg-modal" role="dialog" aria-modal="true" aria-labelledby="lgTitle">
+    <div class="lg-icon">CMS</div>
+    <div class="lg-title" id="lgTitle">Entrar no Portal</div>
+    <div class="lg-sub">Selecione seu nome para acessar todos os aplicativos</div>
+    <div class="lg-list" id="lgList"></div>
+    <div class="lg-pwbox" id="lgPwBox">
+      <label class="lg-pwlabel" for="lgPw">Senha</label>
+      <input class="lg-pwinput" id="lgPw" type="password" inputmode="numeric" autocomplete="off" placeholder="••••••">
+      <div class="lg-err" id="lgErr">Senha incorreta. Tente novamente.</div>
     </div>
-    <h3 id="perfModalTitle">Análise de Performance</h3>
-    <p class="perf-sub">Área restrita · informe a senha de acesso</p>
-    <label class="perf-lbl" for="perfPwd">Senha</label>
-    <div class="perf-inwrap">
-      <input id="perfPwd" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="••••••••">
-      <button type="button" class="perf-eye" id="perfEye" aria-label="Mostrar senha">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
-      </button>
-    </div>
-    <div class="perf-err" id="perfErr">Senha incorreta. Tente novamente.</div>
-    <div class="perf-actions">
-      <button type="button" class="perf-btn ghost" id="perfCancel">Cancelar</button>
-      <button type="button" class="perf-btn gold" id="perfEnter">Entrar</button>
-    </div>
+    <button class="lg-btn" id="lgBtn" type="button">Entrar</button>
+    <div class="lg-note">Sua sessão fica válida por 15 dias neste dispositivo</div>
   </div>
 </div>
 
 <script>
-(function(){
-  // Acesso ao relatório de performance protegido por senha (hash SHA-256).
-  // Para trocar a senha, gere o novo hash e substitua PERF_HASH.
   var PERF_URL = "https://cms-representacoes.github.io/apps-oly-v2/analise-performance-vendas/";
-  var PERF_HASH = "e92a82fcced79d8cf15b7732165727848f1bf54aebc0467a2f5599957b9dd334";
-  var EYE_ON  = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>';
-  var EYE_OFF = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-7-11-7a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 7 11 7a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
-  async function sha256(s){
-    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-    return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+  var btnPerf = document.getElementById('fabPerf');
+  if(btnPerf) btnPerf.addEventListener('click', function(e){ e.preventDefault(); window.location.href = PERF_URL; });
+</script>
+
+<script>
+(function(){
+  // ── Login único do Portal — sessão compartilhada entre todos os apps ──────
+  // A mesma localStorage (cms_portal_session_v1) é lida pelos demais apps
+  // (ex: Repasses), então logar aqui já libera o acesso neles também.
+  var SESSION_KEY = 'cms_portal_session_v1';
+  var SESSION_DAYS = 15;
+  var USERS = [
+    { codigo: '114611',  nome: 'JORGE' },
+    { codigo: '109839',  nome: 'MARIANA' },
+    { codigo: '1333497', nome: 'RAFAEL' },
+    { codigo: '25471',   nome: 'WILLAME' },
+    { codigo: '25745',   nome: 'LEANDRO' },
+    { codigo: '4322318', nome: 'CHRISTIAN LUCAS' },
+    { codigo: '25846',   nome: 'CMS', senha: '300269' }
+  ];
+
+  function tituloCaso(s){
+    if(String(s || '').toUpperCase() === 'CMS') return 'CMS';
+    return String(s || '').toLowerCase().split(' ').map(function(w){
+      return w ? w[0].toUpperCase() + w.slice(1) : w;
+    }).join(' ');
   }
-  var btn=document.getElementById('fabPerf');
-  var modal=document.getElementById('perfModal');
-  var input=document.getElementById('perfPwd');
-  var err=document.getElementById('perfErr');
-  var eye=document.getElementById('perfEye');
-  function open(){ modal.hidden=false; err.classList.remove('show'); input.value=''; input.type='password';
-    eye.innerHTML=EYE_ON; eye.setAttribute('aria-label','Mostrar senha'); setTimeout(function(){input.focus();},40); }
-  function close(){ modal.hidden=true; }
-  async function submit(){
-    var pwd=input.value.trim(); if(!pwd) return;
+  function iniciais(nome){
+    var partes = String(nome || '').trim().split(/\s+/);
+    return (partes[0][0] || '') + (partes.length > 1 ? partes[partes.length-1][0] : '');
+  }
+
+  function getSession(){
     try{
-      var h=await sha256(pwd);
-      if(h===PERF_HASH){ window.location.href=PERF_URL; }
-      else { err.textContent='Senha incorreta. Tente novamente.'; err.classList.add('show'); input.select(); }
-    }catch(_){ err.textContent='Não foi possível validar neste navegador.'; err.classList.add('show'); }
+      var raw = localStorage.getItem(SESSION_KEY);
+      if(!raw) return null;
+      var s = JSON.parse(raw);
+      if(!s || !s.expiraEm || new Date(s.expiraEm).getTime() < Date.now()){
+        localStorage.removeItem(SESSION_KEY);
+        return null;
+      }
+      return s;
+    }catch(_){ return null; }
   }
-  if(btn) btn.addEventListener('click', function(e){ e.preventDefault(); open(); });
-  document.getElementById('perfEnter').addEventListener('click', submit);
-  document.getElementById('perfCancel').addEventListener('click', close);
-  modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
-  input.addEventListener('input', function(){ err.classList.remove('show'); });
-  input.addEventListener('keydown', function(e){
-    if(e.key==='Enter'){ e.preventDefault(); submit(); }
-    else if(e.key==='Escape'){ close(); }
+  function setSession(codigo, nome){
+    var expira = new Date(Date.now() + SESSION_DAYS*24*60*60*1000).toISOString();
+    var session = { codigo: codigo, nome: nome, expiraEm: expira, logadoEm: new Date().toISOString() };
+    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    return session;
+  }
+  function clearSession(){ localStorage.removeItem(SESSION_KEY); }
+
+  var lgBg = document.getElementById('lgBg');
+  var lgList = document.getElementById('lgList');
+  var lgPwBox = document.getElementById('lgPwBox');
+  var lgPw = document.getElementById('lgPw');
+  var lgErr = document.getElementById('lgErr');
+  var lgBtn = document.getElementById('lgBtn');
+  var selecionado = null;
+
+  function renderLista(){
+    lgList.innerHTML = USERS.map(function(u, i){
+      return '<button type="button" class="lg-item" data-idx="'+i+'">' +
+        '<span class="lg-avatar">'+iniciais(u.nome)+'</span>' +
+        '<span class="lg-name">'+tituloCaso(u.nome)+'</span></button>';
+    }).join('');
+    Array.prototype.forEach.call(lgList.querySelectorAll('.lg-item'), function(btn){
+      btn.addEventListener('click', function(){
+        selecionado = USERS[Number(btn.dataset.idx)];
+        Array.prototype.forEach.call(lgList.querySelectorAll('.lg-item'), function(b){ b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        lgPwBox.classList.add('show');
+        lgBtn.classList.add('show');
+        lgErr.classList.remove('show');
+        lgPw.value = '';
+        setTimeout(function(){ lgPw.focus(); }, 30);
+      });
+    });
+  }
+
+  function tentarEntrar(){
+    if(!selecionado) return;
+    var senhaEsperada = selecionado.senha || selecionado.codigo;
+    var senhaDigitada = (lgPw.value || '').trim();
+    if(senhaDigitada !== senhaEsperada){
+      lgErr.classList.add('show');
+      lgPw.select();
+      return;
+    }
+    setSession(selecionado.codigo, selecionado.nome);
+    fecharLogin();
+    aplicarSessao();
+  }
+
+  function abrirLogin(){
+    selecionado = null;
+    lgPwBox.classList.remove('show');
+    lgBtn.classList.remove('show');
+    lgErr.classList.remove('show');
+    renderLista();
+    lgBg.hidden = false;
+  }
+  function fecharLogin(){ lgBg.hidden = true; }
+
+  lgBtn.addEventListener('click', tentarEntrar);
+  lgPw.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); tentarEntrar(); } });
+  lgPw.addEventListener('input', function(){ lgErr.classList.remove('show'); });
+
+  function saudacao(){
+    var h = new Date().getHours();
+    if(h < 12) return 'Bom dia';
+    if(h < 18) return 'Boa tarde';
+    return 'Boa noite';
+  }
+
+  function aplicarSessao(){
+    var session = getSession();
+    var welcomeBar = document.getElementById('welcomeBar');
+    var welcomeTxt = document.getElementById('welcomeTxt');
+    var adminEls = document.querySelectorAll('.admin-only');
+
+    if(!session){
+      abrirLogin();
+      welcomeBar.hidden = true;
+      Array.prototype.forEach.call(adminEls, function(el){ el.hidden = true; });
+      return;
+    }
+
+    welcomeTxt.innerHTML = saudacao() + ', <b>' + tituloCaso(session.nome) + '</b> 👋';
+    welcomeBar.hidden = false;
+
+    var isCms = session.nome === 'CMS';
+    Array.prototype.forEach.call(adminEls, function(el){ el.hidden = !isCms; });
+  }
+
+  document.getElementById('btnTrocarUsuario').addEventListener('click', function(){
+    clearSession();
+    aplicarSessao();
   });
-  eye.addEventListener('click', function(){
-    var toText = input.type==='password';
-    input.type = toText ? 'text' : 'password';
-    eye.innerHTML = toText ? EYE_OFF : EYE_ON;
-    eye.setAttribute('aria-label', toText ? 'Ocultar senha' : 'Mostrar senha');
-    input.focus();
-  });
+
+  aplicarSessao();
 })();
 </script>
 
