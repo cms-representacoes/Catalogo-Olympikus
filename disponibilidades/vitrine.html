@@ -1976,8 +1976,20 @@ const ORDER_COMMISSION_OPTIONS = [
   { codigo: "1333497", nome: "RAFAEL"  },
   { codigo: "25471",   nome: "WILLAME" },
   { codigo: "25745",   nome: "LEANDRO" },
-  { codigo: "3616654", nome: "MARCOS"  }
+  { codigo: "4322318", nome: "CHRISTIAN LUCAS" },
+  { codigo: "25846",   nome: "CMS" }
 ];
+
+// ── Sessão compartilhada do Portal (login único) ───────────────────────────
+function getPortalSession(){
+  try{
+    const raw = localStorage.getItem('cms_portal_session_v1');
+    if(!raw) return null;
+    const s = JSON.parse(raw);
+    if(!s || !s.expiraEm || new Date(s.expiraEm).getTime() < Date.now()) return null;
+    return s;
+  }catch(_){ return null; }
+}
 
 // ─── VENDEDOR + DESEJOS (WATCHLIST) ───────────────────────────────────────────
 
@@ -2926,6 +2938,13 @@ function abrirGerarLink(){
   $('linkCliente').value = '';
   $('gerarLinkQtd').textContent = n;
   ['linkVendedor','linkCliente'].forEach(id => $(id)?.classList.remove('invalid'));
+  const sessao = getPortalSession();
+  if(sessao){
+    sel.value = sessao.codigo;
+    sel.disabled = true;
+  }else{
+    sel.disabled = false;
+  }
   $('modalGerarLink').classList.remove('hidden');
   setTimeout(() => $('linkCliente').focus(), 100);
 }
@@ -4397,6 +4416,14 @@ function cartItemHtml(it){
 function abrirExport(){
   if(STATE.cart.size === 0){ showToast('Sacola vazia','info'); return; }
   populateExportForm();
+  const sessao = getPortalSession();
+  const comSel = $('oxCommission');
+  if(sessao && comSel){
+    comSel.value = sessao.codigo;
+    comSel.disabled = true;
+  }else if(comSel){
+    comSel.disabled = false;
+  }
   $('exportModal').classList.remove('hidden');
 }
 function fecharExport(){ $('exportModal').classList.add('hidden'); }
