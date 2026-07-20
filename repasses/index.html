@@ -710,7 +710,7 @@ const PREPOSTOS = [
   '109839 - MARIANA',
   '1333497 - RAFAEL',
   '25471 - WILLAME',
-  '25745 - LÉO',
+  '25745 - LEANDRO',
   '4322318 - CHRISTIAN LUCAS',
   '25846 - CMS'
 ];
@@ -777,7 +777,7 @@ const PREPOSTO_NAME_BY_CODE = {
   '109839':'MARIANA',
   '1333497':'RAFAEL',
   '25471':'WILLAME',
-  '25745':'LÉO',
+  '25745':'LEANDRO',
   '4322318':'CHRISTIAN LUCAS',
   '25846':'CMS'
 };
@@ -947,9 +947,22 @@ function updateOrdersScopeButtons(){
     btn.classList.toggle('text-[var(--brand)]', active);
   });
 }
-function getVendedorSession(){ return readJsonSafe(STORAGE_KEYS.vendedorSession, null); }
+function getPortalSession(){
+  try{
+    var raw = localStorage.getItem('cms_portal_session_v1');
+    if(!raw) return null;
+    var s = JSON.parse(raw);
+    if(!s || !s.expiraEm || new Date(s.expiraEm).getTime() < Date.now()) return null;
+    return s;
+  }catch(_){ return null; }
+}
+function getVendedorSession(){
+  var portal = getPortalSession();
+  if(portal) return { codigo: portal.codigo, nome: portal.nome };
+  return readJsonSafe(STORAGE_KEYS.vendedorSession, null);
+}
 function setVendedorSession(s){ localStorage.setItem(STORAGE_KEYS.vendedorSession, JSON.stringify(s)); }
-function clearVendedorSession(){ localStorage.removeItem(STORAGE_KEYS.vendedorSession); }
+function clearVendedorSession(){ localStorage.removeItem(STORAGE_KEYS.vendedorSession); localStorage.removeItem('cms_portal_session_v1'); }
 
 function applyVendedorSession(){
   const session = getVendedorSession();
