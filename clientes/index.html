@@ -523,9 +523,13 @@
 <!-- === MENU === -->
 <div id="menuBg" class="menu-bg" onclick="toggleMenu()"></div>
 <div id="menuCard" class="menu-card">
+  <button class="menu-item" onclick="window.location.href='https://cms-representacoes.github.io/apps-oly/'">
+    <i class="fa-solid fa-arrow-left"></i>
+    Voltar ao Portal
+  </button>
   <button class="menu-item" onclick="trocarVendedor()">
     <i class="fa-solid fa-arrow-right-arrow-left"></i>
-    Trocar vendedor
+    <span id="menuTrocarLabel">Trocar vendedor</span>
   </button>
   <button class="menu-item" onclick="recarregar()">
     <i class="fa-solid fa-rotate"></i>
@@ -574,15 +578,17 @@ const VENDEDORES = [
   { codigo:'1333497', nome:'RAFAEL'   },
   { codigo:'25471',   nome:'WILLAME'  },
   { codigo:'25745',   nome:'LEANDRO'  },
-  { codigo:'3616654', nome:'MARCOS'   }
+  { codigo:'4322318', nome:'CHRISTIAN LUCAS' }
 ];
 
 const STATE = {
   vendedor: null,
   vendedorNome: '',
+  modoCms: false,
   clientes: [],
   filtros: {
     estado: '',        // '', 'MA', 'PA', etc
+    vendedor: '',       // usado só no modo CMS
     avista: false,
     busca: ''
   },
@@ -728,6 +734,11 @@ function confirmarVendedor(){
 
 function trocarVendedor(){
   toggleMenu();
+  if(getPortalSession()){
+    localStorage.removeItem('cms_portal_session_v1');
+    window.location.href = 'https://cms-representacoes.github.io/apps-oly/';
+    return;
+  }
   localStorage.removeItem(VENDEDOR_LS);
   STATE.vendedor = null;
   STATE.clientes = [];
@@ -755,6 +766,86 @@ function abrirAdmin(){
 // ═══════════════════════════════════════════════════════════════════════════
 // CARREGAR DADOS
 // ═══════════════════════════════════════════════════════════════════════════
+// ── Sessão compartilhada do Portal (login único) ───────────────────────────
+function getPortalSession(){
+  try{
+    const raw = localStorage.getItem('cms_portal_session_v1');
+    if(!raw) return null;
+    const s = JSON.parse(raw);
+    if(!s || !s.expiraEm || new Date(s.expiraEm).getTime() < Date.now()) return null;
+    return s;
+  }catch(_){ return null; }
+}
+
+function nomeVendedorPorCodigo(codigo){
+  const v = VENDEDORES.find(x => x.codigo === String(codigo));
+  return v ? v.nome : String(codigo);
+}
+
+// CMS: busca a lista de todos os vendedores com base salva, e carrega o arquivo
+// de cada um, juntando tudo numa lista só (cada cliente marcado com o vendedor dono).
+async function carregarTodosClientes(){
+  $('lista').innerHTML = `
+    <div class="estado">
+      <i class="fa-solid fa-circle-notch fa-spin"></i>
+      <h3>Carregando...</h3>
+      <p>Buscando os clientes de todos os vendedores.</p>
+    </div>`;
+  $('subtitulo').textContent = `CMS · carregando todos os vendedores...`;
+
+  try{
+    const listRes = await fetch(WORKER_URL, {
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'listClientesVendedores' })
+    });
+    const listJson = await listRes.json();
+    const codigos = Array.isArray(listJson.vendedores) ? listJson.vendedores.map(v => v.codigo) : [];
+
+    const resultados = await Promise.all(codigos.map(async codigo => {
+      try{
+        const res = await fetch(WORKER_URL, {
+          method:'PATCH',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ action:'getClientes', vendedor: codigo })
+        });
+        const json = await res.json();
+        const nome = nomeVendedorPorCodigo(codigo);
+        return (Array.isArray(json.clientes) ? json.clientes : []).map(c => ({
+          ...c, _vendCodigo: codigo, _vendNome: nome
+        }));
+      }catch(_){ return []; }
+    }));
+
+    STATE.clientes = resultados.flat();
+    $('subtitulo').textContent = `CMS · todos os vendedores · ${STATE.clientes.length} cadastrado${STATE.clientes.length!==1?'s':''}`;
+
+    if(STATE.clientes.length === 0){
+      $('lista').innerHTML = `
+        <div class="estado">
+          <i class="fa-regular fa-folder-open"></i>
+          <h3>Nenhum cliente cadastrado ainda</h3>
+          <p>Nenhum vendedor tem base importada no momento.</p>
+        </div>`;
+      $('filtros').innerHTML = '';
+      $('listaInfo').textContent = '';
+      return;
+    }
+
+    montarFiltros();
+    aplicarFiltros();
+  }catch(e){
+    console.error(e);
+    $('lista').innerHTML = `
+      <div class="estado">
+        <i class="fa-solid fa-triangle-exclamation" style="color:#dc2626"></i>
+        <h3>Erro ao carregar</h3>
+        <p>Não foi possível conectar. Tente novamente.</p>
+      </div>`;
+    showToast('Erro ao carregar clientes', 'error');
+  }
+}
+
 async function carregarClientes(){
   $('lista').innerHTML = `
     <div class="estado">
@@ -819,10 +910,26 @@ function montarFiltros(){
 
   const wrap = $('filtros');
   let html = `
-    <button class="chip ${STATE.filtros.estado===''&&!STATE.filtros.avista?'active':''}" onclick="setFiltro('estado','')">
+    <button class="chip ${STATE.filtros.estado===''&&!STATE.filtros.avista&&!STATE.filtros.vendedor?'active':''}" onclick="setFiltro('estado','')">
       Todos <span class="cnt">${STATE.clientes.length}</span>
     </button>
   `;
+
+  if(STATE.modoCms){
+    const porVend = {};
+    for(const c of STATE.clientes){
+      const nv = c._vendNome || '—';
+      porVend[nv] = (porVend[nv] || 0) + 1;
+    }
+    const vends = Object.entries(porVend).sort((a,b) => b[1]-a[1]);
+    for(const [nv, n] of vends){
+      html += `
+        <button class="chip ${STATE.filtros.vendedor===nv?'active':''}" onclick="setFiltro('vendedor','${safeHtml(nv)}')" style="border-color:#c7d2fe">
+          👤 ${safeHtml(nv)} <span class="cnt">${n}</span>
+        </button>`;
+    }
+  }
+
   for(const e of estados){
     html += `
       <button class="chip ${STATE.filtros.estado===e.uf?'active':''}" onclick="setFiltro('estado','${safeHtml(e.uf)}')">
@@ -839,8 +946,9 @@ function montarFiltros(){
 }
 
 function setFiltro(tipo, valor){
-  if(tipo === 'estado'){ STATE.filtros.estado = valor; STATE.filtros.avista = false; }
-  if(tipo === 'avista'){ STATE.filtros.avista = !!valor; STATE.filtros.estado = ''; }
+  if(tipo === 'estado'){ STATE.filtros.estado = valor; STATE.filtros.avista = false; STATE.filtros.vendedor = ''; }
+  if(tipo === 'avista'){ STATE.filtros.avista = !!valor; STATE.filtros.estado = ''; STATE.filtros.vendedor = ''; }
+  if(tipo === 'vendedor'){ STATE.filtros.vendedor = (STATE.filtros.vendedor===valor) ? '' : valor; STATE.filtros.estado=''; STATE.filtros.avista=false; }
   montarFiltros();
   aplicarFiltros();
 }
@@ -860,6 +968,8 @@ function aplicarFiltros(){
   const filtrados = STATE.clientes.filter(c => {
     // Estado
     if(STATE.filtros.estado && String(c.estado||c.ESTADO||'').toUpperCase() !== STATE.filtros.estado) return false;
+    // Vendedor (modo CMS)
+    if(STATE.filtros.vendedor && c._vendNome !== STATE.filtros.vendedor) return false;
     // À vista
     if(STATE.filtros.avista && !isAvista(c)) return false;
     // Busca
@@ -903,7 +1013,8 @@ function renderLista(itens){
 }
 
 function cardHtml(c){
-  const id = String(c.codigo || '').trim();
+  const id = String(c.codigo || '').trim() + (c._vendCodigo ? ('__'+c._vendCodigo) : '');
+  const codOriginal = String(c.codigo || '').trim();
   const aberto = STATE.expandidos.has(id);
   const avista = isAvista(c);
   const nome = limparNome(c.nome || c.razaoSocial || '—');
@@ -960,10 +1071,11 @@ function cardHtml(c){
         <div class="card-avatar ${avista?'avista':''}">${avista ? '💰' : safeHtml(iniciais(nome))}</div>
         <div class="card-head-info">
           <div class="card-tags">
-            <button class="tag-cod" onclick="event.stopPropagation();copiar('${safeHtml(id)}',this)" title="Copiar código">
-              #${safeHtml(id)} <i class="fa-regular fa-copy copy-mini"></i>
+            <button class="tag-cod" onclick="event.stopPropagation();copiar('${safeHtml(codOriginal)}',this)" title="Copiar código">
+              #${safeHtml(codOriginal)} <i class="fa-regular fa-copy copy-mini"></i>
             </button>
             ${avista ? '<span class="tag-avista">À VISTA</span>' : ''}
+            ${c._vendNome ? `<span class="tag-avista" style="background:#eef2ff;color:#4338ca">${safeHtml(c._vendNome)}</span>` : ''}
           </div>
           <button class="card-nome" onclick="event.stopPropagation();copiar('${safeHtml(nome)}',this)" title="Copiar nome">
             ${safeHtml(nome)} <i class="fa-regular fa-copy copy-mini"></i>
@@ -1011,21 +1123,29 @@ window.toggleCard = toggleCard;
 // VOLTAR
 // ═══════════════════════════════════════════════════════════════════════════
 function voltar(){
-  // Volta pro portal do vendedor
-  const path = location.pathname;
-  // Se estiver em /Catalogo-Olympikus/clientes/ — volta uma pasta
-  const partes = path.split('/').filter(Boolean);
-  if(partes.length >= 2){
-    location.href = '/' + partes.slice(0, partes.length - 1).join('/') + '/';
-  } else {
-    history.back();
-  }
+  window.location.href = 'https://cms-representacoes.github.io/apps-oly/';
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════════════════════
 function init(){
+  const session = getPortalSession();
+  if(session){
+    const lbl = document.getElementById('menuTrocarLabel');
+    if(lbl) lbl.textContent = 'Sair';
+    if(session.nome === 'CMS'){
+      STATE.modoCms = true;
+      STATE.vendedorNome = 'CMS';
+      carregarTodosClientes();
+    }else{
+      STATE.vendedor = session.codigo;
+      STATE.vendedorNome = session.nome;
+      carregarClientes();
+    }
+    return;
+  }
+  // Sem sessão do Portal (acesso direto) — mantém o seletor manual de antes
   const v = localStorage.getItem(VENDEDOR_LS);
   if(v){
     STATE.vendedor = v;
