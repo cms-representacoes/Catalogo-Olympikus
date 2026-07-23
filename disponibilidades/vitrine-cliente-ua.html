@@ -148,6 +148,10 @@
     font-size:9px; color:var(--muted); font-weight:700;
     text-decoration:none;
   }
+  .card-preco .custo{
+    font-size:9px; color:var(--muted); font-weight:700;
+    text-decoration:none;
+  }
   .card-tam-label{
     font-size:7.5px; font-weight:800; color:var(--muted);
     text-transform:uppercase; letter-spacing:.4px;
@@ -619,6 +623,7 @@ function cardHtml(p){
     ? `<div class="card-preco promo-row">
          <span>R$ ${Number(p.pdv||0).toFixed(2).replace('.',',')}</span>
          <span class="mkp">MKP R$ ${Number(p.mkp||0).toFixed(2).replace('.',',')}</span>
+         ${p.custo ? `<span class="custo">Custo R$ ${Number(p.custo).toFixed(2).replace('.',',')}</span>` : ''}
        </div>`
     : `<div class="card-preco">R$ ${Number(p.pdv||0).toFixed(2).replace('.',',')}</div>`;
 

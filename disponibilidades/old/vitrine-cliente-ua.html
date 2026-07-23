@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#0034d8">
+<meta name="theme-color" content="#e52125">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Disponibilidades Olympikus">
+<meta property="og:title" content="Disponibilidades Under Armour">
 <meta property="og:description" content="Seleção de produtos preparada para você">
-<meta property="og:image" content="https://marcosrepcms-max.github.io/Catalogo-Olympikus/disponibilidades/og-oly.jpg">
+<meta property="og:image" content="https://marcosrepcms-max.github.io/Catalogo-Olympikus/disponibilidades/og-ua.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Olympikus">
+<meta property="og:image:alt" content="Under Armour">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Disponibilidades Olympikus">
+<meta name="twitter:title" content="Disponibilidades Under Armour">
 <meta name="twitter:description" content="Seleção de produtos preparada para você">
-<meta name="twitter:image" content="https://marcosrepcms-max.github.io/Catalogo-Olympikus/disponibilidades/og-oly.jpg">
-<title>Disponibilidades Olympikus · CMS Representações</title>
+<meta name="twitter:image" content="https://marcosrepcms-max.github.io/Catalogo-Olympikus/disponibilidades/og-ua.jpg">
+<title>Disponibilidades Under Armour · CMS Representações</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   *,*::before,*::after{ box-sizing:border-box; }
@@ -145,10 +145,6 @@
     display:flex; flex-direction:column; gap:1px;
   }
   .card-preco .mkp{
-    font-size:9px; color:var(--muted); font-weight:700;
-    text-decoration:none;
-  }
-  .card-preco .custo{
     font-size:9px; color:var(--muted); font-weight:700;
     text-decoration:none;
   }
@@ -623,7 +619,6 @@ function cardHtml(p){
     ? `<div class="card-preco promo-row">
          <span>R$ ${Number(p.pdv||0).toFixed(2).replace('.',',')}</span>
          <span class="mkp">MKP R$ ${Number(p.mkp||0).toFixed(2).replace('.',',')}</span>
-         ${p.custo ? `<span class="custo">Custo R$ ${Number(p.custo).toFixed(2).replace('.',',')}</span>` : ''}
        </div>`
     : `<div class="card-preco">R$ ${Number(p.pdv||0).toFixed(2).replace('.',',')}</div>`;
 
