@@ -6526,5 +6526,110 @@
         "prevFaturamento": "20/08/2026"
       }
     ]
+  },
+  {
+    "id": "PED-20260723110900-596",
+    "createdAt": "2026-07-23T14:09:00.243Z",
+    "updatedAt": "2026-07-23T14:09:00.764Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "3777",
+    "clienteNome": "",
+    "prazo": "Z31 - 35/63/91 D",
+    "campanha": "CO681 +28DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 2,
+      "units": 24
+    },
+    "items": [
+      {
+        "codigo": "43293443",
+        "produto": "ERA",
+        "cor": "ALGODA",
+        "num": "101",
+        "gci": "7609850",
+        "ebm": "13457088",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "34",
+            "qty": 1
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/08/2026"
+      },
+      {
+        "codigo": "43489502",
+        "produto": "ONLY 3",
+        "cor": "PTO/BC",
+        "num": "78",
+        "gci": "7581649",
+        "ebm": "13417263",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "37",
+            "qty": 1
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 2
+          },
+          {
+            "size": "40",
+            "qty": 2
+          },
+          {
+            "size": "41",
+            "qty": 3
+          },
+          {
+            "size": "42",
+            "qty": 2
+          },
+          {
+            "size": "43",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "20/08/2026"
+      }
+    ]
   }
 ]
