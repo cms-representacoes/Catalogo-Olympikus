@@ -5463,5 +5463,67 @@
     "lastActionLabel": "Pedido criado",
     "lastActionAt": "2026-07-22T20:48:21.649Z",
     "exportedAt": "2026-07-22T20:48:33.902Z"
+  },
+  {
+    "id": "PED-20260723092301-993",
+    "createdAt": "2026-07-23T12:23:01.513Z",
+    "updatedAt": "2026-07-23T12:23:02.049Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "114611",
+      "nome": "JORGE"
+    },
+    "clienteCodigo": "3051385",
+    "clienteNome": "",
+    "prazo": "Z09 - 63 D",
+    "campanha": "",
+    "observacoes": "",
+    "totals": {
+      "packs": 1,
+      "units": 12
+    },
+    "items": [
+      {
+        "codigo": "43293443",
+        "produto": "ERA",
+        "cor": "ALGODA",
+        "num": "101",
+        "gci": "7609850",
+        "ebm": "13457088",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 12,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "34",
+            "qty": 1
+          },
+          {
+            "size": "35",
+            "qty": 2
+          },
+          {
+            "size": "36",
+            "qty": 3
+          },
+          {
+            "size": "37",
+            "qty": 3
+          },
+          {
+            "size": "38",
+            "qty": 2
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "16/08/2026"
+      }
+    ]
   }
 ]
