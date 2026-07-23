@@ -994,7 +994,7 @@ function isCmsLogado(){
   return !!(s && s.nome === 'CMS');
 }
 // Base pública das imagens (mesma pasta usada pelo catálogo de Disponibilidades)
-const IMG_BASE = 'https://cms-representacoes.github.io/apps-oly/Catalogo/';
+const IMG_BASE = 'https://cms-representacoes.github.io/apps-oly-v2/imagens_olympikus/';
 
 const $ = id => document.getElementById(id);
 
@@ -2442,8 +2442,29 @@ async function salvarTabelaEspecial(){
     if(!res.ok) throw new Error('Worker ' + res.status);
     _tabelaEspecial = _tabEspPendente;
     _tabEspPendente = null;
-    showToast(`Tabela especial salva — ${Object.keys(_tabelaEspecial).length} produto(s)`, 'success');
+
+    // Reaplica a tabela especial a TODOS os produtos já salvos, sem precisar
+    // reimportar o estoque inteiro de novo (o cruzamento normal só roda na hora
+    // de importar produto — aqui a gente refaz ele manualmente pra já refletir).
+    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Atualizando produtos...';
+    let nCruzados = 0;
+    try{
+      const resGet = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getDisponibilidades'}) });
+      const itens = resGet.ok ? (await resGet.json() || []) : [];
+      for(const item of itens){
+        const antesCod = item.codigoTabela;
+        aplicarTabelaEspecial(item);
+        if(item.codigoTabela && item.codigoTabela !== antesCod) nCruzados++;
+      }
+      await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'saveDisponibilidades', data:itens}) });
+    }catch(e2){
+      console.error('Erro ao reaplicar tabela especial aos produtos:', e2);
+      showToast('Tabela salva, mas houve erro ao reaplicar aos produtos — reimporte o estoque pra garantir.', 'warning');
+    }
+
+    showToast(`Tabela especial salva — ${Object.keys(_tabelaEspecial).length} produto(s) na tabela, ${nCruzados} produto(s) atualizado(s) na vitrine`, 'success');
     fecharTabelaEspecial();
+    if(typeof carregarDadosProdutos === 'function') carregarDadosProdutos();
   }catch(e){
     console.error(e);
     showToast('Erro ao salvar: ' + e.message, 'error');
