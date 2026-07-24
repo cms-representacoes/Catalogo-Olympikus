@@ -2372,24 +2372,10 @@ async function processarTabelaEspXlsx(file){
     $('tabEspVigencias').classList.add('hidden');
     $('tabEspPreview').classList.add('hidden');
 
-    // Se tem mais de 1 vigência distinta, precisa que o usuário informe as datas
-    // de cada uma antes de resolver qual campanha vale por artigo.
-    if(nomesVigencia.length > 1){
-      $('tabEspVigencias').classList.remove('hidden');
-      $('tabEspPreview').classList.add('hidden');
-      $('btnSalvarTabEsp').disabled = true;
-      $('tabEspResumo').textContent = '';
-      $('tabEspVigenciasBody').innerHTML = nomesVigencia.map((v, i) => `
-        <div class="flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2">
-          <span class="text-xs font-bold text-slate-600 w-24 truncate" title="${safeHtml(v)}">${safeHtml(v)}</span>
-          <input type="date" id="vigInicio_${i}" class="flex-1 rounded-lg border border-slate-200 px-2 py-1.5 text-xs">
-          <span class="text-slate-300 text-xs">até</span>
-          <input type="date" id="vigFim_${i}" class="flex-1 rounded-lg border border-slate-200 px-2 py-1.5 text-xs">
-        </div>`).join('');
-    } else {
-      // 0 ou 1 vigência só — não tem ambiguidade, resolve direto (sem filtro de data)
-      montarTabEspPendente(brutas, ignoradas, file.name);
-    }
+    // Vigência é só uma etiqueta informativa agora — não filtra mais nada por
+    // data. Um artigo com mais de uma campanha mostra as duas juntas na
+    // vitrine (o vendedor escolhe lá qual olhar). Resolve direto, sempre.
+    montarTabEspPendente(brutas, ignoradas, file.name);
   }catch(e){
     console.error(e);
     showToast('Erro ao ler a planilha: ' + e.message, 'error');
@@ -2528,25 +2514,15 @@ async function salvarTabelaEspecial(){
 }
 
 // Aplica a tabela especial a um item (cruzamento). Retorna o item modificado.
-// Um artigo pode ter mais de uma campanha guardada (ex: agosto + dezembro).
-// Aqui filtramos pelas que estão dentro do período de vigência HOJE (ou sem
-// data nenhuma = sempre válida) e guardamos TODAS em item.tabelasEspeciais —
-// os campos codigoTabela/custo/mkp continuam preenchidos com a primeira, só
-// por compatibilidade com telas antigas (PDF, tabela do admin etc.).
+// Um artigo pode ter mais de uma campanha guardada (ex: agosto + dezembro) —
+// todas ficam disponíveis em item.tabelasEspeciais; a vigência é só uma
+// etiqueta informativa, não filtra mais nada por data.
 function aplicarTabelaEspecial(item){
   if(!item || !item.artigo) return item;
   const k = chaveTabela(item.artigo);
   const lista = _tabelaEspecial[k] || [];
-  const hoje = new Date(); hoje.setHours(0,0,0,0);
 
-  const validas = lista.filter(ref => {
-    const marcaBate = !ref.marca || !item.marca || ref.marca === item.marca;
-    if(!marcaBate) return false;
-    if(!ref.vigInicio || !ref.vigFim) return true; // sem data = sempre válida
-    const ini = new Date(ref.vigInicio + 'T00:00:00');
-    const fim = new Date(ref.vigFim + 'T23:59:59');
-    return hoje >= ini && hoje <= fim;
-  });
+  const validas = lista.filter(ref => !ref.marca || !item.marca || ref.marca === item.marca);
 
   item.tabelasEspeciais = validas.map(v => ({
     codigoTabela: v.codigoTabela, custo: v.custo, mkp: v.mkp, vigencia: v.vigencia||''
@@ -2557,8 +2533,8 @@ function aplicarTabelaEspecial(item){
     item.custo = validas[0].custo || '';
     item.mkp   = validas[0].mkp   || '';
   } else {
-    // Nenhuma campanha vigente pra esse artigo agora → limpa (não deixa
-    // campanha "fantasma" grudada de uma importação antiga).
+    // Artigo NÃO está em nenhuma campanha da tabela especial salva agora
+    // → limpa (não deixa campanha "fantasma" grudada de uma importação antiga).
     item.codigoTabela = '';
     item.custo = '';
     item.mkp   = '';
