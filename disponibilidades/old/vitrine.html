@@ -2970,9 +2970,18 @@ async function criarLinkVitrine(){
   }
 
   // Coleta produtos selecionados (do STATE.itens, não filtrados)
-  const produtos = STATE.itens
-    .filter(i => STATE.selecionados.has(prodKey(i)))
-    .map(i => ({
+  // Dedup por artigo|cor: um produto pode existir tanto em pronta entrega quanto
+  // em 2S26 (meta produtiva) com a mesma referência. Prioriza sempre a versão
+  // pronta entrega quando ela existir, pra não duplicar no link do cliente.
+  const itensSelecionados = STATE.itens.filter(i => STATE.selecionados.has(prodKey(i)));
+  const porChave = new Map();
+  for(const i of itensSelecionados){
+    const k = prodKey(i);
+    const atual = porChave.get(k);
+    if(!atual || (atual._meta && !i._meta)) porChave.set(k, i);
+  }
+
+  const produtos = [...porChave.values()].map(i => ({
       artigo:       i.artigo,
       cor:          i.cor,
       descricao:    i.descricao,
@@ -2984,6 +2993,7 @@ async function criarLinkVitrine(){
       pdv:          i.pdv,
       grade:        i.grade || {},
       codigoTabela: i.codigoTabela || '',
+      tabelaEsp:    !!i.codigoTabela,
       mkp:          i.mkp || '',
       custo:        i.custo || ''
     }));
