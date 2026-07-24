@@ -7951,8 +7951,8 @@
   {
     "id": "PED-20260723152414-688",
     "createdAt": "2026-07-23T18:24:14.655Z",
-    "updatedAt": "2026-07-23T18:24:14.071Z",
-    "status": "Pendente",
+    "updatedAt": "2026-07-24T11:11:40.238Z",
+    "status": "Aprovado",
     "archived": false,
     "isDuplicate": false,
     "preposto": {
@@ -8008,7 +8008,35 @@
         ],
         "prevFaturamento": "16/08/2026"
       }
-    ]
+    ],
+    "history": [
+      {
+        "eventId": "evt_1784891347674_wcy55i",
+        "at": "2026-07-24T11:09:07.674Z",
+        "action": "created",
+        "label": "Pedido criado",
+        "statusFrom": null,
+        "statusTo": "Pendente",
+        "archivedFrom": null,
+        "archivedTo": false,
+        "clientCode": "22290",
+        "prepostoCodigo": "25471",
+        "prepostoNome": "WILLAME",
+        "notes": "",
+        "meta": {
+          "itemsCount": 1,
+          "units": 12
+        }
+      },
+      {
+        "action": "Aprovado e exportado em lote",
+        "at": "2026-07-24T11:11:19.067Z"
+      }
+    ],
+    "lastAction": "created",
+    "lastActionLabel": "Pedido criado",
+    "lastActionAt": "2026-07-24T11:09:07.674Z",
+    "exportedAt": "2026-07-24T11:11:19.067Z"
   },
   {
     "id": "PED-20260723160036-548",
