@@ -5075,9 +5075,9 @@
     "categoria": "2S26",
     "pdv": 39.99,
     "totalGeral": 499920,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 17.3869,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 14.2821428571429,
     "imagem": "OIMSA81924_BRANCO",
     "grade": {},
     "_meta": true,
@@ -5088,6 +5088,12 @@
     "categoriaOriginal": "CASUAL",
     "categoriaProduto": "",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 14.2821428571429,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 17.3869,
@@ -8125,9 +8131,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 502903,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBMW251931_AREORA",
     "grade": {},
     "_meta": true,
@@ -8140,6 +8146,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -8160,9 +8172,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 501589,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBMW251931_PTOVAN",
     "grade": {},
     "_meta": true,
@@ -8175,6 +8187,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -8195,9 +8213,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 500924,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBMW251931_VANBCO",
     "grade": {},
     "_meta": true,
@@ -8210,6 +8228,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -8230,9 +8254,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 4393,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.0826,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA231911_BCOVDA",
     "grade": {},
     "_meta": true,
@@ -8245,6 +8269,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.0826,
@@ -8265,9 +8295,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 4603,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.0826,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA231911_PTCAAL",
     "grade": {},
     "_meta": true,
@@ -8280,6 +8310,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.0826,
@@ -8300,9 +8336,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 503836,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.0826,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA231912_BCOVDA",
     "grade": {},
     "_meta": true,
@@ -8315,6 +8351,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.0826,
@@ -8335,9 +8377,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 503633,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.0826,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA231912_PTCAAL",
     "grade": {},
     "_meta": true,
@@ -8350,6 +8392,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.0826,
@@ -8370,9 +8418,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 501806,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA251921_PTPGOR",
     "grade": {},
     "_meta": true,
@@ -8385,6 +8433,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -8543,9 +8597,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 501868,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWW251932_AREORA",
     "grade": {},
     "_meta": true,
@@ -8558,6 +8612,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -8578,9 +8638,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 501923,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWW251932_PTOVAN",
     "grade": {},
     "_meta": true,
@@ -8593,6 +8653,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -8613,9 +8679,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 500645,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWW251932_VANBCO",
     "grade": {},
     "_meta": true,
@@ -8628,6 +8694,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -10407,9 +10479,9 @@
     "categoria": "2S26",
     "pdv": 159.99,
     "totalGeral": 1440,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.4",
+    "custo": 66.71583,
     "imagem": "OIWWT22153_PRETO",
     "grade": {},
     "_meta": true,
@@ -10421,7 +10493,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 66.71583,
+        "mkp": "2.4",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "UA",
@@ -10586,9 +10665,9 @@
     "categoria": "2S26",
     "pdv": 139.99,
     "totalGeral": 249,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 55.996,
     "imagem": "OBWWT23308_MRINHO",
     "grade": {},
     "_meta": true,
@@ -10600,7 +10679,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 55.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -10614,9 +10700,9 @@
     "categoria": "2S26",
     "pdv": 139.99,
     "totalGeral": 485,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 55.996,
     "imagem": "OBWWT23308_PRETO",
     "grade": {},
     "_meta": true,
@@ -10628,7 +10714,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 55.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -12520,9 +12613,9 @@
     "categoria": "2S26",
     "pdv": 89.99,
     "totalGeral": 34,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.3",
+    "custo": 39.1260869565217,
     "imagem": "OBMST24610_BLUCUR",
     "grade": {},
     "_meta": true,
@@ -12534,7 +12627,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 39.1260869565217,
+        "mkp": "2.3",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -12548,9 +12648,9 @@
     "categoria": "2S26",
     "pdv": 89.99,
     "totalGeral": 831,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 35.996,
     "imagem": "OBWST24607_MARGRE",
     "grade": {},
     "_meta": true,
@@ -12562,7 +12662,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 35.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -12576,9 +12683,9 @@
     "categoria": "2S26",
     "pdv": 89.99,
     "totalGeral": 1456,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 35.996,
     "imagem": "OBWST24607_MRINHO",
     "grade": {},
     "_meta": true,
@@ -12590,7 +12697,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 35.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -12604,9 +12718,9 @@
     "categoria": "2S26",
     "pdv": 89.99,
     "totalGeral": 1304,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 35.996,
     "imagem": "OBWST24607_PRETO",
     "grade": {},
     "_meta": true,
@@ -12618,7 +12732,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 35.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -13731,9 +13852,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 1203,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 28.2565,
+    "codigoTabela": "E4796",
+    "mkp": "2.5",
+    "custo": 25.996,
     "imagem": "OBMSR241922_BFCBPO",
     "grade": {},
     "_meta": true,
@@ -13746,6 +13867,12 @@
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 25.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 28.2565,
@@ -13766,9 +13893,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 1961,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 28.2565,
+    "codigoTabela": "E4796",
+    "mkp": "2.5",
+    "custo": 25.996,
     "imagem": "OBMSR241922_FBLBOB",
     "grade": {},
     "_meta": true,
@@ -13781,6 +13908,12 @@
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 25.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 28.2565,
@@ -13801,9 +13934,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 1275,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 28.2565,
+    "codigoTabela": "E4796",
+    "mkp": "2.5",
+    "custo": 25.996,
     "imagem": "OBWSR241921_BBABAB",
     "grade": {},
     "_meta": true,
@@ -13816,6 +13949,12 @@
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 25.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 28.2565,
@@ -13836,9 +13975,9 @@
     "categoria": "2S26",
     "pdv": 59.99,
     "totalGeral": 854,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 28.2565,
+    "codigoTabela": "E4796",
+    "mkp": "2.5",
+    "custo": 25.996,
     "imagem": "OBWSR241921_BFCBPO",
     "grade": {},
     "_meta": true,
@@ -13851,6 +13990,12 @@
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 25.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 28.2565,
@@ -27433,9 +27578,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 3046,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBMW251931_AREORA",
     "grade": {
       "39/44": 3046
@@ -27443,6 +27588,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -27463,9 +27614,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 1732,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBMW251931_PTOVAN",
     "grade": {
       "39/44": 1732
@@ -27473,6 +27624,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -27493,9 +27650,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 1067,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBMW251931_VANBCO",
     "grade": {
       "39/44": 1067
@@ -27503,6 +27660,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -27523,9 +27686,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 4393,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.0826,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA231911_BCOVDA",
     "grade": {
       "33/38": 4393
@@ -27533,6 +27696,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.0826,
@@ -27553,9 +27722,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 4603,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.0826,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA231911_PTCAAL",
     "grade": {
       "33/38": 4603
@@ -27563,6 +27732,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.0826,
@@ -27583,9 +27758,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 4333,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.0826,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA231912_BCOVDA",
     "grade": {
       "39/44": 4333
@@ -27593,6 +27768,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.0826,
@@ -27613,9 +27794,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 4130,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.0826,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA231912_PTCAAL",
     "grade": {
       "39/44": 4130
@@ -27623,6 +27804,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.0826,
@@ -27643,9 +27830,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 1925,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWA251921_PTPGOR",
     "grade": {
       "33/38": 1925
@@ -27653,6 +27840,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -27763,9 +27956,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 2083,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWW251932_AREORA",
     "grade": {
       "33/38": 2083
@@ -27773,6 +27966,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -27793,9 +27992,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 2138,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWW251932_PTOVAN",
     "grade": {
       "33/38": 2138
@@ -27803,6 +28002,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -27823,9 +28028,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 860,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 26.08,
+    "codigoTabela": "E4796",
+    "mkp": "2.8",
+    "custo": 21.425,
     "imagem": "OBWW251932_VANBCO",
     "grade": {
       "33/38": 860
@@ -27833,6 +28038,12 @@
     "categoriaOriginal": "CORRIDA",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 21.425,
+        "mkp": "2.8",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 26.08,
@@ -28593,9 +28804,9 @@
     "categoria": "VESTUARIO",
     "pdv": 159.99,
     "totalGeral": 1440,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.4",
+    "custo": 66.71583,
     "imagem": "OIWWT22153_PRETO",
     "grade": {
       "P": 337,
@@ -28605,7 +28816,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 66.71583,
+        "mkp": "2.4",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -28671,9 +28889,9 @@
     "categoria": "VESTUARIO",
     "pdv": 139.99,
     "totalGeral": 249,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 55.996,
     "imagem": "OBWWT23308_MRINHO",
     "grade": {
       "P": 31,
@@ -28683,7 +28901,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 55.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -28697,9 +28922,9 @@
     "categoria": "VESTUARIO",
     "pdv": 139.99,
     "totalGeral": 485,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 55.996,
     "imagem": "OBWWT23308_PRETO",
     "grade": {
       "P": 53,
@@ -28709,7 +28934,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 55.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -30145,9 +30377,9 @@
     "categoria": "VESTUARIO",
     "pdv": 89.99,
     "totalGeral": 831,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 35.996,
     "imagem": "OBWST24607_MARGRE",
     "grade": {
       "P": 80,
@@ -30157,7 +30389,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 35.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -30171,9 +30410,9 @@
     "categoria": "VESTUARIO",
     "pdv": 89.99,
     "totalGeral": 1456,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 35.996,
     "imagem": "OBWST24607_MRINHO",
     "grade": {
       "P": 53,
@@ -30183,7 +30422,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 35.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
@@ -31048,9 +31294,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 1203,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 28.2565,
+    "codigoTabela": "E4796",
+    "mkp": "2.5",
+    "custo": 25.996,
     "imagem": "OBMSR241922_BFCBPO",
     "grade": {
       "39/44": 1203
@@ -31058,6 +31304,12 @@
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 25.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 28.2565,
@@ -31078,9 +31330,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 1961,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 28.2565,
+    "codigoTabela": "E4796",
+    "mkp": "2.5",
+    "custo": 25.996,
     "imagem": "OBMSR241922_FBLBOB",
     "grade": {
       "39/44": 1961
@@ -31088,6 +31340,12 @@
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 25.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 28.2565,
@@ -31108,9 +31366,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 1275,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 28.2565,
+    "codigoTabela": "E4796",
+    "mkp": "2.5",
+    "custo": 25.996,
     "imagem": "OBWSR241921_BBABAB",
     "grade": {
       "33/38": 1275
@@ -31118,6 +31376,12 @@
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 25.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 28.2565,
@@ -31138,9 +31402,9 @@
     "categoria": "ACESSORIO",
     "pdv": 59.99,
     "totalGeral": 854,
-    "codigoTabela": "E4550",
-    "mkp": "2.3",
-    "custo": 28.2565,
+    "codigoTabela": "E4796",
+    "mkp": "2.5",
+    "custo": 25.996,
     "imagem": "OBWSR241921_BFCBPO",
     "grade": {
       "33/38": 854
@@ -31148,6 +31412,12 @@
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "ACESSORIO",
     "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4796",
+        "custo": 25.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      },
       {
         "codigoTabela": "E4550",
         "custo": 28.2565,
@@ -37082,9 +37352,9 @@
     "categoria": "VESTUARIO",
     "pdv": 89.99,
     "totalGeral": 1304,
-    "codigoTabela": "",
-    "mkp": "",
-    "custo": "",
+    "codigoTabela": "E4797",
+    "mkp": "2.5",
+    "custo": 35.996,
     "imagem": "OBWST24607_PRETO",
     "grade": {
       "P": 2,
@@ -37094,7 +37364,14 @@
     },
     "categoriaOriginal": "TREINO",
     "categoriaProduto": "VESTUARIO",
-    "tabelasEspeciais": []
+    "tabelasEspeciais": [
+      {
+        "codigoTabela": "E4797",
+        "custo": 35.996,
+        "mkp": "2.5",
+        "vigencia": "agosto"
+      }
+    ]
   },
   {
     "marca": "OLY",
