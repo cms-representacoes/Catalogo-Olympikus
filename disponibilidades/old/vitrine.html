@@ -1336,9 +1336,89 @@
       transition:background .15s;
     }
     .load-more-btn:hover{ background:var(--accent-light); }
+
+    /* ── Tema escuro ──────────────────────────────────────────────────── */
+    body.theme-dark{
+      --bg:#1a1f2b; --card:#242b38; --card2:#2b3341;
+      --text:#e8eaed; --muted:#9aa4b5; --line:#333d4d;
+    }
+    body.theme-dark .main-header{ background:rgba(36,43,56,.92); }
+body.theme-dark .btn-fav{ border:1px solid var(--line); }
+body.theme-dark .btn-fav:hover{ background:var(--card); }
+body.theme-dark .btn-zoom{ border:1px solid var(--line); }
+body.theme-dark .btn-zoom:hover{ background:var(--card); }
+body.theme-dark .btn-zoom i{ color:var(--muted); }
+body.theme-dark .card-img{ background:var(--card2); border-bottom:1px solid var(--line); }
+body.theme-dark .fab-link{ background:#3d4759; }
+body.theme-dark .link-modal-card{ background:var(--card); }
+body.theme-dark .link-modal-card input, body.theme-dark .link-modal-card select{ background:var(--card); }
+body.theme-dark .link-display{ background:var(--card2); }
+body.theme-dark .link-btn.copy{ background:#3d4759; }
+body.theme-dark .toast.info{ background:var(--card); }
+body.theme-dark .cli-card{ background:var(--card); }
+body.theme-dark .cli-card-grade .cel{ background:var(--card2); }
+body.theme-dark .cli-card-btn.remove{ background:var(--card); }
+body.theme-dark .cli-fab .badge{ background:var(--card); color:var(--text); }
+body.theme-dark .cli-zoom-img{ background:var(--card); }
+body.theme-dark .cli-card-btn.detalhar{ background:var(--card); }
+body.theme-dark .cli-grade-card{ background:var(--card); }
+body.theme-dark .cli-tam-ctrl button{ background:var(--card); }
+body.theme-dark .cli-tam-ctrl button:disabled{ background:var(--card2); }
+body.theme-dark .cli-qty-stepper button{ background:var(--card); }
+body.theme-dark .cli-grade-foot{ background:#3d4759; }
+body.theme-dark .toast-info{ background:var(--card2); color:var(--text); border:1px solid var(--line); }
+body.theme-dark .grade-pill{ background:var(--card2); border:0.5px solid var(--line); }
+body.theme-dark .grade-pill .gp-num{ color:var(--muted); }
+body.theme-dark .grade-pill .gp-qty{ color:var(--text); }
+body.theme-dark .fab-cart .badge{ background:#3d4759; }
+body.theme-dark .modal-sheet{ background:var(--card); }
+body.theme-dark .modal-foot{ background:var(--card2); }
+body.theme-dark .cart-item{ background:var(--card); }
+body.theme-dark .cart-grade-box{ background:var(--card2); }
+body.theme-dark .cart-grade-box.ok{ background:var(--card); }
+body.theme-dark .cart-grade-ctrl button{ background:var(--card); }
+body.theme-dark .cart-grade-ctrl button:disabled{ background:var(--card2); }
+body.theme-dark .cart-clear-grade{ background:var(--card); }
+body.theme-dark .cart-clear-grade:hover{ background:var(--card2); }
+body.theme-dark .cart-data-todos input{ background:var(--card); }
+body.theme-dark .confirm-card{ background:var(--card); }
+body.theme-dark .confirm-btn-cancel{ background:var(--card); }
+body.theme-dark .confirm-btn-cancel:hover{ background:var(--card2); }
+body.theme-dark .cart-item-fields input{ background:var(--card); }
+body.theme-dark .export-grid input, body.theme-dark .export-grid select{ background:var(--card); }
+body.theme-dark .btn-ghost{ background:var(--card); }
+body.theme-dark .btn-ghost:hover{ background:var(--card2); }
+body.theme-dark .btn-danger-ghost{ background:var(--card); }
+body.theme-dark .mp-card{ background:var(--card); }
+body.theme-dark .mp-head .ic{ background:var(--card2); color:var(--text); }
+body.theme-dark .mp-seletor select{ background:var(--card); }
+body.theme-dark .mp-seletor .btn{ background:#3d4759; }
+body.theme-dark .mp-btn.reativar{ background:var(--card); }
+body.theme-dark .mp-btn.ghost{ background:var(--card); }
+body.theme-dark .mp-barra-sel{ background:#3d4759; }
+body.theme-dark .mp-foot{ background:var(--card2); }
+body.theme-dark .mp-tab-cnt{ color:var(--muted); }
+body.theme-dark .mp-busca-wrap{ background:var(--card2); }
+body.theme-dark .mp-busca-input{ background:var(--card); }
+body.theme-dark .mp-pill{ background:var(--card); color:var(--muted); }
+body.theme-dark .des-card{ background:var(--card); }
+body.theme-dark .des-tag-tipo.catalogo{ background:var(--card2); }
+body.theme-dark .des-cor-linha{ border-top:1px dashed var(--line); }
+body.theme-dark .des-cor-qtde.zero{ background:var(--card2); }
+body.theme-dark .btn-coracao{ background:var(--card2); }
+body.theme-dark .chip-ativo{ background:var(--card2); }
+body.theme-dark .campanha-pill2{ background:var(--card); }
+body.theme-dark .drawer-panel{ background:var(--card); }
+body.theme-dark .drawer-select{ background:var(--card); }
+body.theme-dark .drawer-foot{ background:var(--card2); }
+body.theme-dark .drawer-btn-ghost{ background:var(--card); }
+body.theme-dark .load-more-btn{ background:var(--card); }
   </style>
 </head>
 <body>
+<script>
+  try{ if(localStorage.getItem('cms_vitrine_tema')==='dark') document.body.classList.add('theme-dark'); }catch(e){}
+</script>
 
 <div id="toastWrap" class="toast-wrap"></div>
 
@@ -1457,6 +1537,9 @@
 
     <!-- PDF -->
     <div class="flex items-center gap-2">
+      <button id="btnThemeToggle" onclick="toggleTheme()" title="Alternar tema" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">
+        <i class="fa-solid fa-moon text-sm" id="themeToggleIcon"></i>
+      </button>
       <button onclick="gerarPDF()" id="btnPDF" class="fab-pdf" style="position:static;transform:none;opacity:1;display:none;pointer-events:auto">
         <i class="fa-solid fa-file-pdf text-sm"></i>
         PDF <span id="pdfCount" class="bg-slate-900 text-[var(--accent)] text-[10px] font-extrabold rounded-full px-1.5 py-0.5">0</span>
@@ -3789,6 +3872,19 @@ function ordenarSelecaoPdf(arr, modo){
 }
 
 // Abre o modal de ordenação do PDF (valida que há seleção na visão ativa)
+function aplicarTema(tema){
+  document.body.classList.toggle('theme-dark', tema === 'dark');
+  const icon = $('themeToggleIcon');
+  if(icon) icon.className = tema === 'dark' ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
+}
+function toggleTheme(){
+  const atual = document.body.classList.contains('theme-dark') ? 'dark' : 'light';
+  const novo = atual === 'dark' ? 'light' : 'dark';
+  try{ localStorage.setItem('cms_vitrine_tema', novo); }catch(e){}
+  aplicarTema(novo);
+}
+aplicarTema(document.body.classList.contains('theme-dark') ? 'dark' : 'light');
+
 function gerarPDF(){
   const querMeta = STATE.filtroVisao === 'meta';
   const n = STATE.itens.filter(i => STATE.selecionados.has(prodKey(i)) && (!!i._meta === querMeta)).length;

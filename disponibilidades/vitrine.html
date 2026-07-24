@@ -139,6 +139,8 @@
 
     /* Chips */
     .chip{ display:inline-flex; align-items:center; gap:4px; border-radius:999px; padding:3px 10px; font-size:11px; font-weight:700; }
+    .chip-tabela{ background:#f5f3ff; color:#6d28d9; border:1px solid #ddd6fe; font-size:10px; transition:all .12s; }
+    .chip-tabela.ativa{ background:#7c3aed; color:#fff; border-color:#7c3aed; }
     .chip-ua{ background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; }
     .chip-oly{ background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
 
@@ -1343,6 +1345,8 @@
       --text:#e8eaed; --muted:#9aa4b5; --line:#333d4d;
     }
     body.theme-dark .main-header{ background:rgba(36,43,56,.92); }
+    body.theme-dark .chip-tabela{ background:#2b2438; color:#c9a3f5; border-color:#4a3d63; }
+    body.theme-dark .chip-tabela.ativa{ background:#7c3aed; color:#fff; border-color:#7c3aed; }
 body.theme-dark .btn-fav{ border:1px solid var(--line); }
 body.theme-dark .btn-fav:hover{ background:var(--card); }
 body.theme-dark .btn-zoom{ border:1px solid var(--line); }
@@ -1993,7 +1997,10 @@ const STATE = {
   // Desejados / Watchlist
   vendedorCod: null,           // código do vendedor (definido no 1º acesso)
   vendedorNome: null,          // nome do vendedor
-  desejos: new Set()           // chaves "ARTIGO|COR" favoritadas
+  desejos: new Set(),          // chaves "ARTIGO|COR" favoritadas
+  // Quando um artigo tem mais de 1 campanha de tabela especial vigente ao
+  // mesmo tempo, guarda qual delas o vendedor escolheu ver: key = artigo|cor
+  campanhaSelecionada: new Map()
 };
 
 // Filtros persistem só na sessão (zera ao fechar o navegador)
@@ -2521,7 +2528,15 @@ function renderCampanhas(){
   const bar  = $('campanhasBar');
   const wrap = $('campanhasPills');
   if(!bar || !wrap) return;
-  const codigos = [...new Set(STATE.itens.map(i => i.codigoTabela).filter(Boolean))].sort();
+  const codigosSet = new Set();
+  for(const i of STATE.itens){
+    if(i.tabelasEspeciais && i.tabelasEspeciais.length){
+      for(const c of i.tabelasEspeciais) if(c.codigoTabela) codigosSet.add(c.codigoTabela);
+    } else if(i.codigoTabela){
+      codigosSet.add(i.codigoTabela);
+    }
+  }
+  const codigos = [...codigosSet].sort();
   if(!codigos.length){
     bar.classList.add('hidden');
     wrap.innerHTML = '';
@@ -2655,6 +2670,15 @@ function limparBusca(){
   applyFilters();
 }
 
+// Um item pode ter mais de uma campanha (tabelasEspeciais); confere se
+// alguma delas bate com o código do filtro selecionado.
+function temCampanha(item, codigo){
+  if(item.tabelasEspeciais && item.tabelasEspeciais.length){
+    return item.tabelasEspeciais.some(c => c.codigoTabela === codigo);
+  }
+  return (item.codigoTabela||'') === codigo;
+}
+
 function applyFilters(){
   const inp = $('searchInput');
   const q = (inp?.value || '').toLowerCase().trim();
@@ -2668,7 +2692,7 @@ function applyFilters(){
       if(STATE.filtroVisao === 'meta') return !!item._meta;
       return !item._meta;
     })
-    .filter(item => !STATE.filtroCampanha || (item.codigoTabela||'') === STATE.filtroCampanha)
+    .filter(item => !STATE.filtroCampanha || temCampanha(item, STATE.filtroCampanha))
     .filter(item => STATE.filtroGenero.size === 0 || STATE.filtroGenero.has(String(item.genero||'').trim().toUpperCase()))
     .filter(item => STATE.filtroCategoria.size === 0 || STATE.filtroCategoria.has(categoriaKey(categoriaEfetiva(item))))
     .filter(item => {
@@ -2707,6 +2731,18 @@ function ordenarLista(lista, modo){
 
 // ── RENDER CARDS ──────────────────────────────────────────────────────────────
 function prodKey(item){ return `${item.artigo}|${item.cor}`; }
+
+// Retorna a campanha de tabela especial "ativa" pra um item — a que o
+// vendedor escolheu (se o artigo tiver mais de uma vigente) ou a primeira
+// disponível por padrão. Usado no card, no link do cliente e no PDF.
+function getCampanhaAtiva(item){
+  const campanhas = (item.tabelasEspeciais && item.tabelasEspeciais.length)
+    ? item.tabelasEspeciais
+    : (item.codigoTabela ? [{ codigoTabela:item.codigoTabela, mkp:item.mkp, custo:item.custo }] : []);
+  if(!campanhas.length) return null;
+  const codigoSel = STATE.campanhaSelecionada.get(prodKey(item));
+  return campanhas.find(c => c.codigoTabela === codigoSel) || campanhas[0];
+}
 
 // Item está nos Desejados do vendedor? (robusto a maiúsc/minúsc)
 function ehDesejo(item){
@@ -2767,8 +2803,17 @@ function buildCardHtml(item){
     ? `<span class="chip" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;border:none;font-size:10px;font-weight:900;letter-spacing:.3px;box-shadow:0 1px 3px rgba(124,58,237,.4)"><i class="fa-solid fa-industry" style="font-size:9px"></i> 2S26</span>`
     : '';
 
-  const chipTabela = isTabEsp && !ehMeta
-    ? `<span class="chip" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-size:10px"><i class="fa-solid fa-tag" style="font-size:9px"></i> ${safeHtml(item.codigoTabela)}</span>`
+  // Um artigo pode ter mais de 1 campanha vigente ao mesmo tempo (ex: agosto +
+  // dezembro). Mostra uma etiqueta por campanha; clicando, troca qual delas
+  // fica "ativa" no box de MKP/Custo abaixo — sem duplicar o card do produto.
+  const campanhas = (item.tabelasEspeciais && item.tabelasEspeciais.length)
+    ? item.tabelasEspeciais
+    : (item.codigoTabela ? [{ codigoTabela:item.codigoTabela, mkp:item.mkp, custo:item.custo }] : []);
+  const campanhaAtiva = getCampanhaAtiva(item);
+  const codigoSelecionado = campanhaAtiva ? campanhaAtiva.codigoTabela : '';
+
+  const chipTabela = !ehMeta && campanhas.length
+    ? campanhas.map(c => `<span class="chip chip-tabela${c.codigoTabela===codigoSelecionado?' ativa':''}" data-codigo="${safeHtml(c.codigoTabela)}"${campanhas.length>1?` onclick="event.stopPropagation();selecionarCampanha('${safeHtml(key)}','${safeHtml(c.codigoTabela)}')" style="cursor:pointer"`:''}><i class="fa-solid fa-tag" style="font-size:9px"></i> ${safeHtml(c.codigoTabela)}</span>`).join('')
     : '';
 
   // Empresa e quinzena — só para não tabela especial e não meta
@@ -2814,14 +2859,37 @@ function buildCardHtml(item){
         <div class="text-lg font-black" style="color:var(--accent)">R$ ${Number(item.pdv||0).toFixed(2)}</div>
         <div class="text-xs font-semibold" style="color:var(--muted)">${ehMeta?'Total':'T.'} ${totalExibir.toLocaleString('pt-BR')} ${ehMeta?'pares':'un'}</div>
       </div>
-      ${isTabEsp && !ehMeta && (item.mkp || item.custo) ? `
-      <div class="flex items-center gap-3 mb-2 px-3 py-2 rounded-xl" style="background:#f8fafc;border:0.5px solid #e2e8f0">
-        ${item.mkp ? `<div class="text-xs"><span style="color:var(--muted);font-weight:600">MKP</span> <span class="font-extrabold" style="color:#6d28d9">${safeHtml(item.mkp)}</span></div>` : ''}
-        ${item.custo ? `<div class="text-xs ml-auto"><span style="color:var(--muted);font-weight:600">Custo</span> <span class="font-bold" style="color:var(--text)">R$ ${Number(item.custo).toFixed(2)}</span></div>` : ''}
-      </div>` : ''}
+      <div class="tabesp-slot">${tabEspBoxHtml(campanhaAtiva, ehMeta)}</div>
       ${gradeHtml}
     </div>`;
   return card;
+}
+
+// Monta o box de MKP/Custo pra uma campanha específica. Reusado tanto no
+// render inicial do card quanto ao trocar de campanha (selecionarCampanha).
+function tabEspBoxHtml(camp, ehMeta){
+  if(ehMeta || !camp || (!camp.mkp && !camp.custo)) return '';
+  return `<div class="flex items-center gap-3 mb-2 px-3 py-2 rounded-xl" style="background:#f8fafc;border:0.5px solid #e2e8f0">
+    ${camp.mkp ? `<div class="text-xs"><span style="color:var(--muted);font-weight:600">MKP</span> <span class="font-extrabold" style="color:#6d28d9">${safeHtml(camp.mkp)}</span></div>` : ''}
+    ${camp.custo ? `<div class="text-xs ml-auto"><span style="color:var(--muted);font-weight:600">Custo</span> <span class="font-bold" style="color:var(--text)">R$ ${Number(camp.custo).toFixed(2)}</span></div>` : ''}
+  </div>`;
+}
+
+// Troca qual campanha (tabela especial) está "ativa" pra um produto com mais
+// de uma vigente ao mesmo tempo. Atualiza só o card em questão (sem re-render
+// da lista inteira) e guarda a escolha em STATE pra valer no link/PDF também.
+function selecionarCampanha(key, codigo){
+  STATE.campanhaSelecionada.set(key, codigo);
+  const card = document.querySelector(`[data-key="${key}"]`);
+  if(!card) return;
+  card.querySelectorAll('.chip-tabela').forEach(el => {
+    el.classList.toggle('ativa', el.dataset.codigo === codigo);
+  });
+  const querMeta = STATE.filtroVisao === 'meta';
+  const item = STATE.itens.find(i => prodKey(i) === key && !!i._meta === querMeta);
+  if(!item) return;
+  const slot = card.querySelector('.tabesp-slot');
+  if(slot) slot.innerHTML = tabEspBoxHtml(getCampanhaAtiva(item), false);
 }
 
 // Ordena chaves de quinzena cronologicamente
@@ -3072,22 +3140,25 @@ async function criarLinkVitrine(){
     if(!atual || (atual._meta && !i._meta)) porChave.set(k, i);
   }
 
-  const produtos = [...porChave.values()].map(i => ({
-      artigo:       i.artigo,
-      cor:          i.cor,
-      descricao:    i.descricao,
-      categoria:    i.categoria,
-      categoriaProduto: i.categoriaProduto || '',
-      linha:        i.linha,
-      genero:       i.genero,
-      empresa:      i.empresa,
-      pdv:          i.pdv,
-      grade:        i.grade || {},
-      codigoTabela: i.codigoTabela || '',
-      tabelaEsp:    !!i.codigoTabela,
-      mkp:          i.mkp || '',
-      custo:        i.custo || ''
-    }));
+  const produtos = [...porChave.values()].map(i => {
+      const camp = getCampanhaAtiva(i);
+      return {
+        artigo:       i.artigo,
+        cor:          i.cor,
+        descricao:    i.descricao,
+        categoria:    i.categoria,
+        categoriaProduto: i.categoriaProduto || '',
+        linha:        i.linha,
+        genero:       i.genero,
+        empresa:      i.empresa,
+        pdv:          i.pdv,
+        grade:        i.grade || {},
+        codigoTabela: camp ? camp.codigoTabela : '',
+        tabelaEsp:    !!camp,
+        mkp:          camp ? (camp.mkp || '') : '',
+        custo:        camp ? (camp.custo || '') : ''
+      };
+    });
 
   if(!produtos.length){
     showToast('Nenhum produto selecionado.', 'error');
@@ -4121,20 +4192,21 @@ async function gerarPDFComOrdem(modo){
         drawBox(tx + boxW2 + boxGap, boxW2, 'PDV', `R$ ${Number(item.pdv||0).toFixed(2)}`, C.accent, 12);
       } else {
         const boxW   = (txW - boxGap*2) / 3;
-        const temTab = item.codigoTabela && (item.mkp || item.custo);
+        const camp = getCampanhaAtiva(item);
+        const temTab = camp && (camp.mkp || camp.custo);
         // Box 1 — MKP ou PREV. FATURAMENTO
-        if(temTab && item.mkp && opcoes.mkp !== false) drawBox(tx, boxW, 'MKP', String(item.mkp), C.text, 11);
+        if(temTab && camp.mkp && opcoes.mkp !== false) drawBox(tx, boxW, 'MKP', String(camp.mkp), C.text, 11);
         else                   drawBox(tx, boxW, 'PREV. FATURAMENTO', String(fixEncoding(item.prevFat||'—')), C.text, 9);
         // Box 2 — PDV
         const b2 = tx + boxW + boxGap;
         drawBox(b2, boxW, 'PDV', `R$ ${Number(item.pdv||0).toFixed(2)}`, C.accent, 12);
         // Box 3 — CUSTO (De/Por ou normal) ou T. GERAL
         const b3 = b2 + boxW + boxGap;
-        const temCustoTab = temTab && item.custo && opcoes.custo !== false;
+        const temCustoTab = temTab && camp.custo && opcoes.custo !== false;
         if(temCustoTab && opcoes.economia !== false){
-          drawBoxDePor(b3, boxW, 'CUSTO', Number(item.pdv||0)/2, Number(item.custo), C.text);
+          drawBoxDePor(b3, boxW, 'CUSTO', Number(item.pdv||0)/2, Number(camp.custo), C.text);
         } else if(temCustoTab){
-          drawBox(b3, boxW, 'CUSTO', `R$ ${Number(item.custo).toFixed(2)}`, C.text, 11);
+          drawBox(b3, boxW, 'CUSTO', `R$ ${Number(camp.custo).toFixed(2)}`, C.text, 11);
         } else {
           drawBox(b3, boxW, 'T. GERAL', Number(item.totalGeral||0).toLocaleString('pt-BR'), C.text, 11);
         }

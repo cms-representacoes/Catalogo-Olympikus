@@ -2277,6 +2277,16 @@ function chaveTabela(artigo){
   return String(artigo||'').trim().toUpperCase();
 }
 
+// Compatibilidade: dados salvos antes dessa mudança guardavam 1 objeto por
+// artigo (não uma lista). Aqui a gente normaliza pra lista, sempre.
+function normalizarTabelaEspecial(obj){
+  const out = {};
+  for(const [k, v] of Object.entries(obj || {})){
+    out[k] = Array.isArray(v) ? v : [v];
+  }
+  return out;
+}
+
 async function abrirTabelaEspecial(){
   $('modalTabelaEsp').classList.remove('hidden');
   $('tabEspUpload').classList.remove('hidden');
@@ -2291,7 +2301,7 @@ async function abrirTabelaEspecial(){
   // Carrega a tabela já salva (se houver)
   try{
     const res = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getTabelaEspecial'}) });
-    _tabelaEspecial = res.ok ? (await res.json() || {}) : {};
+    _tabelaEspecial = normalizarTabelaEspecial(res.ok ? (await res.json() || {}) : {});
   }catch(e){ _tabelaEspecial = {}; }
   const n = Object.keys(_tabelaEspecial).length;
   const st = $('tabEspStatus');
@@ -2387,10 +2397,11 @@ async function processarTabelaEspXlsx(file){
 }
 
 // Chamado depois que o usuário preenche as datas de cada vigência encontrada.
-// Resolve, por ARTIGO, qual linha vale HOJE (se o artigo tiver mais de uma).
+// Anexa o período (início/fim) em CADA linha — não escolhe mais uma "vencedora"
+// por artigo. Quem decide quais campanhas aparecem pro vendedor hoje é o
+// aplicarTabelaEspecial(), na hora de cruzar com o estoque (filtro por data).
 function confirmarVigenciasTabEsp(){
-  const hoje = new Date(); hoje.setHours(0,0,0,0);
-  const periodos = {};  // nome vigência → {inicio: Date|null, fim: Date|null}
+  const periodos = {};  // nome vigência → {inicio: Date, fim: Date}
   for(let i = 0; i < _tabEspVigencias.length; i++){
     const vi = $(`vigInicio_${i}`).value;
     const vf = $(`vigFim_${i}`).value;
@@ -2398,31 +2409,13 @@ function confirmarVigenciasTabEsp(){
       showToast(`Preencha o período da vigência "${_tabEspVigencias[i]}"`, 'error');
       return;
     }
-    periodos[_tabEspVigencias[i]] = { inicio: new Date(vi+'T00:00:00'), fim: new Date(vf+'T23:59:59') };
+    periodos[_tabEspVigencias[i]] = { inicio: vi, fim: vf };
   }
 
-  // Agrupa as linhas brutas por artigo
-  const porArtigo = {};
-  for(const r of _tabEspRowsBrutas){
-    (porArtigo[r.artigo] = porArtigo[r.artigo] || []).push(r);
-  }
-
-  let semVigenciaAtiva = 0;
-  const resolvidas = [];
-  for(const [artigo, linhas] of Object.entries(porArtigo)){
-    if(linhas.length === 1){ resolvidas.push(linhas[0]); continue; }
-    // Mais de uma linha pro mesmo artigo → pega a que está valendo hoje
-    const ativa = linhas.find(r => {
-      const p = periodos[r.vigencia];
-      return p && hoje >= p.inicio && hoje <= p.fim;
-    });
-    if(ativa) resolvidas.push(ativa);
-    else semVigenciaAtiva++;
-  }
-
-  if(semVigenciaAtiva > 0){
-    showToast(`⚠️ ${semVigenciaAtiva} artigo(s) sem nenhuma vigência válida pra hoje — ficaram de fora`, 'warning');
-  }
+  const resolvidas = _tabEspRowsBrutas.map(r => {
+    const p = periodos[r.vigencia];
+    return { ...r, vigInicio: p ? p.inicio : null, vigFim: p ? p.fim : null };
+  });
 
   $('tabEspVigencias').classList.add('hidden');
   montarTabEspPendente(resolvidas, 0, _tabEspFileName || 'planilha', true);
@@ -2430,18 +2423,23 @@ function confirmarVigenciasTabEsp(){
 
 // Monta o mapa final (_tabEspPendente) e mostra o preview — usado tanto no caminho
 // direto (sem ambiguidade de vigência) quanto depois de confirmarVigenciasTabEsp().
+// Agora guarda uma LISTA de campanhas por artigo (não sobrescreve mais) — um
+// artigo pode ter mais de uma tabela especial vigente ao mesmo tempo.
 function montarTabEspPendente(linhas, ignoradas, fileName, jaResolvidoPorVigencia){
   const mapa = {};
   const porMarca = { OLY:0, UA:0, '—':0 };
   for(const r of linhas){
     const k = chaveTabela(r.artigo);
-    mapa[k] = {
+    if(!mapa[k]) mapa[k] = [];
+    mapa[k].push({
       codigoTabela: r.codigoTabela,
       custo: r.custo,
       mkp:   r.mkp,
       marca: r.marca || '',
-      vigencia: r.vigencia || ''
-    };
+      vigencia: r.vigencia || '',
+      vigInicio: r.vigInicio || null,
+      vigFim:    r.vigFim    || null
+    });
     porMarca[r.marca || '—'] = (porMarca[r.marca || '—'] || 0) + 1;
   }
 
@@ -2451,26 +2449,35 @@ function montarTabEspPendente(linhas, ignoradas, fileName, jaResolvidoPorVigenci
   $('tabEspPreview').classList.remove('hidden');
   $('tabEspPreviewTitle').textContent = `${fileName} — ${linhas.length} linha(s)`;
 
-  const entries = Object.entries(mapa);
-  $('tabEspPreviewBody').innerHTML = entries.slice(0, 8).map(([k, v]) => {
+  // Preview mostra cada CAMPANHA (linha), não só cada artigo — assim dá pra ver
+  // quando um artigo tem mais de uma tabela especial junta.
+  const linhasPreview = [];
+  for(const [k, campanhas] of Object.entries(mapa)){
+    for(const v of campanhas) linhasPreview.push([k, v]);
+  }
+  $('tabEspPreviewBody').innerHTML = linhasPreview.slice(0, 8).map(([k, v]) => {
     const corMarca = v.marca === 'UA' ? '#dc2626' : (v.marca === 'OLY' ? '#2563eb' : '#94a3b8');
+    const periodo = (v.vigInicio && v.vigFim)
+      ? `${new Date(v.vigInicio).toLocaleDateString('pt-BR')}–${new Date(v.vigFim).toLocaleDateString('pt-BR')}`
+      : (v.vigencia || '—');
     return `<tr class="border-t border-slate-100">
       <td class="px-3 py-1.5 font-bold text-slate-700">${safeHtml(k)}</td>
       <td class="px-3 py-1.5"><span class="rounded-full px-2 py-0.5 text-[10px] font-bold" style="background:${corMarca}18;color:${corMarca}">${safeHtml(v.marca || '—')}</span></td>
-      <td class="px-3 py-1.5 text-slate-500">${safeHtml(v.vigencia || '—')}</td>
+      <td class="px-3 py-1.5 text-slate-500">${safeHtml(periodo)}</td>
       <td class="px-3 py-1.5"><span class="rounded-full px-2 py-0.5 text-[10px] font-bold" style="background:rgba(192,132,252,.15);color:#7c3aed">${safeHtml(v.codigoTabela)}</span></td>
       <td class="px-3 py-1.5 text-right text-slate-600">R$ ${(v.custo||0).toFixed(2)}</td>
       <td class="px-3 py-1.5 text-right text-slate-600">${safeHtml(v.mkp||'—')}</td>
     </tr>`;
   }).join('');
-  $('tabEspPreviewMore').textContent = entries.length > 8 ? `+ ${entries.length - 8} produto(s)` : '';
+  $('tabEspPreviewMore').textContent = linhasPreview.length > 8 ? `+ ${linhasPreview.length - 8} campanha(s)` : '';
 
+  const nMultiplas = Object.values(mapa).filter(arr => arr.length > 1).length;
   const resumoMarca = [
     porMarca.OLY ? `${porMarca.OLY} OLY` : '',
     porMarca.UA ? `${porMarca.UA} UA` : '',
     porMarca['—'] ? `${porMarca['—']} sem marca` : ''
   ].filter(Boolean).join(' · ');
-  $('tabEspResumo').innerHTML = `<b>${total}</b> produto(s) válido(s)` + (resumoMarca ? ` (${resumoMarca})` : '') + (ignoradas ? ` · ${ignoradas} linha(s) ignorada(s)` : '');
+  $('tabEspResumo').innerHTML = `<b>${total}</b> produto(s) válido(s)` + (resumoMarca ? ` (${resumoMarca})` : '') + (nMultiplas ? ` · <b>${nMultiplas}</b> com mais de 1 campanha` : '') + (ignoradas ? ` · ${ignoradas} linha(s) ignorada(s)` : '');
   $('btnSalvarTabEsp').disabled = total === 0;
 }
 
@@ -2521,21 +2528,37 @@ async function salvarTabelaEspecial(){
 }
 
 // Aplica a tabela especial a um item (cruzamento). Retorna o item modificado.
+// Um artigo pode ter mais de uma campanha guardada (ex: agosto + dezembro).
+// Aqui filtramos pelas que estão dentro do período de vigência HOJE (ou sem
+// data nenhuma = sempre válida) e guardamos TODAS em item.tabelasEspeciais —
+// os campos codigoTabela/custo/mkp continuam preenchidos com a primeira, só
+// por compatibilidade com telas antigas (PDF, tabela do admin etc.).
 function aplicarTabelaEspecial(item){
   if(!item || !item.artigo) return item;
   const k = chaveTabela(item.artigo);
-  const ref = _tabelaEspecial[k];
-  // Se a tabela especial tem marca registrada, só aplica quando bate com a marca
-  // do item — trava de segurança extra (o artigo já não colide entre marcas, mas
-  // fica registrado o cruzamento certinho, caso um dia colida).
-  const marcaBate = !ref || !ref.marca || !item.marca || ref.marca === item.marca;
-  if(ref && marcaBate){
-    item.codigoTabela = ref.codigoTabela;
-    item.custo = ref.custo || '';
-    item.mkp   = ref.mkp   || '';
+  const lista = _tabelaEspecial[k] || [];
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+
+  const validas = lista.filter(ref => {
+    const marcaBate = !ref.marca || !item.marca || ref.marca === item.marca;
+    if(!marcaBate) return false;
+    if(!ref.vigInicio || !ref.vigFim) return true; // sem data = sempre válida
+    const ini = new Date(ref.vigInicio + 'T00:00:00');
+    const fim = new Date(ref.vigFim + 'T23:59:59');
+    return hoje >= ini && hoje <= fim;
+  });
+
+  item.tabelasEspeciais = validas.map(v => ({
+    codigoTabela: v.codigoTabela, custo: v.custo, mkp: v.mkp, vigencia: v.vigencia||''
+  }));
+
+  if(validas.length){
+    item.codigoTabela = validas[0].codigoTabela;
+    item.custo = validas[0].custo || '';
+    item.mkp   = validas[0].mkp   || '';
   } else {
-    // Artigo NÃO está em nenhuma campanha ativa na tabela especial salva agora
-    // → limpa (não deixa campanha "fantasma" grudada de uma importação antiga).
+    // Nenhuma campanha vigente pra esse artigo agora → limpa (não deixa
+    // campanha "fantasma" grudada de uma importação antiga).
     item.codigoTabela = '';
     item.custo = '';
     item.mkp   = '';
@@ -3749,7 +3772,7 @@ async function processarXlsxMulti(fileList){
   // Carrega tabela especial (1x)
   try{
     const resTE = await workerFetch({ method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'getTabelaEspecial'}) });
-    _tabelaEspecial = resTE.ok ? (await resTE.json() || {}) : {};
+    _tabelaEspecial = normalizarTabelaEspecial(resTE.ok ? (await resTE.json() || {}) : {});
   }catch(e){ _tabelaEspecial = {}; }
 
   // Carrega dados_produtos.json (referência de PDV) — 1x
