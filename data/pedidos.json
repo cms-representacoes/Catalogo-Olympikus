@@ -8767,5 +8767,94 @@
     "lastActionLabel": "Pedido criado",
     "lastActionAt": "2026-07-24T11:09:07.676Z",
     "exportedAt": "2026-07-24T11:11:19.067Z"
+  },
+  {
+    "id": "PED-20260724110529-135",
+    "createdAt": "2026-07-24T14:05:29.727Z",
+    "updatedAt": "2026-07-24T14:05:28.907Z",
+    "status": "Pendente",
+    "archived": false,
+    "isDuplicate": false,
+    "preposto": {
+      "codigo": "25471",
+      "nome": "WILLAME"
+    },
+    "clienteCodigo": "76049",
+    "clienteNome": "MAIS CALÇADOS",
+    "prazo": "Z31 - 35/63/91 D",
+    "campanha": "CO681 +28DD OLY",
+    "observacoes": "",
+    "totals": {
+      "packs": 3,
+      "units": 18
+    },
+    "items": [
+      {
+        "codigo": "43500491",
+        "produto": "VELOZ 4",
+        "cor": "ARENML",
+        "num": "98",
+        "gci": "7590239",
+        "ebm": "13428039",
+        "amount": 2,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 12,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 1
+          },
+          {
+            "size": "37",
+            "qty": 2
+          },
+          {
+            "size": "38",
+            "qty": 1
+          },
+          {
+            "size": "39",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "20/08/2026"
+      },
+      {
+        "codigo": "43500491",
+        "produto": "VELOZ 4",
+        "cor": "ARENML",
+        "num": "99",
+        "gci": "7590239",
+        "ebm": "13428039",
+        "amount": 1,
+        "mode": "boxed",
+        "packSize": 6,
+        "totalUnits": 6,
+        "grade": [
+          {
+            "size": "35",
+            "qty": 1
+          },
+          {
+            "size": "36",
+            "qty": 2
+          },
+          {
+            "size": "37",
+            "qty": 2
+          },
+          {
+            "size": "38",
+            "qty": 1
+          }
+        ],
+        "prevFaturamento": "20/08/2026"
+      }
+    ]
   }
 ]
