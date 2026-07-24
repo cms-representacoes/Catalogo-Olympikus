@@ -2765,7 +2765,7 @@
   ],
   "OBWA231912": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 21.425,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2774,7 +2774,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.0826,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2785,7 +2785,7 @@
   ],
   "OBWA231911": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 21.425,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2794,7 +2794,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.0826,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2805,7 +2805,7 @@
   ],
   "OBWW251932": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 21.425,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2814,7 +2814,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.08,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2825,7 +2825,7 @@
   ],
   "OBMSR241922": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 25.996,
       "mkp": "2.5",
       "marca": "OLY",
@@ -2834,7 +2834,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 28.2565,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2845,7 +2845,7 @@
   ],
   "OBWA251921": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 21.425,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2854,7 +2854,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.08,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2865,7 +2865,7 @@
   ],
   "OBMW251931": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 21.425,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2874,7 +2874,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.08,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2885,7 +2885,7 @@
   ],
   "OIMSA81924": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 14.2821428571429,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2894,7 +2894,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 17.3869,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2905,7 +2905,7 @@
   ],
   "OBWSR241921": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 25.996,
       "mkp": "2.5",
       "marca": "OLY",
@@ -2914,7 +2914,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 28.2565,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2925,7 +2925,7 @@
   ],
   "OBMA251922": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 21.425,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2934,7 +2934,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.08,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2945,7 +2945,7 @@
   ],
   "OIWSA81923": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 14.2821428571429,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2954,7 +2954,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 17.3869,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2965,7 +2965,7 @@
   ],
   "OIWSA21192": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 7.13928571428571,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2974,7 +2974,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 8.6913,
       "mkp": "2.3",
       "marca": "OLY",
@@ -2985,7 +2985,7 @@
   ],
   "OIMSA21191": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 7.13928571428571,
       "mkp": "2.8",
       "marca": "OLY",
@@ -2994,7 +2994,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 8.6913,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3005,7 +3005,7 @@
   ],
   "OBWA231917": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 21.425,
       "mkp": "2.8",
       "marca": "OLY",
@@ -3014,7 +3014,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.0826,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3025,7 +3025,7 @@
   ],
   "OBMA241918": [
     {
-      "codigoTabela": "E4796",
+      "codigoTabela": "E4802",
       "custo": 21.425,
       "mkp": "2.8",
       "marca": "OLY",
@@ -3034,7 +3034,7 @@
       "vigFim": null
     },
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.0826,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3408,7 +3408,7 @@
   ],
   "OBWA231904": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.0826,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3419,7 +3419,7 @@
   ],
   "OBWA231905": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.0826,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3430,7 +3430,7 @@
   ],
   "OBWA231915": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 34.7782,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3441,7 +3441,7 @@
   ],
   "OBWA231918": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.0826,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3452,7 +3452,7 @@
   ],
   "OBWA241917": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.0826,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3463,7 +3463,7 @@
   ],
   "OBWSA22195": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 21.7348,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3474,7 +3474,7 @@
   ],
   "OIMA241930": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 10.8652,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3485,7 +3485,7 @@
   ],
   "OIMSA21193": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 9.5609,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3496,7 +3496,7 @@
   ],
   "OIMSA21195": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 9.5609,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3507,7 +3507,7 @@
   ],
   "OIMSA22192": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 8.6913,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3518,7 +3518,7 @@
   ],
   "OIMSA22194": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 17.3869,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3529,7 +3529,7 @@
   ],
   "OIMSA26198": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 8.69,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3540,7 +3540,7 @@
   ],
   "OIMSA26199": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 17.3869,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3551,7 +3551,7 @@
   ],
   "OIMSA81920": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 18.6913,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3562,7 +3562,7 @@
   ],
   "OIMSA81922": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 20.8652,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3573,7 +3573,7 @@
   ],
   "OIWA241929": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 10.8652,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3584,7 +3584,7 @@
   ],
   "OIWSA21194": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 9.5609,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3595,7 +3595,7 @@
   ],
   "OIWSA21196": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 9.5609,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3606,7 +3606,7 @@
   ],
   "OIWSA21198": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 30.4305,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3617,7 +3617,7 @@
   ],
   "OIWSA22191": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 8.6913,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3628,7 +3628,7 @@
   ],
   "OIWSA22193": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 17.3869,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3639,7 +3639,7 @@
   ],
   "OIWSA26196": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 8.69,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3650,7 +3650,7 @@
   ],
   "OIWSA26197": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 17.3869,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3661,7 +3661,7 @@
   ],
   "OIWSA81919": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 18.6913,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3672,7 +3672,7 @@
   ],
   "OIWSA81921": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 20.8652,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3683,7 +3683,7 @@
   ],
   "OIUR261920": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 43.47,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3694,7 +3694,7 @@
   ],
   "OBWA261922": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.08,
       "mkp": "2.3",
       "marca": "OLY",
@@ -3705,7 +3705,7 @@
   ],
   "OBMA261923": [
     {
-      "codigoTabela": "E4550",
+      "codigoTabela": "E4803",
       "custo": 26.08,
       "mkp": "2.3",
       "marca": "OLY",
