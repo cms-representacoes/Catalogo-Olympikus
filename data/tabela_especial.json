@@ -1,1346 +1,4256 @@
 {
-  "1290140": {
-    "codigoTabela": "E4807",
-    "custo": 87.72,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1290261": {
-    "codigoTabela": "E4807",
-    "custo": 122.8,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1306443": {
-    "codigoTabela": "E4807",
-    "custo": 70.17,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1326413": {
-    "codigoTabela": "E4807",
-    "custo": 52.63,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1326799": {
-    "codigoTabela": "E4807",
-    "custo": 45.61,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1357727": {
-    "codigoTabela": "E4807",
-    "custo": 59.65,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1361034": {
-    "codigoTabela": "E4807",
-    "custo": 80.7,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1361518": {
-    "codigoTabela": "E4807",
-    "custo": 70.17,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1361524": {
-    "codigoTabela": "E4807",
-    "custo": 87.72,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1365335": {
-    "codigoTabela": "E4807",
-    "custo": 98.24,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1365460": {
-    "codigoTabela": "E4807",
-    "custo": 80.7,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1367892": {
-    "codigoTabela": "E4806",
-    "custo": 43.33,
-    "mkp": "3",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1369385": {
-    "codigoTabela": "E4807",
-    "custo": 115.79,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1376791": {
-    "codigoTabela": "E4807",
-    "custo": 63.15,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1379178": {
-    "codigoTabela": "E4807",
-    "custo": 52.63,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1379195": {
-    "codigoTabela": "E4807",
-    "custo": 94.73,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1379349": {
-    "codigoTabela": "E4807",
-    "custo": 87.72,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1379507": {
-    "codigoTabela": "E4807",
-    "custo": 80.7,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1382427": {
-    "codigoTabela": "E4807",
-    "custo": 63.15,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1382438": {
-    "codigoTabela": "E4807",
-    "custo": 70.17,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1382521": {
-    "codigoTabela": "E4807",
-    "custo": 87.72,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1382617": {
-    "codigoTabela": "E4807",
-    "custo": 63.15,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1382620": {
-    "codigoTabela": "E4807",
-    "custo": 70.17,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1382797": {
-    "codigoTabela": "E4807",
-    "custo": 98.24,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1382802": {
-    "codigoTabela": "E4807",
-    "custo": 87,
-    "mkp": "2.64",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1382831": {
-    "codigoTabela": "E4807",
-    "custo": 84.21,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1383355": {
-    "codigoTabela": "E4807",
-    "custo": 80.7,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1383544": {
-    "codigoTabela": "E4807",
-    "custo": 70.17,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1383627": {
-    "codigoTabela": "E4807",
-    "custo": 63.15,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1383973": {
-    "codigoTabela": "E4807",
-    "custo": 90,
-    "mkp": "2.73",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1384112": {
-    "codigoTabela": "E4807",
-    "custo": 133.33,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1384123": {
-    "codigoTabela": "E4807",
-    "custo": 122.8,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1384225": {
-    "codigoTabela": "E4807",
-    "custo": 98.24,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1384230": {
-    "codigoTabela": "E4807",
-    "custo": 52.63,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "1386793": {
-    "codigoTabela": "E4807",
-    "custo": 56.14,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "3025902": {
-    "codigoTabela": "E4805",
-    "custo": 82.14,
-    "mkp": "2.8",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "3027786": {
-    "codigoTabela": "E4805",
-    "custo": 60,
-    "mkp": "2.5",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "3027787": {
-    "codigoTabela": "E4805",
-    "custo": 55,
-    "mkp": "2.73",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6000648": {
-    "codigoTabela": "E4807",
-    "custo": 133.33,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6004997": {
-    "codigoTabela": "E4807",
-    "custo": 71.43,
-    "mkp": "2.8",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6006999": {
-    "codigoTabela": "E4805",
-    "custo": 55,
-    "mkp": "2.55",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6007883": {
-    "codigoTabela": "E4807",
-    "custo": 70.17,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6009333": {
-    "codigoTabela": "E4806",
-    "custo": 50,
-    "mkp": "2.6",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6009334": {
-    "codigoTabela": "E4806",
-    "custo": 57.69,
-    "mkp": "2.6",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6009619": {
-    "codigoTabela": "E4806",
-    "custo": 21.5,
-    "mkp": "2.33",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6010861": {
-    "codigoTabela": "E4807",
-    "custo": 157.89,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6010887": {
-    "codigoTabela": "E4807",
-    "custo": 87.72,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6011020": {
-    "codigoTabela": "E4807",
-    "custo": 105.26,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6011064": {
-    "codigoTabela": "E4807",
-    "custo": 59.65,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6011611": {
-    "codigoTabela": "E4807",
-    "custo": 105.26,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6013382": {
-    "codigoTabela": "E4807",
-    "custo": 140.35,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6013441": {
-    "codigoTabela": "E4807",
-    "custo": 122.8,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6013537": {
-    "codigoTabela": "E4807",
-    "custo": 140.35,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6013538": {
-    "codigoTabela": "E4807",
-    "custo": 168.42,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6013776": {
-    "codigoTabela": "E4807",
-    "custo": 140.35,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6013915": {
-    "codigoTabela": "E4807",
-    "custo": 175.44,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6015237": {
-    "codigoTabela": "E4807",
-    "custo": 87.72,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6015244": {
-    "codigoTabela": "E4807",
-    "custo": 87.72,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6015262": {
-    "codigoTabela": "E4806",
-    "custo": 23.33,
-    "mkp": "3",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6015263": {
-    "codigoTabela": "E4806",
-    "custo": 30,
-    "mkp": "3",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6015264": {
-    "codigoTabela": "E4806",
-    "custo": 26.66,
-    "mkp": "3",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6016543": {
-    "codigoTabela": "E4807",
-    "custo": 87.72,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6017350": {
-    "codigoTabela": "E4807",
-    "custo": 70.17,
-    "mkp": "2.85",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6020409": {
-    "codigoTabela": "E4806",
-    "custo": 26.66,
-    "mkp": "3",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6020414": {
-    "codigoTabela": "E4806",
-    "custo": 33.33,
-    "mkp": "3",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6023944": {
-    "codigoTabela": "E4807",
-    "custo": 48,
-    "mkp": "2.5",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6023946": {
-    "codigoTabela": "E4807",
-    "custo": 40,
-    "mkp": "2.5",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "6023947": {
-    "codigoTabela": "E4807",
-    "custo": 48,
-    "mkp": "2.5",
-    "marca": "UA",
-    "vigencia": "dezembro"
-  },
-  "OBWA231912": {
-    "codigoTabela": "E4550",
-    "custo": 26.0826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA231911": {
-    "codigoTabela": "E4550",
-    "custo": 26.0826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWW251932": {
-    "codigoTabela": "E4550",
-    "custo": 26.08,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBMSR241922": {
-    "codigoTabela": "E4550",
-    "custo": 28.2565,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA251921": {
-    "codigoTabela": "E4550",
-    "custo": 26.08,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBMW251931": {
-    "codigoTabela": "E4550",
-    "custo": 26.08,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA81924": {
-    "codigoTabela": "E4550",
-    "custo": 17.3869,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWSR241921": {
-    "codigoTabela": "E4550",
-    "custo": 28.2565,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBMA251922": {
-    "codigoTabela": "E4550",
-    "custo": 26.08,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA81923": {
-    "codigoTabela": "E4550",
-    "custo": 17.3869,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA21192": {
-    "codigoTabela": "E4550",
-    "custo": 8.6913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA21191": {
-    "codigoTabela": "E4550",
-    "custo": 8.6913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA231917": {
-    "codigoTabela": "E4550",
-    "custo": 26.0826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBMA241918": {
-    "codigoTabela": "E4550",
-    "custo": 26.0826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBMST24610": {
-    "codigoTabela": "E4797",
-    "custo": 39.1260869565217,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OBMWL20602": {
-    "codigoTabela": "E4797",
-    "custo": 39.96,
-    "mkp": "2.5",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OBMWT23610": {
-    "codigoTabela": "E4797",
-    "custo": 34.7782608695652,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OBWSR23101": {
-    "codigoTabela": "E4797",
-    "custo": 52.1695652173913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OBWSR23154": {
-    "codigoTabela": "E4797",
-    "custo": 78.2565217391305,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OBWSR23804": {
-    "codigoTabela": "E4797",
-    "custo": 65.2130434782609,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OBWST24607": {
-    "codigoTabela": "E4797",
-    "custo": 35.996,
-    "mkp": "2.5",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OBWWT20163": {
-    "codigoTabela": "E4797",
-    "custo": 34.7391304347826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OBWWT23308": {
-    "codigoTabela": "E4797",
-    "custo": 55.996,
-    "mkp": "2.5",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMSL25635": {
-    "codigoTabela": "E4797",
-    "custo": 52.1695652173913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMWL24501": {
-    "codigoTabela": "E4797",
-    "custo": 86.9521739130435,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMWR22301": {
-    "codigoTabela": "E4797",
-    "custo": 65.2130434782609,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMWR23305": {
-    "codigoTabela": "E4797",
-    "custo": 71.425,
-    "mkp": "2.8",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMWR23510": {
-    "codigoTabela": "E4797",
-    "custo": 108.691304347826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMWR24120": {
-    "codigoTabela": "E4797",
-    "custo": 131.996,
-    "mkp": "2.5",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMWR24604": {
-    "codigoTabela": "E4797",
-    "custo": 99.9956521739131,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMWR24806": {
-    "codigoTabela": "E4797",
-    "custo": 64.2821428571429,
-    "mkp": "2.8",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIMWT22610": {
-    "codigoTabela": "E4797",
-    "custo": 36.3590909090909,
-    "mkp": "2.2",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIUWL24203": {
-    "codigoTabela": "E4797",
-    "custo": 95.6478260869565,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIUWL24204": {
-    "codigoTabela": "E4797",
-    "custo": 131.996,
-    "mkp": "2.5",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWSL22617": {
-    "codigoTabela": "E4797",
-    "custo": 52.1695652173913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWL22201": {
-    "codigoTabela": "E4797",
-    "custo": 99.9956521739131,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWL22804": {
-    "codigoTabela": "E4797",
-    "custo": 65.2130434782609,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWL24507": {
-    "codigoTabela": "E4797",
-    "custo": 86.9521739130435,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWR22701": {
-    "codigoTabela": "E4797",
-    "custo": 47.8217391304348,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWT20801": {
-    "codigoTabela": "E4797",
-    "custo": 43.4739130434783,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWT22607": {
-    "codigoTabela": "E4797",
-    "custo": 34.7782608695652,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIUWL24631": {
-    "codigoTabela": "E4797",
-    "custo": 45.86583,
-    "mkp": "2.4",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWSR23101": {
-    "codigoTabela": "E4797",
-    "custo": 49.9964285714286,
-    "mkp": "2.8",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWR22162": {
-    "codigoTabela": "E4797",
-    "custo": 49.9964285714286,
-    "mkp": "2.8",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWT22153": {
-    "codigoTabela": "E4797",
-    "custo": 66.71583,
-    "mkp": "2.4",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OIWWT22608": {
-    "codigoTabela": "E4797",
-    "custo": 39.1260869565217,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "agosto"
-  },
-  "OFMWT26610": {
-    "codigoTabela": "E4600",
-    "custo": 31,
-    "mkp": "2.9",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA231904": {
-    "codigoTabela": "E4550",
-    "custo": 26.0826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA231905": {
-    "codigoTabela": "E4550",
-    "custo": 26.0826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA231915": {
-    "codigoTabela": "E4550",
-    "custo": 34.7782,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA231918": {
-    "codigoTabela": "E4550",
-    "custo": 26.0826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA241917": {
-    "codigoTabela": "E4550",
-    "custo": 26.0826,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWSA22195": {
-    "codigoTabela": "E4550",
-    "custo": 21.7348,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMA241930": {
-    "codigoTabela": "E4550",
-    "custo": 10.8652,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA21193": {
-    "codigoTabela": "E4550",
-    "custo": 9.5609,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA21195": {
-    "codigoTabela": "E4550",
-    "custo": 9.5609,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA22192": {
-    "codigoTabela": "E4550",
-    "custo": 8.6913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA22194": {
-    "codigoTabela": "E4550",
-    "custo": 17.3869,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA26198": {
-    "codigoTabela": "E4550",
-    "custo": 8.69,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA26199": {
-    "codigoTabela": "E4550",
-    "custo": 17.3869,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA81920": {
-    "codigoTabela": "E4550",
-    "custo": 18.6913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMSA81922": {
-    "codigoTabela": "E4550",
-    "custo": 20.8652,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWA241929": {
-    "codigoTabela": "E4550",
-    "custo": 10.8652,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA21194": {
-    "codigoTabela": "E4550",
-    "custo": 9.5609,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA21196": {
-    "codigoTabela": "E4550",
-    "custo": 9.5609,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA21198": {
-    "codigoTabela": "E4550",
-    "custo": 30.4305,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA22191": {
-    "codigoTabela": "E4550",
-    "custo": 8.6913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA22193": {
-    "codigoTabela": "E4550",
-    "custo": 17.3869,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA26196": {
-    "codigoTabela": "E4550",
-    "custo": 8.69,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA26197": {
-    "codigoTabela": "E4550",
-    "custo": 17.3869,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA81919": {
-    "codigoTabela": "E4550",
-    "custo": 18.6913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWSA81921": {
-    "codigoTabela": "E4550",
-    "custo": 20.8652,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIUR261920": {
-    "codigoTabela": "E4550",
-    "custo": 43.47,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBWA261922": {
-    "codigoTabela": "E4550",
-    "custo": 26.08,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OBMA261923": {
-    "codigoTabela": "E4550",
-    "custo": 26.08,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB231818": {
-    "codigoTabela": "E4687",
-    "custo": 52.1696,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OISB241825": {
-    "codigoTabela": "E4687",
-    "custo": 108.6913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB211800": {
-    "codigoTabela": "E4687",
-    "custo": 73.9087,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB211803": {
-    "codigoTabela": "E4687",
-    "custo": 65.213,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB211808": {
-    "codigoTabela": "E4687",
-    "custo": 39.1261,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB211815": {
-    "codigoTabela": "E4687",
-    "custo": 99.9956,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB221802": {
-    "codigoTabela": "E4687",
-    "custo": 78.2565,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB221803": {
-    "codigoTabela": "E4687",
-    "custo": 86.9522,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB221805": {
-    "codigoTabela": "E4687",
-    "custo": 60.8653,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB221806": {
-    "codigoTabela": "E4687",
-    "custo": 65.213,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB221808": {
-    "codigoTabela": "E4687",
-    "custo": 47.8217,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB221810": {
-    "codigoTabela": "E4687",
-    "custo": 78.2565,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB221811": {
-    "codigoTabela": "E4687",
-    "custo": 43.4739,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB221814": {
-    "codigoTabela": "E4687",
-    "custo": 52.1696,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB231807": {
-    "codigoTabela": "E4687",
-    "custo": 60.8653,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB231809": {
-    "codigoTabela": "E4687",
-    "custo": 86.9522,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB231810": {
-    "codigoTabela": "E4687",
-    "custo": 78.2565,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB231817": {
-    "codigoTabela": "E4687",
-    "custo": 52.1696,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB23823": {
-    "codigoTabela": "E4687",
-    "custo": 56.5174,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB241803": {
-    "codigoTabela": "E4687",
-    "custo": 86.9522,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB241805": {
-    "codigoTabela": "E4687",
-    "custo": 60.8653,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB241807": {
-    "codigoTabela": "E4687",
-    "custo": 65.213,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB241812": {
-    "codigoTabela": "E4687",
-    "custo": 65.213,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB241813": {
-    "codigoTabela": "E4687",
-    "custo": 52.1696,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB241822": {
-    "codigoTabela": "E4687",
-    "custo": 82.6044,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB241828": {
-    "codigoTabela": "E4687",
-    "custo": 108.6913,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB251805": {
-    "codigoTabela": "E4687",
-    "custo": 34.7782,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB251806": {
-    "codigoTabela": "E4687",
-    "custo": 43.4739,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB251808": {
-    "codigoTabela": "E4687",
-    "custo": 65.213,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB251811": {
-    "codigoTabela": "E4687",
-    "custo": 52.1696,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB251826": {
-    "codigoTabela": "E4687",
-    "custo": 65.213,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB261826": {
-    "codigoTabela": "E4687",
-    "custo": 65.213,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWT201804": {
-    "codigoTabela": "E4687",
-    "custo": 39.1261,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OICR241713": {
-    "codigoTabela": "E4687",
-    "custo": 52.1696,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMC231702": {
-    "codigoTabela": "E4687",
-    "custo": 39.1261,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMC241706": {
-    "codigoTabela": "E4687",
-    "custo": 39.1261,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMC241708": {
-    "codigoTabela": "E4687",
-    "custo": 43.4739,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIMC251706": {
-    "codigoTabela": "E4687",
-    "custo": 39.1261,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB251711": {
-    "codigoTabela": "E4687",
-    "custo": 43.4739,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB251712": {
-    "codigoTabela": "E4687",
-    "custo": 39.1261,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB251713": {
-    "codigoTabela": "E4687",
-    "custo": 43.4739,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWC221703": {
-    "codigoTabela": "E4687",
-    "custo": 39.1261,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWC231700": {
-    "codigoTabela": "E4687",
-    "custo": 43.4739,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWC231704": {
-    "codigoTabela": "E4687",
-    "custo": 39.1261,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB271824": {
-    "codigoTabela": "E4687",
-    "custo": 108.69,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB271802": {
-    "codigoTabela": "E4687",
-    "custo": 100,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB271809": {
-    "codigoTabela": "E4687",
-    "custo": 86.95,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB271810": {
-    "codigoTabela": "E4687",
-    "custo": 78.26,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  },
-  "OIWB271822": {
-    "codigoTabela": "E4687",
-    "custo": 78.26,
-    "mkp": "2.3",
-    "marca": "OLY",
-    "vigencia": "dezembro"
-  }
+  "1290140": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1290261": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1306443": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1326413": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1326799": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 45.61,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1357727": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1361034": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1361518": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1361524": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1365335": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1365460": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1367892": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 43.33,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 43.33,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 43.33,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1369385": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 115.79,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1376791": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1379178": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1379195": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 94.73,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 94.73,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 94.73,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 94.73,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1379349": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1379507": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1382427": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1382438": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1382521": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1382617": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1382620": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1382797": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1382802": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87,
+      "mkp": "2.64",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1382831": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 84.21,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 84.21,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 84.21,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 84.21,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1383355": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 80.7,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1383544": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1383627": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 63.15,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1383973": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 90,
+      "mkp": "2.73",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 90,
+      "mkp": "2.73",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 90,
+      "mkp": "2.73",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1384112": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 133.33,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 133.33,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1384123": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1384225": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 98.24,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1384230": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 52.63,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "1386793": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 56.14,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 56.14,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 56.14,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 56.14,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 56.14,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 56.14,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 56.14,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 56.14,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "3025902": [
+    {
+      "codigoTabela": "E4805",
+      "custo": 82.14,
+      "mkp": "2.8",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 82.14,
+      "mkp": "2.8",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 82.14,
+      "mkp": "2.8",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 82.14,
+      "mkp": "2.8",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "3027786": [
+    {
+      "codigoTabela": "E4805",
+      "custo": 60,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 60,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 60,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 60,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "3027787": [
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.73",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.73",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.73",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.73",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6000648": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 133.33,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 133.33,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6004997": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 71.43,
+      "mkp": "2.8",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 71.43,
+      "mkp": "2.8",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6006999": [
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.55",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.55",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.55",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.55",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4805",
+      "custo": 55,
+      "mkp": "2.55",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6007883": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6009333": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 50,
+      "mkp": "2.6",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 50,
+      "mkp": "2.6",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6009334": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 57.69,
+      "mkp": "2.6",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 57.69,
+      "mkp": "2.6",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6009619": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 21.5,
+      "mkp": "2.33",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 21.5,
+      "mkp": "2.33",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6010861": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 157.89,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 157.89,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6010887": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6011020": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 105.26,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6011064": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 59.65,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6011611": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 105.26,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 105.26,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 105.26,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6013382": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 140.35,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 140.35,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6013441": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 122.8,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6013537": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 140.35,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6013538": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 168.42,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6013776": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 140.35,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6013915": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 175.44,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6015237": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6015244": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6015262": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 23.33,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 23.33,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 23.33,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6015263": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 30,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 30,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 30,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 30,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6015264": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 26.66,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 26.66,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 26.66,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6016543": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 87.72,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6017350": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 70.17,
+      "mkp": "2.85",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6020409": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 26.66,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 26.66,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 26.66,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6020414": [
+    {
+      "codigoTabela": "E4806",
+      "custo": 33.33,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4806",
+      "custo": 33.33,
+      "mkp": "3",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6023944": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6023946": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 40,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 40,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 40,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "6023947": [
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    },
+    {
+      "codigoTabela": "E4807",
+      "custo": 48,
+      "mkp": "2.5",
+      "marca": "UA",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA231912": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 21.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.0826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA231911": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 21.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.0826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWW251932": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 21.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.08,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBMSR241922": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 25.996,
+      "mkp": "2.5",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 28.2565,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA251921": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 21.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.08,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBMW251931": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 21.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.08,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA81924": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 14.2821428571429,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 17.3869,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWSR241921": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 25.996,
+      "mkp": "2.5",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 28.2565,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBMA251922": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 21.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.08,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA81923": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 14.2821428571429,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 17.3869,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA21192": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 7.13928571428571,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 8.6913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA21191": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 7.13928571428571,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 8.6913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA231917": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 21.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.0826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBMA241918": [
+    {
+      "codigoTabela": "E4796",
+      "custo": 21.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    },
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.0826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBMST24610": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 39.1260869565217,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OBMWL20602": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 39.96,
+      "mkp": "2.5",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OBMWT23610": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 34.7782608695652,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OBWSR23101": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 52.1695652173913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OBWSR23154": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 78.2565217391305,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OBWSR23804": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 65.2130434782609,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OBWST24607": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 35.996,
+      "mkp": "2.5",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OBWWT20163": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 34.7391304347826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OBWWT23308": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 55.996,
+      "mkp": "2.5",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMSL25635": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 52.1695652173913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMWL24501": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 86.9521739130435,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMWR22301": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 65.2130434782609,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMWR23305": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 71.425,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMWR23510": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 108.691304347826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMWR24120": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 131.996,
+      "mkp": "2.5",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMWR24604": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 99.9956521739131,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMWR24806": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 64.2821428571429,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIMWT22610": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 36.3590909090909,
+      "mkp": "2.2",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIUWL24203": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 95.6478260869565,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIUWL24204": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 131.996,
+      "mkp": "2.5",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWSL22617": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 52.1695652173913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWL22201": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 99.9956521739131,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWL22804": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 65.2130434782609,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWL24507": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 86.9521739130435,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWR22701": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 47.8217391304348,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWT20801": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 43.4739130434783,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWT22607": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 34.7782608695652,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIUWL24631": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 45.86583,
+      "mkp": "2.4",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWSR23101": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 49.9964285714286,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWR22162": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 49.9964285714286,
+      "mkp": "2.8",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWT22153": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 66.71583,
+      "mkp": "2.4",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OIWWT22608": [
+    {
+      "codigoTabela": "E4797",
+      "custo": 39.1260869565217,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "agosto",
+      "vigInicio": "2026-08-01",
+      "vigFim": "2026-08-31"
+    }
+  ],
+  "OFMWT26610": [
+    {
+      "codigoTabela": "E4600",
+      "custo": 31,
+      "mkp": "2.9",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA231904": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.0826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA231905": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.0826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA231915": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 34.7782,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA231918": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.0826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA241917": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.0826,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWSA22195": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 21.7348,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMA241930": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 10.8652,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA21193": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 9.5609,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA21195": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 9.5609,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA22192": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 8.6913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA22194": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 17.3869,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA26198": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 8.69,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA26199": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 17.3869,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA81920": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 18.6913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMSA81922": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 20.8652,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWA241929": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 10.8652,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA21194": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 9.5609,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA21196": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 9.5609,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA21198": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 30.4305,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA22191": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 8.6913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA22193": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 17.3869,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA26196": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 8.69,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA26197": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 17.3869,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA81919": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 18.6913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWSA81921": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 20.8652,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIUR261920": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 43.47,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBWA261922": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.08,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OBMA261923": [
+    {
+      "codigoTabela": "E4550",
+      "custo": 26.08,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB231818": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 52.1696,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OISB241825": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 108.6913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB211800": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 73.9087,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB211803": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 65.213,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB211808": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 39.1261,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB211815": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 99.9956,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB221802": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 78.2565,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB221803": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 86.9522,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB221805": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 60.8653,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB221806": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 65.213,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB221808": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 47.8217,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB221810": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 78.2565,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB221811": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 43.4739,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB221814": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 52.1696,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB231807": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 60.8653,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB231809": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 86.9522,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB231810": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 78.2565,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB231817": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 52.1696,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB23823": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 56.5174,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB241803": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 86.9522,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB241805": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 60.8653,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB241807": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 65.213,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB241812": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 65.213,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB241813": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 52.1696,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB241822": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 82.6044,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB241828": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 108.6913,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB251805": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 34.7782,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB251806": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 43.4739,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB251808": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 65.213,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB251811": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 52.1696,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB251826": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 65.213,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB261826": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 65.213,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWT201804": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 39.1261,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OICR241713": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 52.1696,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMC231702": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 39.1261,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMC241706": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 39.1261,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMC241708": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 43.4739,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIMC251706": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 39.1261,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB251711": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 43.4739,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB251712": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 39.1261,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB251713": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 43.4739,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWC221703": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 39.1261,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWC231700": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 43.4739,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWC231704": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 39.1261,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB271824": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 108.69,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB271802": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 100,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB271809": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 86.95,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB271810": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 78.26,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ],
+  "OIWB271822": [
+    {
+      "codigoTabela": "E4687",
+      "custo": 78.26,
+      "mkp": "2.3",
+      "marca": "OLY",
+      "vigencia": "dezembro",
+      "vigInicio": "2026-07-24",
+      "vigFim": "2026-12-31"
+    }
+  ]
 }
